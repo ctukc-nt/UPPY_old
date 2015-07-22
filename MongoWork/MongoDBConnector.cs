@@ -29,7 +29,15 @@ namespace MongoWork
         public async void Insert<T>(T doc) where T : IEntity
         {
             var collection = GetCollection<T>();
-            doc.Id = doc.Id ?? GetIdDocument<T>();
+            if (doc.Id == null)
+            {
+                doc.Id = GetIdDocument<T>();
+            }
+            else
+            {
+                SetIdDocument<T>((int) doc.Id);
+            }
+
             await collection.InsertOneAsync(doc);
         }
 
@@ -94,6 +102,29 @@ namespace MongoWork
             }
 
             return collection.FindOneAndUpdateAsync(id => id.DocName == typeof(T).Name, incrDocIdOptions).Result.DocId;
+        }
+
+        private int SetIdDocument<T>(int idSet)
+        {
+            var collection = _mongoDb.GetCollection<DocsId>("docsid");
+            var setDocIdUpdate = Builders<DocsId>.Update.Set(x => x.DocId, idSet);
+            var rec = collection.Find(x => x.DocName == typeof(T).Name).CountAsync();
+            rec.Wait();
+
+            if (rec.Result == 0)
+            {
+                var res = collection.InsertOneAsync(new DocsId { DocId = idSet, DocName = typeof(T).Name });
+                res.Wait();
+                if (res.Exception != null)
+                {
+                    return
+                        collection.FindOneAndUpdateAsync(id => id.DocName == typeof(T).Name, setDocIdUpdate).Result.DocId;
+                }
+
+                return idSet;
+            }
+
+            return collection.FindOneAndUpdateAsync(id => id.DocName == typeof(T).Name, setDocIdUpdate).Result.DocId;
         }
     }
 }

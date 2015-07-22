@@ -22,7 +22,7 @@ namespace _1CToMongoTransfer
                 var techOperMongo = connector.GetListCollection<TechOperation>();
                 if (techOperMongo.All(x => x.ShortName != operation.ShortName))
                 {
-                    connector.Insert(new TechOperation {FullName = operation.FullName, ShortName = operation.ShortName});
+                    connector.Insert(new TechOperation {FullName = operation.FullName, ShortName = operation.ShortName, Id = operation.Id});
                 }
             }
         }
@@ -60,8 +60,6 @@ namespace _1CToMongoTransfer
         private static void TransferDrawings(DataFactory data1C, MongoDbConnector connector)
         {
             var techRoutes = data1C.GetDrawings();
-            var techOpers = connector.GetListCollection<Drawing>();
-
 
         }
 
