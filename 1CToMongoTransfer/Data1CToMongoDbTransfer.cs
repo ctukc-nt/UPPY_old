@@ -64,40 +64,33 @@ namespace _1CToMongoTransfer
             var drawings = data1C.GetDrawings();
             var techRoutes = connector.GetListCollection<TechRoute>();
 
-            foreach (var drawing in drawings.Where(x => x.PartOf != null))
+            foreach (var drawing in drawings.Where(x => x.PartOfDrawingId != null))
             {
-                var partOfDrawing = drawings.FirstOrDefault(y => y.Id == drawing.PartOf.Id);
+                var partOfDrawing = drawings.FirstOrDefault(y => y.Id == drawing.PartOfDrawingId);
                 if (partOfDrawing != null)
                 {
-                    drawing.PartOf = partOfDrawing;
+                    drawing.PartOfDrawingId = partOfDrawing.Id;
                 }
             }
 
-            foreach (var drawing in drawings.Where(x => x.TechRoute != null))
+            foreach (var drawing in drawings.Where(x => x.TechRouteId != null))
             {
-                var techRouteMongo = techRoutes.FirstOrDefault(y => y.Id == drawing.TechRoute.Id);
+                var techRouteMongo = techRoutes.FirstOrDefault(y => y.Id == drawing.TechRouteId);
                 if (techRouteMongo != null)
                 {
-                    drawing.TechRoute = techRouteMongo;
+                    drawing.TechRouteId = techRouteMongo.Id;
                 }
             }
 
-            foreach (var drawing in drawings.Where(x => x.Parent != null))
+            foreach (var drawing in drawings.Where(x => x.ParentId != null))
             {
-                var parentDrawing = drawings.FirstOrDefault(y => y.Id == drawing.Parent.Id);
+                var parentDrawing = drawings.FirstOrDefault(y => y.Id == drawing.ParentId);
                 if (parentDrawing != null)
                 {
-                    drawing.Parent = parentDrawing;
-                    drawing.Children = drawing.Children ?? new List<Drawing>();
-                    drawing.Children.Add(drawing);
-                    drawings.Remove(drawing);
+                    drawing.ParentId = parentDrawing.Id;
                 }
             }
-
             
-
-            
-
             foreach (var drawing in drawings)
             {
                 connector.Insert(drawing);

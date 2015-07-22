@@ -34,14 +34,14 @@ namespace WebService1C
                                 Length = x.Length,
                                 Width = x.Width,
                                 MarkSteal = x.MarkSteal,
-                                Parent =
+                                ParentId =
                                     x.ParentCode == string.Empty
-                                        ? null
-                                        : new Drawing {Id = Convert.ToInt32(x.ParentCode)},
-                                TechRoute =
+                                        ? (int?) null
+                                        : Convert.ToInt32(x.ParentCode),
+                                TechRouteId = 
                                     x.TechRouteCode == string.Empty
-                                        ? null
-                                        : new TechRoute {Id = Convert.ToInt32(x.TechRouteCode)},
+                                        ? (int?) null
+                                        : Convert.ToInt32(x.TechRouteCode),
                                 Profile = x.Profile,
                                 StandartSize = x.TypeSize,
                                 Weight = x.Weight,

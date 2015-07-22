@@ -38,6 +38,9 @@
     <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\..\..\..\Downloads\CSharpDriver-2.0.1\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -90,6 +93,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{876f668f-5017-4cee-8ae4-91e9b0e9e6b6}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MongoWork\MongoWork.csproj">
+      <Project>{371A01EB-92FF-4FEF-871D-DA6E19A8FDD8}</Project>
+      <Name>MongoWork</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

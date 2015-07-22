@@ -15,7 +15,7 @@ namespace WebService1C.Tests
         {
             DataFactory1C dataFactory1C = new DataFactory1C();
             var dr = dataFactory1C.GetDrawings();
-            var topParent = dr.Where(x => x.Parent == null);
+            var topParent = dr.Where(x => x.ParentId == null);
         }
     }
 }

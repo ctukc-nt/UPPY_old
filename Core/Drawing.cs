@@ -12,12 +12,7 @@ namespace Core
         /// <summary>
         ///     Родитель
         /// </summary>
-        public Drawing Parent { get; set; }
-
-        /// <summary>
-        ///     Сборочные единицы
-        /// </summary>
-        public List<Drawing> Children { get; set; }
+        public int? ParentId { get; set; }
 
         /// <summary>
         ///     Наименование
@@ -93,17 +88,14 @@ namespace Core
         ///     Отправочная позиция
         /// </summary>
         public string OP { get; set; }
-
-        /// <summary>
-        ///     Входит в...
+        /// <summary>     
+        /// Входит в...
         /// </summary>
-        public Drawing PartOf { get; set; }
+        public int? PartOfDrawingId { get; set; }
 
-        /// <summary>
+        /// <summary> 
         /// Технологический маршрут
         /// </summary>
-        public TechRoute TechRoute { get; set; }
-
-        
+        public int? TechRouteId { get; set; }
     }
 }

@@ -29,167 +29,275 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.designationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberOnSpecDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.profileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.standartSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.markStealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.widthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countAllDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.weightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.weightAllDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.drawingBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.treeList1 = new DevExpress.XtraTreeList.TreeList();
+            this.tlcName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcDesignation = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcNumberOnSpec = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcProfile = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.rProfile = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.tlcStandartSize = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcGostOnSort = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcMarkSteal = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcGostOnMaterial = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcLength = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcWidth = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcCount = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcCountAll = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcWeigth = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcWeightAll = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcOp = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcPartOfDrawingId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcTechRouteId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.drawingBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rProfile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.designationDataGridViewTextBoxColumn,
-            this.numberOnSpecDataGridViewTextBoxColumn,
-            this.profileDataGridViewTextBoxColumn,
-            this.standartSizeDataGridViewTextBoxColumn,
-            this.markStealDataGridViewTextBoxColumn,
-            this.lengthDataGridViewTextBoxColumn,
-            this.widthDataGridViewTextBoxColumn,
-            this.countDataGridViewTextBoxColumn,
-            this.countAllDataGridViewTextBoxColumn,
-            this.weightDataGridViewTextBoxColumn,
-            this.weightAllDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.drawingBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 13);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // designationDataGridViewTextBoxColumn
-            // 
-            this.designationDataGridViewTextBoxColumn.DataPropertyName = "Designation";
-            this.designationDataGridViewTextBoxColumn.HeaderText = "Designation";
-            this.designationDataGridViewTextBoxColumn.Name = "designationDataGridViewTextBoxColumn";
-            // 
-            // numberOnSpecDataGridViewTextBoxColumn
-            // 
-            this.numberOnSpecDataGridViewTextBoxColumn.DataPropertyName = "NumberOnSpec";
-            this.numberOnSpecDataGridViewTextBoxColumn.HeaderText = "NumberOnSpec";
-            this.numberOnSpecDataGridViewTextBoxColumn.Name = "numberOnSpecDataGridViewTextBoxColumn";
-            // 
-            // profileDataGridViewTextBoxColumn
-            // 
-            this.profileDataGridViewTextBoxColumn.DataPropertyName = "Profile";
-            this.profileDataGridViewTextBoxColumn.HeaderText = "Profile";
-            this.profileDataGridViewTextBoxColumn.Name = "profileDataGridViewTextBoxColumn";
-            // 
-            // standartSizeDataGridViewTextBoxColumn
-            // 
-            this.standartSizeDataGridViewTextBoxColumn.DataPropertyName = "StandartSize";
-            this.standartSizeDataGridViewTextBoxColumn.HeaderText = "StandartSize";
-            this.standartSizeDataGridViewTextBoxColumn.Name = "standartSizeDataGridViewTextBoxColumn";
-            // 
-            // markStealDataGridViewTextBoxColumn
-            // 
-            this.markStealDataGridViewTextBoxColumn.DataPropertyName = "MarkSteal";
-            this.markStealDataGridViewTextBoxColumn.HeaderText = "MarkSteal";
-            this.markStealDataGridViewTextBoxColumn.Name = "markStealDataGridViewTextBoxColumn";
-            // 
-            // lengthDataGridViewTextBoxColumn
-            // 
-            this.lengthDataGridViewTextBoxColumn.DataPropertyName = "Length";
-            this.lengthDataGridViewTextBoxColumn.HeaderText = "Length";
-            this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
-            // 
-            // widthDataGridViewTextBoxColumn
-            // 
-            this.widthDataGridViewTextBoxColumn.DataPropertyName = "Width";
-            this.widthDataGridViewTextBoxColumn.HeaderText = "Width";
-            this.widthDataGridViewTextBoxColumn.Name = "widthDataGridViewTextBoxColumn";
-            // 
-            // countDataGridViewTextBoxColumn
-            // 
-            this.countDataGridViewTextBoxColumn.DataPropertyName = "Count";
-            this.countDataGridViewTextBoxColumn.HeaderText = "Count";
-            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
-            // 
-            // countAllDataGridViewTextBoxColumn
-            // 
-            this.countAllDataGridViewTextBoxColumn.DataPropertyName = "CountAll";
-            this.countAllDataGridViewTextBoxColumn.HeaderText = "CountAll";
-            this.countAllDataGridViewTextBoxColumn.Name = "countAllDataGridViewTextBoxColumn";
-            // 
-            // weightDataGridViewTextBoxColumn
-            // 
-            this.weightDataGridViewTextBoxColumn.DataPropertyName = "Weight";
-            this.weightDataGridViewTextBoxColumn.HeaderText = "Weight";
-            this.weightDataGridViewTextBoxColumn.Name = "weightDataGridViewTextBoxColumn";
-            // 
-            // weightAllDataGridViewTextBoxColumn
-            // 
-            this.weightAllDataGridViewTextBoxColumn.DataPropertyName = "WeightAll";
-            this.weightAllDataGridViewTextBoxColumn.HeaderText = "WeightAll";
-            this.weightAllDataGridViewTextBoxColumn.Name = "weightAllDataGridViewTextBoxColumn";
             // 
             // drawingBindingSource
             // 
             this.drawingBindingSource.DataSource = typeof(Core.Drawing);
+            // 
+            // treeList1
+            // 
+            this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.tlcName,
+            this.tlcDesignation,
+            this.tlcNumberOnSpec,
+            this.tlcProfile,
+            this.tlcStandartSize,
+            this.tlcGostOnSort,
+            this.tlcMarkSteal,
+            this.tlcGostOnMaterial,
+            this.tlcLength,
+            this.tlcWidth,
+            this.tlcCount,
+            this.tlcCountAll,
+            this.tlcWeigth,
+            this.tlcWeightAll,
+            this.tlcOp,
+            this.tlcPartOfDrawingId,
+            this.tlcTechRouteId});
+            this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeList1.FooterPanelHeight = 30;
+            this.treeList1.KeyFieldName = "Id";
+            this.treeList1.Location = new System.Drawing.Point(0, 0);
+            this.treeList1.Name = "treeList1";
+            this.treeList1.OptionsBehavior.EnableFiltering = true;
+            this.treeList1.OptionsFind.AllowFindPanel = true;
+            this.treeList1.OptionsFind.AlwaysVisible = true;
+            this.treeList1.ParentFieldName = "ParentId";
+            this.treeList1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.rProfile,
+            this.repositoryItemComboBox1});
+            this.treeList1.RootValue = null;
+            this.treeList1.Size = new System.Drawing.Size(841, 391);
+            this.treeList1.TabIndex = 1;
+            this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
+            this.treeList1.FilterNode += new DevExpress.XtraTreeList.FilterNodeEventHandler(this.treeList1_FilterNode);
+            // 
+            // tlcName
+            // 
+            this.tlcName.Caption = "Наименование";
+            this.tlcName.FieldName = "Name";
+            this.tlcName.Name = "tlcName";
+            this.tlcName.Visible = true;
+            this.tlcName.VisibleIndex = 1;
+            // 
+            // tlcDesignation
+            // 
+            this.tlcDesignation.Caption = "Обозначение";
+            this.tlcDesignation.FieldName = "Designation";
+            this.tlcDesignation.Name = "tlcDesignation";
+            this.tlcDesignation.Visible = true;
+            this.tlcDesignation.VisibleIndex = 0;
+            // 
+            // tlcNumberOnSpec
+            // 
+            this.tlcNumberOnSpec.Caption = "Номер по спец.";
+            this.tlcNumberOnSpec.FieldName = "NumberOnSpec";
+            this.tlcNumberOnSpec.Name = "tlcNumberOnSpec";
+            this.tlcNumberOnSpec.Visible = true;
+            this.tlcNumberOnSpec.VisibleIndex = 2;
+            // 
+            // tlcProfile
+            // 
+            this.tlcProfile.Caption = "Профиль";
+            this.tlcProfile.ColumnEdit = this.rProfile;
+            this.tlcProfile.FieldName = "Profile";
+            this.tlcProfile.Name = "tlcProfile";
+            this.tlcProfile.Visible = true;
+            this.tlcProfile.VisibleIndex = 3;
+            // 
+            // rProfile
+            // 
+            this.rProfile.AutoHeight = false;
+            this.rProfile.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rProfile.Items.AddRange(new object[] {
+            "12313",
+            "ыва",
+            "",
+            "ываываыа",
+            "ы",
+            "ва",
+            "ыва",
+            "ы",
+            "ва",
+            "аы"});
+            this.rProfile.Name = "rProfile";
+            // 
+            // tlcStandartSize
+            // 
+            this.tlcStandartSize.Caption = "Типоразмер";
+            this.tlcStandartSize.FieldName = "StandartSize";
+            this.tlcStandartSize.Name = "tlcStandartSize";
+            this.tlcStandartSize.Visible = true;
+            this.tlcStandartSize.VisibleIndex = 4;
+            // 
+            // tlcGostOnSort
+            // 
+            this.tlcGostOnSort.Caption = "ГОСТ на сортамент";
+            this.tlcGostOnSort.FieldName = "GostOnSort";
+            this.tlcGostOnSort.Name = "tlcGostOnSort";
+            this.tlcGostOnSort.Visible = true;
+            this.tlcGostOnSort.VisibleIndex = 5;
+            // 
+            // tlcMarkSteal
+            // 
+            this.tlcMarkSteal.Caption = "Марка стали";
+            this.tlcMarkSteal.FieldName = "MarkSteal";
+            this.tlcMarkSteal.Name = "tlcMarkSteal";
+            this.tlcMarkSteal.Visible = true;
+            this.tlcMarkSteal.VisibleIndex = 6;
+            // 
+            // tlcGostOnMaterial
+            // 
+            this.tlcGostOnMaterial.Caption = "ГОСТ на материал";
+            this.tlcGostOnMaterial.FieldName = "GostOnMaterial";
+            this.tlcGostOnMaterial.Name = "tlcGostOnMaterial";
+            this.tlcGostOnMaterial.Visible = true;
+            this.tlcGostOnMaterial.VisibleIndex = 7;
+            // 
+            // tlcLength
+            // 
+            this.tlcLength.Caption = "Длина";
+            this.tlcLength.FieldName = "GostOnMaterial";
+            this.tlcLength.Name = "tlcLength";
+            this.tlcLength.Visible = true;
+            this.tlcLength.VisibleIndex = 8;
+            // 
+            // tlcWidth
+            // 
+            this.tlcWidth.Caption = "Ширина";
+            this.tlcWidth.FieldName = "Width";
+            this.tlcWidth.Name = "tlcWidth";
+            this.tlcWidth.Visible = true;
+            this.tlcWidth.VisibleIndex = 9;
+            // 
+            // tlcCount
+            // 
+            this.tlcCount.Caption = "Кол-во";
+            this.tlcCount.FieldName = "Count";
+            this.tlcCount.Name = "tlcCount";
+            this.tlcCount.Visible = true;
+            this.tlcCount.VisibleIndex = 10;
+            // 
+            // tlcCountAll
+            // 
+            this.tlcCountAll.Caption = "Кол-во всего";
+            this.tlcCountAll.FieldName = "CountAll";
+            this.tlcCountAll.Name = "tlcCountAll";
+            this.tlcCountAll.Visible = true;
+            this.tlcCountAll.VisibleIndex = 11;
+            // 
+            // tlcWeigth
+            // 
+            this.tlcWeigth.Caption = "Вес";
+            this.tlcWeigth.FieldName = "Weight";
+            this.tlcWeigth.Name = "tlcWeigth";
+            this.tlcWeigth.Visible = true;
+            this.tlcWeigth.VisibleIndex = 12;
+            // 
+            // tlcWeightAll
+            // 
+            this.tlcWeightAll.Caption = "Вес всего";
+            this.tlcWeightAll.FieldName = "WeightAll";
+            this.tlcWeightAll.Name = "tlcWeightAll";
+            this.tlcWeightAll.Visible = true;
+            this.tlcWeightAll.VisibleIndex = 13;
+            // 
+            // tlcOp
+            // 
+            this.tlcOp.Caption = "ОП";
+            this.tlcOp.FieldName = "Op";
+            this.tlcOp.Name = "tlcOp";
+            this.tlcOp.Visible = true;
+            this.tlcOp.VisibleIndex = 14;
+            // 
+            // tlcPartOfDrawingId
+            // 
+            this.tlcPartOfDrawingId.Name = "tlcPartOfDrawingId";
+            this.tlcPartOfDrawingId.Visible = true;
+            this.tlcPartOfDrawingId.VisibleIndex = 15;
+            // 
+            // tlcTechRouteId
+            // 
+            this.tlcTechRouteId.Name = "tlcTechRouteId";
+            // 
+            // repositoryItemComboBox1
+            // 
+            this.repositoryItemComboBox1.AutoHeight = false;
+            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(841, 391);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.treeList1);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drawingBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rProfile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn parentIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn designationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numberOnSpecDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn profileDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn standartSizeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn gOSTOnSortDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn markStealDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn gOSTOnMaterialDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn widthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countAllDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn weightDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn weightAllDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource drawingBindingSource;
+        private DevExpress.XtraTreeList.TreeList treeList1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcDesignation;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcName;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcNumberOnSpec;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcProfile;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcStandartSize;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcGostOnSort;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcMarkSteal;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcGostOnMaterial;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcLength;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcWidth;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcCount;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcCountAll;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcWeigth;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcWeigthAll;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcOp;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcPartOfDrawingId;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcTechRouteId;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcWeightAll;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox rProfile;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
     }
 }
 

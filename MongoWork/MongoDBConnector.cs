@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Core;
 using MongoDB.Driver;
@@ -103,6 +104,12 @@ namespace MongoWork
             return _mongoDb.GetCollection<T>(GetNameColection<T>());
         }
 
+        public T GetDocument<T>(int? id) where T : IEntity
+        {
+            var collection = _mongoDb.GetCollection<T>(GetNameColection<T>());
+            return collection.Find(x => x.Id == id).FirstOrDefaultAsync().Result;
+        }
+
         private static string GetNameColection<T>()
         {
             var nameColection = typeof(T).Name.ToLower() + "s";
@@ -139,7 +146,8 @@ namespace MongoWork
             var rec = collection.Find(x => x.DocName == typeof(T).Name).CountAsync();
             rec.Wait();
 
-            if (rec.Result == 0){
+            if (rec.Result == 0)
+            {
                 var res = collection.InsertOneAsync(new DocsId { DocId = idSet, DocName = typeof(T).Name });
                 res.Wait();
                 if (res.Exception != null)
