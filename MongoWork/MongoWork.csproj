@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DrawingDataManager.cs" />
+    <Compile Include="MongoDbDataManager.cs" />
+    <Compile Include="MongoAdditional\Audit.cs" />
     <Compile Include="MongoAdditional\DocsId.cs" />
     <Compile Include="MongoDBConnector.cs" />
     <Compile Include="MongoDbInitializer.cs" />
