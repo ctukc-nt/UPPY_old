@@ -9,12 +9,14 @@ namespace _1CToMongoTransfer
 {
     public class Data1CToMongoDbTransfer
     {
-        public void TransferData(DataFactory data1C, MongoDbConnector connector)
+        public void TransferData(DataFactory1C data1C, MongoDbConnector mongoDbConnector)
         {
-            TransferTechOperation(data1C, connector);
+            TransferTechOperation(data1C, mongoDbConnector);
+            TransferTechRoute(data1C, mongoDbConnector);
+            TransferDrawings(data1C, mongoDbConnector);
         }
 
-        private static void TransferTechOperation(DataFactory data1C, MongoDbConnector connector)
+        private static void TransferTechOperation(DataFactory1C data1C, MongoDbConnector connector)
         {
             var techOperations = data1C.GetTechOperations();
             foreach (var operation in techOperations)
@@ -22,12 +24,12 @@ namespace _1CToMongoTransfer
                 var techOperMongo = connector.GetListCollection<TechOperation>();
                 if (techOperMongo.All(x => x.ShortName != operation.ShortName))
                 {
-                    connector.Insert(new TechOperation {FullName = operation.FullName, ShortName = operation.ShortName, Id = operation.Id});
+                    connector.Insert(new TechOperation { FullName = operation.FullName, ShortName = operation.ShortName, Id = operation.Id });
                 }
             }
         }
 
-        private static void TransferTechRoute(DataFactory data1C, MongoDbConnector connector)
+        private static void TransferTechRoute(DataFactory1C data1C, MongoDbConnector connector)
         {
             var techRoutes = data1C.GetTechRoutes();
             var techOpers = connector.GetListCollection<TechOperation>();
@@ -37,7 +39,7 @@ namespace _1CToMongoTransfer
                 IEqualityComparer<TechRoute> comparer = new Comparer();
                 if (routesFromMongo.All(x => x.Name != route.Name) || !routesFromMongo.SequenceEqual(techRoutes, comparer))
                 {
-                    var techRoute = new TechRoute {Name = route.Name, Note = route.Note};
+                    var techRoute = new TechRoute { Name = route.Name, Note = route.Note };
                     var operations = new List<TechOperation>();
                     foreach (var techOperation in route.TechOperations)
                     {
@@ -57,10 +59,49 @@ namespace _1CToMongoTransfer
             }
         }
 
-        private static void TransferDrawings(DataFactory data1C, MongoDbConnector connector)
+        private static void TransferDrawings(DataFactory1C data1C, MongoDbConnector connector)
         {
-            var techRoutes = data1C.GetDrawings();
+            var drawings = data1C.GetDrawings();
+            var techRoutes = connector.GetListCollection<TechRoute>();
 
+            foreach (var drawing in drawings.Where(x => x.PartOf != null))
+            {
+                var partOfDrawing = drawings.FirstOrDefault(y => y.Id == drawing.PartOf.Id);
+                if (partOfDrawing != null)
+                {
+                    drawing.PartOf = partOfDrawing;
+                }
+            }
+
+            foreach (var drawing in drawings.Where(x => x.TechRoute != null))
+            {
+                var techRouteMongo = techRoutes.FirstOrDefault(y => y.Id == drawing.TechRoute.Id);
+                if (techRouteMongo != null)
+                {
+                    drawing.TechRoute = techRouteMongo;
+                }
+            }
+
+            foreach (var drawing in drawings.Where(x => x.Parent != null))
+            {
+                var parentDrawing = drawings.FirstOrDefault(y => y.Id == drawing.Parent.Id);
+                if (parentDrawing != null)
+                {
+                    drawing.Parent = parentDrawing;
+                    drawing.Children = drawing.Children ?? new List<Drawing>();
+                    drawing.Children.Add(drawing);
+                    drawings.Remove(drawing);
+                }
+            }
+
+            
+
+            
+
+            foreach (var drawing in drawings)
+            {
+                connector.Insert(drawing);
+            }
         }
 
         private class Comparer : IEqualityComparer<TechRoute>

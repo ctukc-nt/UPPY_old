@@ -9,7 +9,7 @@ using TechRoute = Core.TechRoute;
 
 namespace WebService1C
 {
-    public class DataFactory : IDataFactory
+    public class DataFactory1C : IDataFactory
     {
         public List<Drawing> GetDrawings()
         {
@@ -28,10 +28,11 @@ namespace WebService1C
                                 Count = x.Count,
                                 CountAll = x.CountAll,
                                 Designation = x.Designation,
-                                GostOnMaterial = string.Empty,
+                                GostOnMaterial = x.GostMat,
                                 GostOnSort = x.GostSort,
                                 Id = Convert.ToInt32(x.Code),
-                                Length = (int) x.Length,
+                                Length = x.Length,
+                                Width = x.Width,
                                 MarkSteal = x.MarkSteal,
                                 Parent =
                                     x.ParentCode == string.Empty
@@ -43,9 +44,10 @@ namespace WebService1C
                                         : new TechRoute {Id = Convert.ToInt32(x.TechRouteCode)},
                                 Profile = x.Profile,
                                 StandartSize = x.TypeSize,
-                                Weight = 0,
-                                WeightAll = 0,
-                                Width = 0
+                                Weight = x.Weight,
+                                WeightAll = x.WeightAll,
+                                
+
                             }));
         }
 

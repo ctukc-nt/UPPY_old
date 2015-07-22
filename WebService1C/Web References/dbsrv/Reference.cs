@@ -212,9 +212,9 @@ namespace WebService1C.dbsrv {
         
         private string gostMatField;
         
-        private decimal lengthField;
+        private int lengthField;
         
-        private decimal widthField;
+        private int widthField;
         
         private int countField;
         
@@ -319,7 +319,7 @@ namespace WebService1C.dbsrv {
         }
         
         /// <remarks/>
-        public decimal Length {
+        public int Length {
             get {
                 return this.lengthField;
             }
@@ -329,7 +329,7 @@ namespace WebService1C.dbsrv {
         }
         
         /// <remarks/>
-        public decimal Width {
+        public int Width {
             get {
                 return this.widthField;
             }

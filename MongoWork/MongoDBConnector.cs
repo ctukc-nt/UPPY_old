@@ -23,10 +23,11 @@ namespace MongoWork
 
         public List<T> GetListCollection<T>() where T : IEntity
         {
-            return GetListCollectionAsync<T>().Result;
+            var collection = GetCollection<T>();
+            return collection.Find(x => true).ToListAsync().Result;
         }
 
-        public async void Insert<T>(T doc) where T : IEntity
+        public void Insert<T>(T doc) where T : IEntity
         {
             var collection = GetCollection<T>();
             if (doc.Id == null)
@@ -35,19 +36,46 @@ namespace MongoWork
             }
             else
             {
-                SetIdDocument<T>((int) doc.Id);
+                SetIdDocument<T>((int)doc.Id);
+            }
+
+            collection.InsertOneAsync(doc).Wait();
+        }
+
+        public async void InsertAsync<T>(T doc) where T : IEntity
+        {
+            var collection = GetCollection<T>();
+            if (doc.Id == null)
+            {
+                doc.Id = GetIdDocument<T>();
+            }
+            else
+            {
+                SetIdDocument<T>((int)doc.Id);
             }
 
             await collection.InsertOneAsync(doc);
         }
 
-        public async void Update<T>(T doc) where T : IEntity
+        public void Update<T>(T doc) where T : IEntity
+        {
+            var collection = GetCollection<T>();
+            collection.ReplaceOneAsync(x => x.Id == doc.Id, doc).Wait();
+        }
+
+        public async void UpdateAsync<T>(T doc) where T : IEntity
         {
             var collection = GetCollection<T>();
             await collection.ReplaceOneAsync(x => x.Id == doc.Id, doc);
         }
 
-        public async void Delete<T>(T doc) where T : IEntity
+        public void Delete<T>(T doc) where T : IEntity
+        {
+            var collection = GetCollection<T>();
+            collection.DeleteOneAsync(x => x.Id == doc.Id).Wait();
+        }
+
+        public async void DeleteAsync<T>(T doc) where T : IEntity
         {
             var collection = GetCollection<T>();
             await collection.DeleteOneAsync(x => x.Id == doc.Id);
@@ -77,7 +105,7 @@ namespace MongoWork
 
         private static string GetNameColection<T>()
         {
-            var nameColection = typeof (T).Name.ToLower() + "s";
+            var nameColection = typeof(T).Name.ToLower() + "s";
             return nameColection;
         }
 
@@ -107,12 +135,11 @@ namespace MongoWork
         private int SetIdDocument<T>(int idSet)
         {
             var collection = _mongoDb.GetCollection<DocsId>("docsid");
-            var setDocIdUpdate = Builders<DocsId>.Update.Set(x => x.DocId, idSet);
+            var setDocIdUpdate = Builders<DocsId>.Update.Max(x => x.DocId, idSet);
             var rec = collection.Find(x => x.DocName == typeof(T).Name).CountAsync();
             rec.Wait();
 
-            if (rec.Result == 0)
-            {
+            if (rec.Result == 0){
                 var res = collection.InsertOneAsync(new DocsId { DocId = idSet, DocName = typeof(T).Name });
                 res.Wait();
                 if (res.Exception != null)

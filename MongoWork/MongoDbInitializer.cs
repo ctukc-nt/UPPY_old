@@ -34,12 +34,10 @@ namespace MongoWork
 
             try
             {
-                var resDraw = connection.CreateCollectionAsync("drawings");
-                var resTecOper = connection.CreateCollectionAsync("techroutes");
-                var resTechRoute = connection.CreateCollectionAsync("techopers");
+               
                 var resDocsId = connection.CreateCollectionAsync("docsid");
 
-                Task.WaitAll(resDraw, resTecOper, resTechRoute, resDocsId);
+                Task.WaitAll(resDocsId);
 
                 CreateIndexes();
             }

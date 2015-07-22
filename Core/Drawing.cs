@@ -17,7 +17,7 @@ namespace Core
         /// <summary>
         ///     Сборочные единицы
         /// </summary>
-        public List<Drawing> Childrens { get; set; }
+        public List<Drawing> Children { get; set; }
 
         /// <summary>
         ///     Наименование

@@ -13,8 +13,8 @@ namespace WebService1C.Tests
         [Test()]
         public void GetDrawingsTest()
         {
-            DataFactory dataFactory = new DataFactory();
-            var dr = dataFactory.GetDrawings();
+            DataFactory1C dataFactory1C = new DataFactory1C();
+            var dr = dataFactory1C.GetDrawings();
             var topParent = dr.Where(x => x.Parent == null);
         }
     }

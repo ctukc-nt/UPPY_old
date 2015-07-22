@@ -12,8 +12,8 @@
           <xs:element name="GostSort" type="xs:string" />
           <xs:element name="MarkSteal" type="xs:string" />
           <xs:element name="GostMat" type="xs:string" />
-          <xs:element name="Length" type="xs:decimal" />
-          <xs:element name="Width" type="xs:decimal" />
+          <xs:element name="Length" type="xs:int" />
+          <xs:element name="Width" type="xs:int" />
           <xs:element name="Count" type="xs:int" />
           <xs:element name="CountAll" type="xs:int" />
           <xs:element name="Weight" type="xs:double" />
