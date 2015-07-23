@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Core.DomainModel;
 using DesktopApp.Infrastructure;
@@ -36,7 +37,39 @@ namespace DesktopApp.Forms
 
         private void DrawingsListForm_Load(object sender, EventArgs e)
         {
-            var data = Controller.GetData();
+            //var data = Controller.GetData();
+            treeList1.DataSource = Controller.GetData();
+        }
+
+        private void btnAddDrawing_Click(object sender, EventArgs e)
+        {
+            Controller.AddDocument(this, new DocumentEventArgs<Drawing>() { Document = new Drawing() { Name = "Test" } });
+            treeList1.RefreshDataSource();
+        }
+
+        private void treeList1_CellValueChanged(object sender, DevExpress.XtraTreeList.CellValueChangedEventArgs e)
+        {
+            var data = treeList1.GetDataRecordByNode(treeList1.Selection[0]);
+            Controller.UpdateDocument(this, new DocumentEventArgs<Drawing>() { Document = (Drawing)data });
+        }
+
+        private void btnDelDrawing_Click(object sender, EventArgs e)
+        {
+            var data = treeList1.GetDataRecordByNode(treeList1.Selection[0]);
+            Controller.DeleteDocument(this, new DocumentEventArgs<Drawing>() { Document = (Drawing)data });
+            treeList1.RefreshDataSource();
+        }
+
+        private void btnAddSubDrawing_Click(object sender, EventArgs e)
+        {
+            var data = treeList1.GetDataRecordByNode(treeList1.Selection[0]);
+            var selectedNode = treeList1.Selection[0];
+            if (data != null)
+            {
+                var parentDrw = (Drawing)data;
+                Controller.AddDocument(this, new DocumentEventArgs<Drawing>() { Document = new Drawing() { ParentId = parentDrw.Id } });
+                treeList1.RefreshDataSource();
+            }
         }
     }
 }

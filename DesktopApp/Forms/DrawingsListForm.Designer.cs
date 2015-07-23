@@ -48,6 +48,9 @@
             this.tlcPartOfDrawingId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcTechRouteId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.btnAddDrawing = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDelDrawing = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAddSubDrawing = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
@@ -55,6 +58,9 @@
             // 
             // treeList1
             // 
+            this.treeList1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.tlcName,
             this.tlcDesignation,
@@ -73,7 +79,6 @@
             this.tlcOp,
             this.tlcPartOfDrawingId,
             this.tlcTechRouteId});
-            this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.FooterPanelHeight = 30;
             this.treeList1.KeyFieldName = "Id";
             this.treeList1.Location = new System.Drawing.Point(0, 0);
@@ -86,8 +91,9 @@
             this.rProfile,
             this.repositoryItemComboBox1});
             this.treeList1.RootValue = null;
-            this.treeList1.Size = new System.Drawing.Size(907, 350);
+            this.treeList1.Size = new System.Drawing.Size(944, 350);
             this.treeList1.TabIndex = 2;
+            this.treeList1.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.treeList1_CellValueChanged);
             // 
             // tlcName
             // 
@@ -127,17 +133,6 @@
             this.rProfile.AutoHeight = false;
             this.rProfile.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.rProfile.Items.AddRange(new object[] {
-            "12313",
-            "ыва",
-            "",
-            "ываываыа",
-            "ы",
-            "ва",
-            "ыва",
-            "ы",
-            "ва",
-            "аы"});
             this.rProfile.Name = "rProfile";
             // 
             // tlcStandartSize
@@ -245,11 +240,44 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
             // 
+            // btnAddDrawing
+            // 
+            this.btnAddDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddDrawing.Location = new System.Drawing.Point(950, 12);
+            this.btnAddDrawing.Name = "btnAddDrawing";
+            this.btnAddDrawing.Size = new System.Drawing.Size(94, 23);
+            this.btnAddDrawing.TabIndex = 3;
+            this.btnAddDrawing.Text = "Add drawing";
+            this.btnAddDrawing.Click += new System.EventHandler(this.btnAddDrawing_Click);
+            // 
+            // btnDelDrawing
+            // 
+            this.btnDelDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelDrawing.Location = new System.Drawing.Point(950, 70);
+            this.btnDelDrawing.Name = "btnDelDrawing";
+            this.btnDelDrawing.Size = new System.Drawing.Size(94, 23);
+            this.btnDelDrawing.TabIndex = 4;
+            this.btnDelDrawing.Text = "Del drawing";
+            this.btnDelDrawing.Click += new System.EventHandler(this.btnDelDrawing_Click);
+            // 
+            // btnAddSubDrawing
+            // 
+            this.btnAddSubDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddSubDrawing.Location = new System.Drawing.Point(950, 41);
+            this.btnAddSubDrawing.Name = "btnAddSubDrawing";
+            this.btnAddSubDrawing.Size = new System.Drawing.Size(94, 23);
+            this.btnAddSubDrawing.TabIndex = 5;
+            this.btnAddSubDrawing.Text = "Add subdrawing";
+            this.btnAddSubDrawing.Click += new System.EventHandler(this.btnAddSubDrawing_Click);
+            // 
             // DrawingsListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 350);
+            this.ClientSize = new System.Drawing.Size(1050, 350);
+            this.Controls.Add(this.btnAddSubDrawing);
+            this.Controls.Add(this.btnDelDrawing);
+            this.Controls.Add(this.btnAddDrawing);
             this.Controls.Add(this.treeList1);
             this.Name = "DrawingsListForm";
             this.Text = "DrawingsListForm";
@@ -283,5 +311,8 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcPartOfDrawingId;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcTechRouteId;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
+        private DevExpress.XtraEditors.SimpleButton btnAddDrawing;
+        private DevExpress.XtraEditors.SimpleButton btnDelDrawing;
+        private DevExpress.XtraEditors.SimpleButton btnAddSubDrawing;
     }
 }

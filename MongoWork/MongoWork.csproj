@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataManagerFactory.cs" />
-    <Compile Include="DrawingDataManager.cs" />
     <Compile Include="MongoDbDataManager.cs" />
     <Compile Include="MongoAdditional\Service\Audit.cs" />
     <Compile Include="MongoAdditional\Service\DocsId.cs" />

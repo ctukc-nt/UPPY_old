@@ -4,6 +4,6 @@ namespace DesktopApp.Infrastructure
 
     public class DocumentEventArgs<T>
     {
-        T Document { get; set; }
+        public T Document { get; set; }
     }
 }

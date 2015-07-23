@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Core.DomainModel;
+using DesktopApp.Forms;
+using DesktopApp.Interfaces;
+using DesktopApp.Ninject;
 
 namespace DesktopApp
 {
@@ -14,9 +18,10 @@ namespace DesktopApp
         [STAThread]
         static void Main()
         {
+            CompositionRoot.Wire(new ApplicationModule());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new DrawingsListForm(CompositionRoot.Resolve<IController<Drawing>>()));
         }
     }
 }

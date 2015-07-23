@@ -1,4 +1,8 @@
-﻿using Core.Interfaces;
+﻿using Core.DomainModel;
+using Core.Interfaces;
+using DesktopApp.Controllers;
+using DesktopApp.Interfaces;
+using DesktopApp.Temp;
 using MongoDB.Driver;
 using MongoWork;
 using Ninject.Modules;
@@ -9,10 +13,8 @@ namespace DesktopApp.Ninject
     {
         public override void Load()
         {
-            MongoDbConnection connection = new MongoDbConnection();
-            Bind(typeof(IMongoDatabase)).ToConstant(connection.Database);
-            Bind(typeof(IClassDataManager<>)).To(typeof(MongoDbDataManager<>));
-            Bind(typeof(IDataManagerFactory)).To(typeof(DataManagerFactory));
+            Bind(typeof(IController<Drawing>)).To(typeof(DrawingController));
+            Bind(typeof(IClassDataManager<Drawing>)).To(typeof(ListClassDataManager));
         }
     }
 }

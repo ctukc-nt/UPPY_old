@@ -56,16 +56,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ITreeNodeDotNet3.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Controllers\ControllersFactory.cs" />
+    <Compile Include="Controllers\DrawingController.cs" />
+    <Compile Include="Forms\DrawingsListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\DrawingsListForm.Designer.cs">
+      <DependentUpon>DrawingsListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\DocumentEventArgs.cs" />
+    <Compile Include="Interfaces\IController.cs" />
+    <Compile Include="Interfaces\IControllerFactory.cs" />
+    <Compile Include="Interfaces\IDocForm.cs" />
+    <Compile Include="Interfaces\IDocumentsPrint.cs" />
+    <Compile Include="Interfaces\IFormFactory.cs" />
+    <Compile Include="ITreeNodeDotNet3.cs" />
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ninject\ApplicationModule.cs" />
+    <Compile Include="Ninject\CompositionRoot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <Compile Include="Temp\ListClassDataManager.cs" />
+    <EmbeddedResource Include="Forms\DrawingsListForm.resx">
+      <DependentUpon>DrawingsListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -103,6 +123,7 @@
       <Name>MongoWork</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
