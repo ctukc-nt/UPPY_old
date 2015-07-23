@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Core.Interfaces;
 
-namespace Core
+namespace Core.DomainModel
 {
     /// <summary>
     ///     Технологический маршрут изделия

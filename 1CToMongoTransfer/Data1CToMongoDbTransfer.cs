@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core;
+using Core.DomainModel;
+using Core.Interfaces;
 using MongoWork;
 using WebService1C;
 
@@ -9,33 +11,37 @@ namespace _1CToMongoTransfer
 {
     public class Data1CToMongoDbTransfer
     {
-        public void TransferData(DataFactory1C data1C, MongoDbConnector mongoDbConnector)
+        public void TransferData(DataFactory1C data1C, IDataManagerFactory dataManager)
         {
-            TransferTechOperation(data1C, mongoDbConnector);
-            TransferTechRoute(data1C, mongoDbConnector);
-            TransferDrawings(data1C, mongoDbConnector);
+            TransferTechOperation(data1C, dataManager);
+            TransferTechRoute(data1C, dataManager);
+            TransferDrawings(data1C, dataManager);
         }
 
-        private static void TransferTechOperation(DataFactory1C data1C, MongoDbConnector connector)
+        private static void TransferTechOperation(DataFactory1C data1C, IDataManagerFactory dataManager)
         {
+            var dataManTech = dataManager.GetDataManager<TechOperation>();
             var techOperations = data1C.GetTechOperations();
             foreach (var operation in techOperations)
             {
-                var techOperMongo = connector.GetListCollection<TechOperation>();
+                var techOperMongo = dataManTech.GetListCollection();
                 if (techOperMongo.All(x => x.ShortName != operation.ShortName))
                 {
-                    connector.Insert(new TechOperation { FullName = operation.FullName, ShortName = operation.ShortName, Id = operation.Id });
+                    dataManTech.Insert(new TechOperation { FullName = operation.FullName, ShortName = operation.ShortName, Id = operation.Id });
                 }
             }
         }
 
-        private static void TransferTechRoute(DataFactory1C data1C, MongoDbConnector connector)
+        private static void TransferTechRoute(DataFactory1C data1C, IDataManagerFactory dataManager)
         {
             var techRoutes = data1C.GetTechRoutes();
-            var techOpers = connector.GetListCollection<TechOperation>();
+            var techOpersMan = dataManager.GetDataManager<TechOperation>();
+            var techOpers = techOpersMan.GetListCollection();
+            var techRoutesMan = dataManager.GetDataManager<TechRoute>();
+
             foreach (var route in techRoutes)
             {
-                var routesFromMongo = connector.GetListCollection<TechRoute>();
+                var routesFromMongo = techRoutesMan.GetListCollection();
                 IEqualityComparer<TechRoute> comparer = new Comparer();
                 if (routesFromMongo.All(x => x.Name != route.Name) || !routesFromMongo.SequenceEqual(techRoutes, comparer))
                 {
@@ -50,7 +56,7 @@ namespace _1CToMongoTransfer
                     }
 
                     techRoute.TechOperations = operations;
-                    connector.Insert(techRoute);
+                    techRoutesMan.Insert(techRoute);
                 }
                 else
                 {
@@ -59,10 +65,13 @@ namespace _1CToMongoTransfer
             }
         }
 
-        private static void TransferDrawings(DataFactory1C data1C, MongoDbConnector connector)
+        private static void TransferDrawings(DataFactory1C data1C, IDataManagerFactory dataManager)
         {
             var drawings = data1C.GetDrawings();
-            var techRoutes = connector.GetListCollection<TechRoute>();
+            var techRoutesMan = dataManager.GetDataManager<TechRoute>();
+            var drawingsMan = dataManager.GetDataManager<Drawing>();
+
+            var techRoutes = techRoutesMan.GetListCollection();
 
             foreach (var drawing in drawings.Where(x => x.PartOfDrawingId != null))
             {
@@ -93,7 +102,7 @@ namespace _1CToMongoTransfer
             
             foreach (var drawing in drawings)
             {
-                connector.Insert(drawing);
+                drawingsMan.Insert(drawing);
             }
         }
 

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using Core;
+using Core.DomainModel;
 using WebService1C.dbsrv;
-using Drawing = Core.Drawing;
-using TechRoute = Core.TechRoute;
+using Drawing = Core.DomainModel.Drawing;
+using TechRoute = Core.DomainModel.TechRoute;
 
 namespace WebService1C
 {

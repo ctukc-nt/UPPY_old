@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Core.Interfaces;
 
-namespace Core
+namespace Core.DomainModel
 {
     public class Drawing : IEntity
     {

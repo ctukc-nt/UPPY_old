@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Core;
+using Core.DomainModel;
 using MongoDB.Driver;
 
 namespace MongoWork

@@ -1,4 +1,6 @@
-﻿namespace Core
+﻿using Core.Interfaces;
+
+namespace Core.DomainModel
 {
     /// <summary>
     ///     Технологическая операция

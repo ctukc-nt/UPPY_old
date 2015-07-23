@@ -1,5 +1,8 @@
-﻿namespace Core
+﻿namespace Core.Interfaces
 {
+    /// <summary>
+    /// Интерфейс документа
+    /// </summary>
     public interface IEntity
     {
         /// <summary>

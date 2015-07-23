@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Core;
+using Core.Interfaces;
 using MongoDB.Driver;
 using MongoWork.MongoAdditional;
 using MongoWork.MongoAdditional.Service;
@@ -11,7 +12,7 @@ namespace MongoWork
     /// Универсальный менеджер объектов
     /// </summary>
     /// <typeparam name="T">Тип объекта</typeparam>
-    public class MongoDbDataManager<T> where T : IEntity
+    public class MongoDbDataManager<T> : IClassDataManager<T> where T : IEntity
     {
         protected readonly IMongoDatabase _mongoDb;
 
@@ -107,6 +108,7 @@ namespace MongoWork
         {
             return _mongoDb.GetCollection<T>(GetNameColection());
         }
+
 
         public T GetDocument(int? id)
         {

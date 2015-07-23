@@ -1,4 +1,6 @@
-﻿namespace DesktopApp
+﻿using Core.DomainModel;
+
+namespace DesktopApp
 {
     partial class MainForm
     {
@@ -58,7 +60,7 @@
             // 
             // drawingBindingSource
             // 
-            this.drawingBindingSource.DataSource = typeof(Core.Drawing);
+            this.drawingBindingSource.DataSource = typeof(Drawing);
             // 
             // treeList1
             // 
