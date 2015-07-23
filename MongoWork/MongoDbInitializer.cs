@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using MongoDB.Driver;
-using MongoWork.MongoAdditional;
+using MongoWork.MongoAdditional.Service;
 using MongoWork.Properties;
 
 namespace MongoWork
@@ -10,8 +9,25 @@ namespace MongoWork
     public class MongoDbInitializer
     {
         private IMongoDatabase _database;
+        private static volatile MongoDbInitializer _instance;
 
-        public void ConnectToDb()
+        public static MongoDbInitializer MongoDb
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new MongoDbInitializer();
+
+                return _instance;
+            }
+        }
+
+        private MongoDbInitializer()
+        {
+            
+        }
+
+        private void ConnectToDb()
         {
             var client = new MongoClient(Settings.Default.ConnectionString);
             _database = client.GetDatabase(Settings.Default.DbName);
@@ -28,18 +44,16 @@ namespace MongoWork
             return _database;
         }
 
-        public void InitDatabase()
+        private void InitDatabase()
         {
             var connection = GetDbConnection();
 
             try
             {
-               
                 var resDocsId = connection.CreateCollectionAsync("docsid");
+                var resAudit = connection.CreateCollectionAsync("audit");
 
                 Task.WaitAll(resDocsId);
-
-                CreateIndexes();
             }
             catch (Exception e)
             {
@@ -47,13 +61,13 @@ namespace MongoWork
             }
         }
 
-        private void CreateIndexes()
-        {
-            var connection = GetDbConnection();
-            var collection = connection.GetCollection<DocsId>("docsid");
+        //private void CreateIndexes()
+        //{
+        //    var connection = GetDbConnection();
+        //    var collection = connection.GetCollection<DocsId>("docsid");
 
-            IndexKeysDefinition<DocsId> index = Builders<DocsId>.IndexKeys.Ascending(x => x.DocName);
-            collection.Indexes.CreateOneAsync(index);
-        }
+        //    var index = Builders<DocsId>.IndexKeys.Ascending(x => x.DocName);
+        //    collection.Indexes.CreateOneAsync(index);
+        //}
     }
 }

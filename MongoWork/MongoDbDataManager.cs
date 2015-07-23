@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Core;
 using MongoDB.Driver;
 using MongoWork.MongoAdditional;
+using MongoWork.MongoAdditional.Service;
 
 namespace MongoWork
 {
@@ -114,15 +115,7 @@ namespace MongoWork
             return wait.Result;
         }
 
-        public async TO GetAnyDocument<TO>(int? id) where TO:IEntity
-        {
-            var wait = GetDocumentAsync(id);
-            wait.Wait();
-            return wait.Result;
-        }
-
-
-        /// <summary>
+       /// <summary>
         /// Получить документ асинхронно
         /// </summary>
         /// <param name="id"></param>

@@ -52,10 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DrawingDataManager.cs" />
+    <Compile Include="DrawingManager.cs" />
     <Compile Include="MongoDbDataManager.cs" />
-    <Compile Include="MongoAdditional\Audit.cs" />
-    <Compile Include="MongoAdditional\DocsId.cs" />
-    <Compile Include="MongoDBConnector.cs" />
+    <Compile Include="MongoAdditional\Service\Audit.cs" />
+    <Compile Include="MongoAdditional\Service\DocsId.cs" />
     <Compile Include="MongoDbInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
