@@ -24,7 +24,12 @@ namespace Core.Interfaces
         /// <summary>
         /// Вставить документ асинхронно
         /// </summary>
-        void InsertAsync(T doc);void Update(T doc);
+        void InsertAsync(T doc);
+
+        /// <summary>
+        /// Вставить документ
+        /// </summary>
+        void Update(T doc);
 
         /// <summary>
         /// Обновить документ асинхронно
