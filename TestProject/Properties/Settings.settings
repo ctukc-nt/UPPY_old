@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TestProject.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="TestProject_dddd_DrawingsService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://dbsrv/dk_current_dev/ws/DrawingsService.1cws</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>
