@@ -1,4 +1,5 @@
 ﻿using System;
+using DesktopApp.Infrastructure;
 
 namespace DesktopApp.Interfaces
 {

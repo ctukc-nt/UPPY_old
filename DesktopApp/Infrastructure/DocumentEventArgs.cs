@@ -1,4 +1,4 @@
-namespace DesktopApp.Interfaces
+namespace DesktopApp.Infrastructure
 {
     public delegate void DocumentEventHandler<T>(object sender, DocumentEventArgs<T> args);
 

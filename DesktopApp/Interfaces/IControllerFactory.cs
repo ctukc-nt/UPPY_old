@@ -2,6 +2,6 @@
 {
     public interface IControllerFactory
     {
-        IController GetController();
+        IController<T> GetController<T>();
     }
 }

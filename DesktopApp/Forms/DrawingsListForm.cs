@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Core.DomainModel;
+using DesktopApp.Infrastructure;
 using DesktopApp.Interfaces;
 
 namespace DesktopApp.Forms
