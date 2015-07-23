@@ -8,21 +8,27 @@ namespace MongoWork
 {
     public class MongoDbConnection
     {
+        private IMongoClient _client;
         private IMongoDatabase _database;
 
         public IMongoDatabase Database { get { return _database; } }
 
         public MongoDbConnection()
         {
-            var client = new MongoClient(Settings.Default.ConnectionString);
-            _database = client.GetDatabase(Settings.Default.DbName);
+            _client = new MongoClient(Settings.Default.ConnectionString);
+            _database = _client.GetDatabase(Settings.Default.DbName);
         }
 
 
         public MongoDbConnection(string connectionString, string dbName)
         {
-            var client = new MongoClient(connectionString);
-            _database = client.GetDatabase(dbName);
+            _client = new MongoClient(connectionString);
+            _database = _client.GetDatabase(dbName);
+        }
+
+        public void DropDatabase()
+        {
+            _client.DropDatabaseAsync(_database.DatabaseNamespace.DatabaseName);
         }
     }
 
