@@ -10,32 +10,48 @@ namespace DesktopApp.Controllers
     public class DrawingController : IController<Drawing>
     {
 
-        public IClassDataManager<Drawing> DataManager { get; private set; }
+        private IClassDataManager<Drawing> _drawingsDataManager;
+        private IClassDataManager<TechRoute> _techRouteDataManager;
 
-        public DrawingController(IClassDataManager<Drawing> dataManager)
+        public DrawingController(IClassDataManager<Drawing> drawingsDataManager, IClassDataManager<TechRoute> techRouteManager)
         {
-            DataManager = dataManager;
+            _drawingsDataManager = drawingsDataManager;
+            _techRouteDataManager = techRouteManager;
         }
 
         public List<Drawing> GetData()
         {
-            return DataManager.GetListCollection();
+            return new List<Drawing>(_drawingsDataManager.GetListCollection());
         }
 
         public event EventHandler SourceRefreshed;
         public void AddDocument(object sender, DocumentEventArgs<Drawing> args)
         {
-            DataManager.InsertOrUpdate(args.Document);
+            _drawingsDataManager.InsertOrUpdate(args.Document);
+            if (SourceRefreshed != null)
+                SourceRefreshed(this, new EventArgs());
         }
 
         public void UpdateDocument(object sender, DocumentEventArgs<Drawing> args)
         {
-            DataManager.Update(args.Document);
+            _drawingsDataManager.Update(args.Document);
         }
 
         public void DeleteDocument(object sender, DocumentEventArgs<Drawing> args)
         {
-            DataManager.Delete(args.Document);
+            _drawingsDataManager.Delete(args.Document);
+            if (SourceRefreshed != null)
+                SourceRefreshed(this, new EventArgs());
+        }
+
+        public List<IEntity> GetListRelatedDocument<TO>()
+        {
+            if (typeof(TO) == typeof(TechRoute))
+            {
+                return _techRouteDataManager.GetListCollection().ConvertAll(input => (IEntity)input);
+            }
+
+            return null;
         }
     }
 }

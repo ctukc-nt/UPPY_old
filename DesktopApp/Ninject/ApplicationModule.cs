@@ -15,6 +15,7 @@ namespace DesktopApp.Ninject
         {
             Bind(typeof(IController<Drawing>)).To(typeof(DrawingController));
             Bind(typeof(IClassDataManager<Drawing>)).To(typeof(ListClassDataManager));
+            Bind(typeof(IClassDataManager<TechRoute>)).To(typeof(TechRoutesClassDataManager));
         }
     }
 }

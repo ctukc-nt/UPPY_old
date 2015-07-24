@@ -21,7 +21,7 @@ namespace DesktopApp
             CompositionRoot.Wire(new ApplicationModule());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DrawingsListForm(CompositionRoot.Resolve<IController<Drawing>>()));
+            Application.Run(new DrawingsListTreeForm(CompositionRoot.Resolve<IController<Drawing>>()));
         }
     }
 }

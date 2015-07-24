@@ -15,7 +15,7 @@ namespace DesktopApp.Controllers
         {
             var type = typeof(T);
             if (type == typeof(Drawing))
-                return (IController<T>)new DrawingController(new ListClassDataManager());
+                return (IController<T>)new DrawingController(new ListClassDataManager(), new TechRoutesClassDataManager());
 
             return null;
         }

@@ -1,6 +1,6 @@
 ﻿namespace DesktopApp.Forms
 {
-    partial class DrawingsListForm
+    partial class DrawingsListTreeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.rProfile = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.tlcName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcDesignation = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcNumberOnSpec = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcProfile = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.rProfile = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.tlcStandartSize = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcGostOnSort = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcMarkSteal = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -47,14 +48,24 @@
             this.tlcOp = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcPartOfDrawingId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcTechRouteId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.techRouteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnAddDrawing = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelDrawing = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddSubDrawing = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            this.btnRefreshSource = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.rProfile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // rProfile
+            // 
+            this.rProfile.AutoHeight = false;
+            this.rProfile.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rProfile.Name = "rProfile";
             // 
             // treeList1
             // 
@@ -88,8 +99,7 @@
             this.treeList1.OptionsFind.AlwaysVisible = true;
             this.treeList1.ParentFieldName = "ParentId";
             this.treeList1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.rProfile,
-            this.repositoryItemComboBox1});
+            this.repositoryItemLookUpEdit1});
             this.treeList1.RootValue = null;
             this.treeList1.Size = new System.Drawing.Size(944, 350);
             this.treeList1.TabIndex = 2;
@@ -122,18 +132,10 @@
             // tlcProfile
             // 
             this.tlcProfile.Caption = "Профиль";
-            this.tlcProfile.ColumnEdit = this.rProfile;
             this.tlcProfile.FieldName = "Profile";
             this.tlcProfile.Name = "tlcProfile";
             this.tlcProfile.Visible = true;
             this.tlcProfile.VisibleIndex = 3;
-            // 
-            // rProfile
-            // 
-            this.rProfile.AutoHeight = false;
-            this.rProfile.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.rProfile.Name = "rProfile";
             // 
             // tlcStandartSize
             // 
@@ -226,19 +228,31 @@
             // tlcPartOfDrawingId
             // 
             this.tlcPartOfDrawingId.Name = "tlcPartOfDrawingId";
-            this.tlcPartOfDrawingId.Visible = true;
-            this.tlcPartOfDrawingId.VisibleIndex = 15;
             // 
             // tlcTechRouteId
             // 
+            this.tlcTechRouteId.Caption = "Тех. маршрут";
+            this.tlcTechRouteId.ColumnEdit = this.repositoryItemLookUpEdit1;
+            this.tlcTechRouteId.FieldName = "TechRouteId";
             this.tlcTechRouteId.Name = "tlcTechRouteId";
+            this.tlcTechRouteId.Visible = true;
+            this.tlcTechRouteId.VisibleIndex = 15;
             // 
-            // repositoryItemComboBox1
+            // repositoryItemLookUpEdit1
             // 
-            this.repositoryItemComboBox1.AutoHeight = false;
-            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemLookUpEdit1.DataSource = this.techRouteBindingSource;
+            this.repositoryItemLookUpEdit1.DisplayMember = "Name";
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            this.repositoryItemLookUpEdit1.ValueMember = "Id";
+            this.repositoryItemLookUpEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemLookUpEdit1_ButtonClick);
+            // 
+            // techRouteBindingSource
+            // 
+            this.techRouteBindingSource.DataSource = typeof(Core.DomainModel.TechRoute);
             // 
             // btnAddDrawing
             // 
@@ -247,7 +261,7 @@
             this.btnAddDrawing.Name = "btnAddDrawing";
             this.btnAddDrawing.Size = new System.Drawing.Size(94, 23);
             this.btnAddDrawing.TabIndex = 3;
-            this.btnAddDrawing.Text = "Add drawing";
+            this.btnAddDrawing.Text = "Add &drawing";
             this.btnAddDrawing.Click += new System.EventHandler(this.btnAddDrawing_Click);
             // 
             // btnDelDrawing
@@ -267,24 +281,36 @@
             this.btnAddSubDrawing.Name = "btnAddSubDrawing";
             this.btnAddSubDrawing.Size = new System.Drawing.Size(94, 23);
             this.btnAddSubDrawing.TabIndex = 5;
-            this.btnAddSubDrawing.Text = "Add subdrawing";
+            this.btnAddSubDrawing.Text = "Add &subdrawing";
             this.btnAddSubDrawing.Click += new System.EventHandler(this.btnAddSubDrawing_Click);
             // 
-            // DrawingsListForm
+            // btnRefreshSource
+            // 
+            this.btnRefreshSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefreshSource.Location = new System.Drawing.Point(950, 99);
+            this.btnRefreshSource.Name = "btnRefreshSource";
+            this.btnRefreshSource.Size = new System.Drawing.Size(94, 23);
+            this.btnRefreshSource.TabIndex = 6;
+            this.btnRefreshSource.Text = "&Refresh";
+            this.btnRefreshSource.Click += new System.EventHandler(this.btnRefreshSource_Click);
+            // 
+            // DrawingsListTreeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 350);
+            this.Controls.Add(this.btnRefreshSource);
             this.Controls.Add(this.btnAddSubDrawing);
             this.Controls.Add(this.btnDelDrawing);
             this.Controls.Add(this.btnAddDrawing);
             this.Controls.Add(this.treeList1);
-            this.Name = "DrawingsListForm";
-            this.Text = "DrawingsListForm";
+            this.Name = "DrawingsListTreeForm";
+            this.Text = "DrawingsListTreeForm";
             this.Load += new System.EventHandler(this.DrawingsListForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rProfile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -296,7 +322,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcDesignation;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcNumberOnSpec;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcProfile;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox rProfile;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcStandartSize;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcGostOnSort;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcMarkSteal;
@@ -310,9 +335,12 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcOp;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcPartOfDrawingId;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcTechRouteId;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraEditors.SimpleButton btnAddDrawing;
         private DevExpress.XtraEditors.SimpleButton btnDelDrawing;
         private DevExpress.XtraEditors.SimpleButton btnAddSubDrawing;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox rProfile;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private System.Windows.Forms.BindingSource techRouteBindingSource;
+        private DevExpress.XtraEditors.SimpleButton btnRefreshSource;
     }
 }

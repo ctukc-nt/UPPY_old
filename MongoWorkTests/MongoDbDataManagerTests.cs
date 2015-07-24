@@ -106,18 +106,18 @@ namespace MongoWorkTests
             var data = dataManager.GetListCollection().FirstOrDefault(x => x.Name == "TestInserUpdateNotExist");
             Assert.NotNull(data);}
 
-        [Test()]
-        public void GetCollectionTest()
-        {
-            var dbDrawCol = new Mock<IMongoCollection<Drawing>>();
-            var dbConn = new Mock<IMongoDatabase>();
-            dbConn.Setup(x => x.GetCollection<Drawing>("drawings", null)).Returns(dbDrawCol.Object);
+        //[Test()]
+        //public void GetCollectionTest()
+        //{
+        //    var dbDrawCol = new Mock<IMongoCollection<Drawing>>();
+        //    var dbConn = new Mock<IMongoDatabase>();
+        //    dbConn.Setup(x => x.GetCollection<Drawing>("drawings", null)).Returns(dbDrawCol.Object);
 
-            var dataManager = new MongoDbDataManager<Drawing>(dbConn.Object);
-            var res = dataManager.GetCollection();
-            Assert.AreEqual(dbDrawCol.Object, res);
+        //    var dataManager = new MongoDbDataManager<Drawing>(dbConn.Object);
+        //    var res = dataManager.GetCollection();
+        //    Assert.AreEqual(dbDrawCol.Object, res);
 
-        }
+        //}
 
         [Test()]
         public void GetDocumentTest()
