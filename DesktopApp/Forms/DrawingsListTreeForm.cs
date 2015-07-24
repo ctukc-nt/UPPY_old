@@ -100,7 +100,6 @@ namespace DesktopApp.Forms
         {
             Controller.AddDocument(this,
                 new DocumentEventArgs<Drawing> {Document = new Drawing {Name = "Test", TechRouteId = 2}});
-            treeList1.RefreshDataSource();
             treeList1.Focus();
         }
 

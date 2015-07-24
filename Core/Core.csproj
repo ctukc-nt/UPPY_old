@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainModel\Drawing.cs" />
+    <Compile Include="DomainModel\DrawingWithTechOper.cs" />
     <Compile Include="Interfaces\IClassDataManager.cs" />
     <Compile Include="Interfaces\IDataManagerFactory.cs" />
     <Compile Include="Interfaces\IEntity.cs" />

@@ -7,6 +7,7 @@ using Core.DomainModel;
 using DesktopApp.Forms;
 using DesktopApp.Interfaces;
 using DesktopApp.Ninject;
+using DesktopApp.View;
 
 namespace DesktopApp
 {
@@ -18,10 +19,12 @@ namespace DesktopApp
         [STAThread]
         static void Main()
         {
+            AutoMapper.Mapper.CreateMap<Drawing, HierarchyNumberDrawing>();
             CompositionRoot.Wire(new ApplicationModule());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DrawingsListTreeForm(CompositionRoot.Resolve<IController<Drawing>>()));
+           
         }
     }
 }
