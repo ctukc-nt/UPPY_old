@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Core;
 using Core.DomainModel;
-using MongoWork;
 
 namespace DesktopApp
 {

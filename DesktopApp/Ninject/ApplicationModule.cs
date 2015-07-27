@@ -4,8 +4,6 @@ using DesktopApp.Controllers;
 using DesktopApp.Interfaces;
 using DesktopApp.Temp;
 using DesktopApp.View;
-using MongoDB.Driver;
-using MongoWork;
 using Ninject.Modules;
 
 namespace DesktopApp.Ninject

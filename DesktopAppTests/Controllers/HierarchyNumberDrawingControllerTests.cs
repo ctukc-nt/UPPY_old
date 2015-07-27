@@ -47,36 +47,28 @@ namespace DesktopApp.Controllers.Tests
             var mockedDrawingDataAdapter = new Mock<IClassDataManager<Drawing>>();
             var mockedTechRouteDataAdapter = new Mock<IClassDataManager<TechRoute>>();
 
-            //mockedDrawingDataAdapter.Setup(x => x.GetListCollection())
-            //    .Returns(new List<Drawing>()
-            //    {
-            //        new Drawing() {Id = 1},
-            //        new Drawing() {Id = 2},
-            //        new Drawing() {Id = 8, ParentId = 2},
-            //        new Drawing() {Id = 3},
-            //        new Drawing() {Id = 4, ParentId = 2},
-            //        new Drawing() {Id = 5, ParentId = 4},
-            //        new Drawing() {Id = 6},
-            //        new Drawing() {Id = 7, ParentId = 5}
-            //    });
+            mockedDrawingDataAdapter.Setup(x => x.GetListCollection())
+                .Returns(new List<Drawing>()
+                {
+                    new Drawing() {Id = 1},
+                    new Drawing() {Id = 2},
+                    new Drawing() {Id = 8, ParentId = 2},
+                    new Drawing() {Id = 3},
+                    new Drawing() {Id = 4, ParentId = 2},
+                    new Drawing() {Id = 5, ParentId = 4},
+                    new Drawing() {Id = 6},
+                    new Drawing() {Id = 7, ParentId = 5}
+                });
 
 
 
-            mockedDrawingDataAdapter.Setup(x => x.GetListCollection()).Returns(_listDrawings);
+           // mockedDrawingDataAdapter.Setup(x => x.GetListCollection()).Returns(_listDrawings);
             var hirDrControl = new HierarchyNumberDrawingController(mockedDrawingDataAdapter.Object, mockedTechRouteDataAdapter.Object);
-            var s1 = Stopwatch.StartNew();
-            var assume = hirDrControl.GetDataASNP();
-            s1.Stop();
-            var s2 = Stopwatch.StartNew();
-            var assume2 = hirDrControl.GetDataASP();
-            s2.Stop();
-
-            Debug.WriteLine("Not parallel: " + s1.Elapsed.TotalMilliseconds);
-            Debug.WriteLine("As parallel: " + s2.Elapsed.TotalMilliseconds);
+            var assume = hirDrControl.GetData();
 
             Assert.NotNull(assume);
-            Assert.AreEqual(assume.Count, 7);
-            Assert.AreEqual(assume[0].HierarchyNumber, "1.");
+            Assert.AreEqual(assume.Count, 8);
+            Assert.AreEqual(assume.FirstOrDefault(x=>x.Id == 8).HierarchyNumber, "2.1.");
 
         }
 

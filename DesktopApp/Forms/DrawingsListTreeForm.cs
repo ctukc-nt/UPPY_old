@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Core.DomainModel;
 using DesktopApp.Infrastructure;
 using DesktopApp.Interfaces;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
+using DevExpress.XtraTreeList.Handler;
 using DevExpress.XtraTreeList.Nodes;
 
 namespace DesktopApp.Forms
@@ -24,7 +27,7 @@ namespace DesktopApp.Forms
             _controller.SourceRefreshed += RefreshSource;
 
             repositoryItemLookUpEdit1.DataSource =
-                controller.GetListRelatedDocument<TechRoute>().ConvertAll(x => (TechRoute) x);
+                controller.GetListRelatedDocument<TechRoute>().ConvertAll(x => (TechRoute)x);
         }
 
         public IController<Drawing> Controller
@@ -38,30 +41,33 @@ namespace DesktopApp.Forms
 
         public void RefreshSource(object sender, EventArgs e)
         {
-            var slctdNode = treeList1.Selection[0];
+            tlDarwings.BeginUpdate();
+            var state = SaveNodeStates(tlDarwings.Nodes).ToList();
+            var slctdNode = tlDarwings.Selection[0];
             Drawing data = null;
             if (slctdNode != null)
             {
-                data = (Drawing) treeList1.GetDataRecordByNode(treeList1.Selection[0]);
+                data = (Drawing)tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
             }
 
-            treeList1.DataSource = _controller.GetData();
-            treeList1.RefreshDataSource();
+            tlDarwings.DataSource = _controller.GetData();
+            tlDarwings.RefreshDataSource();
             if (data != null)
             {
-                var newNode =
-                    GetNodeWithData(treeList1.Nodes, data);
+                var newNode = tlDarwings.FindNode(x => ((Drawing) tlDarwings.GetDataRecordByNode(x)).Id == data.Id);
 
-                treeList1.Selection.Clear();
+                tlDarwings.Selection.Clear();
                 if (newNode != null)
                 {
-                    treeList1.Selection.Add(newNode);
-                    treeList1.FocusedNode = newNode;
+                    tlDarwings.Selection.Add(newNode);
+                    tlDarwings.FocusedNode = newNode;
                     ExpandToParentNode(newNode);
                 }
             }
 
-            treeList1.Focus();
+            tlDarwings.Focus();
+            LoadNodesState(state);
+            tlDarwings.EndUpdate();
         }
 
         private void ExpandToParentNode(TreeListNode node)
@@ -73,71 +79,86 @@ namespace DesktopApp.Forms
             }
         }
 
-        private TreeListNode GetNodeWithData(TreeListNodes nodes, Drawing search)
-        {
-            foreach (TreeListNode treeListNode in nodes)
-            {
-                var data = (Drawing) treeList1.GetDataRecordByNode(treeListNode);
-                if (data != null)
-                {
-                    if (search.Id == data.Id)
-                        return treeListNode;
-                    var finded = GetNodeWithData(treeListNode.Nodes, search);
-                    if (finded != null)
-                        return finded;
-                }
-            }
-
-            return null;
-        }
-
         private void DrawingsListForm_Load(object sender, EventArgs e)
         {
-            treeList1.DataSource = Controller.GetData();
+            tlDarwings.DataSource = Controller.GetData();
         }
 
         private void btnAddDrawing_Click(object sender, EventArgs e)
         {
             Controller.AddDocument(this,
-                new DocumentEventArgs<Drawing> {Document = new Drawing {Name = "Test", TechRouteId = 2}});
-            treeList1.Focus();
+                new DocumentEventArgs<Drawing> { Document = new Drawing { Name = "Test", TechRouteId = 2 } });
+            tlDarwings.Focus();
         }
 
-        private void treeList1_CellValueChanged(object sender, CellValueChangedEventArgs e)
+        private void tlDrawings_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
-            var data = treeList1.GetDataRecordByNode(treeList1.Selection[0]);
-            Controller.UpdateDocument(this, new DocumentEventArgs<Drawing> {Document = (Drawing) data});
+            var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
+            Controller.UpdateDocument(this, new DocumentEventArgs<Drawing> { Document = (Drawing)data });
         }
 
         private void btnDelDrawing_Click(object sender, EventArgs e)
         {
-            var data = treeList1.GetDataRecordByNode(treeList1.Selection[0]);
-            Controller.DeleteDocument(this, new DocumentEventArgs<Drawing> {Document = (Drawing) data});
-            treeList1.RefreshDataSource();
+            var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
+            Controller.DeleteDocument(this, new DocumentEventArgs<Drawing> { Document = (Drawing)data });
+            tlDarwings.RefreshDataSource();
         }
 
         private void btnAddSubDrawing_Click(object sender, EventArgs e)
         {
-            var data = treeList1.GetDataRecordByNode(treeList1.Selection[0]);
-            var selectedNode = treeList1.Selection[0];
+            var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
+            var selectedNode = tlDarwings.Selection[0];
             if (data != null)
             {
-                var parentDrw = (Drawing) data;
+                var parentDrw = (Drawing)data;
                 Controller.AddDocument(this,
-                    new DocumentEventArgs<Drawing> {Document = new Drawing {ParentId = parentDrw.Id}});
-                treeList1.RefreshDataSource();
+                    new DocumentEventArgs<Drawing> { Document = new Drawing { ParentId = parentDrw.Id } });
+                tlDarwings.RefreshDataSource();
             }
-            treeList1.Selection[0].Expanded = true;
-            treeList1.Focus();
+            tlDarwings.Selection[0].Expanded = true;
+            tlDarwings.Focus();
         }
 
         private void repositoryItemLookUpEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
+
         }
 
         private void btnRefreshSource_Click(object sender, EventArgs e)
         {
+            var listId = SaveNodeStates(tlDarwings.Nodes).ToList();
             RefreshSource(this, null);
+            LoadNodesState(listId);
+
+        }
+
+        private void LoadNodesState(List<int?> listId)
+        {
+            foreach (var id in listId.AsParallel())
+            {
+                var id1 = id;
+                var node = tlDarwings.FindNode(x => ((Drawing) tlDarwings.GetDataRecordByNode(x)).Id == id1);
+                if (node != null)
+                    node.Expanded = true;
+            }
+        }
+
+        private IEnumerable<int?> SaveNodeStates(TreeListNodes nodes )
+        {
+            foreach (TreeListNode treeListNode in nodes)
+            {
+                if (treeListNode.Expanded)
+                {
+                    var data = (Drawing)tlDarwings.GetDataRecordByNode(treeListNode);
+                    yield return data.Id;
+
+                    foreach (var id in SaveNodeStates(treeListNode.Nodes))
+                    {
+                        yield return id;
+                    }
+                }
+                
+            }
         }
     }
 }
