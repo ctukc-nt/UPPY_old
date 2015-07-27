@@ -63,7 +63,8 @@ namespace DesktopApp.Forms
                 var parentDrw = (Drawing)data;
                 Controller.AddDocument(this,
                     new DocumentEventArgs<HierarchyNumberDrawing> { Document = new HierarchyNumberDrawing() { ParentId = parentDrw.Id } });
-                
+
+                gridView1.FocusedRowHandle = ind;
                 gridControl1.RefreshDataSource();
             }
         }

@@ -47,33 +47,32 @@ namespace DesktopApp.Controllers.Tests
             var mockedDrawingDataAdapter = new Mock<IClassDataManager<Drawing>>();
             var mockedTechRouteDataAdapter = new Mock<IClassDataManager<TechRoute>>();
 
-            mockedDrawingDataAdapter.Setup(x => x.GetListCollection())
-                .Returns(new List<Drawing>()
-                {
-                    new Drawing() {Id = 1},
-                    new Drawing() {Id = 2},
-                    new Drawing() {Id = 8, ParentId = 2},
-                    new Drawing() {Id = 3},
-                    new Drawing() {Id = 4, ParentId = 2},
-                    new Drawing() {Id = 5, ParentId = 4},
-                    new Drawing() {Id = 6},
-                    new Drawing() {Id = 7, ParentId = 5}
-                });
+            //mockedDrawingDataAdapter.Setup(x => x.GetListCollection())
+            //    .Returns(new List<Drawing>()
+            //    {
+            //        new Drawing() {Id = 1},
+            //        new Drawing() {Id = 2},
+            //        new Drawing() {Id = 8, ParentId = 2},
+            //        new Drawing() {Id = 3},
+            //        new Drawing() {Id = 4, ParentId = 2},
+            //        new Drawing() {Id = 5, ParentId = 4},
+            //        new Drawing() {Id = 6},
+            //        new Drawing() {Id = 7, ParentId = 5}
+            //    });
 
 
 
-           // mockedDrawingDataAdapter.Setup(x => x.GetListCollection()).Returns(_listDrawings);
-
-            var dtBegin = DateTime.Now;
-            Debug.WriteLine(dtBegin);
-            Debug.WriteLine(Environment.TickCount);
-
+            mockedDrawingDataAdapter.Setup(x => x.GetListCollection()).Returns(_listDrawings);
             var hirDrControl = new HierarchyNumberDrawingController(mockedDrawingDataAdapter.Object, mockedTechRouteDataAdapter.Object);
-            var assume = hirDrControl.GetData();
+            var s1 = Stopwatch.StartNew();
+            var assume = hirDrControl.GetDataASNP();
+            s1.Stop();
+            var s2 = Stopwatch.StartNew();
+            var assume2 = hirDrControl.GetDataASP();
+            s2.Stop();
 
-            var dtEnd = DateTime.Now;
-            Debug.WriteLine(dtEnd);
-            Debug.WriteLine(dtEnd.Subtract(dtBegin).Ticks);
+            Debug.WriteLine("Not parallel: " + s1.Elapsed.TotalMilliseconds);
+            Debug.WriteLine("As parallel: " + s2.Elapsed.TotalMilliseconds);
 
             Assert.NotNull(assume);
             Assert.AreEqual(assume.Count, 7);
