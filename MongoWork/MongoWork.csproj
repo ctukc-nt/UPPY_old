@@ -31,16 +31,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MongoDB.Bson">
-      <HintPath>..\..\..\..\..\Downloads\CSharpDriver-2.0.1\MongoDB.Bson.dll</HintPath>
+      <HintPath>..\Assemblies\MongoDriver\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
-      <HintPath>..\..\..\..\..\Downloads\CSharpDriver-2.0.1\MongoDB.Driver.dll</HintPath>
+      <HintPath>..\Assemblies\MongoDriver\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver.Core">
-      <HintPath>..\..\..\..\..\Downloads\CSharpDriver-2.0.1\MongoDB.Driver.Core.dll</HintPath>
+      <HintPath>..\Assemblies\MongoDriver\MongoDB.Driver.Core.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver.Legacy">
-      <HintPath>..\..\..\..\..\Downloads\CSharpDriver-2.0.1\MongoDB.Driver.Legacy.dll</HintPath>
+      <HintPath>..\Assemblies\MongoDriver\MongoDB.Driver.Legacy.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

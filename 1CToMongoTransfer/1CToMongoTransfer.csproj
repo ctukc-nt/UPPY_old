@@ -34,7 +34,7 @@
   <ItemGroup>
     <Reference Include="MongoDB.Driver, Version=2.0.1.27, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Downloads\CSharpDriver-2.0.1\MongoDB.Driver.dll</HintPath>
+      <HintPath>..\Assemblies\MongoDriver\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
