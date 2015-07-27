@@ -12,7 +12,7 @@ using DevExpress.XtraTreeList.Nodes;
 
 namespace DesktopApp.Forms
 {
-    public partial class DrawingsListTreeForm : Form, IDocForm<Drawing>
+    public partial class DrawingsListTreeForm : Form, IDocsListForm<Drawing>
     {
         private readonly IController<Drawing> _controller;
 

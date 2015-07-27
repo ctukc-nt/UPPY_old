@@ -3,7 +3,7 @@ using Core.Interfaces;
 
 namespace Core.DomainModel
 {
-    internal class Standart : IEntity
+    public class Standart : IEntity
     {
         /// <summary>
         /// Коэффициент использования

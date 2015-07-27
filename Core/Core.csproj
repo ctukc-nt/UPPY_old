@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="DomainModel\Drawing.cs" />
     <Compile Include="DomainModel\DrawingWithTechOper.cs" />
+    <Compile Include="DomainModel\PostitionStandart.cs" />
+    <Compile Include="DomainModel\Standart.cs" />
     <Compile Include="Interfaces\IClassDataManager.cs" />
     <Compile Include="Interfaces\IDataManagerFactory.cs" />
     <Compile Include="Interfaces\IEntity.cs" />

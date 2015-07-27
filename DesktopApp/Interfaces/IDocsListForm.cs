@@ -3,7 +3,7 @@ using DesktopApp.Infrastructure;
 
 namespace DesktopApp.Interfaces
 {
-    public interface IDocForm<T>
+    public interface IDocsListForm<T>
     {
         IController<T> Controller { get; }
 

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Core.DomainModel
 {
-    class PostitionsStandarts
-    {
-        /// <summary>
+    public class PostitionStandart
+    {/// <summary>
         ///     Профиль
         /// </summary>
         public string Profile { get; set; }
@@ -28,16 +27,34 @@ namespace Core.DomainModel
         /// </summary>
         public string MarkSteal { get; set; }
 
+        /// <summary>
+        /// Коэффициент использования
+        /// </summary>
         public double UtilizationRatio { get; set; }
         
+        /// <summary>
+        /// Вес
+        /// </summary>
         public double Weight { get; set; }
 
+        /// <summary>
+        /// Вес с отходом
+        /// </summary>
         public double WeighWithWaste { get; set; }
 
+        /// <summary>
+        /// Дополнительная единица измерения
+        /// </summary>
         public double AdditionalMeasurement { get; set; }
 
+        /// <summary>
+        /// Тип дополнительной единицы измерения
+        /// </summary>
         public string TypeAdditionalMeasurement { get; set; }
 
+        /// <summary>
+        /// Примечание
+        /// </summary>
         public string Note { get; set; }
 
     }

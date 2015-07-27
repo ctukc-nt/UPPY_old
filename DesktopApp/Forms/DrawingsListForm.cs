@@ -14,7 +14,7 @@ using DesktopApp.View;
 
 namespace DesktopApp.Forms
 {
-    public partial class DrawingsListForm : Form, IDocForm<HierarchyNumberDrawing>
+    public partial class DrawingsListForm : Form, IDocsListForm<HierarchyNumberDrawing>
     {
         private IController<HierarchyNumberDrawing> _controller;
 
