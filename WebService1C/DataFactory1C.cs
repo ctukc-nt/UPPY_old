@@ -25,7 +25,7 @@ namespace WebService1C
                             new Drawing
                             {
                                 Name = x.Name,
-                                NumberOnSpec = x.NumberOnSpec,
+                                NumberOnSpec = string.IsNullOrWhiteSpace(x.NumberOnSpec) ? (uint?) null : Convert.ToUInt32(x.NumberOnSpec),
                                 Count = x.Count,
                                 CountAll = x.CountAll,
                                 Designation = x.Designation,
@@ -34,8 +34,7 @@ namespace WebService1C
                                 Id = Convert.ToInt32(x.Code),
                                 Length = x.Length,
                                 Width = x.Width,
-                                MarkSteal = x.MarkSteal,
-                                ParentId =
+                                MarkSteal = x.MarkSteal,ParentId =
                                     x.ParentCode == string.Empty
                                         ? (int?) null
                                         : Convert.ToInt32(x.ParentCode),

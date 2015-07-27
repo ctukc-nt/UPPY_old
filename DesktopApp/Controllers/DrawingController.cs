@@ -53,5 +53,10 @@ namespace DesktopApp.Controllers
 
             return null;
         }
+
+        public int CompareTwoDocuments(Drawing doc1, Drawing doc2)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

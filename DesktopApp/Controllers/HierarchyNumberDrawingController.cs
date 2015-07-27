@@ -13,7 +13,7 @@ namespace DesktopApp.Controllers
     public class HierarchyNumberDrawingController : IController<HierarchyNumberDrawing>
     {
         private Dictionary<int?, int> _dctChildrens;
-        private Dictionary<int?, string> _dctNumbers; 
+        private Dictionary<int?, string> _dctNumbers;
 
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechRoute> _techRouteDataManager;
@@ -29,16 +29,31 @@ namespace DesktopApp.Controllers
         {
             _dctChildrens = new Dictionary<int?, int>();
             _dctNumbers = new Dictionary<int?, string>();
-            var drawings = _drawingsDataManager.GetListCollection().ConvertAll(AutoMapper.Mapper.Map<HierarchyNumberDrawing>);
+            var drawings = _drawingsDataManager.GetListCollection().OrderBy(x => x.Id).ToList().ConvertAll(AutoMapper.Mapper.Map<HierarchyNumberDrawing>);
 
-            foreach (var cat in drawings)
+            foreach (var cat in drawings.AsParallel())
             {
-                AddFirstParent(drawings, cat);
+                int? id = int.MaxValue;
 
-                cat.HierarchyNumber = _dctNumbers.ContainsKey(cat.ParentId) ? _dctNumbers[cat.ParentId] : "";
-                    = GetHierNumber(drawings, cat);
+                id = cat.ParentId ?? id;
 
+                if (_dctChildrens.ContainsKey(id))
+                {
+                    _dctChildrens[id]++;
+                }
+                else
+                {
+                    _dctChildrens.Add(id, 1);
+                }
+
+                cat.Order = _dctChildrens[id];
             }
+
+            foreach (var cat in drawings.AsParallel())
+            {
+                cat.HierarchyNumber = GetHierarchyNumber(drawings, cat);
+            }
+
 
             return drawings;
         }
@@ -57,20 +72,12 @@ namespace DesktopApp.Controllers
 
         private string GetHierarchyNumber(List<HierarchyNumberDrawing> data, HierarchyNumberDrawing drawing)
         {
-            if (drawing != null)
+            if (drawing.ParentId != null)
             {
-                var num = 1;
-                if (_dctChildrens.ContainsKey(drawing.ParentId))
-                    _dctChildrens[drawing.ParentId] += 1;
-                else
-                {
-                    _dctChildrens.Add(drawing.ParentId, 1);
-                }
-
-                return GetHierarchyNumber(data, data.FirstOrDefault(x => x.Id == drawing.ParentId)) + _dctChildrens[drawing.ParentId];
+                return GetHierarchyNumber(data, data.FirstOrDefault(x => x.Id == drawing.ParentId)) + drawing.Order + ".";
             }
 
-            return "1.";
+            return drawing.Order + ".";
         }
 
         private string GetHierNumber(List<HierarchyNumberDrawing> data, HierarchyNumberDrawing drawing)
@@ -103,19 +110,19 @@ namespace DesktopApp.Controllers
 
         public event EventHandler SourceRefreshed;
 
-        public void AddDocument(object sender, DocumentEventArgs<Drawing> args)
+        public void AddDocument(object sender, DocumentEventArgs<HierarchyNumberDrawing> args)
         {
             _drawingsDataManager.InsertOrUpdate(args.Document);
             if (SourceRefreshed != null)
                 SourceRefreshed(this, new EventArgs());
         }
 
-        public void UpdateDocument(object sender, DocumentEventArgs<Drawing> args)
+        public void UpdateDocument(object sender, DocumentEventArgs<HierarchyNumberDrawing> args)
         {
             _drawingsDataManager.Update(args.Document);
         }
 
-        public void DeleteDocument(object sender, DocumentEventArgs<Drawing> args)
+        public void DeleteDocument(object sender, DocumentEventArgs<HierarchyNumberDrawing> args)
         {
             _drawingsDataManager.Delete(args.Document);
             if (SourceRefreshed != null)
@@ -130,6 +137,40 @@ namespace DesktopApp.Controllers
             }
 
             return null;
+        }
+
+        public int CompareTwoDocuments(HierarchyNumberDrawing doc1, HierarchyNumberDrawing doc2)
+        {
+            if (doc1 == null && doc2 == null)
+                return 0;
+
+            if (doc1 == null)
+                return 1;
+
+            if (doc2 == null)
+                return 1;
+
+            var levels1 = doc1.HierarchyNumber.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+            var levels2 = doc2.HierarchyNumber.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+
+            var minLevels = Math.Min(levels1.Length, levels2.Length);
+
+            for (int i = 0; i < minLevels; i++)
+            {
+                if (Convert.ToInt32(levels1[i]) > Convert.ToInt32(levels2[i]))
+                    return 1;
+
+                if (Convert.ToInt32(levels1[i]) < Convert.ToInt32(levels2[i]))
+                    return -1;
+            }
+
+            if (levels1.Length > levels2.Length)
+                return 1;
+
+            if (levels1.Length < levels2.Length)
+                return -1;
+
+            return 0;
         }
     }
 }

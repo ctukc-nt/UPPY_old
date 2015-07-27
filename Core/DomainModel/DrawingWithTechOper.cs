@@ -2,7 +2,8 @@
 
 namespace Core.DomainModel
 {
-    public class DrawingWithTechOper:Drawing
+    public class DrawingWithTechOper : Drawing
     {
+
     }
 }

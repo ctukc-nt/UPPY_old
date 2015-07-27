@@ -18,9 +18,11 @@ namespace DesktopApp.Interfaces
         /// </summary>
         event EventHandler SourceRefreshed;
 
-        void AddDocument(object sender, DocumentEventArgs<Drawing> args);
-        void UpdateDocument(object sender, DocumentEventArgs<Drawing> args);
-        void DeleteDocument(object sender, DocumentEventArgs<Drawing> args);
+        void AddDocument(object sender, DocumentEventArgs<T> args);
+        void UpdateDocument(object sender, DocumentEventArgs<T> args);
+        void DeleteDocument(object sender, DocumentEventArgs<T> args);
         List<IEntity> GetListRelatedDocument<TO>();
+
+        int CompareTwoDocuments(T doc1, T doc2);
     }
 }

@@ -27,11 +27,9 @@ namespace Core.DomainModel
         /// <summary>
         ///     Номер по спецификации
         /// </summary>
-        public string NumberOnSpec { get; set; }
-
+        public uint? NumberOnSpec { get; set; }
         /// <summary>
-        ///     Профиль
-        /// </summary>
+        ///     Профиль </summary>
         public string Profile { get; set; }
 
         /// <summary>
@@ -86,8 +84,7 @@ namespace Core.DomainModel
 
         /// <summary>
         ///     Отправочная позиция
-        /// </summary>
-        public string OP { get; set; }
+        /// </summary>public string OP { get; set; }
         /// <summary>     
         /// Входит в...
         /// </summary>
