@@ -5,11 +5,6 @@ namespace Core.DomainModel
     public class Drawing : IEntity
     {
         /// <summary>
-        /// ИД
-        /// </summary>
-        public int? Id { get; set; }
-
-        /// <summary>
         ///     Родитель
         /// </summary>
         public int? ParentId { get; set; }
@@ -28,8 +23,10 @@ namespace Core.DomainModel
         ///     Номер по спецификации
         /// </summary>
         public uint? NumberOnSpec { get; set; }
+
         /// <summary>
-        ///     Профиль </summary>
+        ///     Профиль
+        /// </summary>
         public string Profile { get; set; }
 
         /// <summary>
@@ -84,15 +81,21 @@ namespace Core.DomainModel
 
         /// <summary>
         ///     Отправочная позиция
-        /// </summary>public string OP { get; set; }
-        /// <summary>     
-        /// Входит в...
+        /// </summary>
+        /// public string OP { get; set; }
+        /// <summary>
+        ///     Входит в...
         /// </summary>
         public int? PartOfDrawingId { get; set; }
 
-        /// <summary> 
-        /// Технологический маршрут
+        /// <summary>
+        ///     Технологический маршрут
         /// </summary>
         public int? TechRouteId { get; set; }
+
+        /// <summary>
+        ///     ИД
+        /// </summary>
+        public int? Id { get; set; }
     }
 }
