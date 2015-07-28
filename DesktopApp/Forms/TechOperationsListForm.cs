@@ -29,7 +29,7 @@ namespace DesktopApp.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Controller.AddDocument(Controller.CreateDocument());
+            Controller.SaveDocument(Controller.CreateDocument());
         }
 
         private void btnDel_Click(object sender, EventArgs e)

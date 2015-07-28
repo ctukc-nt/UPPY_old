@@ -31,16 +31,10 @@ namespace DesktopApp.Controllers
             throw new TypeInitializationException(typeof(T).FullName, new Exception());
         }
 
-        public void AddDocument(T doc)
+        public void SaveDocument(T doc)
         {
             var dataManager = _dataManagersFactory.GetDataManager<T>();
-            dataManager.Insert(doc);
-        }
-
-        public void UpdateDocument(T doc)
-        {
-            var dataManager = _dataManagersFactory.GetDataManager<T>();
-            dataManager.Update(doc);
+            dataManager.InsertOrUpdate(doc);
         }
 
         public void DeleteDocument(T doc)

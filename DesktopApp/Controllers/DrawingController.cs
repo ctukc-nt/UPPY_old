@@ -13,7 +13,7 @@ namespace DesktopApp.Controllers
 
         public DrawingController(IDataManagersFactory dataManagersFactory)
         {
-            var dataManagerFactory1 = dataManagerFactory;
+            var dataManagerFactory1 = dataManagersFactory;
             _drawingsDataManager = dataManagerFactory1.GetDataManager<Drawing>();
             _techRouteDataManager = dataManagerFactory1.GetDataManager<TechRoute>();
         }
