@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using Core.DomainModel;
 using Core.Interfaces;
-using DesktopApp.Infrastructure;
 using DesktopApp.Interfaces;
 
 namespace DesktopApp.Controllers
 {
     public class DrawingController : IController<Drawing>
     {
-
-        private IClassDataManager<Drawing> _drawingsDataManager;
-        private IClassDataManager<TechRoute> _techRouteDataManager;
+        private readonly IClassDataManager<Drawing> _drawingsDataManager;
+        private readonly IClassDataManager<TechRoute> _techRouteDataManager;
 
         public DrawingController(IDataManagerFactory dataManagerFactory)
         {
-            _drawingsDataManager = dataManagerFactory.GetDataManager<Drawing>();
-            _techRouteDataManager = dataManagerFactory.GetDataManager<TechRoute>();
+            var dataManagerFactory1 = dataManagerFactory;
+            _drawingsDataManager = dataManagerFactory1.GetDataManager<Drawing>();
+            _techRouteDataManager = dataManagerFactory1.GetDataManager<TechRoute>();
         }
 
         public List<Drawing> GetData()
@@ -25,21 +24,17 @@ namespace DesktopApp.Controllers
         }
 
         public event EventHandler SourceRefreshed;
+
         public Drawing CreateDocument()
         {
-            throw new NotImplementedException();
+            return new Drawing();
         }
 
-        public void AddDocument(Drawing doc)
+        public void SaveDocument(Drawing doc)
         {
             _drawingsDataManager.InsertOrUpdate(doc);
             if (SourceRefreshed != null)
                 SourceRefreshed(this, new EventArgs());
-        }
-
-        public void UpdateDocument(Drawing doc)
-        {
-            _drawingsDataManager.Update(doc);
         }
 
         public void DeleteDocument(Drawing doc)
@@ -49,12 +44,11 @@ namespace DesktopApp.Controllers
                 SourceRefreshed(this, new EventArgs());
         }
 
-
         public List<IEntity> GetListRelatedDocument<TO>()
         {
-            if (typeof(TO) == typeof(TechRoute))
+            if (typeof (TO) == typeof (TechRoute))
             {
-                return _techRouteDataManager.GetListCollection().ConvertAll(input => (IEntity)input);
+                return _techRouteDataManager.GetListCollection().ConvertAll(input => (IEntity) input);
             }
 
             return null;

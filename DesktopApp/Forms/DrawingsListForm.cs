@@ -1,48 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Core.DomainModel;
-using DesktopApp.Infrastructure;
 using DesktopApp.Interfaces;
 using DesktopApp.View;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace DesktopApp.Forms
 {
     public partial class DrawingsListForm : Form, IDocsListForm<HierarchyNumberDrawing>
     {
-        private IController<HierarchyNumberDrawing> _controller;
-
         public DrawingsListForm(IController<HierarchyNumberDrawing> controller)
         {
             InitializeComponent();
-          
-            _controller = controller;
-            _controller.SourceRefreshed += RefreshSource;
+
+            Controller = controller;
+            Controller.SourceRefreshed += RefreshSource;
 
 
             repositoryItemLookUpEdit1.DataSource =
-                controller.GetListRelatedDocument<TechRoute>().ConvertAll(x => (TechRoute)x);
+                controller.GetListRelatedDocument<TechRoute>().ConvertAll(x => (TechRoute) x);
         }
 
-        public IController<HierarchyNumberDrawing> Controller
-        {
-            get { return _controller; }
-        }
+        public IController<HierarchyNumberDrawing> Controller { get; private set; }
 
         public void RefreshSource(object sender, EventArgs e)
         {
-            gridControl1.DataSource = _controller.GetData();
+            gridControl1.DataSource = Controller.GetData();
         }
 
         private void btnAddDrawing_Click(object sender, EventArgs e)
         {
-            Controller.AddDocument(Controller.CreateDocument());
+            Controller.SaveDocument(Controller.CreateDocument());
             gridControl1.Focus();
         }
 
@@ -52,10 +41,10 @@ namespace DesktopApp.Forms
             var ind = gridView1.GetSelectedRows().FirstOrDefault();
             if (data != null)
             {
-                var parentDrw = (Drawing)data;
+                var parentDrw = (Drawing) data;
                 var newDoc = Controller.CreateDocument();
                 newDoc.ParentId = parentDrw.Id;
-                Controller.AddDocument(newDoc);
+                Controller.SaveDocument(newDoc);
 
                 gridView1.FocusedRowHandle = ind;
                 gridControl1.RefreshDataSource();
@@ -64,19 +53,17 @@ namespace DesktopApp.Forms
 
         private void btnDelDrawing_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnRefreshSource_Click(object sender, EventArgs e)
         {
-
         }
 
-        private void gridView1_CustomColumnSort(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs e)
+        private void gridView1_CustomColumnSort(object sender, CustomColumnSortEventArgs e)
         {
             e.Handled = true;
-            e.Result = _controller.CompareTwoDocuments((HierarchyNumberDrawing)e.RowObject1, (HierarchyNumberDrawing)e.RowObject2);
+            e.Result = Controller.CompareTwoDocuments((HierarchyNumberDrawing) e.RowObject1,
+                (HierarchyNumberDrawing) e.RowObject2);
         }
-
     }
 }

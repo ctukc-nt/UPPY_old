@@ -5,6 +5,6 @@ namespace DesktopApp.Interfaces
 {
     public interface IControllerFactory
     {
-        IController<T> GetController<T>();
+        IController<T> GetController<T>() where T : IEntity;
     }
 }

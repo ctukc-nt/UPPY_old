@@ -78,14 +78,14 @@ namespace DesktopApp.Forms
 
         private void btnAddDrawing_Click(object sender, EventArgs e)
         {
-            Controller.AddDocument(Controller.CreateDocument());
+            Controller.SaveDocument(Controller.CreateDocument());
             tlDarwings.Focus();
         }
 
         private void tlDrawings_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
-            Controller.UpdateDocument((Drawing) data);
+            Controller.SaveDocument((Drawing) data);
         }
 
         private void btnDelDrawing_Click(object sender, EventArgs e)
@@ -103,7 +103,7 @@ namespace DesktopApp.Forms
                 var parentDrw = (Drawing) data;
                 var newDoc = Controller.CreateDocument();
                 newDoc.ParentId = parentDrw.Id;
-                Controller.AddDocument(newDoc);
+                Controller.SaveDocument(newDoc);
                 tlDarwings.RefreshDataSource();
             }
             tlDarwings.Selection[0].Expanded = true;

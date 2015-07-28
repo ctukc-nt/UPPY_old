@@ -69,16 +69,11 @@ namespace DesktopApp.Controllers
             return new HierarchyNumberDrawing();
         }
 
-        public void AddDocument(HierarchyNumberDrawing doc)
+        public void SaveDocument(HierarchyNumberDrawing doc)
         {
             _drawingsDataManager.InsertOrUpdate(doc);
             if (SourceRefreshed != null)
                 SourceRefreshed(this, new EventArgs());
-        }
-
-        public void UpdateDocument(HierarchyNumberDrawing doc)
-        {
-            _drawingsDataManager.Update(doc);
         }
 
         public void DeleteDocument(HierarchyNumberDrawing doc)

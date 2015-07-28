@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using DesktopApp.Infrastructure;
+﻿using Core.Interfaces;
 
 namespace DesktopApp.Interfaces
 {
-    public interface IDocsListForm<T>
+    public interface IDocsListForm<T> where T : IEntity
     {
         IController<T> Controller { get; }
     }

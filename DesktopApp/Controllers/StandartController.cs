@@ -30,16 +30,11 @@ namespace DesktopApp.Controllers
             return new Standart();
         }
 
-        public void AddDocument(Standart doc)
+        public void SaveDocument(Standart doc)
         {
             _standartsDataManager.InsertOrUpdate(doc);
             if (SourceRefreshed != null)
                 SourceRefreshed(this, new EventArgs());
-        }
-
-        public void UpdateDocument(Standart doc)
-        {
-            _standartsDataManager.Update(doc);
         }
 
         public void DeleteDocument(Standart doc)
