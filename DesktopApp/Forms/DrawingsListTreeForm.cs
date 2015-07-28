@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Core.DomainModel;
-using DesktopApp.Infrastructure;
 using DesktopApp.Interfaces;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
@@ -112,7 +111,6 @@ namespace DesktopApp.Forms
 
         private void repositoryItemLookUpEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
-            
         }
 
         private void btnRefreshSource_Click(object sender, EventArgs e)
