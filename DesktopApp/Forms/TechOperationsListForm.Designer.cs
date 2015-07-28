@@ -35,6 +35,9 @@
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colShortName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFullName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnRefreshSource = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDelDrawing = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAddDrawing = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.techOperationBindingSource)).BeginInit();
@@ -46,7 +49,7 @@
             this.gridControl1.Location = new System.Drawing.Point(13, 13);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(807, 341);
+            this.gridControl1.Size = new System.Drawing.Size(810, 341);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -90,11 +93,41 @@
             this.colFullName.Visible = true;
             this.colFullName.VisibleIndex = 2;
             // 
+            // btnRefreshSource
+            // 
+            this.btnRefreshSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefreshSource.Location = new System.Drawing.Point(829, 71);
+            this.btnRefreshSource.Name = "btnRefreshSource";
+            this.btnRefreshSource.Size = new System.Drawing.Size(94, 23);
+            this.btnRefreshSource.TabIndex = 10;
+            this.btnRefreshSource.Text = "&Refresh";
+            // 
+            // btnDelDrawing
+            // 
+            this.btnDelDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelDrawing.Location = new System.Drawing.Point(829, 42);
+            this.btnDelDrawing.Name = "btnDelDrawing";
+            this.btnDelDrawing.Size = new System.Drawing.Size(94, 23);
+            this.btnDelDrawing.TabIndex = 8;
+            this.btnDelDrawing.Text = "Del drawing";
+            // 
+            // btnAddDrawing
+            // 
+            this.btnAddDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddDrawing.Location = new System.Drawing.Point(829, 13);
+            this.btnAddDrawing.Name = "btnAddDrawing";
+            this.btnAddDrawing.Size = new System.Drawing.Size(94, 23);
+            this.btnAddDrawing.TabIndex = 7;
+            this.btnAddDrawing.Text = "Add &drawing";
+            // 
             // TechOperationsListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 366);
+            this.Controls.Add(this.btnRefreshSource);
+            this.Controls.Add(this.btnDelDrawing);
+            this.Controls.Add(this.btnAddDrawing);
             this.Controls.Add(this.gridControl1);
             this.Name = "TechOperationsListForm";
             this.Text = "TechOperationsListForm";
@@ -113,5 +146,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colShortName;
         private DevExpress.XtraGrid.Columns.GridColumn colFullName;
+        private DevExpress.XtraEditors.SimpleButton btnRefreshSource;
+        private DevExpress.XtraEditors.SimpleButton btnDelDrawing;
+        private DevExpress.XtraEditors.SimpleButton btnAddDrawing;
     }
 }

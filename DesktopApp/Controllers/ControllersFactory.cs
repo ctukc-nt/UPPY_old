@@ -23,7 +23,7 @@ namespace DesktopApp.Controllers
         {
             var type = typeof(T);
             if (type == typeof(Drawing))
-                return (IController<T>)new DrawingController(_dataManagerFactory.GetDataManager<Drawing>(), _dataManagerFactory.GetDataManager<TechRoute>());
+                return (IController<T>)new DrawingController(_dataManagerFactory);
 
             return null;
         }

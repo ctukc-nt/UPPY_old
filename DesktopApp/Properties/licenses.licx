@@ -1,3 +1,4 @@
+DevExpress.Patch.InMemoryPatch, DevExpress.Patch.Common, Version=6.2.0.0, Culture=neutral, PublicKeyToken=7fc7bfca2443de66
 DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraEditors.TreeListLookUpEdit, DevExpress.XtraTreeList.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
@@ -18,6 +19,5 @@ DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v15.1, Version=15.1.4.0,
 DevExpress.XtraReports.UserDesigner.XRDesignBarManager, DevExpress.XtraReports.v15.1.Extensions, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraVerticalGrid.PropertyGridControl, DevExpress.XtraVerticalGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
-DevExpress.Patch.InMemoryPatch, DevExpress.Patch.Common, Version=6.2.0.0, Culture=neutral, PublicKeyToken=7fc7bfca2443de66
 DevExpress.XtraNavBar.NavBarControl, DevExpress.XtraNavBar.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraWizard.WizardControl, DevExpress.XtraWizard.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
