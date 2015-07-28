@@ -11,7 +11,7 @@ namespace DesktopApp.Controllers
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechRoute> _techRouteDataManager;
 
-        public DrawingController(IDataManagerFactory dataManagerFactory)
+        public DrawingController(IDataManagersFactory dataManagersFactory)
         {
             var dataManagerFactory1 = dataManagerFactory;
             _drawingsDataManager = dataManagerFactory1.GetDataManager<Drawing>();
@@ -27,7 +27,7 @@ namespace DesktopApp.Controllers
 
         public Drawing CreateDocument()
         {
-            return new Drawing();
+           return new Drawing();
         }
 
         public void SaveDocument(Drawing doc)
@@ -44,7 +44,7 @@ namespace DesktopApp.Controllers
                 SourceRefreshed(this, new EventArgs());
         }
 
-        public List<IEntity> GetListRelatedDocument<TO>()
+        public List<IEntity> GetListRelatedDocument<TO>() where TO:IEntity
         {
             if (typeof (TO) == typeof (TechRoute))
             {

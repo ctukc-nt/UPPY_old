@@ -29,5 +29,13 @@ namespace Core.DomainModel
         {
             return Name;
         }
+
+        /// <summary>
+        /// Создаёт имя тех маршрута по тех. операции
+        /// </summary>
+        public void CreateNameByTechOperations()
+        {
+            
+        }
     }
 }

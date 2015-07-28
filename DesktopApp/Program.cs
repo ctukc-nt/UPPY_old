@@ -23,7 +23,7 @@ namespace DesktopApp
             CompositionRoot.Wire(new ApplicationModule());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(CompositionRoot.Resolve<MainForm>());
+            Application.Run(CompositionRoot.Resolve<TechOperationsListForm>());
         }
     }
 }

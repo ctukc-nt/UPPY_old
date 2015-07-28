@@ -42,7 +42,7 @@ namespace DesktopApp.Controllers.Tests
         {
             var mockedDrawingDataAdapter = new Mock<IClassDataManager<Drawing>>();
             var mockedTechRouteDataAdapter = new Mock<IClassDataManager<TechRoute>>();
-            var mockFabr = new Mock<IDataManagerFactory>();
+            var mockFabr = new Mock<IDataManagersFactory>();
             mockFabr.Setup(x => x.GetDataManager<Drawing>()).Returns(mockedDrawingDataAdapter.Object);
             mockFabr.Setup(x => x.GetDataManager<TechRoute>()).Returns(mockedTechRouteDataAdapter.Object);
 
@@ -94,7 +94,7 @@ namespace DesktopApp.Controllers.Tests
         {
             var mockedDrawingDataAdapter = new Mock<IClassDataManager<Drawing>>();
             var mockedTechRouteDataAdapter = new Mock<IClassDataManager<TechRoute>>();
-            var mockFabr = new Mock<IDataManagerFactory>();
+            var mockFabr = new Mock<IDataManagersFactory>();
             mockFabr.Setup(x => x.GetDataManager<Drawing>()).Returns(mockedDrawingDataAdapter.Object);
             mockFabr.Setup(x => x.GetDataManager<TechRoute>()).Returns(mockedTechRouteDataAdapter.Object);
 

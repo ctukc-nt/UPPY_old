@@ -9,13 +9,13 @@ namespace DesktopApp.Controllers
     public class StandartController : IController<Standart>
     {
         private IClassDataManager<Drawing> _drawingsDataManager;
-        private readonly IDataManagerFactory _dataManagerFactory;
+        private readonly IDataManagersFactory _dataManagersFactory;
         private readonly IClassDataManager<Standart> _standartsDataManager;
 
-        public StandartController(IDataManagerFactory dataManagerFactory)
+        public StandartController(IDataManagersFactory dataManagersFactory)
         {
-            _dataManagerFactory = dataManagerFactory;
-            _standartsDataManager = _dataManagerFactory.GetDataManager<Standart>();
+            _dataManagersFactory = dataManagersFactory;
+            _standartsDataManager = _dataManagersFactory.GetDataManager<Standart>();
         }
 
         public List<Standart> GetData()
@@ -42,14 +42,14 @@ namespace DesktopApp.Controllers
             _standartsDataManager.Delete(doc);
         }
 
-        public List<IEntity> GetListRelatedDocument<TO>()
+        public List<IEntity> GetListRelatedDocument<TO>() where TO : IEntity
         {
             if (_drawingsDataManager == null)
-                _drawingsDataManager = _dataManagerFactory.GetDataManager<Drawing>();
+                _drawingsDataManager = _dataManagersFactory.GetDataManager<Drawing>();
 
-            if (typeof (TO) == typeof (Drawing))
+            if (typeof(TO) == typeof(Drawing))
             {
-                return _drawingsDataManager.GetListCollection().ConvertAll(input => (IEntity) input);
+                return _drawingsDataManager.GetListCollection().ConvertAll(x => (IEntity)x);
             }
 
             return null;

@@ -11,16 +11,16 @@ namespace _1CToMongoTransfer
 {
     public class Data1CToMongoDbTransfer
     {
-        public void TransferData(DataFactory1C data1C, IDataManagerFactory dataManager)
+        public void TransferData(DataFactory1C data1C, IDataManagersFactory dataManagers)
         {
-            TransferTechOperation(data1C, dataManager);
-            TransferTechRoute(data1C, dataManager);
-            TransferDrawings(data1C, dataManager);
+            TransferTechOperation(data1C, dataManagers);
+            TransferTechRoute(data1C, dataManagers);
+            TransferDrawings(data1C, dataManagers);
         }
 
-        private static void TransferTechOperation(DataFactory1C data1C, IDataManagerFactory dataManager)
+        private static void TransferTechOperation(DataFactory1C data1C, IDataManagersFactory dataManagers)
         {
-            var dataManTech = dataManager.GetDataManager<TechOperation>();
+            var dataManTech = dataManagers.GetDataManager<TechOperation>();
             var techOperations = data1C.GetTechOperations();
             foreach (var operation in techOperations)
             {
@@ -32,12 +32,12 @@ namespace _1CToMongoTransfer
             }
         }
 
-        private static void TransferTechRoute(DataFactory1C data1C, IDataManagerFactory dataManager)
+        private static void TransferTechRoute(DataFactory1C data1C, IDataManagersFactory dataManagers)
         {
             var techRoutes = data1C.GetTechRoutes();
-            var techOpersMan = dataManager.GetDataManager<TechOperation>();
+            var techOpersMan = dataManagers.GetDataManager<TechOperation>();
             var techOpers = techOpersMan.GetListCollection();
-            var techRoutesMan = dataManager.GetDataManager<TechRoute>();
+            var techRoutesMan = dataManagers.GetDataManager<TechRoute>();
 
             foreach (var route in techRoutes)
             {
@@ -65,11 +65,11 @@ namespace _1CToMongoTransfer
             }
         }
 
-        private static void TransferDrawings(DataFactory1C data1C, IDataManagerFactory dataManager)
+        private static void TransferDrawings(DataFactory1C data1C, IDataManagersFactory dataManagers)
         {
             var drawings = data1C.GetDrawings();
-            var techRoutesMan = dataManager.GetDataManager<TechRoute>();
-            var drawingsMan = dataManager.GetDataManager<Drawing>();
+            var techRoutesMan = dataManagers.GetDataManager<TechRoute>();
+            var drawingsMan = dataManagers.GetDataManager<Drawing>();
 
             var techRoutes = techRoutesMan.GetListCollection();
 

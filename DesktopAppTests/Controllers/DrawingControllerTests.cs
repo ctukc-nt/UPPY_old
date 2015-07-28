@@ -48,7 +48,7 @@ namespace DesktopApp.Controllers.Tests
         {
             var mockDrawing = new Mock<IClassDataManager<Drawing>>();
             var mockTechRoute = new Mock<IClassDataManager<TechRoute>>();
-            var mockFabr = new Mock<IDataManagerFactory>();
+            var mockFabr = new Mock<IDataManagersFactory>();
             mockFabr.Setup(x => x.GetDataManager<Drawing>()).Returns(mockDrawing.Object);
             mockFabr.Setup(x => x.GetDataManager<TechRoute>()).Returns(mockTechRoute.Object);
 

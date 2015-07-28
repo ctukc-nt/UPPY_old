@@ -6,20 +6,20 @@ namespace DesktopApp.Controllers
 {
     internal class ControllersFactory : IControllerFactory
     {
-        private readonly IDataManagerFactory _dataManagerFactory;
+        private readonly IDataManagersFactory _dataManagersFactory;
 
-        public ControllersFactory(IDataManagerFactory dataManagerFactory)
+        public ControllersFactory(IDataManagersFactory dataManagersFactory)
         {
-            _dataManagerFactory = dataManagerFactory;
+            _dataManagersFactory = dataManagersFactory;
         }
 
         public IController<T> GetController<T>() where T : IEntity
         {
             var type = typeof (T);
             if (type == typeof (Drawing))
-                return (IController<T>) new DrawingController(_dataManagerFactory);
+                return (IController<T>) new DrawingController(_dataManagersFactory);
 
-            return null;
+            return new Controller<T>(_dataManagersFactory);
         }
     }
 }

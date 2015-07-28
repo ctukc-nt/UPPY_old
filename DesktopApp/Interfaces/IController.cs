@@ -19,7 +19,7 @@ namespace DesktopApp.Interfaces
         T CreateDocument();
         void SaveDocument(T doc);
         void DeleteDocument(T doc);
-        List<IEntity> GetListRelatedDocument<TO>();
+        List<IEntity> GetListRelatedDocument<TO>() where TO:IEntity;
         int CompareTwoDocuments(T doc1, T doc2);
     }
 }
