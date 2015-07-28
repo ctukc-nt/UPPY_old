@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.techOperationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colShortName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFullName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -39,8 +39,8 @@
             this.btnDelDrawing = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddDrawing = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.techOperationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
@@ -54,6 +54,10 @@
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
+            // techOperationBindingSource
+            // 
+            this.techOperationBindingSource.DataSource = typeof(Core.DomainModel.TechOperation);
+            // 
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -62,10 +66,6 @@
             this.colFullName});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            // 
-            // techOperationBindingSource
-            // 
-            this.techOperationBindingSource.DataSource = typeof(Core.DomainModel.TechOperation);
             // 
             // colId
             // 
@@ -109,7 +109,7 @@
             this.btnDelDrawing.Name = "btnDelDrawing";
             this.btnDelDrawing.Size = new System.Drawing.Size(94, 23);
             this.btnDelDrawing.TabIndex = 8;
-            this.btnDelDrawing.Text = "Del drawing";
+            this.btnDelDrawing.Text = "Del o&peration";
             // 
             // btnAddDrawing
             // 
@@ -118,7 +118,7 @@
             this.btnAddDrawing.Name = "btnAddDrawing";
             this.btnAddDrawing.Size = new System.Drawing.Size(94, 23);
             this.btnAddDrawing.TabIndex = 7;
-            this.btnAddDrawing.Text = "Add &drawing";
+            this.btnAddDrawing.Text = "Add &operation";
             // 
             // TechOperationsListForm
             // 
@@ -132,8 +132,8 @@
             this.Name = "TechOperationsListForm";
             this.Text = "TechOperationsListForm";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.techOperationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
