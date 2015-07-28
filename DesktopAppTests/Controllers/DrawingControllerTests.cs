@@ -48,6 +48,10 @@ namespace DesktopApp.Controllers.Tests
         {
             var mockDrawing = new Mock<IClassDataManager<Drawing>>();
             var mockTechRoute = new Mock<IClassDataManager<TechRoute>>();
+            var mockFabr = new Mock<IDataManagerFactory>();
+            mockFabr.Setup(x => x.GetDataManager<Drawing>()).Returns(mockDrawing.Object);
+            mockFabr.Setup(x => x.GetDataManager<TechRoute>()).Returns(mockTechRoute.Object);
+
 
             mockTechRoute.Setup(x => x.GetListCollection())
                 .Returns(new List<TechRoute>()
@@ -62,7 +66,7 @@ namespace DesktopApp.Controllers.Tests
                     }
                 });
 
-            DrawingController controller = new DrawingController(mockDrawing.Object, mockTechRoute.Object);
+            DrawingController controller = new DrawingController(mockFabr.Object);
             var list = controller.GetListRelatedDocument<TechRoute>().ConvertAll(x => (TechRoute)x);
             TechRoute techRoute = list[0];
 

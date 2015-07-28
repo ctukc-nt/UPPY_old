@@ -46,9 +46,12 @@
   <ItemGroup>
     <Compile Include="DomainModel\Drawing.cs" />
     <Compile Include="DomainModel\DrawingWithTechOper.cs" />
+    <Compile Include="DomainModel\PostitionStandart.cs" />
+    <Compile Include="DomainModel\Standart.cs" />
     <Compile Include="Interfaces\IClassDataManager.cs" />
     <Compile Include="Interfaces\IDataManagerFactory.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
+    <Compile Include="Interfaces\IHierClassDataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DomainModel\TechOperation.cs" />
     <Compile Include="DomainModel\TechRoute.cs" />

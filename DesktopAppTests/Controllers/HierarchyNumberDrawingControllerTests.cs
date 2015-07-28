@@ -1,111 +1,111 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutoMapper;
 using Core.DomainModel;
 using Core.Interfaces;
-using DesktopApp.Controllers;
 using DesktopApp.View;
 using Moq;
 using NUnit.Framework;
+
 namespace DesktopApp.Controllers.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class HierarchyNumberDrawingControllerTests
     {
-        List<Drawing> _listDrawings = new List<Drawing>();
+        private List<Drawing> _listDrawings = new List<Drawing>();
 
         [SetUp]
         public void SetUp()
         {
-            AutoMapper.Mapper.CreateMap<Drawing, HierarchyNumberDrawing>();
+            Mapper.CreateMap<Drawing, HierarchyNumberDrawing>();
             _listDrawings = new List<Drawing>();
-            Random rndRandom = new Random();
+            var rndRandom = new Random();
 
-            for (int i = 1; i < 30000; i++)
+            for (var i = 1; i < 30000; i++)
             {
-                Random random = new Random(i);
-                var parentId = rndRandom.Next(0, 1) == 1 ? (int?)null : (i - 1 > 1 ? rndRandom.Next(1, i - 1) : (int?)null);
-                _listDrawings.Add(new Drawing() { Id = i, ParentId = parentId });
+                var random = new Random(i);
+                var parentId = rndRandom.Next(0, 1) == 1 ? null : (i - 1 > 1 ? rndRandom.Next(1, i - 1) : (int?) null);
+                _listDrawings.Add(new Drawing {Id = i, ParentId = parentId});
             }
         }
 
-        [Test()]
+        [Test]
         public void HierarchyNumberDrawingControllerTest()
         {
             var dct = new Dictionary<int?, int>();
             dct.Add(null, 0);
         }
 
-        [Test()]
+        [Test]
         public void GetDataTest()
         {
-
-
             var mockedDrawingDataAdapter = new Mock<IClassDataManager<Drawing>>();
             var mockedTechRouteDataAdapter = new Mock<IClassDataManager<TechRoute>>();
+            var mockFabr = new Mock<IDataManagerFactory>();
+            mockFabr.Setup(x => x.GetDataManager<Drawing>()).Returns(mockedDrawingDataAdapter.Object);
+            mockFabr.Setup(x => x.GetDataManager<TechRoute>()).Returns(mockedTechRouteDataAdapter.Object);
 
             mockedDrawingDataAdapter.Setup(x => x.GetListCollection())
-                .Returns(new List<Drawing>()
+                .Returns(new List<Drawing>
                 {
-                    new Drawing() {Id = 1},
-                    new Drawing() {Id = 2},
-                    new Drawing() {Id = 8, ParentId = 2},
-                    new Drawing() {Id = 3},
-                    new Drawing() {Id = 4, ParentId = 2},
-                    new Drawing() {Id = 5, ParentId = 4},
-                    new Drawing() {Id = 6},
-                    new Drawing() {Id = 7, ParentId = 5}
+                    new Drawing {Id = 1},
+                    new Drawing {Id = 2},
+                    new Drawing {Id = 8, ParentId = 2},
+                    new Drawing {Id = 3},
+                    new Drawing {Id = 4, ParentId = 2},
+                    new Drawing {Id = 5, ParentId = 4},
+                    new Drawing {Id = 6},
+                    new Drawing {Id = 7, ParentId = 5}
                 });
 
 
-
-           // mockedDrawingDataAdapter.Setup(x => x.GetListCollection()).Returns(_listDrawings);
-            var hirDrControl = new HierarchyNumberDrawingController(mockedDrawingDataAdapter.Object, mockedTechRouteDataAdapter.Object);
+            // mockedDrawingDataAdapter.Setup(x => x.GetListCollection()).Returns(_listDrawings);
+            var hirDrControl = new HierarchyNumberDrawingController(mockFabr.Object);
             var assume = hirDrControl.GetData();
 
             Assert.NotNull(assume);
             Assert.AreEqual(assume.Count, 8);
-            Assert.AreEqual(assume.FirstOrDefault(x=>x.Id == 8).HierarchyNumber, "2.1.");
-
+            Assert.AreEqual(assume.FirstOrDefault(x => x.Id == 8).HierarchyNumber, "2.1.");
         }
 
-        [Test()]
+        [Test]
         public void AddDocumentTest()
         {
-
         }
 
-        [Test()]
+        [Test]
         public void UpdateDocumentTest()
         {
-
         }
 
-        [Test()]
+        [Test]
         public void DeleteDocumentTest()
         {
-
         }
 
-        [Test()]
+        [Test]
         public void GetListRelatedDocumentTest()
         {
-
         }
 
-        [Test()]
+        [Test]
         public void CompareTwoDocumentsTest()
         {
             var mockedDrawingDataAdapter = new Mock<IClassDataManager<Drawing>>();
             var mockedTechRouteDataAdapter = new Mock<IClassDataManager<TechRoute>>();
-            var hirDrControl = new HierarchyNumberDrawingController(mockedDrawingDataAdapter.Object, mockedTechRouteDataAdapter.Object);
+            var mockFabr = new Mock<IDataManagerFactory>();
+            mockFabr.Setup(x => x.GetDataManager<Drawing>()).Returns(mockedDrawingDataAdapter.Object);
+            mockFabr.Setup(x => x.GetDataManager<TechRoute>()).Returns(mockedTechRouteDataAdapter.Object);
 
-            var exp1 = hirDrControl.CompareTwoDocuments(new HierarchyNumberDrawing() {HierarchyNumber = "1."}, new HierarchyNumberDrawing() {HierarchyNumber = "2."});
-            var exp2 = hirDrControl.CompareTwoDocuments(new HierarchyNumberDrawing() { HierarchyNumber = "2." }, new HierarchyNumberDrawing() { HierarchyNumber = "1." });
-            var exp3 = hirDrControl.CompareTwoDocuments(new HierarchyNumberDrawing() { HierarchyNumber = "2." }, new HierarchyNumberDrawing() { HierarchyNumber = "10." });
+            var hirDrControl = new HierarchyNumberDrawingController(mockFabr.Object);
+
+            var exp1 = hirDrControl.CompareTwoDocuments(new HierarchyNumberDrawing {HierarchyNumber = "1."},
+                new HierarchyNumberDrawing {HierarchyNumber = "2."});
+            var exp2 = hirDrControl.CompareTwoDocuments(new HierarchyNumberDrawing {HierarchyNumber = "2."},
+                new HierarchyNumberDrawing {HierarchyNumber = "1."});
+            var exp3 = hirDrControl.CompareTwoDocuments(new HierarchyNumberDrawing {HierarchyNumber = "2."},
+                new HierarchyNumberDrawing {HierarchyNumber = "10."});
 
             Assert.AreEqual(-1, exp1);
             Assert.AreEqual(1, exp2);

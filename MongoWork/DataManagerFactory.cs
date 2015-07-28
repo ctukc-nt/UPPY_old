@@ -18,7 +18,7 @@ namespace MongoWork
         /// </summary>
         /// <typeparam name="T">Тип данных</typeparam>
         /// <returns>Управленец данными</returns>
-        public IClassDataManager<T> GetDataManager<T>() where T : IEntity
+        public virtual IClassDataManager<T> GetDataManager<T>() where T : IEntity
         {
             return new MongoDbDataManager<T>(_database);
         }
