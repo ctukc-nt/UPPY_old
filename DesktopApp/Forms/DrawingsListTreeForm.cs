@@ -18,9 +18,6 @@ namespace DesktopApp.Forms
         public DrawingsListTreeForm(IController<Drawing> controller)
         {
             InitializeComponent();
-            AddDocument += controller.AddDocument;
-            DeleteDocument += controller.DeleteDocument;
-            UpdateDocument += controller.UpdateDocument;
 
             _controller = controller;
             _controller.SourceRefreshed += RefreshSource;
@@ -33,10 +30,6 @@ namespace DesktopApp.Forms
         {
             get { return _controller; }
         }
-
-        public event DocumentEventHandler<Drawing> UpdateDocument;
-        public event DocumentEventHandler<Drawing> DeleteDocument;
-        public event DocumentEventHandler<Drawing> AddDocument;
 
         public void RefreshSource(object sender, EventArgs e)
         {
@@ -85,21 +78,20 @@ namespace DesktopApp.Forms
 
         private void btnAddDrawing_Click(object sender, EventArgs e)
         {
-            Controller.AddDocument(this,
-                new DocumentEventArgs<Drawing> {Document = new Drawing ()});
+            Controller.AddDocument(Controller.CreateDocument());
             tlDarwings.Focus();
         }
 
         private void tlDrawings_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
-            Controller.UpdateDocument(this, new DocumentEventArgs<Drawing> {Document = (Drawing) data});
+            Controller.UpdateDocument((Drawing) data);
         }
 
         private void btnDelDrawing_Click(object sender, EventArgs e)
         {
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
-            Controller.DeleteDocument(this, new DocumentEventArgs<Drawing> {Document = (Drawing) data});
+            Controller.DeleteDocument((Drawing) data);
             tlDarwings.RefreshDataSource();
         }
 
@@ -109,8 +101,9 @@ namespace DesktopApp.Forms
             if (data != null)
             {
                 var parentDrw = (Drawing) data;
-                Controller.AddDocument(this,
-                    new DocumentEventArgs<Drawing> {Document = new Drawing {ParentId = parentDrw.Id}});
+                var newDoc = Controller.CreateDocument();
+                newDoc.ParentId = parentDrw.Id;
+                Controller.AddDocument(newDoc);
                 tlDarwings.RefreshDataSource();
             }
             tlDarwings.Selection[0].Expanded = true;

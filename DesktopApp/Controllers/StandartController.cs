@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using Core.DomainModel;
 using Core.Interfaces;
-using DesktopApp.Infrastructure;
 using DesktopApp.Interfaces;
 
 namespace DesktopApp.Controllers
 {
-    public class StandartController : IController<Standart> 
+    public class StandartController : IController<Standart>
     {
         private IClassDataManager<Drawing> _drawingsDataManager;
-        private IClassDataManager<Standart> _standartsDataManager;
+        private readonly IDataManagerFactory _dataManagerFactory;
+        private readonly IClassDataManager<Standart> _standartsDataManager;
 
         public StandartController(IDataManagerFactory dataManagerFactory)
         {
-            _drawingsDataManager = dataManagerFactory.GetDataManager<Drawing>();
-            _standartsDataManager = dataManagerFactory.GetDataManager<Standart>();
+            _dataManagerFactory = dataManagerFactory;
+            _standartsDataManager = _dataManagerFactory.GetDataManager<Standart>();
         }
 
         public List<Standart> GetData()
@@ -24,28 +24,37 @@ namespace DesktopApp.Controllers
         }
 
         public event EventHandler SourceRefreshed;
-        public void AddDocument(object sender, DocumentEventArgs<Standart> args)
+
+        public Standart CreateDocument()
         {
-            _standartsDataManager.InsertOrUpdate(args.Document);
+            return new Standart();
+        }
+
+        public void AddDocument(Standart doc)
+        {
+            _standartsDataManager.InsertOrUpdate(doc);
             if (SourceRefreshed != null)
                 SourceRefreshed(this, new EventArgs());
         }
 
-        public void UpdateDocument(object sender, DocumentEventArgs<Standart> args)
+        public void UpdateDocument(Standart doc)
         {
-            _standartsDataManager.Update(args.Document);
+            _standartsDataManager.Update(doc);
         }
 
-        public void DeleteDocument(object sender, DocumentEventArgs<Standart> args)
+        public void DeleteDocument(Standart doc)
         {
-            _standartsDataManager.Delete(args.Document);
+            _standartsDataManager.Delete(doc);
         }
 
         public List<IEntity> GetListRelatedDocument<TO>()
         {
-            if (typeof(TO) == typeof(Drawing))
+            if (_drawingsDataManager == null)
+                _drawingsDataManager = _dataManagerFactory.GetDataManager<Drawing>();
+
+            if (typeof (TO) == typeof (Drawing))
             {
-                return _drawingsDataManager.GetListCollection().ConvertAll(input => (IEntity)input);
+                return _drawingsDataManager.GetListCollection().ConvertAll(input => (IEntity) input);
             }
 
             return null;

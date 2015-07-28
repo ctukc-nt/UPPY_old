@@ -21,10 +21,7 @@ namespace DesktopApp.Forms
         public DrawingsListForm(IController<HierarchyNumberDrawing> controller)
         {
             InitializeComponent();
-            AddDocument += controller.AddDocument;
-            DeleteDocument += controller.DeleteDocument;
-            UpdateDocument += controller.UpdateDocument;
-
+          
             _controller = controller;
             _controller.SourceRefreshed += RefreshSource;
 
@@ -38,10 +35,6 @@ namespace DesktopApp.Forms
             get { return _controller; }
         }
 
-        public event DocumentEventHandler<HierarchyNumberDrawing> UpdateDocument;
-        public event DocumentEventHandler<HierarchyNumberDrawing> DeleteDocument;
-        public event DocumentEventHandler<HierarchyNumberDrawing> AddDocument;
-
         public void RefreshSource(object sender, EventArgs e)
         {
             gridControl1.DataSource = _controller.GetData();
@@ -49,8 +42,7 @@ namespace DesktopApp.Forms
 
         private void btnAddDrawing_Click(object sender, EventArgs e)
         {
-            Controller.AddDocument(this,
-               new DocumentEventArgs<HierarchyNumberDrawing> { Document = new HierarchyNumberDrawing() { Name = "Test", TechRouteId = 2 } });
+            Controller.AddDocument(Controller.CreateDocument());
             gridControl1.Focus();
         }
 
@@ -61,8 +53,9 @@ namespace DesktopApp.Forms
             if (data != null)
             {
                 var parentDrw = (Drawing)data;
-                Controller.AddDocument(this,
-                    new DocumentEventArgs<HierarchyNumberDrawing> { Document = new HierarchyNumberDrawing() { ParentId = parentDrw.Id } });
+                var newDoc = Controller.CreateDocument();
+                newDoc.ParentId = parentDrw.Id;
+                Controller.AddDocument(newDoc);
 
                 gridView1.FocusedRowHandle = ind;
                 gridControl1.RefreshDataSource();

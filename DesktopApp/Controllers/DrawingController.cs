@@ -25,24 +25,30 @@ namespace DesktopApp.Controllers
         }
 
         public event EventHandler SourceRefreshed;
-        public void AddDocument(object sender, DocumentEventArgs<Drawing> args)
+        public Drawing CreateDocument()
         {
-            _drawingsDataManager.InsertOrUpdate(args.Document);
+            throw new NotImplementedException();
+        }
+
+        public void AddDocument(Drawing doc)
+        {
+            _drawingsDataManager.InsertOrUpdate(doc);
             if (SourceRefreshed != null)
                 SourceRefreshed(this, new EventArgs());
         }
 
-        public void UpdateDocument(object sender, DocumentEventArgs<Drawing> args)
+        public void UpdateDocument(Drawing doc)
         {
-            _drawingsDataManager.Update(args.Document);
+            _drawingsDataManager.Update(doc);
         }
 
-        public void DeleteDocument(object sender, DocumentEventArgs<Drawing> args)
+        public void DeleteDocument(Drawing doc)
         {
-            _drawingsDataManager.Delete(args.Document);
+            _drawingsDataManager.Delete(doc);
             if (SourceRefreshed != null)
                 SourceRefreshed(this, new EventArgs());
         }
+
 
         public List<IEntity> GetListRelatedDocument<TO>()
         {

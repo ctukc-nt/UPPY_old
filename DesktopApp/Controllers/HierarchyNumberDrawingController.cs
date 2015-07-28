@@ -64,22 +64,26 @@ namespace DesktopApp.Controllers
         }
 
         public event EventHandler SourceRefreshed;
-
-        public void AddDocument(object sender, DocumentEventArgs<HierarchyNumberDrawing> args)
+        public HierarchyNumberDrawing CreateDocument()
         {
-            _drawingsDataManager.InsertOrUpdate(args.Document);
+            return new HierarchyNumberDrawing();
+        }
+
+        public void AddDocument(HierarchyNumberDrawing doc)
+        {
+            _drawingsDataManager.InsertOrUpdate(doc);
             if (SourceRefreshed != null)
                 SourceRefreshed(this, new EventArgs());
         }
 
-        public void UpdateDocument(object sender, DocumentEventArgs<HierarchyNumberDrawing> args)
+        public void UpdateDocument(HierarchyNumberDrawing doc)
         {
-            _drawingsDataManager.Update(args.Document);
+            _drawingsDataManager.Update(doc);
         }
 
-        public void DeleteDocument(object sender, DocumentEventArgs<HierarchyNumberDrawing> args)
+        public void DeleteDocument(HierarchyNumberDrawing doc)
         {
-            _drawingsDataManager.Delete(args.Document);
+            _drawingsDataManager.Delete(doc);
             if (SourceRefreshed != null)
                 SourceRefreshed(this, new EventArgs());
         }
