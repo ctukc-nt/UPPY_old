@@ -24,7 +24,7 @@ namespace DesktopApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new DrawingsListTreeForm(CompositionRoot.Resolve<IController<Drawing>>()));
-            Application.Run(new StandartEditForm());
+            Application.Run(new StandartEditForm(CompositionRoot.Resolve<IController<Standart>>()) {Document = new Standart()});
         }
     }
 }

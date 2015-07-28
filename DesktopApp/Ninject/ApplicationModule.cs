@@ -14,8 +14,10 @@ namespace DesktopApp.Ninject
         {
             Bind(typeof(IController<Drawing>)).To(typeof(DrawingController));
             Bind(typeof(IController<HierarchyNumberDrawing>)).To(typeof(HierarchyNumberDrawingController));
-            Bind(typeof(IClassDataManager<Drawing>)).To(typeof(ListClassDataManager));
+            Bind(typeof(IController<Standart>)).To(typeof(StandartController));
+            Bind(typeof(IClassDataManager<Drawing>)).To(typeof(DrawingClassDataManager));
             Bind(typeof(IClassDataManager<TechRoute>)).To(typeof(TechRoutesClassDataManager));
+            Bind(typeof(IClassDataManager<Standart>)).To(typeof(StandartClassDataManager));
         }
     }
 }

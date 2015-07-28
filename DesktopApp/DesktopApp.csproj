@@ -56,6 +56,7 @@
     <Compile Include="Controllers\ControllersFactory.cs" />
     <Compile Include="Controllers\HierarchyNumberDrawingController.cs" />
     <Compile Include="Controllers\DrawingController.cs" />
+    <Compile Include="Controllers\StandartController.cs" />
     <Compile Include="Forms\DrawingsListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,7 +87,7 @@
     <Compile Include="Interfaces\IDocEditForm.cs" />
     <Compile Include="Interfaces\IDocsListForm.cs" />
     <Compile Include="Interfaces\IDocumentsPrint.cs" />
-    <Compile Include="Interfaces\IFormFactory.cs" />
+    <Compile Include="Interfaces\IFormBuilder.cs" />
     <Compile Include="ITreeNodeDotNet3.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -98,8 +99,9 @@
     <Compile Include="Ninject\CompositionRoot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Temp\StandartClassDataManager.cs" />
     <Compile Include="Temp\TechRoutesClassDataManager.cs" />
-    <Compile Include="Temp\ListClassDataManager.cs" />
+    <Compile Include="Temp\DrawingClassDataManager.cs" />
     <Compile Include="View\HierarchyNumberDrawing.cs" />
     <EmbeddedResource Include="Forms\DrawingsListForm.resx">
       <DependentUpon>DrawingsListForm.cs</DependentUpon>
@@ -128,6 +130,8 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Core.DomainModel.Drawing.datasource" />
+    <None Include="Properties\DataSources\Core.DomainModel.PostitionStandart.datasource" />
+    <None Include="Properties\DataSources\Core.DomainModel.Standart.datasource" />
     <None Include="Properties\DataSources\Core.DomainModel.TechRoute.datasource" />
     <None Include="Properties\DataSources\Core.Drawing.datasource" />
     <None Include="Properties\Settings.settings">

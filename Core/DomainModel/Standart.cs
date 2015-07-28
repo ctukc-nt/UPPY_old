@@ -5,6 +5,12 @@ namespace Core.DomainModel
 {
     public class Standart : IEntity
     {
+
+        public Standart()
+        {
+            Positions = new List<PostitionStandart>();
+        }
+
         /// <summary>
         /// Коэффициент использования
         /// </summary>

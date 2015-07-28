@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace DesktopApp.Interfaces
 {
-    public interface IFormFactory
+    public interface IFormBuilder
     {
         Form GetForm(Type objectType, FormTypeEdition typeEdition);
 
