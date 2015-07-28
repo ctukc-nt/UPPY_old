@@ -4,11 +4,11 @@ using MongoDB.Driver;
 
 namespace MongoWork
 {
-    public class DataManagerFactory : IDataManagerFactory
+    public class DataManagersFactory : IDataManagersFactory
     {
         private readonly IMongoDatabase _database;
 
-        public DataManagerFactory(IMongoDatabase database)
+        public DataManagersFactory(IMongoDatabase database)
         {
             _database = database;
         }

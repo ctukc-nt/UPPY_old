@@ -13,10 +13,10 @@ namespace DesktopApp.Controllers
         private IClassDataManager<Drawing> _drawingsDataManager;
         private IClassDataManager<TechRoute> _techRouteDataManager;
 
-        public DrawingController(IDataManagerFactory dataManagerFactory)
+        public DrawingController(IDataManagersFactory dataManagersFactory)
         {
-            _drawingsDataManager = dataManagerFactory.GetDataManager<Drawing>();
-            _techRouteDataManager = dataManagerFactory.GetDataManager<TechRoute>();
+            _drawingsDataManager = dataManagersFactory.GetDataManager<Drawing>();
+            _techRouteDataManager = dataManagersFactory.GetDataManager<TechRoute>();
         }
 
         public List<Drawing> GetData()

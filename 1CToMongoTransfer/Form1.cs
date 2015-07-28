@@ -16,9 +16,9 @@ namespace _1CToMongoTransfer
 {
     public partial class Form1 : Form
     {
-        private readonly IDataManagerFactory dmFactory;
+        private readonly IDataManagersFactory dmFactory;
 
-        public Form1(IDataManagerFactory factory)
+        public Form1(IDataManagersFactory factory)
         {
             InitializeComponent();
             dmFactory = factory;

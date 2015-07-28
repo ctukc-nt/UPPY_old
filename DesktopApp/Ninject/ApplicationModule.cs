@@ -16,7 +16,7 @@ namespace DesktopApp.Ninject
         {
             var connection = new MongoDbConnection();
             Bind(typeof(IMongoDatabase)).ToConstant(connection.Database);
-            Bind(typeof(IDataManagerFactory)).To(typeof(UppyFakeDataManagerFactory));
+            Bind(typeof(IDataManagersFactory)).To(typeof(UppyFakeDataManagersFactory));
 
             //Bind(typeof(IClassDataManager<Drawing>)).To(typeof(DrawingListClassFakeDataManager));
             //Bind(typeof(IClassDataManager<TechRoute>)).To(typeof(TechRoutesClassFakeDataManager));

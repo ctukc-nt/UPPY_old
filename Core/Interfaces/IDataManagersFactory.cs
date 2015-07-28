@@ -3,7 +3,7 @@
     /// <summary>
     /// Фабрика управленцев данными
     /// </summary>
-    public interface IDataManagerFactory
+    public interface IDataManagersFactory
     {
         /// <summary>
         /// Получить управленца данными

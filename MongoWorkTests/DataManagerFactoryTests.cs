@@ -13,10 +13,10 @@ namespace MongoWorkTests
         public void GetDataManagerTest()
         {
             var dbMock = new Mock<IMongoDatabase>();
-            DataManagerFactory dataManagerFactory = new DataManagerFactory(dbMock.Object);
-            var dm = dataManagerFactory.GetDataManager<Drawing>();
-            var trm = dataManagerFactory.GetDataManager<TechRoute>();
-            var tom = dataManagerFactory.GetDataManager<TechOperation>();
+            DataManagersFactory dataManagersFactory = new DataManagersFactory(dbMock.Object);
+            var dm = dataManagersFactory.GetDataManager<Drawing>();
+            var trm = dataManagersFactory.GetDataManager<TechRoute>();
+            var tom = dataManagersFactory.GetDataManager<TechOperation>();
 
             Assert.NotNull(dm);
             Assert.NotNull(trm);

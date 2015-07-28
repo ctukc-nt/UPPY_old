@@ -21,7 +21,7 @@ namespace _1CToMongoTransfer
             CompositionRoot.Wire(new ApplicationModule());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1(CompositionRoot.Resolve<IDataManagerFactory>()));
+            Application.Run(new Form1(CompositionRoot.Resolve<IDataManagersFactory>()));
         }
     }
 }

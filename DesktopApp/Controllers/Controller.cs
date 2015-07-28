@@ -8,15 +8,15 @@ namespace DesktopApp.Controllers
 {
     public class Controller<T> : IController<T> where T : IEntity
     {
-        private readonly IDataManagerFactory _dataManagerFactory;
+        private readonly IDataManagersFactory _dataManagersFactory;
 
-        public Controller(IDataManagerFactory dataManagerFactory)
+        public Controller(IDataManagersFactory dataManagersFactory)
         {
-            _dataManagerFactory = dataManagerFactory;
+            _dataManagersFactory = dataManagersFactory;
         }
         public List<T> GetData()
         {
-            var dataManager = _dataManagerFactory.GetDataManager<T>();
+            var dataManager = _dataManagersFactory.GetDataManager<T>();
             return dataManager.GetListCollection();
         }
 
@@ -33,25 +33,25 @@ namespace DesktopApp.Controllers
 
         public void AddDocument(T doc)
         {
-            var dataManager = _dataManagerFactory.GetDataManager<T>();
+            var dataManager = _dataManagersFactory.GetDataManager<T>();
             dataManager.Insert(doc);
         }
 
         public void UpdateDocument(T doc)
         {
-            var dataManager = _dataManagerFactory.GetDataManager<T>();
+            var dataManager = _dataManagersFactory.GetDataManager<T>();
             dataManager.Update(doc);
         }
 
         public void DeleteDocument(T doc)
         {
-            var dataManager = _dataManagerFactory.GetDataManager<T>();
+            var dataManager = _dataManagersFactory.GetDataManager<T>();
             dataManager.Delete(doc);
         }
 
         public List<IEntity> GetListRelatedDocument<TO>() where TO : IEntity
         {
-            var dataManager = _dataManagerFactory.GetDataManager<TO>();
+            var dataManager = _dataManagersFactory.GetDataManager<TO>();
             return dataManager.GetListCollection().ConvertAll(x => (IEntity) x);
         }
 

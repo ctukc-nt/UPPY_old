@@ -12,7 +12,7 @@ namespace _1CToMongoTransfer.Ninject
             MongoDbConnection connection = new MongoDbConnection();
             Bind(typeof(IMongoDatabase)).ToConstant(connection.Database);
             Bind(typeof(IClassDataManager<>)).To(typeof(MongoDbDataManager<>));
-            Bind(typeof(IDataManagerFactory)).To(typeof(DataManagerFactory));
+            Bind(typeof(IDataManagersFactory)).To(typeof(DataManagersFactory));
         }
     }
 }

@@ -18,10 +18,10 @@ namespace DesktopApp.Controllers
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechRoute> _techRouteDataManager;
 
-        public HierarchyNumberDrawingController(IDataManagerFactory dataManagerFactory)
+        public HierarchyNumberDrawingController(IDataManagersFactory dataManagersFactory)
         {
-            _drawingsDataManager = dataManagerFactory.GetDataManager<Drawing>();
-            _techRouteDataManager = dataManagerFactory.GetDataManager<TechRoute>();
+            _drawingsDataManager = dataManagersFactory.GetDataManager<Drawing>();
+            _techRouteDataManager = dataManagersFactory.GetDataManager<TechRoute>();
         }
 
         public List<HierarchyNumberDrawing> GetData()

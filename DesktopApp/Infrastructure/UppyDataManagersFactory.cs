@@ -9,9 +9,9 @@ using MongoWork;
 
 namespace DesktopApp.Infrastructure
 {
-    public class UppyDataManagerFactory : DataManagerFactory
+    public class UppyDataManagersFactory : DataManagersFactory
     {
-        public UppyDataManagerFactory(IMongoDatabase database) : base(database)
+        public UppyDataManagersFactory(IMongoDatabase database) : base(database)
         {
 
         }

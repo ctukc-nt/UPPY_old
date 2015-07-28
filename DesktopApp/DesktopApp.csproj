@@ -64,6 +64,7 @@
     <Compile Include="Controllers\HierarchyNumberDrawingController.cs" />
     <Compile Include="Controllers\DrawingController.cs" />
     <Compile Include="Controllers\StandartController.cs" />
+    <Compile Include="Controllers\TechOperationController.cs" />
     <Compile Include="Forms\DrawingsListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,8 +103,8 @@
     </Compile>
     <Compile Include="Infrastructure\DocumentEventArgs.cs" />
     <Compile Include="Infrastructure\FormsBuilder.cs" />
-    <Compile Include="Infrastructure\UppyFakeDataManagerFactory.cs" />
-    <Compile Include="Infrastructure\UPPYDataManagerFactory.cs" />
+    <Compile Include="Infrastructure\UppyFakeDataManagersFactory.cs" />
+    <Compile Include="Infrastructure\UppyDataManagersFactory.cs" />
     <Compile Include="Infrastructure\DrawingsDataManager.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\IControllerFactory.cs" />
