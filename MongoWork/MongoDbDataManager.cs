@@ -188,7 +188,6 @@ namespace MongoWork
 
                 return 1;
             }
-
             return collection.FindOneAndUpdateAsync(id => id.DocName == typeof (T).Name, incrDocIdOptions).Result.DocId;
         }
 

@@ -9,7 +9,7 @@ namespace DesktopApp.Interfaces
     /// <summary>
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IController<T>
+    public interface IController<T> where T:IEntity
     {
         List<T> GetData();
 
@@ -22,7 +22,7 @@ namespace DesktopApp.Interfaces
         void AddDocument(T doc);
         void UpdateDocument(T doc);
         void DeleteDocument(T doc);
-        List<IEntity> GetListRelatedDocument<TO>();
+        List<IEntity> GetListRelatedDocument<TO>() where TO:IEntity;
 
         int CompareTwoDocuments(T doc1, T doc2);
     }

@@ -27,7 +27,7 @@ namespace DesktopApp.Controllers
         public event EventHandler SourceRefreshed;
         public Drawing CreateDocument()
         {
-            throw new NotImplementedException();
+           return new Drawing();
         }
 
         public void AddDocument(Drawing doc)
@@ -50,7 +50,7 @@ namespace DesktopApp.Controllers
         }
 
 
-        public List<IEntity> GetListRelatedDocument<TO>()
+        public List<IEntity> GetListRelatedDocument<TO>() where TO:IEntity
         {
             if (typeof(TO) == typeof(TechRoute))
             {

@@ -47,14 +47,14 @@ namespace DesktopApp.Controllers
             _standartsDataManager.Delete(doc);
         }
 
-        public List<IEntity> GetListRelatedDocument<TO>()
+        public List<IEntity> GetListRelatedDocument<TO>() where TO : IEntity
         {
             if (_drawingsDataManager == null)
                 _drawingsDataManager = _dataManagerFactory.GetDataManager<Drawing>();
 
-            if (typeof (TO) == typeof (Drawing))
+            if (typeof(TO) == typeof(Drawing))
             {
-                return _drawingsDataManager.GetListCollection().ConvertAll(input => (IEntity) input);
+                return _drawingsDataManager.GetListCollection().ConvertAll(x => (IEntity)x);
             }
 
             return null;

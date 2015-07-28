@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Controllers\ControllersFactory.cs" />
     <Compile Include="Controllers\HierarchyNumberDrawingController.cs" />
     <Compile Include="Controllers\DrawingController.cs" />

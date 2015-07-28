@@ -1,31 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core.DomainModel;
+﻿using Core.DomainModel;
 using Core.Interfaces;
 using DesktopApp.Interfaces;
-using DesktopApp.Temp;
 
 namespace DesktopApp.Controllers
 {
-    class ControllersFactory : IControllerFactory
+    internal class ControllersFactory : IControllerFactory
     {
-        private IDataManagerFactory _dataManagerFactory;
+        private readonly IDataManagerFactory _dataManagerFactory;
 
         public ControllersFactory(IDataManagerFactory dataManagerFactory)
         {
             _dataManagerFactory = dataManagerFactory;
         }
 
-        public IController<T> GetController<T>()
+        public IController<T> GetController<T>() where T : IEntity
         {
-            var type = typeof(T);
-            if (type == typeof(Drawing))
-                return (IController<T>)new DrawingController(_dataManagerFactory);
+            var type = typeof (T);
+            if (type == typeof (Drawing))
+                return (IController<T>) new DrawingController(_dataManagerFactory);
 
-            return null;
+            return new Controller<T>(_dataManagerFactory);
         }
     }
 }

@@ -88,7 +88,7 @@ namespace DesktopApp.Controllers
                 SourceRefreshed(this, new EventArgs());
         }
 
-        public List<IEntity> GetListRelatedDocument<TO>()
+        public List<IEntity> GetListRelatedDocument<TO>() where TO : IEntity
         {
             if (typeof(TO) == typeof(TechRoute))
             {

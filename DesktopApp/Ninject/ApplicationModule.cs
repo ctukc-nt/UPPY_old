@@ -30,6 +30,8 @@ namespace DesktopApp.Ninject
 
             Bind(typeof(IFormsBuilder)).To(typeof(FormsBuilder));
 
+            Bind(typeof (IController<TechOperation>)).To(typeof (Controller<TechOperation>));
+
 
 
         }
