@@ -13,21 +13,25 @@ using DesktopApp.Interfaces;
 
 namespace DesktopApp.Forms
 {
-    public partial class TechOperationsListForm : Form, IDocsListForm<Drawing>
+    public partial class TechOperationsListForm : Form, IDocsListForm<TechOperation>
     {
-        public TechOperationsListForm()
+
+        private IController<TechOperation> _controller;
+
+        public TechOperationsListForm(IController<TechOperation> controller)
         {
             InitializeComponent();
+            _controller = controller;
         }
 
-        public IController<Drawing> Controller
+        public IController<TechOperation> Controller
         {
-            get { throw new NotImplementedException(); }
+            get { return _controller; }
         }
 
-        public event DocumentEventHandler<Drawing> UpdateDocument;
-        public event DocumentEventHandler<Drawing> DeleteDocument;
-        public event DocumentEventHandler<Drawing> AddDocument;
+        public event DocumentEventHandler<TechOperation> UpdateDocument;
+        public event DocumentEventHandler<TechOperation> DeleteDocument;
+        public event DocumentEventHandler<TechOperation> AddDocument;
         public void RefreshSource(object sender, EventArgs e)
         {
             throw new NotImplementedException();
