@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.DomainModel;
@@ -7,7 +8,7 @@ using Core.Interfaces;
 namespace DesktopApp.Temp
 {
 
-    public class StandartClassDataManager : List<Standart>, IClassDataManager<Standart>
+    public class StandartClassFakeDataManager : List<Standart>, IClassDataManager<Standart>
     {
         private int _count = 0;
 
@@ -69,6 +70,11 @@ namespace DesktopApp.Temp
         public Task<Standart> GetDocumentAsync(int? id)
         {
             return new Task<Standart>(() => GetDocument(id));
+        }
+
+        public List<Standart> FindInDbDirectly(Func<Standart, bool> id)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Standart> FindInDbDirectlyById(int? id)

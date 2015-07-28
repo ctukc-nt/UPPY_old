@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.DomainModel;
@@ -6,9 +7,9 @@ using Core.Interfaces;
 
 namespace DesktopApp.Temp
 {
-    public class TechRoutesClassDataManager : List<TechRoute>, IClassDataManager<TechRoute>
+    public class TechRoutesClassFakeDataManager : List<TechRoute>, IClassDataManager<TechRoute>
     {
-        public TechRoutesClassDataManager()
+        public TechRoutesClassFakeDataManager()
         {
             Add(new TechRoute()
             {
@@ -16,8 +17,8 @@ namespace DesktopApp.Temp
                 Name = "A - B",
                 TechOperations = new List<TechOperation>()
                         {
-                            new TechOperation() {ShortName = "A"},
-                            new TechOperation() {ShortName = "B"},
+                            new TechOperation() {Id = 1, ShortName = "A"},
+                            new TechOperation() {Id = 2, ShortName = "B"},
                         }
             });
 
@@ -27,8 +28,8 @@ namespace DesktopApp.Temp
                 Name = "B - C",
                 TechOperations = new List<TechOperation>()
                         {
-                            new TechOperation() {ShortName = "B"},
-                            new TechOperation() {ShortName = "C"},
+                            new TechOperation() {Id = 2, ShortName = "B"},
+                            new TechOperation() {Id = 3, ShortName = "C"},
                         }
             });
         }
@@ -95,9 +96,11 @@ namespace DesktopApp.Temp
             return new Task<TechRoute>(() => GetDocument(id));
         }
 
-        public List<TechRoute> FindInDbDirectlyById(int? id)
+        public List<TechRoute> FindInDbDirectly(Func<TechRoute, bool> id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
+
+       
     }
 }

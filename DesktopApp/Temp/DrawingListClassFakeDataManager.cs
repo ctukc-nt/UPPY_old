@@ -7,11 +7,11 @@ using Core.Interfaces;
 
 namespace DesktopApp.Temp
 {
-    public class DrawingListClassDataManager : List<Drawing>, IClassDataManager<Drawing>
+    public class DrawingListClassFakeDataManager : List<Drawing>, IClassDataManager<Drawing>
     {
         private int _count;
 
-        public DrawingListClassDataManager()
+        public DrawingListClassFakeDataManager()
         {
             AddRange(new List<Drawing>
             {
@@ -83,6 +83,11 @@ namespace DesktopApp.Temp
         public Task<Drawing> GetDocumentAsync(int? id)
         {
             return new Task<Drawing>(() => GetDocument(id));
+        }
+
+        public List<Drawing> FindInDbDirectly(Func<Drawing, bool> id)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Drawing> FindInDbDirectlyById(int? id)

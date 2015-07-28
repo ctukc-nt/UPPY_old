@@ -1,6 +1,4 @@
-﻿using Core.DomainModel;
-
-namespace DesktopApp
+﻿namespace DesktopApp.Forms
 {
     partial class MainForm
     {
@@ -32,6 +30,7 @@ namespace DesktopApp
         {
             this.components = new System.ComponentModel.Container();
             this.drawingBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bDrawings = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.drawingBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,11 +38,21 @@ namespace DesktopApp
             // 
             this.drawingBindingSource.DataSource = typeof(Core.DomainModel.Drawing);
             // 
+            // bDrawings
+            // 
+            this.bDrawings.Location = new System.Drawing.Point(12, 22);
+            this.bDrawings.Name = "bDrawings";
+            this.bDrawings.Size = new System.Drawing.Size(157, 81);
+            this.bDrawings.TabIndex = 1;
+            this.bDrawings.Text = "Проекты";
+            this.bDrawings.Click += new System.EventHandler(this.bDrawings_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 391);
+            this.ClientSize = new System.Drawing.Size(538, 128);
+            this.Controls.Add(this.bDrawings);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -59,6 +68,7 @@ namespace DesktopApp
         private System.Windows.Forms.DataGridViewTextBoxColumn gOSTOnMaterialDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource drawingBindingSource;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcWeigthAll;
+        private DevExpress.XtraEditors.SimpleButton bDrawings;
     }
 }
 

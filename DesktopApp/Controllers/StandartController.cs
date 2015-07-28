@@ -12,11 +12,10 @@ namespace DesktopApp.Controllers
         private IClassDataManager<Drawing> _drawingsDataManager;
         private IClassDataManager<Standart> _standartsDataManager;
 
-        public StandartController(IClassDataManager<Standart> standartsDataManager,
-            IClassDataManager<Drawing> drawingsDataManager)
+        public StandartController(IDataManagerFactory dataManagerFactory)
         {
-            _standartsDataManager = standartsDataManager;
-            _drawingsDataManager = drawingsDataManager;
+            _drawingsDataManager = dataManagerFactory.GetDataManager<Drawing>();
+            _standartsDataManager = dataManagerFactory.GetDataManager<Standart>();
         }
 
         public List<Standart> GetData()

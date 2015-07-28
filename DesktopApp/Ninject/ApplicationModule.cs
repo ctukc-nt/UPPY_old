@@ -15,20 +15,20 @@ namespace DesktopApp.Ninject
         public override void Load()
         {
             var connection = new MongoDbConnection();
-            Bind(typeof (IMongoDatabase)).ToConstant(connection.Database);
-            Bind(typeof(IDataManagerFactory)).To(typeof(UppyDataManagerFactory));
+            Bind(typeof(IMongoDatabase)).ToConstant(connection.Database);
+            Bind(typeof(IDataManagerFactory)).To(typeof(UppyFakeDataManagerFactory));
 
-            //Bind(typeof(IClassDataManager<Drawing>)).To(typeof(DrawingListClassDataManager));
-            //Bind(typeof(IClassDataManager<TechRoute>)).To(typeof(TechRoutesClassDataManager));
-            //Bind(typeof(IClassDataManager<Standart>)).To(typeof(StandartClassDataManager));
+            //Bind(typeof(IClassDataManager<Drawing>)).To(typeof(DrawingListClassFakeDataManager));
+            //Bind(typeof(IClassDataManager<TechRoute>)).To(typeof(TechRoutesClassFakeDataManager));
+            //Bind(typeof(IClassDataManager<Standart>)).To(typeof(StandartClassFakeDataManager));
 
-            Bind(typeof (IControllerFactory)).To(typeof (ControllersFactory));
+            Bind(typeof(IControllerFactory)).To(typeof(ControllersFactory));
 
             //Bind(typeof(IController<Drawing>)).To(typeof(DrawingController));
             //Bind(typeof(IController<HierarchyNumberDrawing>)).To(typeof(HierarchyNumberDrawingController));
             //Bind(typeof(IController<Standart>)).To(typeof(StandartController));
 
-            Bind(typeof (IFormsBuilder)).To(typeof (ControllersFactory));
+            Bind(typeof(IFormsBuilder)).To(typeof(FormsBuilder));
 
 
 

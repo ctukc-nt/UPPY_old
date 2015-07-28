@@ -40,7 +40,9 @@
     <Reference Include="DevExpress.Utils.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="MongoDB.Driver, Version=2.0.1.27, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Assemblies\MongoDriver\MongoDB.Driver.dll</HintPath>
@@ -85,8 +87,15 @@
     <Compile Include="Forms\StandartEditForm.Designer.cs">
       <DependentUpon>StandartEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TechRoutesListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TechRoutesListForm.Designer.cs">
+      <DependentUpon>TechRoutesListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\DocumentEventArgs.cs" />
     <Compile Include="Infrastructure\FormsBuilder.cs" />
+    <Compile Include="Infrastructure\UppyFakeDataManagerFactory.cs" />
     <Compile Include="Infrastructure\UPPYDataManagerFactory.cs" />
     <Compile Include="Infrastructure\DrawingsDataManager.cs" />
     <Compile Include="Interfaces\IController.cs" />
@@ -107,9 +116,10 @@
     <Compile Include="Ninject\CompositionRoot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Temp\StandartClassDataManager.cs" />
-    <Compile Include="Temp\TechRoutesClassDataManager.cs" />
-    <Compile Include="Temp\DrawingListClassDataManager.cs" />
+    <Compile Include="Temp\StandartClassFakeDataManager.cs" />
+    <Compile Include="Temp\TechOperationClassFakeDataManager.cs" />
+    <Compile Include="Temp\TechRoutesClassFakeDataManager.cs" />
+    <Compile Include="Temp\DrawingListClassFakeDataManager.cs" />
     <Compile Include="View\HierarchyNumberDrawing.cs" />
     <EmbeddedResource Include="Forms\DrawingsListForm.resx">
       <DependentUpon>DrawingsListForm.cs</DependentUpon>
@@ -125,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StandartEditForm.resx">
       <DependentUpon>StandartEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TechRoutesListForm.resx">
+      <DependentUpon>TechRoutesListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Core;
 using Core.DomainModel;
+using DesktopApp.Interfaces;
+using DesktopApp.Ninject;
 
-namespace DesktopApp
+namespace DesktopApp.Forms
 {
     public partial class MainForm : Form
     {
@@ -22,6 +16,12 @@ namespace DesktopApp
         private void MainForm_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void bDrawings_Click(object sender, EventArgs e)
+        {
+            var form = CompositionRoot.Resolve<IFormsBuilder>().GetForm<Drawing>();
+            form.Show(this);
         }
     }
 }

@@ -7,7 +7,6 @@ using DesktopApp.Infrastructure;
 using DesktopApp.Interfaces;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
-using DevExpress.XtraTreeList.Handler;
 using DevExpress.XtraTreeList.Nodes;
 
 namespace DesktopApp.Forms
@@ -27,7 +26,7 @@ namespace DesktopApp.Forms
             _controller.SourceRefreshed += RefreshSource;
 
             repositoryItemLookUpEdit1.DataSource =
-                controller.GetListRelatedDocument<TechRoute>().ConvertAll(x => (TechRoute)x);
+                controller.GetListRelatedDocument<TechRoute>().ConvertAll(x => (TechRoute) x);
         }
 
         public IController<Drawing> Controller
@@ -47,7 +46,7 @@ namespace DesktopApp.Forms
             Drawing data = null;
             if (slctdNode != null)
             {
-                data = (Drawing)tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
+                data = (Drawing) tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
             }
 
             tlDarwings.DataSource = _controller.GetData();
@@ -87,32 +86,31 @@ namespace DesktopApp.Forms
         private void btnAddDrawing_Click(object sender, EventArgs e)
         {
             Controller.AddDocument(this,
-                new DocumentEventArgs<Drawing> { Document = new Drawing { Name = "Test", TechRouteId = 2 } });
+                new DocumentEventArgs<Drawing> {Document = new Drawing ()});
             tlDarwings.Focus();
         }
 
         private void tlDrawings_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
-            Controller.UpdateDocument(this, new DocumentEventArgs<Drawing> { Document = (Drawing)data });
+            Controller.UpdateDocument(this, new DocumentEventArgs<Drawing> {Document = (Drawing) data});
         }
 
         private void btnDelDrawing_Click(object sender, EventArgs e)
         {
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
-            Controller.DeleteDocument(this, new DocumentEventArgs<Drawing> { Document = (Drawing)data });
+            Controller.DeleteDocument(this, new DocumentEventArgs<Drawing> {Document = (Drawing) data});
             tlDarwings.RefreshDataSource();
         }
 
         private void btnAddSubDrawing_Click(object sender, EventArgs e)
         {
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
-            var selectedNode = tlDarwings.Selection[0];
             if (data != null)
             {
-                var parentDrw = (Drawing)data;
+                var parentDrw = (Drawing) data;
                 Controller.AddDocument(this,
-                    new DocumentEventArgs<Drawing> { Document = new Drawing { ParentId = parentDrw.Id } });
+                    new DocumentEventArgs<Drawing> {Document = new Drawing {ParentId = parentDrw.Id}});
                 tlDarwings.RefreshDataSource();
             }
             tlDarwings.Selection[0].Expanded = true;
@@ -121,7 +119,7 @@ namespace DesktopApp.Forms
 
         private void repositoryItemLookUpEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
-
+            
         }
 
         private void btnRefreshSource_Click(object sender, EventArgs e)
@@ -129,7 +127,6 @@ namespace DesktopApp.Forms
             var listId = SaveNodeStates(tlDarwings.Nodes).ToList();
             RefreshSource(this, null);
             LoadNodesState(listId);
-
         }
 
         private void LoadNodesState(List<int?> listId)
@@ -143,13 +140,13 @@ namespace DesktopApp.Forms
             }
         }
 
-        private IEnumerable<int?> SaveNodeStates(TreeListNodes nodes )
+        private IEnumerable<int?> SaveNodeStates(TreeListNodes nodes)
         {
             foreach (TreeListNode treeListNode in nodes)
             {
                 if (treeListNode.Expanded)
                 {
-                    var data = (Drawing)tlDarwings.GetDataRecordByNode(treeListNode);
+                    var data = (Drawing) tlDarwings.GetDataRecordByNode(treeListNode);
                     yield return data.Id;
 
                     foreach (var id in SaveNodeStates(treeListNode.Nodes))
@@ -157,7 +154,6 @@ namespace DesktopApp.Forms
                         yield return id;
                     }
                 }
-                
             }
         }
     }
