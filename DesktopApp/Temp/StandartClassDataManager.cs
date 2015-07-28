@@ -70,5 +70,10 @@ namespace DesktopApp.Temp
         {
             return new Task<Standart>(() => GetDocument(id));
         }
+
+        public List<Standart> FindInDbDirectlyById(int? id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

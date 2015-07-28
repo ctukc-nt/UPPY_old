@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Core.Interfaces;
 using MongoDB.Driver;
@@ -149,6 +150,13 @@ namespace MongoWork
             await res;
 
             return res.Result;
+        }
+
+        
+
+        public List<T> FindInDbDirectly(Func<T, bool> filter)
+        {
+            return GetCollection().Find(x => filter(x)).ToListAsync().Result;
         }
 
         private IMongoCollection<T> GetCollection()

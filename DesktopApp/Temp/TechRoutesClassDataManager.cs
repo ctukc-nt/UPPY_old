@@ -94,5 +94,10 @@ namespace DesktopApp.Temp
         {
             return new Task<TechRoute>(() => GetDocument(id));
         }
+
+        public List<TechRoute> FindInDbDirectlyById(int? id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

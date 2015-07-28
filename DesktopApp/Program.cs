@@ -23,8 +23,7 @@ namespace DesktopApp
             CompositionRoot.Wire(new ApplicationModule());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new DrawingsListTreeForm(CompositionRoot.Resolve<IController<Drawing>>()));
-            Application.Run(new StandartEditForm(CompositionRoot.Resolve<IController<Standart>>()) {Document = new Standart()});
+            Application.Run(CompositionRoot.Resolve<MainForm>());
         }
     }
 }

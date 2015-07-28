@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Core.Interfaces
@@ -6,57 +7,66 @@ namespace Core.Interfaces
     public interface IClassDataManager<T> where T : IEntity
     {
         /// <summary>
-        /// Получить список документов асинхронно
+        ///     Получить список документов асинхронно
         /// </summary>
         /// <returns></returns>
         Task<List<T>> GetListCollectionAsync();
-        
+
         /// <summary>
-        /// Получить список документов
+        ///     Получить список документов
         /// </summary>
         List<T> GetListCollection();
 
         /// <summary>
-        /// Вставить документ
+        ///     Вставить документ
         /// </summary>
         void Insert(T doc);
 
         /// <summary>
-        /// Вставить документ асинхронно
+        ///     Вставить документ асинхронно
         /// </summary>
         void InsertAsync(T doc);
 
         /// <summary>
-        /// Вставить документ
+        ///     Вставить документ
         /// </summary>
         void Update(T doc);
 
         /// <summary>
-        /// Обновить документ асинхронно
+        ///     Обновить документ асинхронно
         /// </summary>
         void UpdateAsync(T doc);
 
         /// <summary>
-        /// Удалить документ
+        ///     Удалить документ
         /// </summary>
         void Delete(T doc);
 
         /// <summary>
-        /// Удалить документ асинхронно
+        ///     Удалить документ асинхронно
         /// </summary>
         void DeleteAsync(T doc);
 
         /// <summary>
-        /// Вставить или обновить документ
+        ///     Вставить или обновить документ
         /// </summary>
         void InsertOrUpdate(T doc);
+
+        /// <summary>
+        ///     Получить документ
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         T GetDocument(int? id);
 
         /// <summary>
-        /// Получить документ асинхронно
+        ///     Получить документ асинхронно
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         Task<T> GetDocumentAsync(int? id);
+        
+
+        List<T> FindInDbDirectly(Func<T, bool> id);
     }
 }

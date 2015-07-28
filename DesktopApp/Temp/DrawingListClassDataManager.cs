@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.DomainModel;
@@ -6,11 +7,11 @@ using Core.Interfaces;
 
 namespace DesktopApp.Temp
 {
-    public class DrawingClassDataManager : List<Drawing>, IClassDataManager<Drawing>
+    public class DrawingListClassDataManager : List<Drawing>, IClassDataManager<Drawing>
     {
         private int _count;
 
-        public DrawingClassDataManager()
+        public DrawingListClassDataManager()
         {
             AddRange(new List<Drawing>
             {
@@ -82,6 +83,11 @@ namespace DesktopApp.Temp
         public Task<Drawing> GetDocumentAsync(int? id)
         {
             return new Task<Drawing>(() => GetDocument(id));
+        }
+
+        public List<Drawing> FindInDbDirectlyById(int? id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
