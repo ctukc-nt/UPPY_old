@@ -37,27 +37,27 @@ namespace UPPY.Desktop.Views
             var sourdeDataGrid =
                 Document.TechOperations.ConvertAll(x => new OrdersOperations() { Order = order++, TechOperationId = x.Id });
 
-            gridControl1.DataSource = sourdeDataGrid;
+            gridControlTechOperations.DataSource = sourdeDataGrid;
 
-            repositoryItemGridLookUpEdit1.DataSource =
+            repoTechOperations.DataSource =
                 _techRouteDocumentController.GetListRelatedDocument<TechOperation>();
         }
 
         private void btnAdd_Click(object sender, System.EventArgs e)
         {
-            ((List<OrdersOperations>)gridControl1.DataSource).Add(new OrdersOperations() { Order = ((List<OrdersOperations>)gridControl1.DataSource).Count + 1, TechOperationId = null });
-            gridControl1.RefreshDataSource();
+            ((List<OrdersOperations>)gridControlTechOperations.DataSource).Add(new OrdersOperations() { Order = ((List<OrdersOperations>)gridControlTechOperations.DataSource).Count + 1, TechOperationId = null });
+            gridControlTechOperations.RefreshDataSource();
         }
 
         private void btnDelete_Click(object sender, System.EventArgs e)
         {
-            ((List<OrdersOperations>) gridControl1.DataSource).Remove((OrdersOperations) gridView1.GetFocusedRow());
-            gridControl1.RefreshDataSource();
+            ((List<OrdersOperations>) gridControlTechOperations.DataSource).Remove((OrdersOperations) gridView1.GetFocusedRow());
+            gridControlTechOperations.RefreshDataSource();
         }
 
         private void btnOk_Click(object sender, System.EventArgs e)
         {
-            Document.TechOperations = ((List<OrdersOperations>)gridControl1.DataSource).ConvertAll(x => _techRouteDocumentController.GetListRelatedDocument<TechOperation>().Find(y=>y.Id == x.TechOperationId));
+            Document.TechOperations = ((List<OrdersOperations>)gridControlTechOperations.DataSource).ConvertAll(x => _techRouteDocumentController.GetListRelatedDocument<TechOperation>().Find(y=>y.Id == x.TechOperationId));
             DialogResult = DialogResult.OK;
             Close();
         }

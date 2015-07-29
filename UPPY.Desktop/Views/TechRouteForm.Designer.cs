@@ -30,11 +30,11 @@
         {
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridControlTechOperations = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gcOrder = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcTechOper = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemGridLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.repoTechOperations = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.techOperationBindingSource = new System.Windows.Forms.BindingSource();
             this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -45,9 +45,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlTechOperations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoTechOperations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.techOperationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
             this.SuspendLayout();
@@ -70,19 +70,19 @@
             this.textEdit2.Size = new System.Drawing.Size(583, 20);
             this.textEdit2.TabIndex = 1;
             // 
-            // gridControl1
+            // gridControlTechOperations
             // 
-            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gridControlTechOperations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.Location = new System.Drawing.Point(12, 112);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemGridLookUpEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(676, 228);
-            this.gridControl1.TabIndex = 2;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridControlTechOperations.Location = new System.Drawing.Point(12, 112);
+            this.gridControlTechOperations.MainView = this.gridView1;
+            this.gridControlTechOperations.Name = "gridControlTechOperations";
+            this.gridControlTechOperations.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repoTechOperations});
+            this.gridControlTechOperations.Size = new System.Drawing.Size(676, 228);
+            this.gridControlTechOperations.TabIndex = 2;
+            this.gridControlTechOperations.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
@@ -90,7 +90,7 @@
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gcOrder,
             this.gcTechOper});
-            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.GridControl = this.gridControlTechOperations;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsCustomization.AllowColumnResizing = false;
             this.gridView1.OptionsCustomization.AllowFilter = false;
@@ -114,22 +114,22 @@
             // gcTechOper
             // 
             this.gcTechOper.Caption = "Тех. операция";
-            this.gcTechOper.ColumnEdit = this.repositoryItemGridLookUpEdit1;
+            this.gcTechOper.ColumnEdit = this.repoTechOperations;
             this.gcTechOper.FieldName = "TechOperationId";
             this.gcTechOper.Name = "gcTechOper";
             this.gcTechOper.Visible = true;
             this.gcTechOper.VisibleIndex = 1;
             // 
-            // repositoryItemGridLookUpEdit1
+            // repoTechOperations
             // 
-            this.repositoryItemGridLookUpEdit1.AutoHeight = false;
-            this.repositoryItemGridLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repoTechOperations.AutoHeight = false;
+            this.repoTechOperations.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemGridLookUpEdit1.DataSource = this.techOperationBindingSource;
-            this.repositoryItemGridLookUpEdit1.DisplayMember = "ShortName";
-            this.repositoryItemGridLookUpEdit1.Name = "repositoryItemGridLookUpEdit1";
-            this.repositoryItemGridLookUpEdit1.ValueMember = "Id";
-            this.repositoryItemGridLookUpEdit1.View = this.repositoryItemGridLookUpEdit1View;
+            this.repoTechOperations.DataSource = this.techOperationBindingSource;
+            this.repoTechOperations.DisplayMember = "ShortName";
+            this.repoTechOperations.Name = "repoTechOperations";
+            this.repoTechOperations.ValueMember = "Id";
+            this.repoTechOperations.View = this.repositoryItemGridLookUpEdit1View;
             // 
             // techOperationBindingSource
             // 
@@ -213,7 +213,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.gridControlTechOperations);
             this.Controls.Add(this.textEdit2);
             this.Controls.Add(this.textEdit1);
             this.Name = "TechRouteForm";
@@ -221,9 +221,9 @@
             this.Load += new System.EventHandler(this.TechRouteForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlTechOperations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoTechOperations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.techOperationBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
             this.ResumeLayout(false);
@@ -235,13 +235,13 @@
 
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl gridControlTechOperations;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gcOrder;
         private DevExpress.XtraGrid.Columns.GridColumn gcTechOper;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repositoryItemGridLookUpEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repoTechOperations;
         private System.Windows.Forms.BindingSource techOperationBindingSource;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit1View;
         private System.Windows.Forms.Button btnDelete;
