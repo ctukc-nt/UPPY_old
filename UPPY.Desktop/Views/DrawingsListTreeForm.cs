@@ -22,7 +22,7 @@ namespace UPPY.Desktop.Views
             _controller = controller;
             _controller.DataRefreshed += RefreshData;
 
-            repositoryItemLookUpEdit1.DataSource =
+            repoTechRoutes.DataSource =
                 controller.GetListRelatedDocument<TechRoute>().ConvertAll(x => (TechRoute) x);
         }
 
@@ -110,7 +110,7 @@ namespace UPPY.Desktop.Views
             tlDarwings.Focus();
         }
 
-        private void repositoryItemLookUpEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
+        private void repoTechRoutes_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
            
         }

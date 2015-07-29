@@ -48,7 +48,7 @@
             this.tlcOp = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcPartOfDrawingId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcTechRouteId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.repoTechRoutes = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.techRouteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnAddDrawing = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelDrawing = new DevExpress.XtraEditors.SimpleButton();
@@ -56,7 +56,7 @@
             this.btnRefreshSource = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.rProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tlDarwings)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoTechRoutes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,7 +98,7 @@
             this.tlDarwings.OptionsFilter.FilterMode = DevExpress.XtraTreeList.FilterMode.Extended;
             this.tlDarwings.ParentFieldName = "ParentId";
             this.tlDarwings.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemLookUpEdit1});
+            this.repoTechRoutes});
             this.tlDarwings.RootValue = null;
             this.tlDarwings.Size = new System.Drawing.Size(944, 322);
             this.tlDarwings.TabIndex = 2;
@@ -231,23 +231,23 @@
             // tlcTechRouteId
             // 
             this.tlcTechRouteId.Caption = "Тех. маршрут";
-            this.tlcTechRouteId.ColumnEdit = this.repositoryItemLookUpEdit1;
+            this.tlcTechRouteId.ColumnEdit = this.repoTechRoutes;
             this.tlcTechRouteId.FieldName = "TechRouteId";
             this.tlcTechRouteId.Name = "tlcTechRouteId";
             this.tlcTechRouteId.Visible = true;
             this.tlcTechRouteId.VisibleIndex = 15;
             // 
-            // repositoryItemLookUpEdit1
+            // repoTechRoutes
             // 
-            this.repositoryItemLookUpEdit1.AutoHeight = false;
-            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repoTechRoutes.AutoHeight = false;
+            this.repoTechRoutes.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.repositoryItemLookUpEdit1.DataSource = this.techRouteBindingSource;
-            this.repositoryItemLookUpEdit1.DisplayMember = "Name";
-            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
-            this.repositoryItemLookUpEdit1.ValueMember = "Id";
-            this.repositoryItemLookUpEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemLookUpEdit1_ButtonClick);
+            this.repoTechRoutes.DataSource = this.techRouteBindingSource;
+            this.repoTechRoutes.DisplayMember = "Name";
+            this.repoTechRoutes.Name = "repoTechRoutes";
+            this.repoTechRoutes.ValueMember = "Id";
+            this.repoTechRoutes.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repoTechRoutes_ButtonClick);
             // 
             // techRouteBindingSource
             // 
@@ -308,7 +308,7 @@
             this.Load += new System.EventHandler(this.DrawingsListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tlDarwings)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoTechRoutes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -338,7 +338,7 @@
         private DevExpress.XtraEditors.SimpleButton btnDelDrawing;
         private DevExpress.XtraEditors.SimpleButton btnAddSubDrawing;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox rProfile;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repoTechRoutes;
         private System.Windows.Forms.BindingSource techRouteBindingSource;
         private DevExpress.XtraEditors.SimpleButton btnRefreshSource;
     }
