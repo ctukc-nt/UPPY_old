@@ -14,7 +14,7 @@ namespace DesktopApp.Interfaces
         /// <summary>
         ///     Эвент, что данные обновились
         /// </summary>
-        event EventHandler SourceRefreshed;
+        event EventHandler DataRefreshed;
 
         T CreateDocument();
         void SaveDocument(T doc);
