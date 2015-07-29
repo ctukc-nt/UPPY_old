@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Core.DomainModel;
 using DesktopApp.Interfaces;
+using DesktopApp.Ninject;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
@@ -111,6 +112,9 @@ namespace DesktopApp.Forms
 
         private void repositoryItemLookUpEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
+            var formsBuilder = CompositionRoot.Resolve<IFormsBuilder>();
+            var techRouteForm = formsBuilder.GetForm<TechRoute>();
+            techRouteForm.ShowDialog(this);
         }
 
         private void btnRefreshSource_Click(object sender, EventArgs e)

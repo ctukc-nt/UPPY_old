@@ -16,7 +16,7 @@ namespace DesktopApp.Controllers
             throw new NotImplementedException();
         }
 
-        public event EventHandler SourceRefreshed;
+        public event EventHandler DataRefreshed;
         public TechRoute CreateDocument()
         {
             throw new NotImplementedException();

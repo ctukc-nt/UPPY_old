@@ -20,7 +20,7 @@ namespace DesktopApp.Controllers
             return dataManager.GetListCollection();
         }
 
-        public event EventHandler SourceRefreshed;
+        public event EventHandler DataRefreshed;
 
         public T CreateDocument()
         {

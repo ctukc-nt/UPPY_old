@@ -27,7 +27,6 @@ namespace DesktopApp.Forms
             switch (e.Button.ButtonType)
             {
                 case NavigatorButtonType.Edit:
-                    _techRouteController.ExternalEditDocument(gridView1.GetFocusedRow());
                     e.Handled = true;
                     break;
                 case NavigatorButtonType.Append:
