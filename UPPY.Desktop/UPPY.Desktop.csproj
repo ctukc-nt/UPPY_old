@@ -57,10 +57,10 @@
     <Compile Include="Controllers\TechRouteListController.cs" />
     <Compile Include="Factorys\ControllersFactory.cs" />
     <Compile Include="Fake\UppyFakeDataManagersFactory.cs" />
-    <Compile Include="Interfaces\IControllerDocument.cs" />
-    <Compile Include="Interfaces\IControllerList.cs" />
-    <Compile Include="Interfaces\IControllerListView.cs" />
-    <Compile Include="Interfaces\IControllersFactory.cs" />
+    <Compile Include="Interfaces\Controllers\IControllerDocument.cs" />
+    <Compile Include="Interfaces\Controllers\IControllerList.cs" />
+    <Compile Include="Interfaces\Controllers\IControllerListView.cs" />
+    <Compile Include="Interfaces\Controllers\IControllersFactory.cs" />
     <Compile Include="Interfaces\IListView.cs" />
     <Compile Include="Interfaces\IView.cs" />
     <Compile Include="Ninject\ApplicationModule.cs" />

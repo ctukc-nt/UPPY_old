@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Core.Interfaces;
 using UPPY.Desktop.Interfaces;
+using UPPY.Desktop.Interfaces.Controllers;
 
 namespace UPPY.Desktop
 {
