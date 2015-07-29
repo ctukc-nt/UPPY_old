@@ -43,6 +43,21 @@ namespace DesktopApp.Controllers
             dataManager.Delete(doc);
         }
 
+        public void ExternalAddDocument(T doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ExternalEditDocument(object doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ExternalDeleteDocument(T doc)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<IEntity> GetListRelatedDocument<TO>() where TO : IEntity
         {
             var dataManager = _dataManagersFactory.GetDataManager<TO>();
