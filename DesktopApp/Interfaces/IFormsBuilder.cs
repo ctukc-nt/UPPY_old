@@ -6,6 +6,7 @@ namespace DesktopApp.Interfaces
     {
         Form GetForm<T>(FormTypeEdition typeEdition);
         Form GetForm<T>();
+        Form GetForm<T>(T doc);
         Form GetMainForm();
     }
 

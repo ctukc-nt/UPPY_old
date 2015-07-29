@@ -23,5 +23,11 @@ namespace DesktopApp.Forms
             var form = CompositionRoot.Resolve<IFormsBuilder>().GetForm<Drawing>();
             form.Show(this);
         }
+
+        private void btnStandarts_Click(object sender, EventArgs e)
+        {
+            var form = CompositionRoot.Resolve<IFormsBuilder>().GetForm<Standart>();
+            form.Show(this);
+        }
     }
 }

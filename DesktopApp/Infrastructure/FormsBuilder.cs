@@ -32,6 +32,11 @@ namespace DesktopApp.Infrastructure
             return GetForm<T>(FormTypeEdition.List);
         }
 
+        public Form GetForm<T>(T doc)
+        {
+            throw new NotImplementedException();
+        }
+
         public Form GetMainForm()
         {
             throw new NotImplementedException();
