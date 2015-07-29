@@ -1,9 +1,9 @@
 ﻿using Core.Interfaces;
 
-namespace UPPY.Desktop.Interfaces
+namespace UPPY.Desktop.Interfaces.Controllers
 {
     public interface IControllerListView<T> : IControllerList<T> where T:IEntity
     {
-        void ShowView();
+        bool ShowView();
     }
 }

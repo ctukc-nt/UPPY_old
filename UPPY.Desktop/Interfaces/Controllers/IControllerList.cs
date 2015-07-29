@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Core.DomainModel;
 using Core.Interfaces;
 
-namespace UPPY.Desktop.Interfaces
+namespace UPPY.Desktop.Interfaces.Controllers
 {
     public interface IBaseController
     {

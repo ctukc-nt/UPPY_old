@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Core.DomainModel;
 using Core.Interfaces;
 using UPPY.Desktop.Interfaces;
@@ -15,11 +16,16 @@ namespace UPPY.Desktop.Controllers
     {
         public TechRoute Document { get; set; }
 
-        public void ShowEditor()
+        public bool ShowEditor()
         {
             var view = new TechRouteForm(this);
             view.Document = Document;
-            view.ShowDialog();
+            if (view.ShowDialog() == DialogResult.OK)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public TechRouteDocumentController(IControllersFactory controllersFactory, IDataManagersFactory dataManagersFactory) : base(controllersFactory, dataManagersFactory)

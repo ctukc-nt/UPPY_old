@@ -7,6 +7,7 @@ using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using UPPY.Desktop.Interfaces;
+using UPPY.Desktop.Interfaces.Controllers;
 
 namespace UPPY.Desktop.Views
 {

@@ -102,10 +102,14 @@
     <EmbeddedResource Include="Views\DrawingsListTreeForm.resx">
       <DependentUpon>DrawingsListTreeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\TechRouteForm.resx">
+      <DependentUpon>TechRouteForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\TechRoutesListForm.resx">
       <DependentUpon>TechRoutesListForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Core.DomainModel.TechOperation.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

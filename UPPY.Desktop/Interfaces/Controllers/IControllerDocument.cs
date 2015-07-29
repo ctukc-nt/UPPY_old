@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace UPPY.Desktop.Interfaces
+﻿namespace UPPY.Desktop.Interfaces.Controllers
 {
     public interface IControllerDocument<T> : IBaseController
     {
         T Document { get; set; }
-        void ShowEditor();
+        bool ShowEditor();
     }
 }

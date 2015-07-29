@@ -8,6 +8,11 @@ namespace Core.DomainModel
     /// </summary>
     public class TechRoute : IEntity
     {
+        public TechRoute()
+        {
+            TechOperations = new List<TechOperation>();
+        }
+
         /// <summary>
         /// ИД
         /// </summary>

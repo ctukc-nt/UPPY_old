@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using Core.DomainModel;
 using Core.Interfaces;
-using UPPY.Desktop.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Views;
 
@@ -50,7 +50,12 @@ namespace UPPY.Desktop.Controllers
             var controller = _factory.GetControllerDocument<TechRoute>();
             controller.Document = document;
 
-            controller.ShowEditor();
+            if (controller.ShowEditor())
+            {
+                Save(controller.Document);
+                if (DataRefreshed != null)
+                    DataRefreshed(this, new EventArgs());
+            }
         }
 
         public void ShowAnotherListDocument<TO>() where TO : IEntity
@@ -59,10 +64,15 @@ namespace UPPY.Desktop.Controllers
             controller.ShowView();
         }
 
-        public void ShowView()
+        public bool ShowView()
         {
             var view = new TechRoutesListForm(this);
-            view.ShowDialog();
+            if (view.ShowDialog() == DialogResult.OK)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
