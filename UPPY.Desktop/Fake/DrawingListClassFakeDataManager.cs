@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Core.DomainModel;
 using Core.Interfaces;
 
-namespace DesktopApp.Temp
+namespace UPPY.Desktop.Fake
 {
     public class DrawingListClassFakeDataManager : List<Drawing>, IClassDataManager<Drawing>
     {

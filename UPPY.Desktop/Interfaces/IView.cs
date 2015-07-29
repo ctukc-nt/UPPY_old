@@ -4,9 +4,4 @@
     {
         T Document { get; set; }
     }
-
-    public interface IListView<T>
-    {
-        T SelectedDocument { get; set; }
-    }
 }

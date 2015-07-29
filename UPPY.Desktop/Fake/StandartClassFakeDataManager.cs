@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Core.DomainModel;
 using Core.Interfaces;
 
-namespace DesktopApp.Temp
+namespace UPPY.Desktop.Fake
 {
 
     public class StandartClassFakeDataManager : List<Standart>, IClassDataManager<Standart>

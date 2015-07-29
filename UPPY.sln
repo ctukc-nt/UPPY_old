@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoWorkTests", "MongoWork
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopAppTests", "DesktopAppTests\DesktopAppTests.csproj", "{0CB94D57-DA1E-49BD-B31D-32BC0D0B0F51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPPY.Desktop", "UPPY.Desktop\UPPY.Desktop.csproj", "{5DD3D891-6B7C-49B1-B432-EEFC67041074}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{0CB94D57-DA1E-49BD-B31D-32BC0D0B0F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CB94D57-DA1E-49BD-B31D-32BC0D0B0F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CB94D57-DA1E-49BD-B31D-32BC0D0B0F51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DD3D891-6B7C-49B1-B432-EEFC67041074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD3D891-6B7C-49B1-B432-EEFC67041074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD3D891-6B7C-49B1-B432-EEFC67041074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD3D891-6B7C-49B1-B432-EEFC67041074}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

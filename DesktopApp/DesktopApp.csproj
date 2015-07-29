@@ -191,6 +191,10 @@
       <Project>{371a01eb-92ff-4fef-871d-da6e19a8fdd8}</Project>
       <Name>MongoWork</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UPPY.Desktop\UPPY.Desktop.csproj">
+      <Project>{5DD3D891-6B7C-49B1-B432-EEFC67041074}</Project>
+      <Name>UPPY.Desktop</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

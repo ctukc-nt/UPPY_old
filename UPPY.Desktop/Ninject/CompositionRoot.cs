@@ -1,7 +1,7 @@
 ﻿using Ninject;
 using Ninject.Modules;
 
-namespace DesktopApp.Ninject
+namespace UPPY.Desktop.Ninject
 {
     public class CompositionRoot
     {
