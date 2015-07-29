@@ -1,10 +1,8 @@
 ﻿using System.Windows.Forms;
 using Core.DomainModel;
-
-using DevExpress.XtraEditors;
 using UPPY.Desktop.Interfaces;
 
-namespace DesktopApp.Forms
+namespace UPPY.Desktop.Views
 {
     public partial class TechRoutesListForm : Form, IListView<TechRoute>
     {
@@ -23,28 +21,27 @@ namespace DesktopApp.Forms
             get { return _techRouteController; }
         }
 
-        private void cnTechRouteOperations_ButtonClick(object sender, NavigatorButtonClickEventArgs e)
-        {
-            switch (e.Button.ButtonType)
-            {
-                case NavigatorButtonType.Edit:
-                    e.Handled = true;
-                    break;
-                case NavigatorButtonType.Append:
-                    e.Handled = true;
-                    break;
-                case NavigatorButtonType.Remove:
-                    e.Handled = true;
-                    break;
-                default:
-                    break;
-            }
-        }
-
         public TechRoute SelectedDocument
         {
             get { throw new System.NotImplementedException(); }
             set { throw new System.NotImplementedException(); }
+        }
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            var newDoc = _techRouteController.CreateDocument();
+            _techRouteController.EditExternal(newDoc);
+            _techRouteController.Save(newDoc);
+        }
+
+        private void button2_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, System.EventArgs e)
+        {
+
         }
     }
 }
