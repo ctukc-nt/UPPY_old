@@ -19,7 +19,7 @@ namespace DesktopApp.Forms
             InitializeComponent();
 
             _controller = controller;
-            _controller.SourceRefreshed += RefreshSource;
+            _controller.DataRefreshed += RefreshData;
 
             repositoryItemLookUpEdit1.DataSource =
                 controller.GetListRelatedDocument<TechRoute>().ConvertAll(x => (TechRoute) x);
@@ -30,7 +30,7 @@ namespace DesktopApp.Forms
             get { return _controller; }
         }
 
-        public void RefreshSource(object sender, EventArgs e)
+        public void RefreshData(object sender, EventArgs e)
         {
             tlDarwings.BeginUpdate();
             var state = SaveNodeStates(tlDarwings.Nodes).ToList();
@@ -116,7 +116,7 @@ namespace DesktopApp.Forms
         private void btnRefreshSource_Click(object sender, EventArgs e)
         {
             var listId = SaveNodeStates(tlDarwings.Nodes).ToList();
-            RefreshSource(this, null);
+            RefreshData(this, null);
             LoadNodesState(listId);
         }
 

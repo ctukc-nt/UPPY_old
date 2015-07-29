@@ -63,7 +63,7 @@ namespace DesktopApp.Controllers
             return drawing.Order + ".";
         }
 
-        public event EventHandler SourceRefreshed;
+        public event EventHandler DataRefreshed;
         public HierarchyNumberDrawing CreateDocument()
         {
             return new HierarchyNumberDrawing();
@@ -72,15 +72,15 @@ namespace DesktopApp.Controllers
         public void SaveDocument(HierarchyNumberDrawing doc)
         {
             _drawingsDataManager.InsertOrUpdate(doc);
-            if (SourceRefreshed != null)
-                SourceRefreshed(this, new EventArgs());
+            if (DataRefreshed != null)
+                DataRefreshed(this, new EventArgs());
         }
 
         public void DeleteDocument(HierarchyNumberDrawing doc)
         {
             _drawingsDataManager.Delete(doc);
-            if (SourceRefreshed != null)
-                SourceRefreshed(this, new EventArgs());
+            if (DataRefreshed != null)
+                DataRefreshed(this, new EventArgs());
         }
 
         public List<IEntity> GetListRelatedDocument<TO>() where TO : IEntity

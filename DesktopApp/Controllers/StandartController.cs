@@ -23,7 +23,7 @@ namespace DesktopApp.Controllers
             return _standartsDataManager.GetListCollection();
         }
 
-        public event EventHandler SourceRefreshed;
+        public event EventHandler DataRefreshed;
 
         public Standart CreateDocument()
         {
@@ -33,8 +33,8 @@ namespace DesktopApp.Controllers
         public void SaveDocument(Standart doc)
         {
             _standartsDataManager.InsertOrUpdate(doc);
-            if (SourceRefreshed != null)
-                SourceRefreshed(this, new EventArgs());
+            if (DataRefreshed != null)
+                DataRefreshed(this, new EventArgs());
         }
 
         public void DeleteDocument(Standart doc)

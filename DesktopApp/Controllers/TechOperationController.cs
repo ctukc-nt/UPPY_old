@@ -20,7 +20,7 @@ namespace DesktopApp.Controllers
             return _factory.GetDataManager<TechOperation>().GetListCollection();
         }
 
-        public event EventHandler SourceRefreshed;
+        public event EventHandler DataRefreshed;
 
         public TechOperation CreateDocument()
         {

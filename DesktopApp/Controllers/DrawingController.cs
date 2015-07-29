@@ -23,7 +23,7 @@ namespace DesktopApp.Controllers
             return new List<Drawing>(_drawingsDataManager.GetListCollection());
         }
 
-        public event EventHandler SourceRefreshed;
+        public event EventHandler DataRefreshed;
 
         public Drawing CreateDocument()
         {
@@ -33,15 +33,15 @@ namespace DesktopApp.Controllers
         public void SaveDocument(Drawing doc)
         {
             _drawingsDataManager.InsertOrUpdate(doc);
-            if (SourceRefreshed != null)
-                SourceRefreshed(this, new EventArgs());
+            if (DataRefreshed != null)
+                DataRefreshed(this, new EventArgs());
         }
 
         public void DeleteDocument(Drawing doc)
         {
             _drawingsDataManager.Delete(doc);
-            if (SourceRefreshed != null)
-                SourceRefreshed(this, new EventArgs());
+            if (DataRefreshed != null)
+                DataRefreshed(this, new EventArgs());
         }
 
         public List<IEntity> GetListRelatedDocument<TO>() where TO:IEntity

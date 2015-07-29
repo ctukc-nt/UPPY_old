@@ -15,7 +15,7 @@ namespace DesktopApp.Forms
             InitializeComponent();
 
             Controller = controller;
-            Controller.SourceRefreshed += RefreshSource;
+            Controller.DataRefreshed += RefreshData;
 
 
             repositoryItemLookUpEdit1.DataSource =
@@ -24,7 +24,7 @@ namespace DesktopApp.Forms
 
         public IController<HierarchyNumberDrawing> Controller { get; private set; }
 
-        public void RefreshSource(object sender, EventArgs e)
+        public void RefreshData(object sender, EventArgs e)
         {
             gridControl1.DataSource = Controller.GetData();
         }

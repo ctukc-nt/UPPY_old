@@ -66,6 +66,7 @@
     <Compile Include="Controllers\DrawingController.cs" />
     <Compile Include="Controllers\StandartController.cs" />
     <Compile Include="Controllers\TechOperationController.cs" />
+    <Compile Include="Controllers\TechRouteController.cs" />
     <Compile Include="Forms\DrawingsListForm.cs">
       <SubType>Form</SubType>
     </Compile>
