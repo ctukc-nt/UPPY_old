@@ -22,8 +22,7 @@ namespace UPPY.Desktop.Views
             _controller = controller;
             _controller.DataRefreshed += RefreshData;
 
-            repoTechRoutes.DataSource =
-                controller.GetListRelatedDocument<TechRoute>().ConvertAll(x => (TechRoute) x);
+            repoTechRoutes.DataSource = controller.GetData<TechRoute>();
         }
 
         public IControllerList<Drawing> Controller

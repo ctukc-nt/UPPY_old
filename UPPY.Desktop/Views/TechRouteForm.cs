@@ -40,7 +40,7 @@ namespace UPPY.Desktop.Views
             gridControlTechOperations.DataSource = sourdeDataGrid;
 
             repoTechOperations.DataSource =
-                _techRouteDocumentController.GetListRelatedDocument<TechOperation>();
+                _techRouteDocumentController.GetData<TechOperation>();
         }
 
         private void btnAdd_Click(object sender, System.EventArgs e)
@@ -51,13 +51,13 @@ namespace UPPY.Desktop.Views
 
         private void btnDelete_Click(object sender, System.EventArgs e)
         {
-            ((List<OrdersOperations>) gridControlTechOperations.DataSource).Remove((OrdersOperations) gridView1.GetFocusedRow());
+            ((List<OrdersOperations>)gridControlTechOperations.DataSource).Remove((OrdersOperations)gridView1.GetFocusedRow());
             gridControlTechOperations.RefreshDataSource();
         }
 
         private void btnOk_Click(object sender, System.EventArgs e)
         {
-            Document.TechOperations = ((List<OrdersOperations>)gridControlTechOperations.DataSource).ConvertAll(x => _techRouteDocumentController.GetListRelatedDocument<TechOperation>().Find(y=>y.Id == x.TechOperationId));
+            Document.TechOperations = ((List<OrdersOperations>)gridControlTechOperations.DataSource).ConvertAll(x => _techRouteDocumentController.GetData<TechOperation>().Find(y => y.Id == x.TechOperationId));
             DialogResult = DialogResult.OK;
             Close();
         }

@@ -22,8 +22,7 @@ namespace MongoWork
 
         /// <summary>
         ///     Получить список документов асинхронно
-        /// </summary>
-        /// <returns></returns>
+        /// </summary> <returns></returns>
         public async Task<List<T>> GetListCollectionAsync()
         {
             var collection = GetCollection();
@@ -83,7 +82,6 @@ namespace MongoWork
             var collection = GetCollection();
             collection.ReplaceOneAsync(x => x.Id == doc.Id, doc).Wait();
         }
-
         /// <summary>
         ///     Обновить документ асинхронно
         /// </summary>
@@ -156,6 +154,7 @@ namespace MongoWork
         {
             return GetCollection().Find(x => filter(x)).ToListAsync().Result;
         }
+
 
         private IMongoCollection<T> GetCollection()
         {

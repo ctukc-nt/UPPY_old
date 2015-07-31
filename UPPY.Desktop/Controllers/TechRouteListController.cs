@@ -10,24 +10,28 @@ namespace UPPY.Desktop.Controllers
 {
     public class TechRouteListController : IControllerListView<TechRoute>
     {
-        private readonly IControllersFactory _factory;
-        private readonly IDataManagersFactory _dataManagersFactory;
+        private readonly IControllersFactory _controllersFactory;
+        private readonly IDataManagersFactory _dataMangersfactory;
 
-        public TechRouteListController(IControllersFactory controllersFactory, IDataManagersFactory dataManagersFactory)
+        public TechRouteListController(IControllersFactory controllersControllersFactory, IDataManagersFactory dataMangersfactory)
         {
-            _factory = controllersFactory;
-            _dataManagersFactory = dataManagersFactory;
+            _controllersFactory = controllersControllersFactory;
+            _dataMangersfactory = dataMangersfactory;
         }
 
         public event EventHandler<EventArgs> DataRefreshed;
-        public List<T> GetListRelatedDocument<T>() where T : IEntity
+
+        public IClassDataManager<TechRoute> DataManager { get; set; }
+
+        public List<TO> GetData<TO>() where TO : IEntity
         {
-            return _dataManagersFactory.GetDataManager<T>().GetListCollection();
+            return _dataMangersfactory.GetDataManager<TO>().GetListCollection();
         }
+
 
         public List<TechRoute> GetData()
         {
-            return _dataManagersFactory.GetDataManager<TechRoute>().GetListCollection();
+            return _dataMangersfactory.GetDataManager<TechRoute>().GetListCollection();
         }
 
         public TechRoute CreateDocument()
@@ -37,17 +41,17 @@ namespace UPPY.Desktop.Controllers
 
         public void Save(TechRoute document)
         {
-            _dataManagersFactory.GetDataManager<TechRoute>().InsertOrUpdate(document);
+            _dataMangersfactory.GetDataManager<TechRoute>().InsertOrUpdate(document);
         }
 
         public void Delete(TechRoute document)
         {
-            _dataManagersFactory.GetDataManager<TechRoute>().Delete(document);
+            _dataMangersfactory.GetDataManager<TechRoute>().Delete(document);
         }
 
         public void EditExternal(TechRoute document)
         {
-            var controller = _factory.GetControllerDocument<TechRoute>();
+            var controller = _controllersFactory.GetControllerDocument<TechRoute>();
             controller.Document = document;
 
             if (controller.ShowEditor())
@@ -58,9 +62,10 @@ namespace UPPY.Desktop.Controllers
             }
         }
 
+
         public void ShowAnotherListDocument<TO>() where TO : IEntity
         {
-            var controller = _factory.GetControllerListView<TechRoute>();
+            var controller = _controllersFactory.GetControllerListView<TO>();
             controller.ShowView();
         }
 

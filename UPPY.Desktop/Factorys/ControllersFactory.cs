@@ -22,8 +22,7 @@ namespace UPPY.Desktop.Factorys
         public IControllerDocument<T> GetControllerDocument<T>() where T : IEntity
         {
             if (typeof (T) == typeof (TechRoute))
-                return
-                    (IControllerDocument<T>)
+                return(IControllerDocument<T>)
                         new TechRouteDocumentController(this, CompositionRoot.Resolve<IDataManagersFactory>());
             
             return null;

@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Core.DomainModel;
 using Core.Interfaces;
-using UPPY.Desktop.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Views;
 
 namespace UPPY.Desktop.Controllers
 {
-    class TechRouteDocumentController : AbstractController, IControllerDocument<TechRoute>
+    internal class TechRouteDocumentController : IControllerDocument<TechRoute>
     {
+        private IControllersFactory _factory;
+        private readonly IDataManagersFactory _dataManagersFactory;
+
+        public TechRouteDocumentController(IControllersFactory controllersFactory, IDataManagersFactory dataManagersFactory)
+        {
+            _factory = controllersFactory;
+            _dataManagersFactory = dataManagersFactory;
+        }
+
         public TechRoute Document { get; set; }
 
         public bool ShowEditor()
@@ -28,8 +33,16 @@ namespace UPPY.Desktop.Controllers
             return false;
         }
 
-        public TechRouteDocumentController(IControllersFactory controllersFactory, IDataManagersFactory dataManagersFactory) : base(controllersFactory, dataManagersFactory)
+        public IClassDataManager<TechRoute> DataManager { get; set; }
+
+        public List<TO> GetData<TO>() where TO : IEntity
         {
+            return _dataManagersFactory.GetDataManager<TO>().GetListCollection();
+        }
+
+        public void ShowAnotherListDocument<T>() where T : IEntity
+        {
+            _factory.GetControllerListView<T>().ShowView();
         }
     }
 }

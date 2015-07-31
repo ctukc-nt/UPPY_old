@@ -45,12 +45,12 @@ namespace UPPY.Desktop.Views
         {
             var doc = (TechRoute) gridView1.GetFocusedRow();
             _techRouteController.EditExternal(doc);
-
         }
 
         private void button3_Click(object sender, System.EventArgs e)
         {
-
+            var doc = (TechRoute)gridView1.GetFocusedRow();
+             _techRouteController.Delete(doc);
         }
     }
 }
