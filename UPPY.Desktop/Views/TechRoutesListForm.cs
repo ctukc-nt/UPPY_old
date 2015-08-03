@@ -38,13 +38,13 @@ namespace UPPY.Desktop.Views
         private void button1_Click(object sender, System.EventArgs e)
         {
             var newDoc = _techRouteController.CreateDocument();
-            _techRouteController.EditExternal(newDoc);
+            _techRouteController.EditDocument(newDoc);
         }
 
         private void button2_Click(object sender, System.EventArgs e)
         {
             var doc = (TechRoute) gridView1.GetFocusedRow();
-            _techRouteController.EditExternal(doc);
+            _techRouteController.EditDocument(doc);
         }
 
         private void button3_Click(object sender, System.EventArgs e)

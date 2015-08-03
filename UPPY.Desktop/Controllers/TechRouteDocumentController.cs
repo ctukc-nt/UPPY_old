@@ -27,6 +27,7 @@ namespace UPPY.Desktop.Controllers
             view.Document = Document;
             if (view.ShowDialog() == DialogResult.OK)
             {
+                Document = view.Document;
                 return true;
             }
 

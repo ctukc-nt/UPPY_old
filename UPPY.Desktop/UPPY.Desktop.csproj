@@ -53,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractController.cs" />
+    <Compile Include="Controllers\DrawingListController.cs" />
+    <Compile Include="Controllers\HierarchyNumberDrawingController.cs" />
     <Compile Include="Controllers\TechRouteDocumentController.cs" />
     <Compile Include="Controllers\TechRouteListController.cs" />
     <Compile Include="Factorys\ControllersFactory.cs" />

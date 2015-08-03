@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Core.DomainModel;
 using UPPY.Desktop.Interfaces;
@@ -15,6 +16,7 @@ namespace UPPY.Desktop.Views
         }
 
         private readonly IControllerDocument<TechRoute> _techRouteDocumentController;
+        private TechRoute _document;
 
         public TechRouteForm(IControllerDocument<TechRoute> techRouteDocumentController)
         {
@@ -23,7 +25,31 @@ namespace UPPY.Desktop.Views
 
         }
 
-        public TechRoute Document { get; set; }
+        public TechRoute Document
+        {
+            get
+            {
+                _document.Name = textEdit1.Text;
+                _document.Note = textEdit2.Text;
+                _document.TechOperations = ((List<OrdersOperations>)gridControlTechOperations.DataSource).ConvertAll(x => _techRouteDocumentController.GetData<TechOperation>().Find(y => y.Id == x.TechOperationId));
+                return _document;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException();
+
+                _document = value;
+
+                textEdit1.Text = _document.Name;
+                textEdit2.Text = _document.Note;
+                var order = 1;
+                var sourdeDataGrid =
+               _document.TechOperations.ConvertAll(x => new OrdersOperations() { Order = order++, TechOperationId = x.Id });
+
+                gridControlTechOperations.DataSource = sourdeDataGrid;
+            }
+        }
 
         public IControllerDocument<TechRoute> Controller
         {
@@ -33,12 +59,6 @@ namespace UPPY.Desktop.Views
 
         private void TechRouteForm_Load(object sender, System.EventArgs e)
         {
-            var order = 1;
-            var sourdeDataGrid =
-                Document.TechOperations.ConvertAll(x => new OrdersOperations() { Order = order++, TechOperationId = x.Id });
-
-            gridControlTechOperations.DataSource = sourdeDataGrid;
-
             repoTechOperations.DataSource =
                 _techRouteDocumentController.GetData<TechOperation>();
         }
@@ -57,7 +77,6 @@ namespace UPPY.Desktop.Views
 
         private void btnOk_Click(object sender, System.EventArgs e)
         {
-            Document.TechOperations = ((List<OrdersOperations>)gridControlTechOperations.DataSource).ConvertAll(x => _techRouteDocumentController.GetData<TechOperation>().Find(y => y.Id == x.TechOperationId));
             DialogResult = DialogResult.OK;
             Close();
         }

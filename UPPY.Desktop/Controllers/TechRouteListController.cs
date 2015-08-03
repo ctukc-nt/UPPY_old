@@ -49,14 +49,15 @@ namespace UPPY.Desktop.Controllers
             _dataMangersfactory.GetDataManager<TechRoute>().Delete(document);
         }
 
-        public void EditExternal(TechRoute document)
+        public void EditDocument(TechRoute document)
         {
             var controller = _controllersFactory.GetControllerDocument<TechRoute>();
             controller.Document = document;
 
             if (controller.ShowEditor())
             {
-                Save(controller.Document);
+                document = controller.Document;
+                Save(document);
                 if (DataRefreshed != null)
                     DataRefreshed(this, new EventArgs());
             }

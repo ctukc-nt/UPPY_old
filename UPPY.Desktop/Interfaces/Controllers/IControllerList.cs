@@ -19,6 +19,6 @@ namespace UPPY.Desktop.Interfaces.Controllers
         T CreateDocument();
         void Save(T document);
         void Delete(T document);
-        void EditExternal(T document);
+        void EditDocument(T document);
     }
 }
