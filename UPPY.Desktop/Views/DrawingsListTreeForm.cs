@@ -6,29 +6,25 @@ using Core.DomainModel;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
-using UPPY.Desktop.Interfaces;
-using UPPY.Desktop.Interfaces.Controllers;
+using UPPY.Desktop.Controllers;
 
 namespace UPPY.Desktop.Views
 {
-    public partial class DrawingsListTreeForm : Form, IListView<Drawing>
+    public partial class DrawingsListTreeForm : Form
     {
-        private readonly IControllerList<Drawing> _controller;
+        private readonly IDrawingListController _controller;
+        private Drawing _selectedDocument;
 
-        public DrawingsListTreeForm(IControllerList<Drawing> controller)
+        public DrawingsListTreeForm(IDrawingListController controller)
         {
             InitializeComponent();
 
             _controller = controller;
             _controller.DataRefreshed += RefreshData;
 
-            repoTechRoutes.DataSource = controller.GetData<TechRoute>();
+            repoTechRoutes.DataSource = controller.GetTechRoutes();
         }
 
-        public IControllerList<Drawing> Controller
-        {
-            get { return _controller; }
-        }
 
         public void RefreshData(object sender, EventArgs e)
         {
@@ -72,26 +68,20 @@ namespace UPPY.Desktop.Views
 
         private void DrawingsListForm_Load(object sender, EventArgs e)
         {
-            tlDarwings.DataSource = Controller.GetData();
+            tlDarwings.DataSource = _controller.GetData();
+            if (SelectedDocument != null)
+            {
+                var node = tlDarwings.FindNode(x => ((Drawing)tlDarwings.GetDataRecordByNode(x)).Id == SelectedDocument.Id);
+                ExpandToParentNode(node);
+            }
         }
+
+        #region работа с операциями с чертежами
 
         private void btnAddDrawing_Click(object sender, EventArgs e)
         {
-            Controller.Save(Controller.CreateDocument());
+            _controller.Save(_controller.CreateDocument());
             tlDarwings.Focus();
-        }
-
-        private void tlDrawings_CellValueChanged(object sender, CellValueChangedEventArgs e)
-        {
-            var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
-            Controller.Save((Drawing) data);
-        }
-
-        private void btnDelDrawing_Click(object sender, EventArgs e)
-        {
-            var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
-            Controller.Delete((Drawing) data);
-            tlDarwings.RefreshDataSource();
         }
 
         private void btnAddSubDrawing_Click(object sender, EventArgs e)
@@ -100,18 +90,26 @@ namespace UPPY.Desktop.Views
             if (data != null)
             {
                 var parentDrw = (Drawing) data;
-                var newDoc = Controller.CreateDocument();
+                var newDoc = _controller.CreateDocument();
                 newDoc.ParentId = parentDrw.Id;
-                Controller.Save(newDoc);
+                _controller.Save(newDoc);
                 tlDarwings.RefreshDataSource();
             }
             tlDarwings.Selection[0].Expanded = true;
             tlDarwings.Focus();
         }
 
-        private void repoTechRoutes_ButtonClick(object sender, ButtonPressedEventArgs e)
+        private void tlDrawings_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
-           
+            var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
+            _controller.Save((Drawing)data);
+        }
+
+        private void btnDelDrawing_Click(object sender, EventArgs e)
+        {
+            var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
+            _controller.Delete((Drawing)data);
+            tlDarwings.RefreshDataSource();
         }
 
         private void btnRefreshSource_Click(object sender, EventArgs e)
@@ -120,6 +118,16 @@ namespace UPPY.Desktop.Views
             RefreshData(this, null);
             LoadNodesState(listId);
         }
+
+        #endregion
+
+
+        private void repoTechRoutes_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            _controller.ShowTechRoutesListToSelect();
+        }
+
+        #region Работа с состоянием нод tlDrawings
 
         private void LoadNodesState(List<int?> listId)
         {
@@ -149,10 +157,22 @@ namespace UPPY.Desktop.Views
             }
         }
 
+        #endregion
+
+
         public Drawing SelectedDocument
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return _selectedDocument; }
+            set
+            {
+                _selectedDocument = value;
+                if (value != null)
+                {
+                    var node =
+                        tlDarwings.FindNode(x => ((Drawing)tlDarwings.GetDataRecordByNode(x)).Id == value.Id);
+                    ExpandToParentNode(node);
+                }
+            }
         }
     }
 }

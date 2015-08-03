@@ -97,5 +97,10 @@ namespace Core.DomainModel
         ///     ИД
         /// </summary>
         public int? Id { get; set; }
+
+        public int CompareByStandartSize(Drawing doc2)
+        {
+            return 0;
+        }
     }
 }

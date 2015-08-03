@@ -3,12 +3,29 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Core.DomainModel;
 using Core.Interfaces;
-using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Views;
 
 namespace UPPY.Desktop.Controllers
 {
-    public class DrawingListController : IControllerListView<Drawing>
+    public interface IDrawingListController
+    {
+        List<Drawing> GetData();
+
+        Drawing CreateDocument();
+
+        void Save(Drawing document);
+
+        void Delete(Drawing document);
+
+        List<TechRoute> GetTechRoutes();
+
+        bool ShowView();
+        void ShowTechRoutesListToSelect();
+
+        event EventHandler<EventArgs> DataRefreshed;
+    }
+
+    public class DrawingListController : IDrawingListController
     {
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechRoute> _techRouteDataManager;
@@ -25,11 +42,16 @@ namespace UPPY.Desktop.Controllers
             return _drawingsDataManager.GetListCollection();
         }
 
+        public void ShowTechRoutesListToSelect()
+        {
+            throw new NotImplementedException();
+        }
+
         public event EventHandler<EventArgs> DataRefreshed;
 
         public Drawing CreateDocument()
         {
-           return new Drawing();
+            return new Drawing();
         }
 
         public void Save(Drawing document)
@@ -46,35 +68,9 @@ namespace UPPY.Desktop.Controllers
                 DataRefreshed(this, new EventArgs());
         }
 
-        public void EditDocument(Drawing document)
+        public List<TechRoute> GetTechRoutes()
         {
-            throw new NotImplementedException();
-        }
-
-        public List<IEntity> GetListRelatedDocument<TO>() where TO:IEntity
-        {
-            if (typeof (TO) == typeof (TechRoute))
-            {
-                return _techRouteDataManager.GetListCollection().ConvertAll(input => (IEntity) input);
-            }
-
-            return null;
-        }
-
-        public int CompareTwoDocuments(Drawing doc1, Drawing doc2)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IClassDataManager<Drawing> DataManager
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
-
-        public List<TO> GetData<TO>() where TO : IEntity
-        {
-            throw new NotImplementedException();
+            return _techRouteDataManager.GetListCollection();
         }
 
         public bool ShowView()

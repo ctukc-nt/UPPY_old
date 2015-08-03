@@ -3,26 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.DomainModel;
 using Core.Interfaces;
-using DesktopApp.Infrastructure;
-using DesktopApp.Interfaces;
-using DesktopApp.View;
-using DevExpress.XtraPrinting.Native;
 using Ninject.Infrastructure.Language;
 
-namespace DesktopApp.Controllers
+namespace UPPY.Desktop.Controllers
 {
-    public class HierarchyNumberDrawingController : IController<HierarchyNumberDrawing>
+    public class HierarchyNumberDrawingController
     {
         private Dictionary<int?, int> _dctChildrens;
 
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechRoute> _techRouteDataManager;
 
-        public HierarchyNumberDrawingController(IDataManagersFactory dataManagersFactory)
+        public HierarchyNumberDrawingController(IClassDataManager<Drawing> drawingsDataManager, IClassDataManager<TechRoute> techRouteDataManager)
         {
-            _drawingsDataManager = dataManagersFactory.GetDataManager<Drawing>();
-            _techRouteDataManager = dataManagersFactory.GetDataManager<TechRoute>();
+            _drawingsDataManager = drawingsDataManager;
+            _techRouteDataManager = techRouteDataManager;
         }
+
 
         public List<HierarchyNumberDrawing> GetData()
         {
@@ -30,7 +27,7 @@ namespace DesktopApp.Controllers
 
             var drawings = _drawingsDataManager.GetListCollection().OrderBy(x => x.Id).ToList().ConvertAll(AutoMapper.Mapper.Map<HierarchyNumberDrawing>);
 
-            drawings.AsParallel().ForEach(drawing =>
+            drawings.AsParallel().Map(drawing =>
             {
                 int? id = int.MaxValue;
 
@@ -67,6 +64,21 @@ namespace DesktopApp.Controllers
         public HierarchyNumberDrawing CreateDocument()
         {
             return new HierarchyNumberDrawing();
+        }
+
+        public void Save(HierarchyNumberDrawing document)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(HierarchyNumberDrawing document)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditDocument(HierarchyNumberDrawing document)
+        {
+            throw new NotImplementedException();
         }
 
         public void SaveDocument(HierarchyNumberDrawing doc)
@@ -125,6 +137,16 @@ namespace DesktopApp.Controllers
                 return -1;
 
             return 0;
+        }
+
+        public List<TO> GetData<TO>() where TO : IEntity
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ShowView()
+        {
+            throw new NotImplementedException();
         }
     }
 }
