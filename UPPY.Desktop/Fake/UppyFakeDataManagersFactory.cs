@@ -6,11 +6,10 @@ namespace UPPY.Desktop.Fake
 {
     public class UppyFakeDataManagersFactory : IDataManagersFactory
     {
-        private readonly Dictionary<string, object> _data;
+        private static readonly Dictionary<string, object> _data = new Dictionary<string, object>();
 
         public UppyFakeDataManagersFactory()
         {
-            _data = new Dictionary<string, object>();
         }
 
         public IClassDataManager<T> GetDataManager<T>() where T : IEntity

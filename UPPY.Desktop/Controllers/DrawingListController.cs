@@ -9,13 +9,13 @@ using UPPY.Desktop.Views;
 
 namespace UPPY.Desktop.Controllers
 {
-    public class DrawingListListDocumentController : IDrawingListController, IViewListDocumentController
+    public class DrawingsListDocumentController : IDrawingListController, IListDocumentController
     {
         private readonly IControllersFactory _controllersFactory;
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechRoute> _techRouteDataManager;
 
-        public DrawingListListDocumentController(IDataManagersFactory dataManagersFactory, IControllersFactory controllersFactory)
+        public DrawingsListDocumentController(IDataManagersFactory dataManagersFactory, IControllersFactory controllersFactory)
         {
             _controllersFactory = controllersFactory;
             var dataManagerFactory1 = dataManagersFactory;

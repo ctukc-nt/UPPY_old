@@ -23,8 +23,10 @@ namespace UPPY.Desktop
             CompositionRoot.Wire(new ApplicationModule());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var form = new DrawingsListTreeForm(CompositionRoot.Resolve<IDrawingListController>());
-            Application.Run(form);
+            var controllersFactory = CompositionRoot.Resolve<IControllersFactory>();
+            var start = controllersFactory.GetStartController();
+            start.ShowViewDialog();
+            //Application.Run();
         }
     }
 }

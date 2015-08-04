@@ -9,7 +9,7 @@ namespace UPPY.Desktop.Fake
 {
     public class DrawingListClassFakeDataManager : List<Drawing>, IClassDataManager<Drawing>
     {
-        private int _count;
+        private int _count = 9;
 
         public DrawingListClassFakeDataManager()
         {

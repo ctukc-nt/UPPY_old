@@ -9,20 +9,18 @@ using UPPY.Desktop.Views;
 
 namespace UPPY.Desktop.Controllers
 {
-    public class TechRouteListController : ITechRouteListController
+    public class TechRouteListController : ITechRouteListController, IListDocumentController
     {
         private readonly IDataManagersFactory _dataMangersfactory;
         private IControllersFactory _controllersFactory;
 
-        public TechRouteListController(IControllersFactory controllersControllersFactory, IDataManagersFactory dataMangersfactory)
+        public TechRouteListController(IDataManagersFactory dataMangersfactory, IControllersFactory controllersControllersFactory)
         {
             _controllersFactory = controllersControllersFactory;
             _dataMangersfactory = dataMangersfactory;
         }
 
         public event EventHandler<EventArgs> DataRefreshed;
-
-        public IClassDataManager<TechRoute> DataManager { get; set; }
 
 
         public List<TechRoute> GetData()
@@ -58,16 +56,10 @@ namespace UPPY.Desktop.Controllers
             //        DataRefreshed(this, new EventArgs());
             //}
         }
-
-        public bool ShowView()
+        public void ShowViewDialog()
         {
             var view = new TechRoutesListForm(this);
-            if (view.ShowDialog() == DialogResult.OK)
-            {
-                return true;
-            }
-
-            return false;
+            view.ShowDialog();
         }
     }
 }

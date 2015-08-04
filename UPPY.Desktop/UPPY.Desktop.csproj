@@ -68,7 +68,7 @@
     <Compile Include="Interfaces\Controllers\ITechRouteListController.cs" />
     <Compile Include="Controllers\TechRouteDocumentController.cs" />
     <Compile Include="Controllers\TechRouteListController.cs" />
-    <Compile Include="Factorys\ControllersesFactory.cs" />
+    <Compile Include="Factorys\ControllersFactory.cs" />
     <Compile Include="Fake\UppyFakeDataManagersFactory.cs" />
     <Compile Include="Controllers\HierarchyNumberDrawing.cs" />
     <Compile Include="Interfaces\IControllersFactory.cs" />

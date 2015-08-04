@@ -14,7 +14,7 @@ namespace UPPY.Desktop.Controllers
         List<TechOperation> GetDataTechOperations();
     }
 
-    internal class TechRouteDocumentController : ITechRouteDocumentController, IViewDocumentController<TechRoute>
+    internal class TechRouteDocumentController : ITechRouteDocumentController, IDocumentController<TechRoute>
     {
         private IControllersFactory _factory;
         private readonly IDataManagersFactory _dataManagersFactory;

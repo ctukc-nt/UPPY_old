@@ -25,6 +25,8 @@ namespace UPPY.Desktop.Interfaces
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         ISelectionController<T> GetDocumentSelectionController<T>();
+
+        IListDocumentController GetStartController();
     }
 
     /// <summary>

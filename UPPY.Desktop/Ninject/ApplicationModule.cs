@@ -13,8 +13,8 @@ namespace UPPY.Desktop.Ninject
     {
         public override void Load()
         {
-
-
+            Bind(typeof(IControllersFactory)).ToConstant(ControllersFactory.Instance);
+            Bind(typeof(IDataManagersFactory)).To(typeof(UppyFakeDataManagersFactory));
         }
     }
 }
