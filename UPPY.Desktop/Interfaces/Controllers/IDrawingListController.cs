@@ -11,8 +11,8 @@ namespace UPPY.Desktop.Interfaces.Controllers
         void Save(Drawing document);
         void Delete(Drawing document);
         List<TechRoute> GetTechRoutes();
-        bool ShowView();
-        void ShowTechRoutesListToSelect();
+        void ShowTechRoutesList();
+
         event EventHandler<EventArgs> DataRefreshed;
     }
 }

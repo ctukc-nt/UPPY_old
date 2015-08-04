@@ -56,21 +56,22 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UPPY.Desktop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DesktopApp\bin\Debug\UPPY.Desktop.exe</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractController.cs" />
     <Compile Include="Controllers\DrawingListController.cs" />
     <Compile Include="Controllers\HierarchyNumberDrawingController.cs" />
     <Compile Include="Interfaces\Controllers\IDrawingListController.cs" />
     <Compile Include="Interfaces\Controllers\ITechRouteListController.cs" />
     <Compile Include="Controllers\TechRouteDocumentController.cs" />
     <Compile Include="Controllers\TechRouteListController.cs" />
-    <Compile Include="Factorys\ControllersFactory.cs" />
+    <Compile Include="Factorys\ControllersesFactory.cs" />
     <Compile Include="Fake\UppyFakeDataManagersFactory.cs" />
-    <Compile Include="HierarchyNumberDrawing.cs" />
-    <Compile Include="Interfaces\Controllers\IControllerList.cs" />
-    <Compile Include="Interfaces\Controllers\IControllerListView.cs" />
-    <Compile Include="Interfaces\Controllers\IControllersFactory.cs" />
+    <Compile Include="Controllers\HierarchyNumberDrawing.cs" />
+    <Compile Include="Interfaces\IControllersFactory.cs" />
     <Compile Include="Interfaces\IListView.cs" />
     <Compile Include="Interfaces\IView.cs" />
     <Compile Include="Ninject\ApplicationModule.cs" />

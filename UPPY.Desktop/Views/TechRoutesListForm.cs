@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Core.DomainModel;
 using UPPY.Desktop.Controllers;
+using UPPY.Desktop.Interfaces.Controllers;
 
 namespace UPPY.Desktop.Views
 {

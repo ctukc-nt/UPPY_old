@@ -124,7 +124,7 @@ namespace UPPY.Desktop.Views
 
         private void repoTechRoutes_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
-            _controller.ShowTechRoutesListToSelect();
+            _controller.ShowTechRoutesList();
         }
 
         #region Работа с состоянием нод tlDrawings

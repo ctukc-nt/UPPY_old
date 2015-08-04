@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Core.DomainModel;
 using Core.Interfaces;
+using UPPY.Desktop.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Views;
 
@@ -10,8 +11,8 @@ namespace UPPY.Desktop.Controllers
 {
     public class TechRouteListController : ITechRouteListController
     {
-        private readonly IControllersFactory _controllersFactory;
         private readonly IDataManagersFactory _dataMangersfactory;
+        private IControllersFactory _controllersFactory;
 
         public TechRouteListController(IControllersFactory controllersControllersFactory, IDataManagersFactory dataMangersfactory)
         {
@@ -46,16 +47,16 @@ namespace UPPY.Desktop.Controllers
 
         public void EditDocument(TechRoute document)
         {
-            var controller = _controllersFactory.GetControllerDocument<TechRoute>();
+            var controller = _controllersFactory.GetDocumentController<TechRoute>();
             controller.Document = document;
-
-            if (controller.ShowEditor())
-            {
-                document = controller.Document;
-                Save(document);
-                if (DataRefreshed != null)
-                    DataRefreshed(this, new EventArgs());
-            }
+            controller.ShowViewDialog();
+            //if ()
+            //{
+            //    document = controller.Document;
+            //    Save(document);
+            //    if (DataRefreshed != null)
+            //        DataRefreshed(this, new EventArgs());
+            //}
         }
 
         public bool ShowView()

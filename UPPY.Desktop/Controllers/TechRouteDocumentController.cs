@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Core.DomainModel;
 using Core.Interfaces;
+using UPPY.Desktop.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Views;
 
@@ -10,12 +11,10 @@ namespace UPPY.Desktop.Controllers
 {
     public interface ITechRouteDocumentController
     {
-        TechRoute Document { get; set; }
-        bool ShowEditor();
         List<TechOperation> GetDataTechOperations();
     }
 
-    internal class TechRouteDocumentController : ITechRouteDocumentController
+    internal class TechRouteDocumentController : ITechRouteDocumentController, IViewDocumentController<TechRoute>
     {
         private IControllersFactory _factory;
         private readonly IDataManagersFactory _dataManagersFactory;
@@ -27,8 +26,7 @@ namespace UPPY.Desktop.Controllers
         }
 
         public TechRoute Document { get; set; }
-
-        public bool ShowEditor()
+        public bool ShowViewDialog()
         {
             var view = new TechRouteForm(this);
             view.Document = Document;
@@ -40,8 +38,6 @@ namespace UPPY.Desktop.Controllers
 
             return false;
         }
-
-        public IClassDataManager<TechRoute> DataManager { get; set; }
 
         public List<TechOperation> GetDataTechOperations()
         {

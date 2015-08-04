@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Core.DomainModel;
 using Core.Interfaces;
+using UPPY.Desktop.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Views;
 
 namespace UPPY.Desktop.Controllers
 {
-    public class DrawingListController : IDrawingListController
+    public class DrawingListListDocumentController : IDrawingListController, IViewListDocumentController
     {
+        private readonly IControllersFactory _controllersFactory;
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechRoute> _techRouteDataManager;
 
-        public DrawingListController(IDataManagersFactory dataManagersFactory)
+        public DrawingListListDocumentController(IDataManagersFactory dataManagersFactory, IControllersFactory controllersFactory)
         {
+            _controllersFactory = controllersFactory;
             var dataManagerFactory1 = dataManagersFactory;
             _drawingsDataManager = dataManagerFactory1.GetDataManager<Drawing>();
             _techRouteDataManager = dataManagerFactory1.GetDataManager<TechRoute>();
@@ -25,9 +28,10 @@ namespace UPPY.Desktop.Controllers
             return _drawingsDataManager.GetListCollection();
         }
 
-        public void ShowTechRoutesListToSelect()
+        public void ShowTechRoutesList()
         {
-            throw new NotImplementedException();
+            var c = _controllersFactory.GetListController<TechRoute>();
+            c.ShowViewDialog();
         }
 
         public event EventHandler<EventArgs> DataRefreshed;
@@ -56,10 +60,10 @@ namespace UPPY.Desktop.Controllers
             return _techRouteDataManager.GetListCollection();
         }
 
-        public bool ShowView()
+        public void ShowViewDialog()
         {
             var view = new DrawingsListTreeForm(this);
-            return view.ShowDialog() == DialogResult.OK;
+            view.ShowDialog();
         }
     }
 }
