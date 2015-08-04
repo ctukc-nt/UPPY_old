@@ -1,15 +1,15 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using Core.DomainModel;
-using UPPY.Desktop.Interfaces;
-using UPPY.Desktop.Interfaces.Controllers;
+using UPPY.Desktop.Controllers;
 
 namespace UPPY.Desktop.Views
 {
-    public partial class TechRoutesListForm : Form, IListView<TechRoute>
+    public partial class TechRoutesListForm : Form
     {
-        private readonly IControllerList<TechRoute> _techRouteController;
+        private readonly ITechRouteListController _techRouteController;
 
-        public TechRoutesListForm(IControllerList<TechRoute> techRouteController)
+        public TechRoutesListForm(ITechRouteListController techRouteController)
         {
             _techRouteController = techRouteController;
             InitializeComponent();
@@ -18,36 +18,25 @@ namespace UPPY.Desktop.Views
             _techRouteController.DataRefreshed += _techRouteController_DataRefreshed;
         }
 
-        void _techRouteController_DataRefreshed(object sender, System.EventArgs e)
+        void _techRouteController_DataRefreshed(object sender, EventArgs e)
         {
             gridControl1.DataSource = _techRouteController.GetData();
             gridControl1.RefreshDataSource();
         }
 
-        public IControllerList<TechRoute> Controller
-        {
-            get { return _techRouteController; }
-        }
-
-        public TechRoute SelectedDocument
-        {
-            get { throw new System.NotImplementedException(); }
-            set { throw new System.NotImplementedException(); }
-        }
-
-        private void button1_Click(object sender, System.EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             var newDoc = _techRouteController.CreateDocument();
             _techRouteController.EditDocument(newDoc);
         }
 
-        private void button2_Click(object sender, System.EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             var doc = (TechRoute) gridView1.GetFocusedRow();
             _techRouteController.EditDocument(doc);
         }
 
-        private void button3_Click(object sender, System.EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             var doc = (TechRoute)gridView1.GetFocusedRow();
              _techRouteController.Delete(doc);

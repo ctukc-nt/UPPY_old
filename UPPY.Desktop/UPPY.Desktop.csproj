@@ -61,12 +61,13 @@
     <Compile Include="AbstractController.cs" />
     <Compile Include="Controllers\DrawingListController.cs" />
     <Compile Include="Controllers\HierarchyNumberDrawingController.cs" />
+    <Compile Include="Interfaces\Controllers\IDrawingListController.cs" />
+    <Compile Include="Interfaces\Controllers\ITechRouteListController.cs" />
     <Compile Include="Controllers\TechRouteDocumentController.cs" />
     <Compile Include="Controllers\TechRouteListController.cs" />
     <Compile Include="Factorys\ControllersFactory.cs" />
     <Compile Include="Fake\UppyFakeDataManagersFactory.cs" />
     <Compile Include="HierarchyNumberDrawing.cs" />
-    <Compile Include="Interfaces\Controllers\IControllerDocument.cs" />
     <Compile Include="Interfaces\Controllers\IControllerList.cs" />
     <Compile Include="Interfaces\Controllers\IControllerListView.cs" />
     <Compile Include="Interfaces\Controllers\IControllersFactory.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Views\DrawingsListTreeForm.Designer.cs">
       <DependentUpon>DrawingsListTreeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\Controllers\IDocumentView.cs" />
     <Compile Include="Views\TechRouteForm.cs">
       <SubType>Form</SubType>
     </Compile>

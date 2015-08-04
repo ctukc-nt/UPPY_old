@@ -8,7 +8,14 @@ using UPPY.Desktop.Views;
 
 namespace UPPY.Desktop.Controllers
 {
-    internal class TechRouteDocumentController : IControllerDocument<TechRoute>
+    public interface ITechRouteDocumentController
+    {
+        TechRoute Document { get; set; }
+        bool ShowEditor();
+        List<TechOperation> GetDataTechOperations();
+    }
+
+    internal class TechRouteDocumentController : ITechRouteDocumentController
     {
         private IControllersFactory _factory;
         private readonly IDataManagersFactory _dataManagersFactory;
@@ -36,14 +43,9 @@ namespace UPPY.Desktop.Controllers
 
         public IClassDataManager<TechRoute> DataManager { get; set; }
 
-        public List<TO> GetData<TO>() where TO : IEntity
+        public List<TechOperation> GetDataTechOperations()
         {
-            return _dataManagersFactory.GetDataManager<TO>().GetListCollection();
-        }
-
-        public void ShowAnotherListDocument<T>() where T : IEntity
-        {
-            _factory.GetControllerListView<T>().ShowView();
+            return _dataManagersFactory.GetDataManager<TechOperation>().GetListCollection();
         }
     }
 }

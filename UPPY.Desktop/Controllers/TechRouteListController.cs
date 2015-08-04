@@ -8,7 +8,7 @@ using UPPY.Desktop.Views;
 
 namespace UPPY.Desktop.Controllers
 {
-    public class TechRouteListController : IControllerListView<TechRoute>
+    public class TechRouteListController : ITechRouteListController
     {
         private readonly IControllersFactory _controllersFactory;
         private readonly IDataManagersFactory _dataMangersfactory;
@@ -22,11 +22,6 @@ namespace UPPY.Desktop.Controllers
         public event EventHandler<EventArgs> DataRefreshed;
 
         public IClassDataManager<TechRoute> DataManager { get; set; }
-
-        public List<TO> GetData<TO>() where TO : IEntity
-        {
-            return _dataMangersfactory.GetDataManager<TO>().GetListCollection();
-        }
 
 
         public List<TechRoute> GetData()
@@ -61,13 +56,6 @@ namespace UPPY.Desktop.Controllers
                 if (DataRefreshed != null)
                     DataRefreshed(this, new EventArgs());
             }
-        }
-
-
-        public void ShowAnotherListDocument<TO>() where TO : IEntity
-        {
-            var controller = _controllersFactory.GetControllerListView<TO>();
-            controller.ShowView();
         }
 
         public bool ShowView()

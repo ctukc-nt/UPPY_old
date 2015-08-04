@@ -14,10 +14,6 @@ namespace UPPY.Desktop.Ninject
         public override void Load()
         {
 
-            Bind(typeof (IControllerList<TechRoute>)).To(typeof (TechRouteListController));
-            Bind(typeof(IControllersFactory)).To(typeof(ControllersFactory));
-            Bind(typeof(IDataManagersFactory)).To(typeof(UppyFakeDataManagersFactory));
-
 
         }
     }
