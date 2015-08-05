@@ -23,7 +23,7 @@ namespace DesktopApp
             CompositionRoot.Wire(new ApplicationModule());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(CompositionRoot.Resolve<TechRoutesListForm>());
+            Application.Run(new DrawingsListForm(CompositionRoot.Resolve<IController<HierarchyNumberDrawing>>()));
         }
     }
 }

@@ -32,6 +32,9 @@ namespace DesktopApp.Ninject
 
             Bind(typeof (IController<TechOperation>)).To(typeof (Controller<TechOperation>));
             Bind(typeof (IController<TechRoute>)).To(typeof (Controller<TechRoute>));
+            Bind(typeof (IController<Drawing>)).To(typeof (DrawingController));
+            Bind(typeof (IClassDataManager<Drawing>)).To(typeof (DrawingListClassFakeDataManager));
+
 
 
 
