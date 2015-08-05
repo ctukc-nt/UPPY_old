@@ -34,6 +34,9 @@ namespace UPPY.Desktop.Factorys
             if (typeof(T) == typeof(TechRoute))
                 return new TechRouteListController(CompositionRoot.Resolve<IDataManagersFactory>(), this);
 
+            if (typeof(T) == typeof(TechRoute))
+                return new TechRouteListController(CompositionRoot.Resolve<IDataManagersFactory>(), this);
+
             return null;
         }
 

@@ -17,12 +17,12 @@ namespace UPPY.Desktop.Fake
             {
                 new Drawing {Id = 1, Name = "1"},
                 new Drawing {Id = 2, Name = "2"},
-                new Drawing {Id = 8, ParentId = 2, Name = "tt"},
-                new Drawing {Id = 3, Name = "sdf"},
-                new Drawing {Id = 4, ParentId = 2, Name = "sdfg"},
-                new Drawing {Id = 5, ParentId = 4, Name = "1vbbbb"},
-                new Drawing {Id = 6, Name = "1fddsf1"},
-                new Drawing {Id = 7, ParentId = 5, Name = "11vvbb"}
+                new Drawing {Id = 8, ParentId = 2, Name = "2.1."},
+                new Drawing {Id = 3, Name = "3"},
+                new Drawing {Id = 4, ParentId = 2, Name = "2.2."},
+                new Drawing {Id = 5, ParentId = 4, Name = "2.2.1"},
+                new Drawing {Id = 6, Name = "4"},
+                new Drawing {Id = 7, ParentId = 5, Name = "2.1.1.1"}
             });
         }
 

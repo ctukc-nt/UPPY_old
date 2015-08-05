@@ -82,6 +82,12 @@
     <Compile Include="Fake\StandartClassFakeDataManager.cs" />
     <Compile Include="Fake\TechOperationClassFakeDataManager.cs" />
     <Compile Include="Fake\TechRoutesClassFakeDataManager.cs" />
+    <Compile Include="Views\DrawingsListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DrawingsListForm.Designer.cs">
+      <DependentUpon>DrawingsListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\DrawingsListTreeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\DrawingsListForm.resx">
+      <DependentUpon>DrawingsListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\DrawingsListTreeForm.resx">
       <DependentUpon>DrawingsListTreeForm.cs</DependentUpon>
     </EmbeddedResource>

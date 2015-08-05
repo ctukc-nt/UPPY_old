@@ -4,20 +4,37 @@ using System.Linq;
 using Core.DomainModel;
 using Core.Interfaces;
 using Ninject.Infrastructure.Language;
+using UPPY.Desktop.Interfaces;
 
 namespace UPPY.Desktop.Controllers
 {
-    public class HierarchyNumberDrawingController
+    public interface IHierarchyNumberDrawingController
     {
+        List<HierarchyNumberDrawing> GetData();
+
+        event EventHandler DataRefreshed;
+        HierarchyNumberDrawing CreateDocument();
+        void Save(HierarchyNumberDrawing document);
+        void Delete(HierarchyNumberDrawing document);
+        void EditDocument(HierarchyNumberDrawing document);
+        void SaveDocument(HierarchyNumberDrawing doc);
+        void DeleteDocument(HierarchyNumberDrawing doc);
+        List<TechRoute> GetTechRoutes();
+    }
+
+    public class HierarchyNumberDrawingController : IHierarchyNumberDrawingController
+    {
+        private readonly IDataManagersFactory _dataManagersFactory;
         private Dictionary<int?, int> _dctChildrens;
 
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechRoute> _techRouteDataManager;
 
-        public HierarchyNumberDrawingController(IClassDataManager<Drawing> drawingsDataManager, IClassDataManager<TechRoute> techRouteDataManager)
+        public HierarchyNumberDrawingController(IDataManagersFactory dataManagersFactory, IControllersFactory controllersFactory)
         {
-            _drawingsDataManager = drawingsDataManager;
-            _techRouteDataManager = techRouteDataManager;
+            _dataManagersFactory = dataManagersFactory;
+            _drawingsDataManager = dataManagersFactory.GetDataManager<Drawing>();
+            _techRouteDataManager = dataManagersFactory.GetDataManager<TechRoute>();
         }
 
 
@@ -93,6 +110,11 @@ namespace UPPY.Desktop.Controllers
             _drawingsDataManager.Delete(doc);
             if (DataRefreshed != null)
                 DataRefreshed(this, new EventArgs());
+        }
+
+        public List<TechRoute> GetTechRoutes()
+        {
+            throw new NotImplementedException();
         }
 
         public List<IEntity> GetListRelatedDocument<TO>() where TO : IEntity
