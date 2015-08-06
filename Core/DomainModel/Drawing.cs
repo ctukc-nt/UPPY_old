@@ -1,4 +1,5 @@
-﻿using Core.Interfaces;
+﻿using System.Drawing;
+using Core.Interfaces;
 
 namespace Core.DomainModel
 {
@@ -102,5 +103,10 @@ namespace Core.DomainModel
         {
             return 0;
         }
+
+        /// <summary>
+        /// Цвет метки
+        /// </summary>
+        public Color Color { get; set; }
     }
 }

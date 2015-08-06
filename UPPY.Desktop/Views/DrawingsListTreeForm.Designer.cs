@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.rProfile = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.tlDarwings = new DevExpress.XtraTreeList.TreeList();
             this.tlcName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -50,15 +49,18 @@
             this.tlcPartOfDrawingId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcTechRouteId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repoTechRoutes = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.techRouteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.techRouteBindingSource = new System.Windows.Forms.BindingSource();
             this.btnAddDrawing = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelDrawing = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddSubDrawing = new DevExpress.XtraEditors.SimpleButton();
             this.btnRefreshSource = new DevExpress.XtraEditors.SimpleButton();
+            this.tlcColor = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.repositoryItemColorEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemColorEdit();
             ((System.ComponentModel.ISupportInitialize)(this.rProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tlDarwings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoTechRoutes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // rProfile
@@ -90,7 +92,8 @@
             this.tlcWeightAll,
             this.tlcOp,
             this.tlcPartOfDrawingId,
-            this.tlcTechRouteId});
+            this.tlcTechRouteId,
+            this.tlcColor});
             this.tlDarwings.FooterPanelHeight = 30;
             this.tlDarwings.KeyFieldName = "Id";
             this.tlDarwings.Location = new System.Drawing.Point(0, 28);
@@ -99,7 +102,8 @@
             this.tlDarwings.OptionsFilter.FilterMode = DevExpress.XtraTreeList.FilterMode.Extended;
             this.tlDarwings.ParentFieldName = "ParentId";
             this.tlDarwings.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repoTechRoutes});
+            this.repoTechRoutes,
+            this.repositoryItemColorEdit1});
             this.tlDarwings.RootValue = null;
             this.tlDarwings.Size = new System.Drawing.Size(1158, 467);
             this.tlDarwings.TabIndex = 2;
@@ -259,7 +263,7 @@
             this.repoTechRoutes.AutoHeight = false;
             this.repoTechRoutes.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "", "showlist", null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", "showlist", null, true)});
             this.repoTechRoutes.DataSource = this.techRouteBindingSource;
             this.repoTechRoutes.DisplayMember = "Name";
             this.repoTechRoutes.Name = "repoTechRoutes";
@@ -310,6 +314,22 @@
             this.btnRefreshSource.Text = "&Refresh";
             this.btnRefreshSource.Click += new System.EventHandler(this.btnRefreshSource_Click);
             // 
+            // tlcColor
+            // 
+            this.tlcColor.Caption = "Метка цвета";
+            this.tlcColor.ColumnEdit = this.repositoryItemColorEdit1;
+            this.tlcColor.FieldName = "Color";
+            this.tlcColor.Name = "tlcColor";
+            this.tlcColor.Visible = true;
+            this.tlcColor.VisibleIndex = 16;
+            // 
+            // repositoryItemColorEdit1
+            // 
+            this.repositoryItemColorEdit1.AutoHeight = false;
+            this.repositoryItemColorEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemColorEdit1.Name = "repositoryItemColorEdit1";
+            // 
             // DrawingsListTreeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,6 +347,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tlDarwings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoTechRoutes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -358,5 +379,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repoTechRoutes;
         private System.Windows.Forms.BindingSource techRouteBindingSource;
         private DevExpress.XtraEditors.SimpleButton btnRefreshSource;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcColor;
+        private DevExpress.XtraEditors.Repository.RepositoryItemColorEdit repositoryItemColorEdit1;
     }
 }
