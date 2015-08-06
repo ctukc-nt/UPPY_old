@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             this.rProfile = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.tlDarwings = new DevExpress.XtraTreeList.TreeList();
             this.tlcName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -101,7 +101,7 @@
             this.tlDarwings.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repoTechRoutes});
             this.tlDarwings.RootValue = null;
-            this.tlDarwings.Size = new System.Drawing.Size(944, 322);
+            this.tlDarwings.Size = new System.Drawing.Size(1158, 467);
             this.tlDarwings.TabIndex = 2;
             this.tlDarwings.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.tlDrawings_CellValueChanged);
             // 
@@ -112,6 +112,7 @@
             this.tlcName.Name = "tlcName";
             this.tlcName.Visible = true;
             this.tlcName.VisibleIndex = 1;
+            this.tlcName.Width = 73;
             // 
             // tlcDesignation
             // 
@@ -120,6 +121,7 @@
             this.tlcDesignation.Name = "tlcDesignation";
             this.tlcDesignation.Visible = true;
             this.tlcDesignation.VisibleIndex = 0;
+            this.tlcDesignation.Width = 74;
             // 
             // tlcNumberOnSpec
             // 
@@ -128,6 +130,7 @@
             this.tlcNumberOnSpec.Name = "tlcNumberOnSpec";
             this.tlcNumberOnSpec.Visible = true;
             this.tlcNumberOnSpec.VisibleIndex = 2;
+            this.tlcNumberOnSpec.Width = 53;
             // 
             // tlcProfile
             // 
@@ -136,6 +139,7 @@
             this.tlcProfile.Name = "tlcProfile";
             this.tlcProfile.Visible = true;
             this.tlcProfile.VisibleIndex = 3;
+            this.tlcProfile.Width = 60;
             // 
             // tlcStandartSize
             // 
@@ -144,6 +148,7 @@
             this.tlcStandartSize.Name = "tlcStandartSize";
             this.tlcStandartSize.Visible = true;
             this.tlcStandartSize.VisibleIndex = 4;
+            this.tlcStandartSize.Width = 53;
             // 
             // tlcGostOnSort
             // 
@@ -152,6 +157,7 @@
             this.tlcGostOnSort.Name = "tlcGostOnSort";
             this.tlcGostOnSort.Visible = true;
             this.tlcGostOnSort.VisibleIndex = 5;
+            this.tlcGostOnSort.Width = 86;
             // 
             // tlcMarkSteal
             // 
@@ -160,6 +166,7 @@
             this.tlcMarkSteal.Name = "tlcMarkSteal";
             this.tlcMarkSteal.Visible = true;
             this.tlcMarkSteal.VisibleIndex = 6;
+            this.tlcMarkSteal.Width = 57;
             // 
             // tlcGostOnMaterial
             // 
@@ -168,6 +175,7 @@
             this.tlcGostOnMaterial.Name = "tlcGostOnMaterial";
             this.tlcGostOnMaterial.Visible = true;
             this.tlcGostOnMaterial.VisibleIndex = 7;
+            this.tlcGostOnMaterial.Width = 70;
             // 
             // tlcLength
             // 
@@ -176,6 +184,7 @@
             this.tlcLength.Name = "tlcLength";
             this.tlcLength.Visible = true;
             this.tlcLength.VisibleIndex = 8;
+            this.tlcLength.Width = 46;
             // 
             // tlcWidth
             // 
@@ -184,6 +193,7 @@
             this.tlcWidth.Name = "tlcWidth";
             this.tlcWidth.Visible = true;
             this.tlcWidth.VisibleIndex = 9;
+            this.tlcWidth.Width = 54;
             // 
             // tlcCount
             // 
@@ -192,6 +202,7 @@
             this.tlcCount.Name = "tlcCount";
             this.tlcCount.Visible = true;
             this.tlcCount.VisibleIndex = 10;
+            this.tlcCount.Width = 56;
             // 
             // tlcCountAll
             // 
@@ -200,6 +211,7 @@
             this.tlcCountAll.Name = "tlcCountAll";
             this.tlcCountAll.Visible = true;
             this.tlcCountAll.VisibleIndex = 11;
+            this.tlcCountAll.Width = 52;
             // 
             // tlcWeigth
             // 
@@ -208,6 +220,7 @@
             this.tlcWeigth.Name = "tlcWeigth";
             this.tlcWeigth.Visible = true;
             this.tlcWeigth.VisibleIndex = 12;
+            this.tlcWeigth.Width = 62;
             // 
             // tlcWeightAll
             // 
@@ -216,6 +229,7 @@
             this.tlcWeightAll.Name = "tlcWeightAll";
             this.tlcWeightAll.Visible = true;
             this.tlcWeightAll.VisibleIndex = 13;
+            this.tlcWeightAll.Width = 66;
             // 
             // tlcOp
             // 
@@ -224,6 +238,7 @@
             this.tlcOp.Name = "tlcOp";
             this.tlcOp.Visible = true;
             this.tlcOp.VisibleIndex = 14;
+            this.tlcOp.Width = 65;
             // 
             // tlcPartOfDrawingId
             // 
@@ -237,13 +252,14 @@
             this.tlcTechRouteId.Name = "tlcTechRouteId";
             this.tlcTechRouteId.Visible = true;
             this.tlcTechRouteId.VisibleIndex = 15;
+            this.tlcTechRouteId.Width = 153;
             // 
             // repoTechRoutes
             // 
             this.repoTechRoutes.AutoHeight = false;
             this.repoTechRoutes.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", "showlist", null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "", "showlist", null, true)});
             this.repoTechRoutes.DataSource = this.techRouteBindingSource;
             this.repoTechRoutes.DisplayMember = "Name";
             this.repoTechRoutes.Name = "repoTechRoutes";
@@ -257,7 +273,7 @@
             // btnAddDrawing
             // 
             this.btnAddDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddDrawing.Location = new System.Drawing.Point(950, 12);
+            this.btnAddDrawing.Location = new System.Drawing.Point(1164, 12);
             this.btnAddDrawing.Name = "btnAddDrawing";
             this.btnAddDrawing.Size = new System.Drawing.Size(94, 23);
             this.btnAddDrawing.TabIndex = 3;
@@ -267,7 +283,7 @@
             // btnDelDrawing
             // 
             this.btnDelDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelDrawing.Location = new System.Drawing.Point(950, 70);
+            this.btnDelDrawing.Location = new System.Drawing.Point(1164, 70);
             this.btnDelDrawing.Name = "btnDelDrawing";
             this.btnDelDrawing.Size = new System.Drawing.Size(94, 23);
             this.btnDelDrawing.TabIndex = 4;
@@ -277,7 +293,7 @@
             // btnAddSubDrawing
             // 
             this.btnAddSubDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddSubDrawing.Location = new System.Drawing.Point(950, 41);
+            this.btnAddSubDrawing.Location = new System.Drawing.Point(1164, 41);
             this.btnAddSubDrawing.Name = "btnAddSubDrawing";
             this.btnAddSubDrawing.Size = new System.Drawing.Size(94, 23);
             this.btnAddSubDrawing.TabIndex = 5;
@@ -287,7 +303,7 @@
             // btnRefreshSource
             // 
             this.btnRefreshSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefreshSource.Location = new System.Drawing.Point(950, 99);
+            this.btnRefreshSource.Location = new System.Drawing.Point(1164, 99);
             this.btnRefreshSource.Name = "btnRefreshSource";
             this.btnRefreshSource.Size = new System.Drawing.Size(94, 23);
             this.btnRefreshSource.TabIndex = 6;
@@ -298,7 +314,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1050, 350);
+            this.ClientSize = new System.Drawing.Size(1264, 495);
             this.Controls.Add(this.btnRefreshSource);
             this.Controls.Add(this.btnAddSubDrawing);
             this.Controls.Add(this.btnDelDrawing);
