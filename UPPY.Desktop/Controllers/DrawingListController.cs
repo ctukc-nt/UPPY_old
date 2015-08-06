@@ -23,7 +23,7 @@ namespace UPPY.Desktop.Controllers
             _techRouteDataManager = dataManagerFactory1.GetDataManager<TechRoute>();
         }
 
-        public List<Drawing> GetData()
+        public List<Drawing> GetDrawingsList()
         {
             return _drawingsDataManager.GetListCollection();
         }

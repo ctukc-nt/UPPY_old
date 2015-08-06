@@ -37,7 +37,7 @@ namespace UPPY.Desktop.Views
                 data = (Drawing)tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
             }
 
-            tlDarwings.DataSource = _controller.GetData();
+            tlDarwings.DataSource = _controller.GetDrawingsList();
             tlDarwings.RefreshDataSource();
             if (data != null)
             {
@@ -68,7 +68,7 @@ namespace UPPY.Desktop.Views
 
         private void DrawingsListForm_Load(object sender, EventArgs e)
         {
-            tlDarwings.DataSource = _controller.GetData();
+            tlDarwings.DataSource = _controller.GetDrawingsList();
             if (SelectedDocument != null)
             {
                 var node = tlDarwings.FindNode(x => ((Drawing)tlDarwings.GetDataRecordByNode(x)).Id == SelectedDocument.Id);

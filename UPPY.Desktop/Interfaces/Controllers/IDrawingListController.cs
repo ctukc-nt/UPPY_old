@@ -6,7 +6,7 @@ namespace UPPY.Desktop.Interfaces.Controllers
 {
     public interface IDrawingListController
     {
-        List<Drawing> GetData();
+        List<Drawing> GetDrawingsList();
         Drawing CreateDocument();
         void Save(Drawing document);
         void Delete(Drawing document);
