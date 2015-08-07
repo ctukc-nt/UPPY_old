@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>4bc9228c-5db0-4695-8335-751ceeb40523</ProjectGuid>
+    <ProjectGuid>{04B0D4BE-D7A1-4F6A-8A97-BBE47746BB44}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UPPY.DIE</RootNamespace>
@@ -50,6 +50,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Import\Siemens\Article.cs" />
+    <Compile Include="Import\Siemens\FileNotSearizableException.cs" />
+    <Compile Include="Import\Siemens\IArticlesFactory.cs" />
+    <Compile Include="Import\Siemens\ILogging.cs" />
+    <Compile Include="Import\Siemens\SiemensProjectLoader.cs" />
+    <Compile Include="Import\Siemens\SiemensProject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -73,6 +79,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Export\" />
+    <Folder Include="Import\Excel\" />
+    <Folder Include="Import\OneC\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
