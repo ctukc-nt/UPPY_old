@@ -108,5 +108,14 @@ namespace Core.DomainModel
         /// Цвет метки
         /// </summary>
         public Color Color { get; set; }
+
+        public FileDrawingInfo FileDrawingInfo { get; set; }
+    }
+
+    public class FileDrawingInfo
+    {
+        public string Hash { get; set; }
+
+        public string Extension { get; set; }
     }
 }
