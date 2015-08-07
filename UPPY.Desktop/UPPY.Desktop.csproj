@@ -65,6 +65,7 @@
     <Compile Include="Controllers\DrawingListController.cs" />
     <Compile Include="Controllers\FilteredDrawingsListController.cs" />
     <Compile Include="Controllers\HierarchyNumberDrawingController.cs" />
+    <Compile Include="Factorys\DataMangersFactory.cs" />
     <Compile Include="Interfaces\Controllers\IDrawingListController.cs" />
     <Compile Include="Interfaces\Controllers\ITechRouteListController.cs" />
     <Compile Include="Controllers\TechRouteDocumentController.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Controllers\HierarchyNumberDrawing.cs" />
     <Compile Include="Interfaces\IControllersFactory.cs" />
     <Compile Include="Interfaces\IListView.cs" />
+    <Compile Include="Interfaces\IUppyDataManagersFactory.cs" />
     <Compile Include="Interfaces\IView.cs" />
     <Compile Include="Ninject\ApplicationModule.cs" />
     <Compile Include="Ninject\CompositionRoot.cs" />
