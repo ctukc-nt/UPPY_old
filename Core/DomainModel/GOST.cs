@@ -8,6 +8,13 @@ namespace Core.DomainModel
 {
     public class Gost
     {
+
+        public Gost()
+        {
+            StandartWeights = new List<StandartWeight>();
+        }
+
+
         /// <summary>
         /// Дополнительная единица измерения
         /// </summary>
@@ -23,16 +30,30 @@ namespace Core.DomainModel
         /// Веса по типоразмерам
         /// </summary>
         public List<StandartWeight> StandartWeights { get; set; }
+
+        /// <summary>
+        /// Получить вес по таблице
+        /// </summary>
+        /// <param name="standartSize"></param>
+        /// <returns></returns>
+        public StandartWeight GetStandartWeight(string standartSize)
+        {
+            return
+                StandartWeights.FirstOrDefault(
+                    x =>
+                        x.StandartSize.ToLower().Replace("x", "").Replace("х", "") ==
+                        standartSize.ToLower().Replace("x", "").Replace("х", ""));
+        }
     }
 
-    internal class StandartWeight
+    public class StandartWeight
     {
         public string StandartSize { get; set; }
 
         public double Weight { get; set; }
     }
 
-    internal enum WeightMethodCalculate
+    public enum WeightMethodCalculate
     {
         /// <summary>
         /// Длина
@@ -47,6 +68,16 @@ namespace Core.DomainModel
         /// <summary>
         /// Длина и толщина (трубы)
         /// </summary>
-        LengthAndThikness
+        LengthAndThikness,
+
+        /// <summary>
+        /// Длина и толщина (трубы)
+        /// </summary>
+        LengthAndDoubleThikness,
+
+        /// <summary>
+        /// По таблицам ГОСТа
+        /// </summary>
+        ByTable
     }
 }
