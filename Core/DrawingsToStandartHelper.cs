@@ -19,7 +19,7 @@ namespace Core
             set { _density = value; }
         }
 
-        public bool CreateStandartByDrawing(Drawing headDrawing, IHierClassDataManager<Drawing> dataManager )
+        public bool CreateStandartByDrawing(Drawing headDrawing, IHierClassDataManager<Drawing> dataManager, List<Gost> gosts)
         {
             var allChildrens = dataManager.GetListAllChildrens(headDrawing.Id);
             var allParentId = allChildrens.Select(x => x.ParentId);

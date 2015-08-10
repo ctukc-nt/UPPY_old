@@ -46,8 +46,11 @@
   <ItemGroup>
     <Compile Include="DomainModel\Drawing.cs" />
     <Compile Include="DomainModel\DrawingWithTechOper.cs" />
+    <Compile Include="DomainModel\ExtraDimensions.cs" />
+    <Compile Include="DomainModel\GOST.cs" />
     <Compile Include="DomainModel\PostitionStandart.cs" />
     <Compile Include="DomainModel\Standart.cs" />
+    <Compile Include="DrawingsToStandartHelper.cs" />
     <Compile Include="Interfaces\IClassDataManager.cs" />
     <Compile Include="Interfaces\IDataManagersFactory.cs" />
     <Compile Include="Interfaces\IEntity.cs" />

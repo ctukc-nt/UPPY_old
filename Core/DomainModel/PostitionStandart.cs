@@ -50,7 +50,7 @@ namespace Core.DomainModel
         /// <summary>
         /// Тип дополнительной единицы измерения
         /// </summary>
-        public string TypeAdditionalMeasurement { get; set; }
+        public ExtraDimensions TypeAdditionalMeasurement { get; set; }
 
         /// <summary>
         /// Примечание
