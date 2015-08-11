@@ -5,9 +5,7 @@ using System.Windows.Forms;
 using Core.DomainModel;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList.Nodes;
-using UPPY.Desktop.Controllers;
-using UPPY.Desktop.Factorys;
-using UPPY.Desktop.Interfaces;
+using UPPY.Desktop.Interfaces.Controllers;
 
 namespace UPPY.Desktop.Views
 {

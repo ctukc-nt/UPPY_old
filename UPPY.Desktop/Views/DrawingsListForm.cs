@@ -3,8 +3,8 @@ using System.Linq;
 using System.Windows.Forms;
 using Core.DomainModel;
 using DevExpress.XtraGrid.Views.Base;
-using UPPY.Desktop.Controllers;
 using UPPY.Desktop.Controllers.Drawings;
+using UPPY.Desktop.Interfaces.Controllers;
 
 namespace UPPY.Desktop.Views
 {
@@ -23,8 +23,6 @@ namespace UPPY.Desktop.Views
             repositoryItemLookUpEdit1.DataSource = controller.GetTechRoutes();
         }
 
-       
-
         public void RefreshData(object sender, EventArgs e)
         {
             gridControl1.DataSource = _controller.GetData();
@@ -32,7 +30,7 @@ namespace UPPY.Desktop.Views
 
         private void btnAddDrawing_Click(object sender, EventArgs e)
         {
-            _controller.SaveDocument(_controller.CreateDocument());
+            _controller.Save(_controller.CreateDocument());
             gridControl1.Focus();
         }
 
@@ -45,7 +43,7 @@ namespace UPPY.Desktop.Views
                 var parentDrw = (Drawing) data;
                 var newDoc = _controller.CreateDocument();
                 newDoc.ParentId = parentDrw.Id;
-                _controller.SaveDocument(newDoc);
+                _controller.Save(newDoc);
 
                 gridView1.FocusedRowHandle = ind;
                 gridControl1.RefreshDataSource();

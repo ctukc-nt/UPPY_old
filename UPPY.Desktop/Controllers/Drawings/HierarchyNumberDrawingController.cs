@@ -1,27 +1,15 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.DomainModel;
 using Core.Interfaces;
 using Ninject.Infrastructure.Language;
-using UPPY.Desktop.Interfaces;
+using UPPY.Desktop.Classes;
+using UPPY.Desktop.Interfaces.Controllers;
 
 namespace UPPY.Desktop.Controllers.Drawings
 {
-    public interface IHierarchyNumberDrawingController
-    {
-        List<HierarchyNumberDrawing> GetData();
-
-        event EventHandler DataRefreshed;
-        HierarchyNumberDrawing CreateDocument();
-        void Save(HierarchyNumberDrawing document);
-        void Delete(HierarchyNumberDrawing document);
-        void EditDocument(HierarchyNumberDrawing document);
-        void SaveDocument(HierarchyNumberDrawing doc);
-        void DeleteDocument(HierarchyNumberDrawing doc);
-        List<TechRoute> GetTechRoutes();
-    }
-
     public class HierarchyNumberDrawingController : IHierarchyNumberDrawingController
     {
         private readonly IDataManagersFactory _dataManagersFactory;
@@ -85,7 +73,7 @@ namespace UPPY.Desktop.Controllers.Drawings
 
         public void Save(HierarchyNumberDrawing document)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Delete(HierarchyNumberDrawing document)

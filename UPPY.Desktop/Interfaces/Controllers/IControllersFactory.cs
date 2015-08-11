@@ -1,9 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using Core.Interfaces;
+﻿using System.Collections.Generic;
 
-namespace UPPY.Desktop.Interfaces
+namespace UPPY.Desktop.Interfaces.Controllers
 {
+    public interface IUppyControllersFactory : IControllersFactory
+    {
+
+    }
+
+
     public interface IControllersFactory
     {
         /// <summary>
@@ -34,7 +38,8 @@ namespace UPPY.Desktop.Interfaces
     /// Контроллер может редактировать документ
     /// </summary>
     public interface IDocumentController<T>
-    {T Document { get; set; }
+    {
+        T Document { get; set; }
 
         bool ShowViewDialog();
     }

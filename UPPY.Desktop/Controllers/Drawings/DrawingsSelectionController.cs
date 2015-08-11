@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Core.DomainModel;
 using Core.Interfaces;
-using UPPY.Desktop.Interfaces;
+using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Views;
 
 namespace UPPY.Desktop.Controllers.Drawings

@@ -65,7 +65,8 @@
     <Compile Include="Controllers\Drawings\DrawingListController.cs" />
     <Compile Include="Controllers\Drawings\FilteredDrawingsListController.cs" />
     <Compile Include="Controllers\Drawings\HierarchyNumberDrawingController.cs" />
-    <Compile Include="Interfaces\IDrawingsSelectionController.cs" />
+    <Compile Include="Interfaces\Controllers\IHierarchyNumberDrawingController.cs" />
+    <Compile Include="Interfaces\Controllers\IDrawingsSelectionController.cs" />
     <Compile Include="Factorys\DataMangersFactory.cs" />
     <Compile Include="Controllers\Drawings\DrawingsSelectionController.cs" />
     <Compile Include="Interfaces\Controllers\IDrawingListController.cs" />
@@ -74,8 +75,8 @@
     <Compile Include="Controllers\TechRoutes\TechRouteListController.cs" />
     <Compile Include="Factorys\ControllersFactory.cs" />
     <Compile Include="Fake\UppyFakeDataManagersFactory.cs" />
-    <Compile Include="Controllers\Drawings\HierarchyNumberDrawing.cs" />
-    <Compile Include="Interfaces\IControllersFactory.cs" />
+    <Compile Include="Classes\HierarchyNumberDrawing.cs" />
+    <Compile Include="Interfaces\Controllers\IControllersFactory.cs" />
     <Compile Include="Interfaces\IListView.cs" />
     <Compile Include="Interfaces\IUppyDataManagersFactory.cs" />
     <Compile Include="Interfaces\IView.cs" />

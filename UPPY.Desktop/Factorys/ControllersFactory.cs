@@ -1,15 +1,14 @@
 ﻿using System;
 using Core.DomainModel;
 using Core.Interfaces;
-using UPPY.Desktop.Controllers;
 using UPPY.Desktop.Controllers.Drawings;
 using UPPY.Desktop.Controllers.TechRoutes;
-using UPPY.Desktop.Interfaces;
+using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Ninject;
 
 namespace UPPY.Desktop.Factorys
 {
-    internal class ControllersFactory : IControllersFactory
+    internal class ControllersFactory : IUppyControllersFactory
     {
 
         private static ControllersFactory _instance;

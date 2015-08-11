@@ -1,6 +1,6 @@
 ﻿using Core.DomainModel;
 
-namespace UPPY.Desktop
+namespace UPPY.Desktop.Classes
 {
     public class HierarchyNumberDrawing : Drawing
     {
