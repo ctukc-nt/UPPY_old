@@ -11,10 +11,12 @@ namespace Core
 
         private double _density = 7.85;
 
-        private char[] _splittersStandartSize = new[] { 'X', 'Х' };
+        private double _defaultUtilizationRatio = 0.8;
+
+        private List<char> _splittersStandartSize = new List<char>() { 'X', 'Х' };
 
         /// <summary>
-        /// Плотность
+        /// Плотность стали
         /// </summary>
         public double Density
         {
@@ -22,12 +24,31 @@ namespace Core
             set { _density = value; }
         }
 
-        public char[] SplittersStandartSize
+        /// <summary>
+        /// Делители в типоразмере
+        /// </summary>
+        public List<char> SplittersStandartSize
         {
             get { return _splittersStandartSize; }
             set { _splittersStandartSize = value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public double DefaultUtilizationRatio
+        {
+            get { return _defaultUtilizationRatio; }
+            set { _defaultUtilizationRatio = value; }
+        }
+
+        /// <summary>
+        /// Создать нормы на деталь
+        /// </summary>
+        /// <param name="headDrawing">Деталь</param>
+        /// <param name="dataManager">Дата манагер</param>
+        /// <param name="gosts">Список ГОСТов</param>
+        /// <returns></returns>
         public Standart CreateStandartByDrawing(Drawing headDrawing, IHierClassDataManager<Drawing> dataManager, List<Gost> gosts)
         {
             var allChildrens = dataManager.GetListAllChildrens(headDrawing.Id);
@@ -38,7 +59,7 @@ namespace Core
 
             foreach (Drawing detail in allDetails)
             {
-                var position = new PostitionStandart();
+                var position = new PositionStandart();
                 position.Profile = detail.Profile;
                 if (string.IsNullOrWhiteSpace(position.Profile))
                     position.Profile = detail.Name;
@@ -46,10 +67,10 @@ namespace Core
                 position.StandartSize = detail.StandartSize;
                 position.GostOnSort = detail.GostOnSort;
                 position.MarkSteal = detail.MarkSteal;
-                position.UtilizationRatio = 0.8;
+                position.UtilizationRatio = _defaultUtilizationRatio;
                 position.Weight = 0;
 
-                var dimensions = position.StandartSize.ToUpper().Split(_splittersStandartSize);
+                var dimensions = position.StandartSize.ToUpper().Split(_splittersStandartSize.ToArray());
                 var gost =
                     gosts.FirstOrDefault(
                         x => String.Equals(x.Name.Replace(" ", ""), position.GostOnSort.Replace(" ", ""), StringComparison.CurrentCultureIgnoreCase));
@@ -87,27 +108,66 @@ namespace Core
                         position.Weight = (Convert.ToDouble(outerSize) - Convert.ToDouble(widthWall)) * Convert.ToDouble(widthWall) / 40.55 *
                                           position.AdditionalMeasurement;
 
-
                         break;
                     case WeightMethodCalculate.LengthAndDoubleThikness:
                         position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
                         position.AdditionalMeasurement = ((double)detail.Length) / 1000 * detail.CountAll;
                         position.Weight = position.AdditionalMeasurement * ConvertStandartSize(position.StandartSize) *
                                           ConvertStandartSize(position.StandartSize) * Density / 1000;
-
-
-                        break;
-                    default:
                         break;
                 }
 
-                position.WeighWithWaste = position.Weight / position.UtilizationRatio;
+                position.WeightWithWaste = position.Weight / position.UtilizationRatio;
+                position.AdditionalMeasurementWithWaste = position.AdditionalMeasurementWithWaste / position.UtilizationRatio;
 
-
-
+                standart.Positions.Add(position);
             }
 
             return standart;
+
+        }
+
+        /// <summary>
+        /// Сгруппировать позиции нормы на сборку
+        /// </summary>
+        /// <param name="standart"></param>
+        /// <returns></returns>
+        public Standart GroupAndSumPositionsStandart(Standart standart)
+        {
+            var grouppedPositionStandart = new Standart();
+            grouppedPositionStandart.Id = standart.Id;
+            grouppedPositionStandart.Name = standart.Name;
+            grouppedPositionStandart.Drawing = standart.Drawing;
+            grouppedPositionStandart.UtilizationRatio = standart.UtilizationRatio;
+
+            grouppedPositionStandart.Positions = (from tempPosition in standart.Positions
+                                                  orderby tempPosition.Profile, tempPosition.StandartSize, tempPosition.GostOnSort, tempPosition.MarkSteal
+                                                  group tempPosition by
+                                                      new
+                                                      {
+                                                          tempPosition.Profile,
+                                                          tempPosition.StandartSize,
+                                                          tempPosition.GostOnSort,
+                                                          tempPosition.MarkSteal,
+                                                          tempPosition.TypeAdditionalMeasurement
+                                                      }
+                                                      into grPosition
+                                                      select new PositionStandart
+                                                      {
+                                                          Profile = grPosition.Key.Profile,
+                                                          StandartSize = grPosition.Key.StandartSize,
+                                                          GostOnSort = grPosition.Key.GostOnSort,
+                                                          MarkSteal = grPosition.Key.MarkSteal,
+                                                          TypeAdditionalMeasurement = grPosition.Key.TypeAdditionalMeasurement,
+                                                          AdditionalMeasurement = grPosition.Sum(x => x.AdditionalMeasurement),
+                                                          AdditionalMeasurementWithWaste = grPosition.Sum(x => x.AdditionalMeasurement) / _defaultUtilizationRatio,
+                                                          Weight = grPosition.Sum(x => x.Weight),
+                                                          WeightWithWaste = grPosition.Sum(x => x.Weight) / _defaultUtilizationRatio,
+                                                          UtilizationRatio = _defaultUtilizationRatio,
+                                                          Note = string.Empty
+                                                      }).ToList();
+
+            return grouppedPositionStandart;
 
         }
 

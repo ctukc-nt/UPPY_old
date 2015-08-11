@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.DomainModel
 {
-    public class PostitionStandart
+    public class PositionStandart
     {/// <summary>
         ///     Профиль
         /// </summary>
@@ -40,12 +40,17 @@ namespace Core.DomainModel
         /// <summary>
         /// Вес с отходом
         /// </summary>
-        public double WeighWithWaste { get; set; }
+        public double WeightWithWaste { get; set; }
 
         /// <summary>
         /// Дополнительная единица измерения
         /// </summary>
         public double AdditionalMeasurement { get; set; }
+
+        /// <summary>
+        /// Дополнительная единица измерения с отходом
+        /// </summary>
+        public double AdditionalMeasurementWithWaste { get; set; }
 
         /// <summary>
         /// Тип дополнительной единицы измерения
