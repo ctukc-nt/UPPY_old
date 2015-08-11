@@ -62,17 +62,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\DrawingListController.cs" />
-    <Compile Include="Controllers\FilteredDrawingsListController.cs" />
-    <Compile Include="Controllers\HierarchyNumberDrawingController.cs" />
+    <Compile Include="Controllers\Drawings\DrawingListController.cs" />
+    <Compile Include="Controllers\Drawings\FilteredDrawingsListController.cs" />
+    <Compile Include="Controllers\Drawings\HierarchyNumberDrawingController.cs" />
+    <Compile Include="Interfaces\IDrawingsSelectionController.cs" />
     <Compile Include="Factorys\DataMangersFactory.cs" />
+    <Compile Include="Controllers\Drawings\DrawingsSelectionController.cs" />
     <Compile Include="Interfaces\Controllers\IDrawingListController.cs" />
     <Compile Include="Interfaces\Controllers\ITechRouteListController.cs" />
-    <Compile Include="Controllers\TechRouteDocumentController.cs" />
-    <Compile Include="Controllers\TechRouteListController.cs" />
+    <Compile Include="Controllers\TechRoutes\TechRouteDocumentController.cs" />
+    <Compile Include="Controllers\TechRoutes\TechRouteListController.cs" />
     <Compile Include="Factorys\ControllersFactory.cs" />
     <Compile Include="Fake\UppyFakeDataManagersFactory.cs" />
-    <Compile Include="Controllers\HierarchyNumberDrawing.cs" />
+    <Compile Include="Controllers\Drawings\HierarchyNumberDrawing.cs" />
     <Compile Include="Interfaces\IControllersFactory.cs" />
     <Compile Include="Interfaces\IListView.cs" />
     <Compile Include="Interfaces\IUppyDataManagersFactory.cs" />
@@ -90,6 +92,12 @@
     </Compile>
     <Compile Include="Views\DrawingsListForm.Designer.cs">
       <DependentUpon>DrawingsListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DrawingsSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DrawingsSelectionForm.Designer.cs">
+      <DependentUpon>DrawingsSelectionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\DrawingsListTreeForm.cs">
       <SubType>Form</SubType>
@@ -122,6 +130,9 @@
     </Compile>
     <EmbeddedResource Include="Views\DrawingsListForm.resx">
       <DependentUpon>DrawingsListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DrawingsSelectionForm.resx">
+      <DependentUpon>DrawingsSelectionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DrawingsListTreeForm.resx">
       <DependentUpon>DrawingsListTreeForm.cs</DependentUpon>

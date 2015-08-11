@@ -6,7 +6,7 @@ using UPPY.Desktop.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Views;
 
-namespace UPPY.Desktop.Controllers
+namespace UPPY.Desktop.Controllers.Drawings
 {
     public class DrawingsListDocumentController : IDrawingListController, IListDocumentController
     {
@@ -14,7 +14,8 @@ namespace UPPY.Desktop.Controllers
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechRoute> _techRouteDataManager;
 
-        public DrawingsListDocumentController(IDataManagersFactory dataManagersFactory, IControllersFactory controllersFactory)
+        public DrawingsListDocumentController(IDataManagersFactory dataManagersFactory,
+            IControllersFactory controllersFactory)
         {
             _controllersFactory = controllersFactory;
             var dataManagerFactory1 = dataManagersFactory;

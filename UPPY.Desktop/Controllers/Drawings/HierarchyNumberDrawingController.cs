@@ -6,7 +6,7 @@ using Core.Interfaces;
 using Ninject.Infrastructure.Language;
 using UPPY.Desktop.Interfaces;
 
-namespace UPPY.Desktop.Controllers
+namespace UPPY.Desktop.Controllers.Drawings
 {
     public interface IHierarchyNumberDrawingController
     {

@@ -2,6 +2,8 @@
 using Core.DomainModel;
 using Core.Interfaces;
 using UPPY.Desktop.Controllers;
+using UPPY.Desktop.Controllers.Drawings;
+using UPPY.Desktop.Controllers.TechRoutes;
 using UPPY.Desktop.Interfaces;
 using UPPY.Desktop.Ninject;
 
@@ -47,6 +49,9 @@ namespace UPPY.Desktop.Factorys
 
         public ISelectionController<T> GetDocumentSelectionController<T>()
         {
+            if (typeof (T) == typeof (Drawing))
+                return (ISelectionController<T>) new DrawingsSelectionController(CompositionRoot.Resolve<IDataManagersFactory>(), this);
+
             throw new NotImplementedException();
         }
 

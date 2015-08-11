@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core.Interfaces;
 
 namespace UPPY.Desktop.Interfaces
@@ -33,8 +34,7 @@ namespace UPPY.Desktop.Interfaces
     /// Контроллер может редактировать документ
     /// </summary>
     public interface IDocumentController<T>
-    {
-        T Document { get; set; }
+    {T Document { get; set; }
 
         bool ShowViewDialog();
     }
@@ -43,9 +43,11 @@ namespace UPPY.Desktop.Interfaces
     /// Контроллер может показывать список и выбирать документ
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface ISelectionController<out T>
+    public interface ISelectionController<T>
     {
-        T ShowViewDialog();
+        T ShowViewToSelectOneDialog();
+
+        List<T> ShowViewToSelectManyDialog();
     }
 
     /// <summary>

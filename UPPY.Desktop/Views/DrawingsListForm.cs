@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Core.DomainModel;
 using DevExpress.XtraGrid.Views.Base;
 using UPPY.Desktop.Controllers;
+using UPPY.Desktop.Controllers.Drawings;
 
 namespace UPPY.Desktop.Views
 {
