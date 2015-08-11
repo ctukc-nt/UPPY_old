@@ -77,6 +77,7 @@
     <Compile Include="Fake\UppyFakeDataManagersFactory.cs" />
     <Compile Include="Classes\HierarchyNumberDrawing.cs" />
     <Compile Include="Interfaces\Controllers\IControllersFactory.cs" />
+    <Compile Include="Interfaces\Controllers\IUppyControllersFactory.cs" />
     <Compile Include="Interfaces\IListView.cs" />
     <Compile Include="Interfaces\IUppyDataManagersFactory.cs" />
     <Compile Include="Interfaces\IView.cs" />

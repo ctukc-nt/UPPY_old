@@ -13,7 +13,6 @@ namespace UPPY.Desktop.Views
     public partial class DrawingsListTreeForm : Form
     {
         private readonly IDrawingListController _controller;
-        private Drawing _selectedDocument;
 
         public DrawingsListTreeForm(IDrawingListController controller)
         {
@@ -69,11 +68,6 @@ namespace UPPY.Desktop.Views
         private void DrawingsListForm_Load(object sender, EventArgs e)
         {
             tlDarwings.DataSource = _controller.GetDrawingsList();
-            if (SelectedDocument != null)
-            {
-                var node = tlDarwings.FindNode(x => ((Drawing)tlDarwings.GetDataRecordByNode(x)).Id == SelectedDocument.Id);
-                ExpandToParentNode(node);
-            }
         }
 
         #region работа с операциями с чертежами
@@ -159,21 +153,5 @@ namespace UPPY.Desktop.Views
         }
 
         #endregion
-
-
-        public Drawing SelectedDocument
-        {
-            get { return _selectedDocument; }
-            set
-            {
-                _selectedDocument = value;
-                if (value != null)
-                {
-                    var node =
-                        tlDarwings.FindNode(x => ((Drawing)tlDarwings.GetDataRecordByNode(x)).Id == value.Id);
-                    ExpandToParentNode(node);
-                }
-            }
-        }
     }
 }

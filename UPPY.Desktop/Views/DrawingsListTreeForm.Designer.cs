@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.rProfile = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.tlDarwings = new DevExpress.XtraTreeList.TreeList();
             this.tlcName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -93,7 +93,7 @@
             this.tlcTechRouteId});
             this.tlDarwings.FooterPanelHeight = 30;
             this.tlDarwings.KeyFieldName = "Id";
-            this.tlDarwings.Location = new System.Drawing.Point(0, 28);
+            this.tlDarwings.Location = new System.Drawing.Point(12, 28);
             this.tlDarwings.Name = "tlDarwings";
             this.tlDarwings.OptionsBehavior.EnableFiltering = true;
             this.tlDarwings.OptionsFilter.FilterMode = DevExpress.XtraTreeList.FilterMode.Extended;
@@ -101,7 +101,7 @@
             this.tlDarwings.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repoTechRoutes});
             this.tlDarwings.RootValue = null;
-            this.tlDarwings.Size = new System.Drawing.Size(1158, 467);
+            this.tlDarwings.Size = new System.Drawing.Size(1146, 467);
             this.tlDarwings.TabIndex = 2;
             this.tlDarwings.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.tlDrawings_CellValueChanged);
             // 
@@ -259,7 +259,7 @@
             this.repoTechRoutes.AutoHeight = false;
             this.repoTechRoutes.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "", "showlist", null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", "showlist", null, true)});
             this.repoTechRoutes.DataSource = this.techRouteBindingSource;
             this.repoTechRoutes.DisplayMember = "Name";
             this.repoTechRoutes.Name = "repoTechRoutes";

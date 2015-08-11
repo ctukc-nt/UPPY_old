@@ -2,12 +2,6 @@
 
 namespace UPPY.Desktop.Interfaces.Controllers
 {
-    public interface IUppyControllersFactory : IControllersFactory
-    {
-
-    }
-
-
     public interface IControllersFactory
     {
         /// <summary>
