@@ -33,6 +33,11 @@ namespace UPPY.Desktop.Controllers
             c.ShowViewDialog();
         }
 
+        public void CreateStandartByDrawing()
+        {
+            throw new NotImplementedException();
+        }
+
         public event EventHandler<EventArgs> DataRefreshed;
 
         public Drawing CreateDocument()

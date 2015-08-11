@@ -13,6 +13,8 @@ namespace UPPY.Desktop.Interfaces.Controllers
         List<TechRoute> GetTechRoutes();
         void ShowTechRoutesList();
 
+        void CreateStandartByDrawing();
+
         event EventHandler<EventArgs> DataRefreshed;
     }
 }
