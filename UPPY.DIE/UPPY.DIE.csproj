@@ -52,8 +52,10 @@
     </Compile>
     <Compile Include="Import\Siemens\Article.cs" />
     <Compile Include="Import\Siemens\FileNotSearizableException.cs" />
-    <Compile Include="Import\Siemens\IArticlesFactory.cs" />
-    <Compile Include="Import\Siemens\ILogging.cs" />
+    <Compile Include="Import\Siemens\FilesArticlesFactory.cs" />
+    <Compile Include="Import\Siemens\Interfaces\IArticlesFactory.cs" />
+    <Compile Include="Import\Siemens\Interfaces\IFilesNameGetter.cs" />
+    <Compile Include="Import\Siemens\Interfaces\ILogging.cs" />
     <Compile Include="Import\Siemens\SiemensProjectLoader.cs" />
     <Compile Include="Import\Siemens\SiemensProject.cs" />
     <Compile Include="Program.cs" />

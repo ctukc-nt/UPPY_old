@@ -1,4 +1,4 @@
-﻿namespace UPPY.DIE.Import.Siemens
+﻿namespace UPPY.DIE.Import.Siemens.Interfaces
 {
     /// <summary>
     /// Фабрика получения классов Article
