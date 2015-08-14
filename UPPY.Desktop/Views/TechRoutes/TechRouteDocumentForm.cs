@@ -6,12 +6,12 @@ using UPPY.Desktop.Interfaces.Controllers;
 
 namespace UPPY.Desktop.Views.TechRoutes
 {
-    public partial class TechRouteForm : Form, IDocumentView<TechRoute>
+    public partial class TechRouteDocumentForm : Form, IDocumentView<TechRoute>
     {
         private TechRoute _document;
         private readonly ITechRouteDocumentController _techRouteDocumentController;
 
-        public TechRouteForm(ITechRouteDocumentController techRouteDocumentController)
+        public TechRouteDocumentForm(ITechRouteDocumentController techRouteDocumentController)
         {
             _techRouteDocumentController = techRouteDocumentController;
             InitializeComponent();

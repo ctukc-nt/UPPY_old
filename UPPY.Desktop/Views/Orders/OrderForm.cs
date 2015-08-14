@@ -4,14 +4,16 @@ using UPPY.Desktop.Interfaces.Controllers;
 
 namespace UPPY.Desktop.Views.Orders
 {
-    public partial class OrderForm : Form
+    public partial class OrderForm : Form, IDocumentView<Order>
     {
         public OrderForm(IOrderDocumentController controller)
         {
             InitializeComponent();
         }
 
-        public Order Order { get; set; }
+        public Order Document { get; set; }
+
         public bool AutoSaveDocument { get; set; }
+
     }
 }

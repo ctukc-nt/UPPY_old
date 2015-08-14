@@ -47,6 +47,12 @@
     <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\Assemblies\MongoDriver\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>..\Assemblies\MongoDriver\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -76,6 +82,7 @@
     <Compile Include="Concrete\Controllers\Drawings\FilteredDrawingsListController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\HierarchyNumberDrawingController.cs" />
     <Compile Include="Concrete\Controllers\Orders\OrderDocumentController.cs" />
+    <Compile Include="Concrete\DataManager\Drawings\DrawingsFilteredDataManager.cs" />
     <Compile Include="Interfaces\Controllers\ITechRouteDocumentController.cs" />
     <Compile Include="Interfaces\Controllers\IHierarchyNumberDrawingController.cs" />
     <Compile Include="Interfaces\Controllers\IDrawingsSelectionController.cs" />
@@ -133,11 +140,11 @@
     <Compile Include="Views\Orders\OrdersListForm.Designer.cs">
       <DependentUpon>OrdersListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\TechRoutes\TechRouteForm.cs">
+    <Compile Include="Views\TechRoutes\TechRouteDocumentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\TechRoutes\TechRouteForm.Designer.cs">
-      <DependentUpon>TechRouteForm.cs</DependentUpon>
+    <Compile Include="Views\TechRoutes\TechRouteDocumentForm.Designer.cs">
+      <DependentUpon>TechRouteDocumentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TechRoutes\TechRoutesListForm.cs">
       <SubType>Form</SubType>
@@ -170,8 +177,8 @@
     <EmbeddedResource Include="Views\Orders\OrdersListForm.resx">
       <DependentUpon>OrdersListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\TechRoutes\TechRouteForm.resx">
-      <DependentUpon>TechRouteForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\TechRoutes\TechRouteDocumentForm.resx">
+      <DependentUpon>TechRouteDocumentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TechRoutes\TechRoutesListForm.resx">
       <DependentUpon>TechRoutesListForm.cs</DependentUpon>
@@ -196,6 +203,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{876F668F-5017-4CEE-8AE4-91E9B0E9E6B6}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MongoWork\MongoWork.csproj">
+      <Project>{371A01EB-92FF-4FEF-871D-DA6E19A8FDD8}</Project>
+      <Name>MongoWork</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

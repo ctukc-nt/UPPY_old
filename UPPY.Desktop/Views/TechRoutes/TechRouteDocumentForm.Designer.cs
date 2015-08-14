@@ -1,6 +1,6 @@
 ﻿namespace UPPY.Desktop.Views.TechRoutes
 {
-    partial class TechRouteForm
+    partial class TechRouteDocumentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -200,7 +200,7 @@
             this.btnClose.Text = "Отмена";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
-            // TechRouteForm
+            // TechRouteDocumentForm
             // 
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,8 +216,8 @@
             this.Controls.Add(this.gridControlTechOperations);
             this.Controls.Add(this.textEdit2);
             this.Controls.Add(this.textEdit1);
-            this.Name = "TechRouteForm";
-            this.Text = "TechRouteForm";
+            this.Name = "TechRouteDocumentForm";
+            this.Text = "TechRouteDocumentForm";
             this.Load += new System.EventHandler(this.TechRouteForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();

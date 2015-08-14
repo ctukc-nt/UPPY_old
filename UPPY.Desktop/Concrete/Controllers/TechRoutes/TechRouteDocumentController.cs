@@ -21,7 +21,7 @@ namespace UPPY.Desktop.Concrete.Controllers.TechRoutes
         public TechRoute Document { get; set; }
         public bool ShowViewDialog()
         {
-            var view = new TechRouteForm(this);
+            var view = new TechRouteDocumentForm(this);
             view.Document = Document;
             if (view.ShowDialog() == DialogResult.OK)
             {
