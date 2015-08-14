@@ -3,10 +3,9 @@ using System.Linq;
 using System.Windows.Forms;
 using Core.DomainModel;
 using DevExpress.XtraGrid.Views.Base;
-using UPPY.Desktop.Controllers.Drawings;
 using UPPY.Desktop.Interfaces.Controllers;
 
-namespace UPPY.Desktop.Views
+namespace UPPY.Desktop.Views.Drawings
 {
     public partial class DrawingsListForm : Form
     {

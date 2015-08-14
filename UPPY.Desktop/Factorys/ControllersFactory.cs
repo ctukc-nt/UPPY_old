@@ -1,8 +1,8 @@
 ﻿using System;
 using Core.DomainModel;
 using Core.Interfaces;
-using UPPY.Desktop.Controllers.Drawings;
-using UPPY.Desktop.Controllers.TechRoutes;
+using UPPY.Desktop.Concrete.Controllers.Drawings;
+using UPPY.Desktop.Concrete.Controllers.TechRoutes;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Ninject;
 

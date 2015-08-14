@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
@@ -39,15 +40,24 @@
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,17 +72,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\Drawings\DrawingListController.cs" />
-    <Compile Include="Controllers\Drawings\FilteredDrawingsListController.cs" />
-    <Compile Include="Controllers\Drawings\HierarchyNumberDrawingController.cs" />
+    <Compile Include="Concrete\Controllers\Drawings\DrawingListController.cs" />
+    <Compile Include="Concrete\Controllers\Drawings\FilteredDrawingsListController.cs" />
+    <Compile Include="Concrete\Controllers\Drawings\HierarchyNumberDrawingController.cs" />
+    <Compile Include="Concrete\Controllers\Orders\OrderDocumentController.cs" />
+    <Compile Include="Interfaces\Controllers\ITechRouteDocumentController.cs" />
     <Compile Include="Interfaces\Controllers\IHierarchyNumberDrawingController.cs" />
     <Compile Include="Interfaces\Controllers\IDrawingsSelectionController.cs" />
     <Compile Include="Factorys\DataMangersFactory.cs" />
-    <Compile Include="Controllers\Drawings\DrawingsSelectionController.cs" />
+    <Compile Include="Concrete\Controllers\Drawings\DrawingsSelectionController.cs" />
     <Compile Include="Interfaces\Controllers\IDrawingListController.cs" />
     <Compile Include="Interfaces\Controllers\ITechRouteListController.cs" />
-    <Compile Include="Controllers\TechRoutes\TechRouteDocumentController.cs" />
-    <Compile Include="Controllers\TechRoutes\TechRouteListController.cs" />
+    <Compile Include="Concrete\Controllers\TechRoutes\TechRouteDocumentController.cs" />
+    <Compile Include="Concrete\Controllers\TechRoutes\TechRouteListController.cs" />
     <Compile Include="Factorys\ControllersFactory.cs" />
     <Compile Include="Fake\UppyFakeDataManagersFactory.cs" />
     <Compile Include="Classes\HierarchyNumberDrawing.cs" />
@@ -89,35 +101,48 @@
     <Compile Include="Fake\StandartClassFakeDataManager.cs" />
     <Compile Include="Fake\TechOperationClassFakeDataManager.cs" />
     <Compile Include="Fake\TechRoutesClassFakeDataManager.cs" />
-    <Compile Include="Views\DrawingsListForm.cs">
+    <Compile Include="Views\Drawings\DrawingsListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\DrawingsListForm.Designer.cs">
+    <Compile Include="Views\Drawings\DrawingsListForm.Designer.cs">
       <DependentUpon>DrawingsListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\DrawingsSelectionForm.cs">
+    <Compile Include="Views\Drawings\DrawingsSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\DrawingsSelectionForm.Designer.cs">
+    <Compile Include="Views\Drawings\DrawingsSelectionForm.Designer.cs">
       <DependentUpon>DrawingsSelectionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\DrawingsListTreeForm.cs">
+    <Compile Include="Views\Drawings\DrawingsListTreeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\DrawingsListTreeForm.Designer.cs">
+    <Compile Include="Views\Drawings\DrawingsListTreeForm.Designer.cs">
       <DependentUpon>DrawingsListTreeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\Controllers\IDocumentView.cs" />
-    <Compile Include="Views\TechRouteForm.cs">
+    <Compile Include="Interfaces\Controllers\IOrderDocumentController.cs" />
+    <Compile Include="Views\Orders\OrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\TechRouteForm.Designer.cs">
+    <Compile Include="Views\Orders\OrderForm.Designer.cs">
+      <DependentUpon>OrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\OrdersListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Orders\OrdersListForm.Designer.cs">
+      <DependentUpon>OrdersListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TechRoutes\TechRouteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TechRoutes\TechRouteForm.Designer.cs">
       <DependentUpon>TechRouteForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\TechRoutesListForm.cs">
+    <Compile Include="Views\TechRoutes\TechRoutesListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\TechRoutesListForm.Designer.cs">
+    <Compile Include="Views\TechRoutes\TechRoutesListForm.Designer.cs">
       <DependentUpon>TechRoutesListForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -130,19 +155,25 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\DrawingsListForm.resx">
+    <EmbeddedResource Include="Views\Drawings\DrawingsListForm.resx">
       <DependentUpon>DrawingsListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\DrawingsSelectionForm.resx">
+    <EmbeddedResource Include="Views\Drawings\DrawingsSelectionForm.resx">
       <DependentUpon>DrawingsSelectionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\DrawingsListTreeForm.resx">
+    <EmbeddedResource Include="Views\Drawings\DrawingsListTreeForm.resx">
       <DependentUpon>DrawingsListTreeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\TechRouteForm.resx">
+    <EmbeddedResource Include="Views\Orders\OrderForm.resx">
+      <DependentUpon>OrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\OrdersListForm.resx">
+      <DependentUpon>OrdersListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TechRoutes\TechRouteForm.resx">
       <DependentUpon>TechRouteForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\TechRoutesListForm.resx">
+    <EmbeddedResource Include="Views\TechRoutes\TechRoutesListForm.resx">
       <DependentUpon>TechRoutesListForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

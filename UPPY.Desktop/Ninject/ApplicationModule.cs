@@ -1,5 +1,7 @@
-﻿using Core.Interfaces;
+﻿using System;
+using Core.Interfaces;
 using Ninject.Modules;
+using UPPY.Desktop.Concrete.Controllers.Orders;
 using UPPY.Desktop.Factorys;
 using UPPY.Desktop.Fake;
 using UPPY.Desktop.Interfaces.Controllers;
@@ -12,6 +14,7 @@ namespace UPPY.Desktop.Ninject
         {
             Bind(typeof(IControllersFactory)).ToConstant(ControllersFactory.Instance);
             Bind(typeof(IDataManagersFactory)).To(typeof(UppyFakeDataManagersFactory));
+            Bind(typeof(IOrderDocumentController)).ToConstant(new OrderDocumentController());
         }
     }
 }

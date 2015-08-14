@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Core.DomainModel;
-using UPPY.Desktop.Controllers.TechRoutes;
 using UPPY.Desktop.Interfaces.Controllers;
 
-namespace UPPY.Desktop.Views
+namespace UPPY.Desktop.Views.TechRoutes
 {
     public partial class TechRouteForm : Form, IDocumentView<TechRoute>
     {

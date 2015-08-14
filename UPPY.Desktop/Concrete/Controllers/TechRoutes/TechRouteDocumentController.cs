@@ -3,15 +3,10 @@ using System.Windows.Forms;
 using Core.DomainModel;
 using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
-using UPPY.Desktop.Views;
+using UPPY.Desktop.Views.TechRoutes;
 
-namespace UPPY.Desktop.Controllers.TechRoutes
+namespace UPPY.Desktop.Concrete.Controllers.TechRoutes
 {
-    public interface ITechRouteDocumentController
-    {
-        List<TechOperation> GetDataTechOperations();
-    }
-
     internal class TechRouteDocumentController : ITechRouteDocumentController, IDocumentController<TechRoute>
     {
         private IControllersFactory _factory;

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Core.DomainModel;
 using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
-using UPPY.Desktop.Views;
+using UPPY.Desktop.Views.TechRoutes;
 
-namespace UPPY.Desktop.Controllers.TechRoutes
+namespace UPPY.Desktop.Concrete.Controllers.TechRoutes
 {
     public class TechRouteListController : ITechRouteListController, IListDocumentController
     {

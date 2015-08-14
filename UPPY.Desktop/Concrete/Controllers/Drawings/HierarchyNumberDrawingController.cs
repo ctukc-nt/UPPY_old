@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.DomainModel;
@@ -8,7 +7,7 @@ using Ninject.Infrastructure.Language;
 using UPPY.Desktop.Classes;
 using UPPY.Desktop.Interfaces.Controllers;
 
-namespace UPPY.Desktop.Controllers.Drawings
+namespace UPPY.Desktop.Concrete.Controllers.Drawings
 {
     public class HierarchyNumberDrawingController : IHierarchyNumberDrawingController
     {

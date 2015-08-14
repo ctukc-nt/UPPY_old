@@ -1,4 +1,4 @@
-﻿namespace UPPY.Desktop.Views
+﻿namespace UPPY.Desktop.Views.TechRoutes
 {
     partial class TechRouteForm
     {

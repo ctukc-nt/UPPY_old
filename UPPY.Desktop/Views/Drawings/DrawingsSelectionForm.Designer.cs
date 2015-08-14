@@ -1,4 +1,4 @@
-﻿namespace UPPY.Desktop.Views
+﻿namespace UPPY.Desktop.Views.Drawings
 {
     partial class DrawingsSelectionForm
     {

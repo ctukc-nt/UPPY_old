@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using Core.DomainModel;
-using UPPY.Desktop.Controllers;
 using UPPY.Desktop.Interfaces.Controllers;
 
-namespace UPPY.Desktop.Views
+namespace UPPY.Desktop.Views.TechRoutes
 {
     public partial class TechRoutesListForm : Form
     {
@@ -33,13 +31,13 @@ namespace UPPY.Desktop.Views
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var doc = (TechRoute) gridView1.GetFocusedRow();
+            var doc = (Core.DomainModel.TechRoute) gridView1.GetFocusedRow();
             _techRouteController.EditDocument(doc);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var doc = (TechRoute)gridView1.GetFocusedRow();
+            var doc = (Core.DomainModel.TechRoute)gridView1.GetFocusedRow();
              _techRouteController.Delete(doc);
         }
     }

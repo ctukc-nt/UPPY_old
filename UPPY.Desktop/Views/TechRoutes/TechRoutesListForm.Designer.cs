@@ -1,6 +1,4 @@
-﻿using Core.DomainModel;
-
-namespace UPPY.Desktop.Views
+﻿namespace UPPY.Desktop.Views.TechRoutes
 {
     partial class TechRoutesListForm
     {

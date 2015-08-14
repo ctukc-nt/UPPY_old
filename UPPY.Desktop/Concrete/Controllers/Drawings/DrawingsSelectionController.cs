@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Core.DomainModel;
 using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
-using UPPY.Desktop.Views;
+using UPPY.Desktop.Views.Drawings;
 
-namespace UPPY.Desktop.Controllers.Drawings
+namespace UPPY.Desktop.Concrete.Controllers.Drawings
 {
     public class DrawingsSelectionController :IDrawingsSelectionController, ISelectionController<Drawing>
     {

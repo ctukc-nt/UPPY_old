@@ -1,7 +1,10 @@
-﻿using System;
+﻿
+
+using System;
 using System.Windows.Forms;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Ninject;
+using UPPY.Desktop.Views.Orders;
 
 namespace UPPY.Desktop
 {
@@ -17,9 +20,7 @@ namespace UPPY.Desktop
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var controllersFactory = CompositionRoot.Resolve<IControllersFactory>();
-            var start = controllersFactory.GetStartController();
-            start.ShowViewDialog();
-            //Application.Run();
+            Application.Run(new OrderForm(CompositionRoot.Resolve<IOrderDocumentController>()));
         }
     }
 }

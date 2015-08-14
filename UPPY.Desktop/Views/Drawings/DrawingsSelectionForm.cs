@@ -7,7 +7,7 @@ using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList.Nodes;
 using UPPY.Desktop.Interfaces.Controllers;
 
-namespace UPPY.Desktop.Views
+namespace UPPY.Desktop.Views.Drawings
 {
     public partial class DrawingsSelectionForm : Form
     {

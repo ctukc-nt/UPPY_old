@@ -12,7 +12,6 @@ namespace UPPY.Desktop.Interfaces.Controllers
         void Delete(Drawing document);
         List<TechRoute> GetTechRoutes();
         void ShowTechRoutesList();
-
         void CreateStandartByDrawing();
 
         event EventHandler<EventArgs> DataRefreshed;
