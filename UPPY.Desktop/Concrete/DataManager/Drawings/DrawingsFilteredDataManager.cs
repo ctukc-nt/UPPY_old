@@ -11,7 +11,7 @@ namespace UPPY.Desktop.Concrete.DataManager.Drawings
     {
         private List<Drawing> _cashedList = null;
 
-        private int? _parentId;
+        private readonly int? _parentId;
 
         private Task<List<Drawing>> GetChildrenDrawingsAsync(int? parentId)
         {

@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using Core.DomainModel;
 using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
+using UPPY.Desktop.Interfaces.Controllers.Drawings;
 using UPPY.Desktop.Views.Drawings;
 
 namespace UPPY.Desktop.Concrete.Controllers.Drawings
 {
     public class DrawingsListDocumentController : IDrawingListController, IListDocumentController
     {
-        private readonly IControllersFactory _controllersFactory;
+        private readonly IUppyControllersFactory _controllersFactory;
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechRoute> _techRouteDataManager;
 
-        public DrawingsListDocumentController(IDataManagersFactory dataManagersFactory,
-            IControllersFactory controllersFactory)
+        public DrawingsListDocumentController(IClassDataManager<Drawing> drawingDataManager,
+            IClassDataManager<TechRoute> techRouteDataManager, IUppyControllersFactory controllersFactory)
         {
             _controllersFactory = controllersFactory;
-            var dataManagerFactory1 = dataManagersFactory;
-            _drawingsDataManager = dataManagerFactory1.GetDataManager<Drawing>();
-            _techRouteDataManager = dataManagerFactory1.GetDataManager<TechRoute>();
+            _drawingsDataManager = drawingDataManager;
+            _techRouteDataManager = techRouteDataManager;
         }
 
         public List<Drawing> GetDrawingsList()
@@ -39,6 +39,12 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
         }
 
         public event EventHandler<EventArgs> DataRefreshed;
+
+        public void ShowDrawingInAnotherView(Drawing drawing)
+        {
+            var controller = _controllersFactory.GetDrawingController(drawing.Id);
+            controller.ShowViewDialog();
+        }
 
         public Drawing CreateDocument()
         {

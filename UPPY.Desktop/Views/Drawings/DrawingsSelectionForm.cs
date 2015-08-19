@@ -6,6 +6,7 @@ using Core.DomainModel;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList.Nodes;
 using UPPY.Desktop.Interfaces.Controllers;
+using UPPY.Desktop.Interfaces.Controllers.Drawings;
 
 namespace UPPY.Desktop.Views.Drawings
 {

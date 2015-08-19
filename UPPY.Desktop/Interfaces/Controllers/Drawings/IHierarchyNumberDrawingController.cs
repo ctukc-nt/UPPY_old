@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Core.DomainModel;
 using UPPY.Desktop.Classes;
 
-namespace UPPY.Desktop.Interfaces.Controllers
+namespace UPPY.Desktop.Interfaces.Controllers.Drawings
 {
     public interface IHierarchyNumberDrawingController
     {

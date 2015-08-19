@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Core.DomainModel;
 using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
+using UPPY.Desktop.Interfaces.Controllers.TechRoutes;
 using UPPY.Desktop.Views.TechRoutes;
 
 namespace UPPY.Desktop.Concrete.Controllers.TechRoutes

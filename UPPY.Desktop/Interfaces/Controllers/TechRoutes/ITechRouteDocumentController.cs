@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Core.DomainModel;
 
-namespace UPPY.Desktop.Interfaces.Controllers
+namespace UPPY.Desktop.Interfaces.Controllers.TechRoutes
 {
     public interface ITechRouteDocumentController
     {

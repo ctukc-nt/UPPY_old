@@ -1,4 +1,4 @@
-namespace UPPY.Desktop.Interfaces.Controllers
+namespace UPPY.Desktop.Interfaces.Views
 {
     public interface IDocumentView<T>
     {

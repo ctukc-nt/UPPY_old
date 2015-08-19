@@ -1,4 +1,4 @@
-﻿namespace UPPY.Desktop.Interfaces
+﻿namespace UPPY.Desktop.Interfaces.Views
 {
     public interface IListView<T>
     {

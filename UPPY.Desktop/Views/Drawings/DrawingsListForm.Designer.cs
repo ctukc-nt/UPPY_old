@@ -70,12 +70,12 @@
             this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.Location = new System.Drawing.Point(12, 12);
+            this.gridControl1.Location = new System.Drawing.Point(12, 163);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(987, 382);
+            this.gridControl1.Size = new System.Drawing.Size(1000, 300);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -286,7 +286,7 @@
             // btnRefreshSource
             // 
             this.btnRefreshSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefreshSource.Location = new System.Drawing.Point(1026, 99);
+            this.btnRefreshSource.Location = new System.Drawing.Point(1018, 99);
             this.btnRefreshSource.Name = "btnRefreshSource";
             this.btnRefreshSource.Size = new System.Drawing.Size(94, 23);
             this.btnRefreshSource.TabIndex = 10;
@@ -296,7 +296,7 @@
             // btnAddSubDrawing
             // 
             this.btnAddSubDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddSubDrawing.Location = new System.Drawing.Point(1026, 41);
+            this.btnAddSubDrawing.Location = new System.Drawing.Point(1018, 41);
             this.btnAddSubDrawing.Name = "btnAddSubDrawing";
             this.btnAddSubDrawing.Size = new System.Drawing.Size(94, 23);
             this.btnAddSubDrawing.TabIndex = 9;
@@ -306,7 +306,7 @@
             // btnDelDrawing
             // 
             this.btnDelDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelDrawing.Location = new System.Drawing.Point(1026, 70);
+            this.btnDelDrawing.Location = new System.Drawing.Point(1018, 70);
             this.btnDelDrawing.Name = "btnDelDrawing";
             this.btnDelDrawing.Size = new System.Drawing.Size(94, 23);
             this.btnDelDrawing.TabIndex = 8;
@@ -316,7 +316,7 @@
             // btnAddDrawing
             // 
             this.btnAddDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddDrawing.Location = new System.Drawing.Point(1026, 12);
+            this.btnAddDrawing.Location = new System.Drawing.Point(1018, 12);
             this.btnAddDrawing.Name = "btnAddDrawing";
             this.btnAddDrawing.Size = new System.Drawing.Size(94, 23);
             this.btnAddDrawing.TabIndex = 7;
@@ -327,7 +327,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 406);
+            this.ClientSize = new System.Drawing.Size(1124, 475);
             this.Controls.Add(this.btnRefreshSource);
             this.Controls.Add(this.btnAddSubDrawing);
             this.Controls.Add(this.btnDelDrawing);

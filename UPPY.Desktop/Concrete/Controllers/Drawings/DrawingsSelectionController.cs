@@ -1,8 +1,11 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using Core.DomainModel;
 using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
+using UPPY.Desktop.Interfaces.Controllers.Drawings;
 using UPPY.Desktop.Views.Drawings;
 
 namespace UPPY.Desktop.Concrete.Controllers.Drawings

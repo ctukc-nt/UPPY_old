@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Core.DomainModel;
 
-namespace UPPY.Desktop.Interfaces.Controllers
+namespace UPPY.Desktop.Interfaces.Controllers.Drawings
 {
     public interface IDrawingsSelectionController
     {

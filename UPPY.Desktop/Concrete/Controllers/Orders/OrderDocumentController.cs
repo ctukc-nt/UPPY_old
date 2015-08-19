@@ -1,4 +1,6 @@
 ﻿using UPPY.Desktop.Interfaces.Controllers;
+using UPPY.Desktop.Interfaces.Controllers.Drawings;
+using UPPY.Desktop.Interfaces.Controllers.Orders;
 
 namespace UPPY.Desktop.Concrete.Controllers.Orders
 {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.DomainModel;
@@ -6,6 +8,7 @@ using Core.Interfaces;
 using Ninject.Infrastructure.Language;
 using UPPY.Desktop.Classes;
 using UPPY.Desktop.Interfaces.Controllers;
+using UPPY.Desktop.Interfaces.Controllers.Drawings;
 
 namespace UPPY.Desktop.Concrete.Controllers.Drawings
 {

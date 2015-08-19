@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.orderBindingSource = new System.Windows.Forms.BindingSource();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOrderNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colClient = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -40,20 +41,24 @@
             this.colIsClosed = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNote = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
             // 
             this.gridControl1.DataSource = this.orderBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(12, 12);
+            this.gridControl1.Location = new System.Drawing.Point(12, 37);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(784, 518);
+            this.gridControl1.Size = new System.Drawing.Size(1010, 518);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            // 
+            // orderBindingSource
+            // 
+            this.orderBindingSource.DataSource = typeof(Core.DomainModel.Order);
             // 
             // gridView1
             // 
@@ -68,10 +73,6 @@
             this.colNote});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            // 
-            // orderBindingSource
-            // 
-            this.orderBindingSource.DataSource = typeof(Core.DomainModel.Order);
             // 
             // colName
             // 
@@ -134,13 +135,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 567);
+            this.ClientSize = new System.Drawing.Size(1034, 567);
             this.Controls.Add(this.gridControl1);
             this.Name = "OrdersListForm";
             this.Text = "OrdersListForm";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

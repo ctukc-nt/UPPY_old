@@ -11,9 +11,5 @@
         /// <typeparam name="T">Тип данных</typeparam>
         /// <returns>Управленец данными</returns>
         IClassDataManager<T> GetDataManager<T>() where T : IEntity;
-
-        
-
-
     }
 }

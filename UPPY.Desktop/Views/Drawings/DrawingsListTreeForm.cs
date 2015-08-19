@@ -6,7 +6,7 @@ using Core.DomainModel;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
-using UPPY.Desktop.Interfaces.Controllers;
+using UPPY.Desktop.Interfaces.Controllers.Drawings;
 
 namespace UPPY.Desktop.Views.Drawings
 {
@@ -24,7 +24,6 @@ namespace UPPY.Desktop.Views.Drawings
             repoTechRoutes.DataSource = controller.GetTechRoutes();
         }
 
-
         public void RefreshData(object sender, EventArgs e)
         {
             tlDarwings.BeginUpdate();
@@ -33,14 +32,14 @@ namespace UPPY.Desktop.Views.Drawings
             Drawing data = null;
             if (slctdNode != null)
             {
-                data = (Drawing)tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
+                data = (Drawing) tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
             }
 
             tlDarwings.DataSource = _controller.GetDrawingsList();
             tlDarwings.RefreshDataSource();
             if (data != null)
             {
-                var newNode = tlDarwings.FindNode(x => ((Drawing)tlDarwings.GetDataRecordByNode(x)).Id == data.Id);
+                var newNode = tlDarwings.FindNode(x => ((Drawing) tlDarwings.GetDataRecordByNode(x)).Id == data.Id);
 
                 tlDarwings.Selection.Clear();
                 if (newNode != null)
@@ -70,6 +69,20 @@ namespace UPPY.Desktop.Views.Drawings
             tlDarwings.DataSource = _controller.GetDrawingsList();
         }
 
+        private void repoTechRoutes_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if ((string) e.Button.Tag == "showlist")
+                _controller.ShowTechRoutesList();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
+            var drawing = data as Drawing;
+            if (drawing != null)
+                _controller.ShowDrawingInAnotherView(drawing);
+        }
+
         #region работа с операциями с чертежами
 
         private void btnAddDrawing_Click(object sender, EventArgs e)
@@ -83,7 +96,7 @@ namespace UPPY.Desktop.Views.Drawings
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
             if (data != null)
             {
-                var parentDrw = (Drawing)data;
+                var parentDrw = (Drawing) data;
                 var newDoc = _controller.CreateDocument();
                 newDoc.ParentId = parentDrw.Id;
                 _controller.Save(newDoc);
@@ -96,13 +109,13 @@ namespace UPPY.Desktop.Views.Drawings
         private void tlDrawings_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
-            _controller.Save((Drawing)data);
+            _controller.Save((Drawing) data);
         }
 
         private void btnDelDrawing_Click(object sender, EventArgs e)
         {
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
-            _controller.Delete((Drawing)data);
+            _controller.Delete((Drawing) data);
             tlDarwings.RefreshDataSource();
         }
 
@@ -115,13 +128,6 @@ namespace UPPY.Desktop.Views.Drawings
 
         #endregion
 
-
-        private void repoTechRoutes_ButtonClick(object sender, ButtonPressedEventArgs e)
-        {
-            if ((string)e.Button.Tag == "showlist")
-                _controller.ShowTechRoutesList();
-        }
-
         #region Работа с состоянием нод tlDrawings
 
         private void LoadNodesState(List<int?> listId)
@@ -129,7 +135,7 @@ namespace UPPY.Desktop.Views.Drawings
             foreach (var id in listId.AsParallel())
             {
                 var id1 = id;
-                var node = tlDarwings.FindNode(x => ((Drawing)tlDarwings.GetDataRecordByNode(x)).Id == id1);
+                var node = tlDarwings.FindNode(x => ((Drawing) tlDarwings.GetDataRecordByNode(x)).Id == id1);
                 if (node != null)
                     node.Expanded = true;
             }
@@ -141,7 +147,7 @@ namespace UPPY.Desktop.Views.Drawings
             {
                 if (treeListNode.Expanded)
                 {
-                    var data = (Drawing)tlDarwings.GetDataRecordByNode(treeListNode);
+                    var data = (Drawing) tlDarwings.GetDataRecordByNode(treeListNode);
                     yield return data.Id;
 
                     foreach (var id in SaveNodeStates(treeListNode.Nodes))
