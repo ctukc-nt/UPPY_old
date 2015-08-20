@@ -37,8 +37,10 @@
     </Reference>
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="MongoDB.Driver">
       <HintPath>..\Assemblies\MongoDriver\MongoDB.Driver.dll</HintPath>
@@ -51,8 +53,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\Controllers\Drawings\DrawingListController.cs" />
@@ -71,6 +75,7 @@
     <Compile Include="Classes\HierarchyNumberDrawing.cs" />
     <Compile Include="Interfaces\Controllers\Common\IControllersFactory.cs" />
     <Compile Include="Interfaces\Controllers\Common\IUppyControllersFactory.cs" />
+    <Compile Include="Interfaces\Controllers\Orders\IOrderListController.cs" />
     <Compile Include="Interfaces\Controllers\TechRoutes\ITechRouteDocumentController.cs" />
     <Compile Include="Interfaces\Controllers\TechRoutes\ITechRouteListController.cs" />
     <Compile Include="Interfaces\Views\IDocumentView.cs" />
@@ -85,6 +90,12 @@
     <Compile Include="Fake\StandartClassFakeDataManager.cs" />
     <Compile Include="Fake\TechOperationClassFakeDataManager.cs" />
     <Compile Include="Fake\TechRoutesClassFakeDataManager.cs" />
+    <Compile Include="Views\Controls\Drawings\TreeListDrawingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\Drawings\TreeListDrawingsControl.Designer.cs">
+      <DependentUpon>TreeListDrawingsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Drawings\DrawingsListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +149,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Controls\Drawings\TreeListDrawingsControl.resx">
+      <DependentUpon>TreeListDrawingsControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Drawings\DrawingsListForm.resx">
       <DependentUpon>DrawingsListForm.cs</DependentUpon>
     </EmbeddedResource>

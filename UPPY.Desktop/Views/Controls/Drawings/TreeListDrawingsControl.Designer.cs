@@ -1,13 +1,13 @@
-﻿namespace UPPY.Desktop.Views.Drawings
+﻿namespace UPPY.Desktop.Views.Controls.Drawings
 {
-    partial class DrawingsListTreeForm
+    partial class TreeListDrawingsControl
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,17 +20,17 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            this.rProfile = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TreeListDrawingsControl));
             this.tlDarwings = new DevExpress.XtraTreeList.TreeList();
             this.tlcName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcDesignation = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -50,33 +50,21 @@
             this.tlcPartOfDrawingId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcTechRouteId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repoTechRoutes = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.techRouteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnAddDrawing = new DevExpress.XtraEditors.SimpleButton();
-            this.btnDelDrawing = new DevExpress.XtraEditors.SimpleButton();
-            this.btnAddSubDrawing = new DevExpress.XtraEditors.SimpleButton();
-            this.btnRefreshSource = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.rProfile)).BeginInit();
+            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.btnShowAnotherView = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.btnAddChild = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.tlDarwings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoTechRoutes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // rProfile
-            // 
-            this.rProfile.AutoHeight = false;
-            this.rProfile.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.rProfile.Name = "rProfile";
             // 
             // tlDarwings
             // 
             this.tlDarwings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlDarwings.Appearance.TreeLine.BackColor = System.Drawing.Color.Black;
-            this.tlDarwings.Appearance.TreeLine.BackColor2 = System.Drawing.Color.Black;
-            this.tlDarwings.Appearance.TreeLine.Options.UseBackColor = true;
             this.tlDarwings.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.tlcName,
             this.tlcDesignation,
@@ -97,18 +85,16 @@
             this.tlcTechRouteId});
             this.tlDarwings.FooterPanelHeight = 30;
             this.tlDarwings.KeyFieldName = "Id";
-            this.tlDarwings.Location = new System.Drawing.Point(12, 12);
+            this.tlDarwings.Location = new System.Drawing.Point(0, 39);
             this.tlDarwings.Name = "tlDarwings";
             this.tlDarwings.OptionsBehavior.EnableFiltering = true;
             this.tlDarwings.OptionsFilter.FilterMode = DevExpress.XtraTreeList.FilterMode.Extended;
-            this.tlDarwings.OptionsView.AllowGlyphSkinning = true;
             this.tlDarwings.ParentFieldName = "ParentId";
             this.tlDarwings.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repoTechRoutes});
             this.tlDarwings.RootValue = null;
-            this.tlDarwings.Size = new System.Drawing.Size(1094, 467);
-            this.tlDarwings.TabIndex = 2;
-            this.tlDarwings.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.tlDrawings_CellValueChanged);
+            this.tlDarwings.Size = new System.Drawing.Size(910, 418);
+            this.tlDarwings.TabIndex = 4;
             // 
             // tlcName
             // 
@@ -264,85 +250,77 @@
             this.repoTechRoutes.AutoHeight = false;
             this.repoTechRoutes.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", "showlist", null, true)});
-            this.repoTechRoutes.DataSource = this.techRouteBindingSource;
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject4, "", "showlist", null, true)});
             this.repoTechRoutes.DisplayMember = "Name";
             this.repoTechRoutes.Name = "repoTechRoutes";
             this.repoTechRoutes.ValueMember = "Id";
-            this.repoTechRoutes.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repoTechRoutes_ButtonClick);
             // 
-            // techRouteBindingSource
+            // btnAdd
             // 
-            this.techRouteBindingSource.DataSource = typeof(Core.DomainModel.TechRoute);
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Location = new System.Drawing.Point(51, 5);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(25, 28);
+            this.btnAdd.TabIndex = 5;
+            this.btnAdd.ToolTip = "Добавить новый на тот же уровень";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnAddDrawing
+            // btnShowAnotherView
             // 
-            this.btnAddDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddDrawing.Location = new System.Drawing.Point(1112, 12);
-            this.btnAddDrawing.Name = "btnAddDrawing";
-            this.btnAddDrawing.Size = new System.Drawing.Size(124, 40);
-            this.btnAddDrawing.TabIndex = 3;
-            this.btnAddDrawing.Text = "Add &drawing";
-            this.btnAddDrawing.Click += new System.EventHandler(this.btnAddDrawing_Click);
+            this.btnShowAnotherView.Image = ((System.Drawing.Image)(resources.GetObject("btnShowAnotherView.Image")));
+            this.btnShowAnotherView.Location = new System.Drawing.Point(107, 5);
+            this.btnShowAnotherView.Name = "btnShowAnotherView";
+            this.btnShowAnotherView.Size = new System.Drawing.Size(25, 28);
+            this.btnShowAnotherView.TabIndex = 6;
+            this.btnShowAnotherView.ToolTip = "Открыть в отделшьном окне";
+            this.btnShowAnotherView.Click += new System.EventHandler(this.btnShowAnotherView_Click);
             // 
-            // btnDelDrawing
+            // btnDelete
             // 
-            this.btnDelDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelDrawing.Location = new System.Drawing.Point(1112, 104);
-            this.btnDelDrawing.Name = "btnDelDrawing";
-            this.btnDelDrawing.Size = new System.Drawing.Size(124, 40);
-            this.btnDelDrawing.TabIndex = 4;
-            this.btnDelDrawing.Text = "Del drawing";
-            this.btnDelDrawing.Click += new System.EventHandler(this.btnDelDrawing_Click);
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.Location = new System.Drawing.Point(156, 5);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(25, 28);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.ToolTip = "Удалить";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnAddSubDrawing
+            // btnRefresh
             // 
-            this.btnAddSubDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddSubDrawing.Location = new System.Drawing.Point(1112, 58);
-            this.btnAddSubDrawing.Name = "btnAddSubDrawing";
-            this.btnAddSubDrawing.Size = new System.Drawing.Size(124, 40);
-            this.btnAddSubDrawing.TabIndex = 5;
-            this.btnAddSubDrawing.Text = "Add &subdrawing";
-            this.btnAddSubDrawing.Click += new System.EventHandler(this.btnAddSubDrawing_Click);
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Location = new System.Drawing.Point(3, 5);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(25, 28);
+            this.btnRefresh.TabIndex = 8;
+            this.btnRefresh.ToolTip = "Обновить список";
+            this.btnRefresh.ToolTipController = this.toolTipController1;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // btnRefreshSource
+            // btnAddChild
             // 
-            this.btnRefreshSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefreshSource.Location = new System.Drawing.Point(1112, 150);
-            this.btnRefreshSource.Name = "btnRefreshSource";
-            this.btnRefreshSource.Size = new System.Drawing.Size(124, 40);
-            this.btnRefreshSource.TabIndex = 6;
-            this.btnRefreshSource.Text = "&Refresh";
-            this.btnRefreshSource.Click += new System.EventHandler(this.btnRefreshSource_Click);
+            this.btnAddChild.Image = ((System.Drawing.Image)(resources.GetObject("btnAddChild.Image")));
+            this.btnAddChild.Location = new System.Drawing.Point(79, 5);
+            this.btnAddChild.Name = "btnAddChild";
+            this.btnAddChild.Size = new System.Drawing.Size(25, 28);
+            this.btnAddChild.TabIndex = 9;
+            this.btnAddChild.Text = "simpleButton5";
+            this.btnAddChild.ToolTip = "Добавить новый потомком";
+            this.btnAddChild.Click += new System.EventHandler(this.btnAddChild_Click);
             // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(1112, 196);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(124, 40);
-            this.simpleButton1.TabIndex = 7;
-            this.simpleButton1.Text = "Open another window";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
-            // 
-            // DrawingsListTreeForm
+            // TreeListDrawingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1242, 495);
-            this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.btnRefreshSource);
-            this.Controls.Add(this.btnAddSubDrawing);
-            this.Controls.Add(this.btnDelDrawing);
-            this.Controls.Add(this.btnAddDrawing);
+            this.Controls.Add(this.btnAddChild);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnShowAnotherView);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.tlDarwings);
-            this.Name = "DrawingsListTreeForm";
-            this.Text = "DrawingsListTreeForm";
-            this.Load += new System.EventHandler(this.DrawingsListForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.rProfile)).EndInit();
+            this.Name = "TreeListDrawingsControl";
+            this.Size = new System.Drawing.Size(910, 457);
             ((System.ComponentModel.ISupportInitialize)(this.tlDarwings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoTechRoutes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -367,13 +345,12 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcOp;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcPartOfDrawingId;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcTechRouteId;
-        private DevExpress.XtraEditors.SimpleButton btnAddDrawing;
-        private DevExpress.XtraEditors.SimpleButton btnDelDrawing;
-        private DevExpress.XtraEditors.SimpleButton btnAddSubDrawing;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox rProfile;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repoTechRoutes;
-        private System.Windows.Forms.BindingSource techRouteBindingSource;
-        private DevExpress.XtraEditors.SimpleButton btnRefreshSource;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        private DevExpress.XtraEditors.SimpleButton btnShowAnotherView;
+        private DevExpress.XtraEditors.SimpleButton btnDelete;
+        private DevExpress.XtraEditors.SimpleButton btnRefresh;
+        private DevExpress.Utils.ToolTipController toolTipController1;
+        private DevExpress.XtraEditors.SimpleButton btnAddChild;
     }
 }

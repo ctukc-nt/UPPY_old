@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Core.DomainModel;
+using DevExpress.Skins;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
@@ -22,6 +23,10 @@ namespace UPPY.Desktop.Views.Drawings
             _controller.DataRefreshed += RefreshData;
 
             repoTechRoutes.DataSource = controller.GetTechRoutes();
+
+            Skin skin = GridSkins.GetSkin(tlDarwings.LookAndFeel);
+            skin.Properties[GridSkins.OptShowTreeLine] = true;
+            tlDarwings.LookAndFeel.UpdateStyleSettings();
         }
 
         public void RefreshData(object sender, EventArgs e)
