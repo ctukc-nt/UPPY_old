@@ -12,26 +12,17 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 {
     public partial class TreeListDrawingsControl : UserControl
     {
-        private readonly IDrawingListController _controller;
+        public IDrawingListController Controller { get; set; }
 
         public TreeListDrawingsControl()
         {
-            bool designMode = (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
-
-            if (DesignMode || designMode)
-            {
-                InitializeComponent();
-            }
-            else
-            {
-                throw new ArgumentNullException();
-            }
+            InitializeComponent();
         }
 
         public TreeListDrawingsControl(IDrawingListController controller)
         {
-            _controller = controller;
-            _controller.DataRefreshed += RefreshData;
+            Controller = controller;
+            Controller.DataRefreshed += RefreshData;
             InitializeComponent();
 
             SetVisibleLevelsLine();
@@ -52,14 +43,14 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             Drawing data = null;
             if (slctdNode != null)
             {
-                data = (Drawing) tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
+                data = (Drawing)tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
             }
 
-            tlDarwings.DataSource = _controller.GetDrawingsList();
+            tlDarwings.DataSource = Controller.GetDrawingsList();
             tlDarwings.RefreshDataSource();
             if (data != null)
             {
-                var newNode = tlDarwings.FindNode(x => ((Drawing) tlDarwings.GetDataRecordByNode(x)).Id == data.Id);
+                var newNode = tlDarwings.FindNode(x => ((Drawing)tlDarwings.GetDataRecordByNode(x)).Id == data.Id);
 
                 tlDarwings.Selection.Clear();
                 if (newNode != null)
@@ -91,7 +82,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             foreach (var id in listId.AsParallel())
             {
                 var id1 = id;
-                var node = tlDarwings.FindNode(x => ((Drawing) tlDarwings.GetDataRecordByNode(x)).Id == id1);
+                var node = tlDarwings.FindNode(x => ((Drawing)tlDarwings.GetDataRecordByNode(x)).Id == id1);
                 if (node != null)
                     node.Expanded = true;
             }
@@ -103,7 +94,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             {
                 if (treeListNode.Expanded)
                 {
-                    var data = (Drawing) tlDarwings.GetDataRecordByNode(treeListNode);
+                    var data = (Drawing)tlDarwings.GetDataRecordByNode(treeListNode);
                     yield return data.Id;
 
                     foreach (var id in SaveNodeStates(treeListNode.Nodes))
@@ -125,7 +116,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            _controller.Save(_controller.CreateDocument());
+            Controller.Save(Controller.CreateDocument());
             tlDarwings.Focus();
         }
 
@@ -135,9 +126,9 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             if (data != null)
             {
                 var parentDrw = (Drawing)data;
-                var newDoc = _controller.CreateDocument();
+                var newDoc = Controller.CreateDocument();
                 newDoc.ParentId = parentDrw.Id;
-                _controller.Save(newDoc);
+                Controller.Save(newDoc);
                 tlDarwings.RefreshDataSource();
             }
 
@@ -150,13 +141,13 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
             var drawing = data as Drawing;
             if (drawing != null)
-                _controller.ShowDrawingInAnotherView(drawing);
+                Controller.ShowDrawingInAnotherView(drawing);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
-            _controller.Delete((Drawing)data);
+            Controller.Delete((Drawing)data);
             tlDarwings.RefreshDataSource();
         }
     }
