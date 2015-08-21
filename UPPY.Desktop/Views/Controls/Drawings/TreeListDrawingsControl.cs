@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using Core.DomainModel;
 using DevExpress.Skins;
+using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
 
@@ -12,6 +12,16 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 {
     public partial class TreeListDrawingsControl : UserControl
     {
+
+        public List<Drawing> SelectedDrawings
+        {
+            get
+            {
+                var selection = tlDarwings.Selection;
+                return (from TreeListNode slc in selection select (Drawing) tlDarwings.GetDataRecordByNode(slc)).ToList();
+            }
+        }
+
         public IDrawingListController Controller { get; set; }
 
         public TreeListDrawingsControl()
@@ -26,6 +36,12 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             InitializeComponent();
 
             SetVisibleLevelsLine();
+        }
+
+        public override void Refresh()
+        {
+            RefreshData(this, new EventArgs());
+            base.Refresh();
         }
 
         private void SetVisibleLevelsLine()

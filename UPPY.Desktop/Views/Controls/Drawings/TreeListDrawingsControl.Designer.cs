@@ -264,6 +264,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(25, 28);
             this.btnAdd.TabIndex = 5;
+            this.btnAdd.Text = "&N";
             this.btnAdd.ToolTip = "Добавить новый на тот же уровень";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -274,6 +275,7 @@
             this.btnShowAnotherView.Name = "btnShowAnotherView";
             this.btnShowAnotherView.Size = new System.Drawing.Size(25, 28);
             this.btnShowAnotherView.TabIndex = 6;
+            this.btnShowAnotherView.Text = "&O";
             this.btnShowAnotherView.ToolTip = "Открыть в отделшьном окне";
             this.btnShowAnotherView.Click += new System.EventHandler(this.btnShowAnotherView_Click);
             // 
@@ -284,6 +286,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(25, 28);
             this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "&D";
             this.btnDelete.ToolTip = "Удалить";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -294,6 +297,7 @@
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(25, 28);
             this.btnRefresh.TabIndex = 8;
+            this.btnRefresh.Text = "&R";
             this.btnRefresh.ToolTip = "Обновить список";
             this.btnRefresh.ToolTipController = this.toolTipController1;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
@@ -305,7 +309,7 @@
             this.btnAddChild.Name = "btnAddChild";
             this.btnAddChild.Size = new System.Drawing.Size(25, 28);
             this.btnAddChild.TabIndex = 9;
-            this.btnAddChild.Text = "simpleButton5";
+            this.btnAddChild.Text = "&S";
             this.btnAddChild.ToolTip = "Добавить новый потомком";
             this.btnAddChild.Click += new System.EventHandler(this.btnAddChild_Click);
             // 
@@ -317,6 +321,8 @@
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(25, 28);
             this.btnCopy.TabIndex = 10;
+            this.btnCopy.Text = "&B";
+            this.btnCopy.ToolTip = "Копировать";
             // 
             // btnPaste
             // 
@@ -326,6 +332,8 @@
             this.btnPaste.Name = "btnPaste";
             this.btnPaste.Size = new System.Drawing.Size(25, 28);
             this.btnPaste.TabIndex = 11;
+            this.btnPaste.Text = "&V";
+            this.btnPaste.ToolTip = "Вставить";
             // 
             // TreeListDrawingsControl
             // 

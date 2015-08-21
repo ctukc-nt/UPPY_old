@@ -82,7 +82,8 @@ namespace Core.DomainModel
         /// <summary>
         ///     Отправочная позиция
         /// </summary>
-        /// public string OP { get; set; }
+        public string OP { get; set; }
+       
         /// <summary>
         ///     Входит в...
         /// </summary>

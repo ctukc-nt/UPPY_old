@@ -45,7 +45,6 @@ namespace UPPY.Desktop.Concrete.DataManager.Drawings
 
         public new async Task<List<Drawing>> GetListCollectionAsync()
         {
-            throw new NotImplementedException();
             var collection = GetCollection();
             return await collection.Find(x => true).ToListAsync();
         }

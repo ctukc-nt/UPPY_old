@@ -54,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -95,6 +96,12 @@
     </Compile>
     <Compile Include="Views\Controls\Drawings\TreeListDrawingsControl.Designer.cs">
       <DependentUpon>TreeListDrawingsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Drawings\DrawingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Drawings\DrawingForm.Designer.cs">
+      <DependentUpon>DrawingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Drawings\DrawingsListForm.cs">
       <SubType>Form</SubType>
@@ -152,6 +159,9 @@
     <EmbeddedResource Include="Views\Controls\Drawings\TreeListDrawingsControl.resx">
       <DependentUpon>TreeListDrawingsControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Drawings\DrawingForm.resx">
+      <DependentUpon>DrawingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Drawings\DrawingsListForm.resx">
       <DependentUpon>DrawingsListForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +203,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{876F668F-5017-4CEE-8AE4-91E9B0E9E6B6}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MakarovDev.ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel.csproj">
+      <Project>{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}</Project>
+      <Name>MakarovDev.ExpandCollapsePanel</Name>
     </ProjectReference>
     <ProjectReference Include="..\MongoWork\MongoWork.csproj">
       <Project>{371A01EB-92FF-4FEF-871D-DA6E19A8FDD8}</Project>
