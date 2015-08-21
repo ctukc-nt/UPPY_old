@@ -68,8 +68,10 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.treeListDrawingsControl1 = new UPPY.Desktop.Views.Controls.Drawings.TreeListDrawingsControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
             this.expandCollapsePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).BeginInit();
@@ -97,7 +99,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 247);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(757, 258);
+            this.xtraTabControl1.Size = new System.Drawing.Size(759, 330);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -105,14 +107,15 @@
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.treeListDrawingsControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(751, 230);
+            this.xtraTabPage1.Size = new System.Drawing.Size(753, 302);
             this.xtraTabPage1.Text = "Древовидная структура";
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(753, 280);
+            this.xtraTabPage2.Size = new System.Drawing.Size(753, 302);
             this.xtraTabPage2.Text = "Табличная структура";
             // 
             // expandCollapsePanel1
@@ -160,7 +163,7 @@
             this.expandCollapsePanel1.IsExpanded = true;
             this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 0);
             this.expandCollapsePanel1.Name = "expandCollapsePanel1";
-            this.expandCollapsePanel1.Size = new System.Drawing.Size(757, 247);
+            this.expandCollapsePanel1.Size = new System.Drawing.Size(759, 247);
             this.expandCollapsePanel1.TabIndex = 72;
             this.expandCollapsePanel1.Text = "Поля сборки";
             this.expandCollapsePanel1.UseAnimation = true;
@@ -435,17 +438,27 @@
             this.labelControl1.TabIndex = 72;
             this.labelControl1.Text = "Наименование";
             // 
+            // treeListDrawingsControl1
+            // 
+            this.treeListDrawingsControl1.Controller = null;
+            this.treeListDrawingsControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeListDrawingsControl1.Location = new System.Drawing.Point(0, 0);
+            this.treeListDrawingsControl1.Name = "treeListDrawingsControl1";
+            this.treeListDrawingsControl1.Size = new System.Drawing.Size(753, 302);
+            this.treeListDrawingsControl1.TabIndex = 0;
+            // 
             // DrawingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 505);
+            this.ClientSize = new System.Drawing.Size(759, 577);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.expandCollapsePanel1);
             this.Name = "DrawingForm";
             this.Text = "DrawingForm";
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
             this.expandCollapsePanel1.ResumeLayout(false);
             this.expandCollapsePanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties)).EndInit();
@@ -511,5 +524,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private Controls.Drawings.TreeListDrawingsControl treeListDrawingsControl1;
     }
 }
