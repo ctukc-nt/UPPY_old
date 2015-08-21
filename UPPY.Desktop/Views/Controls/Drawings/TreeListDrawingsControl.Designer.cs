@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TreeListDrawingsControl));
             this.tlDarwings = new DevExpress.XtraTreeList.TreeList();
             this.tlcName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -56,6 +56,8 @@
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             this.btnAddChild = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCopy = new DevExpress.XtraEditors.SimpleButton();
+            this.btnPaste = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.tlDarwings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoTechRoutes)).BeginInit();
             this.SuspendLayout();
@@ -250,7 +252,7 @@
             this.repoTechRoutes.AutoHeight = false;
             this.repoTechRoutes.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject4, "", "showlist", null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", "showlist", null, true)});
             this.repoTechRoutes.DisplayMember = "Name";
             this.repoTechRoutes.Name = "repoTechRoutes";
             this.repoTechRoutes.ValueMember = "Id";
@@ -307,10 +309,30 @@
             this.btnAddChild.ToolTip = "Добавить новый потомком";
             this.btnAddChild.Click += new System.EventHandler(this.btnAddChild_Click);
             // 
+            // btnCopy
+            // 
+            this.btnCopy.Enabled = false;
+            this.btnCopy.Image = ((System.Drawing.Image)(resources.GetObject("btnCopy.Image")));
+            this.btnCopy.Location = new System.Drawing.Point(231, 5);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(25, 28);
+            this.btnCopy.TabIndex = 10;
+            // 
+            // btnPaste
+            // 
+            this.btnPaste.Enabled = false;
+            this.btnPaste.Image = ((System.Drawing.Image)(resources.GetObject("btnPaste.Image")));
+            this.btnPaste.Location = new System.Drawing.Point(262, 5);
+            this.btnPaste.Name = "btnPaste";
+            this.btnPaste.Size = new System.Drawing.Size(25, 28);
+            this.btnPaste.TabIndex = 11;
+            // 
             // TreeListDrawingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnPaste);
+            this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.btnAddChild);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnDelete);
@@ -352,5 +374,7 @@
         private DevExpress.XtraEditors.SimpleButton btnRefresh;
         private DevExpress.Utils.ToolTipController toolTipController1;
         private DevExpress.XtraEditors.SimpleButton btnAddChild;
+        private DevExpress.XtraEditors.SimpleButton btnCopy;
+        private DevExpress.XtraEditors.SimpleButton btnPaste;
     }
 }
