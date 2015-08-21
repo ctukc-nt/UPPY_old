@@ -65,6 +65,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DataManagerFactoryTests.cs" />
+    <Compile Include="MongoDbDataManagerTests - Copy.cs" />
     <Compile Include="MongoDbDataManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

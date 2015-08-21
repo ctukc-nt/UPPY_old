@@ -65,8 +65,5 @@ namespace Core.Interfaces
         /// <param name="id"></param>
         /// <returns></returns>
         Task<T> GetDocumentAsync(int? id);
-        
-
-        List<T> FindInDbDirectly(Func<T, bool> id);
     }
 }

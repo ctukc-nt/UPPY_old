@@ -1,14 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Core.Interfaces;
 
 namespace Core.DomainModel
 {
     public class Standart : IEntity
     {
+        private List<char> _splittersStandartSize = new List<char>() { 'X', 'Х' };
 
         public Standart()
         {
-            Positions = new List<PostitionStandart>();
+            Positions = new List<PositionStandart>();
         }
 
         /// <summary>
@@ -29,11 +31,13 @@ namespace Core.DomainModel
         /// <summary>
         /// Позиции
         /// </summary>
-        public List<PostitionStandart> Positions { get; set; }
+        public List<PositionStandart> Positions { get; set; }
 
         /// <summary>
         /// Уникальный идентификатор
         /// </summary>
         public int? Id { get; set; }
+
+        
     }
 }

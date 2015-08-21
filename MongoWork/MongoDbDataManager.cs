@@ -156,18 +156,18 @@ namespace MongoWork
         }
 
 
-        private IMongoCollection<T> GetCollection()
+        protected IMongoCollection<T> GetCollection()
         {
             return MongoDb.GetCollection<T>(GetNameColection());
         }
 
-        private static string GetNameColection()
+        protected static string GetNameColection()
         {
             var nameColection = typeof (T).Name.ToLower() + "s";
             return nameColection;
         }
 
-        private int GetIdDocument()
+        protected int GetIdDocument()
         {
             var collection = MongoDb.GetCollection<DocsId>("docsid");
             var incrDocIdOptions = Builders<DocsId>.Update.Inc(x => x.DocId, 1);
@@ -190,7 +190,7 @@ namespace MongoWork
             return collection.FindOneAndUpdateAsync(id => id.DocName == typeof (T).Name, incrDocIdOptions).Result.DocId;
         }
 
-        private int SetIdDocument(int idSet)
+        protected int SetIdDocument(int idSet)
         {
             var collection = MongoDb.GetCollection<DocsId>("docsid");
             var setDocIdUpdate = Builders<DocsId>.Update.Max(x => x.DocId, idSet);

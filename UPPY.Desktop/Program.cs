@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
+
+using System;
 using System.Windows.Forms;
 using Core.DomainModel;
-using UPPY.Desktop.Controllers;
-using UPPY.Desktop.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Ninject;
-using UPPY.Desktop.Views;
+using UPPY.Desktop.Views.Drawings;
+using UPPY.Desktop.Views.Orders;
 
 namespace UPPY.Desktop
 {
@@ -24,9 +22,9 @@ namespace UPPY.Desktop
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var controllersFactory = CompositionRoot.Resolve<IControllersFactory>();
-            var start = controllersFactory.GetStartController();
-            start.ShowViewDialog();
-            //Application.Run();
+            var contr = CompositionRoot.Resolve<IUppyControllersFactory>();
+            contr.GetListController<Drawing>().ShowViewDialog();
+            //Application.Run(new DrawingsListTreeForm();
         }
     }
 }

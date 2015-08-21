@@ -47,8 +47,12 @@
   <ItemGroup>
     <Compile Include="DomainModel\Drawing.cs" />
     <Compile Include="DomainModel\DrawingWithTechOper.cs" />
-    <Compile Include="DomainModel\PostitionStandart.cs" />
+    <Compile Include="DomainModel\ExtraDimensions.cs" />
+    <Compile Include="DomainModel\GOST.cs" />
+    <Compile Include="DomainModel\Order.cs" />
+    <Compile Include="DomainModel\PositionStandart.cs" />
     <Compile Include="DomainModel\Standart.cs" />
+    <Compile Include="DrawingsToStandartHelper.cs" />
     <Compile Include="Interfaces\IClassDataManager.cs" />
     <Compile Include="Interfaces\IDataManagersFactory.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
@@ -59,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Properties\DataSources\Core.DomainModel.Order.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Core.DomainModel;
 using Core.Interfaces;
+using UPPY.Desktop.Interfaces;
+using UPPY.Desktop.Interfaces.DataManagers;
 
 namespace UPPY.Desktop.Fake
 {
-    public class UppyFakeDataManagersFactory : IDataManagersFactory
+    public class UppyFakeDataManagersFactory : IUppyDataManagersFactory
     {
         private static readonly Dictionary<string, object> _data = new Dictionary<string, object>();
 
@@ -47,6 +50,36 @@ namespace UPPY.Desktop.Fake
             }
 
             return null;
+        }
+
+        private List<Drawing> GetChildrenDrawings(int? parentId, List<Drawing> data)
+        {
+           
+            return data.Where(x=>x.ParentId == parentId).ToList();
+        }
+
+        private List<Drawing> GetAllChildrens(int? parentId, List<Drawing> data)
+        {
+            var result = new List<Drawing>();
+            var childrens = GetChildrenDrawings(parentId, data);
+            result.AddRange(childrens);
+            foreach (var drawing in childrens)
+            {
+                result.AddRange(GetAllChildrens(drawing.Id, data));
+            }
+
+            return result;
+        }
+
+
+        public IClassDataManager<Drawing> GetFilteredDrawingsByParent(int? parentId)
+        {
+            var manager = GetDataManager<Drawing>();
+            var childrens = GetAllChildrens(parentId, (List<Drawing>) manager);
+
+            ((List<Drawing>) manager).RemoveAll(x => childrens.All(y => y.Id != x.Id));
+
+            return manager;
         }
     }
 }
