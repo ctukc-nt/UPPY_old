@@ -42,7 +42,7 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
 
         public void ShowDrawingInAnotherView(Drawing drawing)
         {
-            var controller = _controllersFactory.GetDrawingController(drawing.Id);
+            var controller = _controllersFactory.GetDrawingsViewController(drawing.Id);
             controller.ShowViewDialog();
         }
 

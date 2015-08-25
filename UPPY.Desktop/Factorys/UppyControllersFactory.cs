@@ -3,6 +3,7 @@ using Core.DomainModel;
 using UPPY.Desktop.Concrete.Controllers.Drawings;
 using UPPY.Desktop.Concrete.Controllers.TechRoutes;
 using UPPY.Desktop.Interfaces.Controllers;
+using UPPY.Desktop.Interfaces.Controllers.Drawings;
 using UPPY.Desktop.Interfaces.DataManagers;
 
 namespace UPPY.Desktop.Factorys
@@ -48,7 +49,12 @@ namespace UPPY.Desktop.Factorys
             return new DrawingsListDocumentController(_dataManagersFactory.GetDataManager<Drawing>(), _dataManagersFactory.GetDataManager<TechRoute>(), this);
         }
 
-        public IListDocumentController GetDrawingController(int? parentId)
+        public IDrawingListController GetDrawingsListController(int? parentId)
+        {
+            return new DrawingsListDocumentController(_dataManagersFactory.GetFilteredDrawingsByParent(parentId), _dataManagersFactory.GetDataManager<TechRoute>(), this);
+        }
+
+        public IListDocumentController GetDrawingsViewController(int? parentId)
         {
             return new DrawingsListDocumentController(_dataManagersFactory.GetFilteredDrawingsByParent(parentId), _dataManagersFactory.GetDataManager<TechRoute>(), this);
         }

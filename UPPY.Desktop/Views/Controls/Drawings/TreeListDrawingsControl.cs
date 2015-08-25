@@ -4,7 +4,6 @@ using System.Linq;
 using System.Windows.Forms;
 using Core.DomainModel;
 using DevExpress.Skins;
-using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
 
@@ -12,7 +11,6 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 {
     public partial class TreeListDrawingsControl : UserControl
     {
-
         public List<Drawing> SelectedDrawings
         {
             get

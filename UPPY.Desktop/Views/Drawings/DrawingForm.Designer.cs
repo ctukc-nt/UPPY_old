@@ -28,30 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.treeListDrawingsControl1 = new UPPY.Desktop.Views.Controls.Drawings.TreeListDrawingsControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.expandCollapsePanel1 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
-            this.textEdit18 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit17 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit16 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit15 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit14 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit13 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit12 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit11 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit10 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit9 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit8 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit7 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit6 = new DevExpress.XtraEditors.TextEdit();
+            this.ecpDocumentsField = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.teOP = new DevExpress.XtraEditors.TextEdit();
+            this.teWeightAll = new DevExpress.XtraEditors.TextEdit();
+            this.teWeight = new DevExpress.XtraEditors.TextEdit();
+            this.teCountAll = new DevExpress.XtraEditors.TextEdit();
+            this.teCount = new DevExpress.XtraEditors.TextEdit();
+            this.teWidth = new DevExpress.XtraEditors.TextEdit();
+            this.teLength = new DevExpress.XtraEditors.TextEdit();
+            this.teGostMat = new DevExpress.XtraEditors.TextEdit();
+            this.teGostSort = new DevExpress.XtraEditors.TextEdit();
+            this.teMarkSteal = new DevExpress.XtraEditors.TextEdit();
+            this.teProfile = new DevExpress.XtraEditors.TextEdit();
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.teDesignation = new DevExpress.XtraEditors.TextEdit();
+            this.teNumberOnSpec = new DevExpress.XtraEditors.TextEdit();
+            this.teStandartSize = new DevExpress.XtraEditors.TextEdit();
+            this.teName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
@@ -68,29 +67,43 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.treeListDrawingsControl1 = new UPPY.Desktop.Views.Controls.Drawings.TreeListDrawingsControl();
+            this.drawingBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.teParent = new DevExpress.XtraEditors.TreeListLookUpEdit();
+            this.treeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
+            this.tePartOf = new DevExpress.XtraEditors.TreeListLookUpEdit();
+            this.treeList1 = new DevExpress.XtraTreeList.TreeList();
+            this.drawingBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.teTechRoute = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.techRouteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
-            this.expandCollapsePanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit14.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit13.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit11.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit9.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            this.ecpDocumentsField.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teOP.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teWeightAll.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teWeight.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teCountAll.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teCount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teWidth.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teLength.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teGostMat.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teGostSort.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teMarkSteal.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teProfile.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teDesignation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teNumberOnSpec.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teStandartSize.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drawingBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teParent.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePartOf.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drawingBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teTechRoute.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -112,152 +125,164 @@
             this.xtraTabPage1.Size = new System.Drawing.Size(753, 302);
             this.xtraTabPage1.Text = "Древовидная структура";
             // 
+            // treeListDrawingsControl1
+            // 
+            this.treeListDrawingsControl1.Controller = null;
+            this.treeListDrawingsControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeListDrawingsControl1.Location = new System.Drawing.Point(0, 0);
+            this.treeListDrawingsControl1.Name = "treeListDrawingsControl1";
+            this.treeListDrawingsControl1.Size = new System.Drawing.Size(753, 302);
+            this.treeListDrawingsControl1.TabIndex = 0;
+            // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(753, 302);
             this.xtraTabPage2.Text = "Табличная структура";
             // 
-            // expandCollapsePanel1
+            // ecpDocumentsField
             // 
-            this.expandCollapsePanel1.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
-            this.expandCollapsePanel1.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
-            this.expandCollapsePanel1.Controls.Add(this.textEdit18);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit17);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit16);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit15);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit14);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit13);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit12);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit11);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit10);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit9);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit8);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit7);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit6);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl18);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit5);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl17);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit4);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit3);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit2);
-            this.expandCollapsePanel1.Controls.Add(this.textEdit1);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl16);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl15);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl14);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl12);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl13);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl10);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl11);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl8);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl9);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl7);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl6);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl5);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl4);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl3);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl2);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl1);
-            this.expandCollapsePanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.expandCollapsePanel1.ExpandedHeight = 0;
-            this.expandCollapsePanel1.IsExpanded = true;
-            this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 0);
-            this.expandCollapsePanel1.Name = "expandCollapsePanel1";
-            this.expandCollapsePanel1.Size = new System.Drawing.Size(759, 247);
-            this.expandCollapsePanel1.TabIndex = 72;
-            this.expandCollapsePanel1.Text = "Поля сборки";
-            this.expandCollapsePanel1.UseAnimation = true;
+            this.ecpDocumentsField.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
+            this.ecpDocumentsField.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
+            this.ecpDocumentsField.Controls.Add(this.teOP);
+            this.ecpDocumentsField.Controls.Add(this.teWeightAll);
+            this.ecpDocumentsField.Controls.Add(this.teWeight);
+            this.ecpDocumentsField.Controls.Add(this.teCountAll);
+            this.ecpDocumentsField.Controls.Add(this.teCount);
+            this.ecpDocumentsField.Controls.Add(this.teWidth);
+            this.ecpDocumentsField.Controls.Add(this.teLength);
+            this.ecpDocumentsField.Controls.Add(this.teGostMat);
+            this.ecpDocumentsField.Controls.Add(this.teGostSort);
+            this.ecpDocumentsField.Controls.Add(this.teMarkSteal);
+            this.ecpDocumentsField.Controls.Add(this.teProfile);
+            this.ecpDocumentsField.Controls.Add(this.labelControl18);
+            this.ecpDocumentsField.Controls.Add(this.labelControl17);
+            this.ecpDocumentsField.Controls.Add(this.teDesignation);
+            this.ecpDocumentsField.Controls.Add(this.teNumberOnSpec);
+            this.ecpDocumentsField.Controls.Add(this.teStandartSize);
+            this.ecpDocumentsField.Controls.Add(this.teName);
+            this.ecpDocumentsField.Controls.Add(this.labelControl16);
+            this.ecpDocumentsField.Controls.Add(this.labelControl15);
+            this.ecpDocumentsField.Controls.Add(this.labelControl14);
+            this.ecpDocumentsField.Controls.Add(this.labelControl12);
+            this.ecpDocumentsField.Controls.Add(this.labelControl13);
+            this.ecpDocumentsField.Controls.Add(this.labelControl10);
+            this.ecpDocumentsField.Controls.Add(this.labelControl11);
+            this.ecpDocumentsField.Controls.Add(this.labelControl8);
+            this.ecpDocumentsField.Controls.Add(this.labelControl9);
+            this.ecpDocumentsField.Controls.Add(this.labelControl7);
+            this.ecpDocumentsField.Controls.Add(this.labelControl6);
+            this.ecpDocumentsField.Controls.Add(this.labelControl5);
+            this.ecpDocumentsField.Controls.Add(this.labelControl4);
+            this.ecpDocumentsField.Controls.Add(this.labelControl3);
+            this.ecpDocumentsField.Controls.Add(this.labelControl2);
+            this.ecpDocumentsField.Controls.Add(this.labelControl1);
+            this.ecpDocumentsField.Controls.Add(this.teParent);
+            this.ecpDocumentsField.Controls.Add(this.tePartOf);
+            this.ecpDocumentsField.Controls.Add(this.teTechRoute);
+            this.ecpDocumentsField.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ecpDocumentsField.ExpandedHeight = 0;
+            this.ecpDocumentsField.IsExpanded = true;
+            this.ecpDocumentsField.Location = new System.Drawing.Point(0, 0);
+            this.ecpDocumentsField.Name = "ecpDocumentsField";
+            this.ecpDocumentsField.Size = new System.Drawing.Size(759, 247);
+            this.ecpDocumentsField.TabIndex = 72;
+            this.ecpDocumentsField.Text = "Поля сборки";
+            this.ecpDocumentsField.UseAnimation = false;
             // 
-            // textEdit18
+            // teOP
             // 
-            this.textEdit18.Location = new System.Drawing.Point(116, 216);
-            this.textEdit18.Name = "textEdit18";
-            this.textEdit18.Size = new System.Drawing.Size(631, 20);
-            this.textEdit18.TabIndex = 107;
+            this.teOP.Location = new System.Drawing.Point(586, 60);
+            this.teOP.Name = "teOP";
+            this.teOP.Size = new System.Drawing.Size(161, 20);
+            this.teOP.TabIndex = 106;
             // 
-            // textEdit17
+            // teWeightAll
             // 
-            this.textEdit17.Location = new System.Drawing.Point(586, 60);
-            this.textEdit17.Name = "textEdit17";
-            this.textEdit17.Size = new System.Drawing.Size(161, 20);
-            this.textEdit17.TabIndex = 106;
+            this.teWeightAll.Location = new System.Drawing.Point(296, 191);
+            this.teWeightAll.Name = "teWeightAll";
+            this.teWeightAll.Properties.Mask.EditMask = "n3";
+            this.teWeightAll.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.teWeightAll.Size = new System.Drawing.Size(182, 20);
+            this.teWeightAll.TabIndex = 104;
             // 
-            // textEdit16
+            // teWeight
             // 
-            this.textEdit16.Location = new System.Drawing.Point(502, 34);
-            this.textEdit16.Name = "textEdit16";
-            this.textEdit16.Size = new System.Drawing.Size(245, 20);
-            this.textEdit16.TabIndex = 105;
+            this.teWeight.Location = new System.Drawing.Point(116, 190);
+            this.teWeight.Name = "teWeight";
+            this.teWeight.Properties.Mask.BeepOnError = true;
+            this.teWeight.Properties.Mask.EditMask = "n3";
+            this.teWeight.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.teWeight.Size = new System.Drawing.Size(120, 20);
+            this.teWeight.TabIndex = 103;
             // 
-            // textEdit15
+            // teCountAll
             // 
-            this.textEdit15.Location = new System.Drawing.Point(296, 191);
-            this.textEdit15.Name = "textEdit15";
-            this.textEdit15.Size = new System.Drawing.Size(182, 20);
-            this.textEdit15.TabIndex = 104;
+            this.teCountAll.Location = new System.Drawing.Point(522, 164);
+            this.teCountAll.Name = "teCountAll";
+            this.teCountAll.Properties.Mask.BeepOnError = true;
+            this.teCountAll.Properties.Mask.EditMask = "n0";
+            this.teCountAll.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.teCountAll.Size = new System.Drawing.Size(64, 20);
+            this.teCountAll.TabIndex = 102;
             // 
-            // textEdit14
+            // teCount
             // 
-            this.textEdit14.Location = new System.Drawing.Point(116, 190);
-            this.textEdit14.Name = "textEdit14";
-            this.textEdit14.Size = new System.Drawing.Size(120, 20);
-            this.textEdit14.TabIndex = 103;
+            this.teCount.Location = new System.Drawing.Point(363, 164);
+            this.teCount.Name = "teCount";
+            this.teCount.Properties.Mask.BeepOnError = true;
+            this.teCount.Properties.Mask.EditMask = "n0";
+            this.teCount.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.teCount.Size = new System.Drawing.Size(64, 20);
+            this.teCount.TabIndex = 101;
             // 
-            // textEdit13
+            // teWidth
             // 
-            this.textEdit13.Location = new System.Drawing.Point(522, 164);
-            this.textEdit13.Name = "textEdit13";
-            this.textEdit13.Size = new System.Drawing.Size(64, 20);
-            this.textEdit13.TabIndex = 102;
+            this.teWidth.Location = new System.Drawing.Point(242, 165);
+            this.teWidth.Name = "teWidth";
+            this.teWidth.Properties.Mask.BeepOnError = true;
+            this.teWidth.Properties.Mask.EditMask = "n0";
+            this.teWidth.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.teWidth.Size = new System.Drawing.Size(64, 20);
+            this.teWidth.TabIndex = 100;
             // 
-            // textEdit12
+            // teLength
             // 
-            this.textEdit12.Location = new System.Drawing.Point(363, 164);
-            this.textEdit12.Name = "textEdit12";
-            this.textEdit12.Size = new System.Drawing.Size(64, 20);
-            this.textEdit12.TabIndex = 101;
+            this.teLength.Location = new System.Drawing.Point(116, 164);
+            this.teLength.Name = "teLength";
+            this.teLength.Properties.Mask.BeepOnError = true;
+            this.teLength.Properties.Mask.EditMask = "n0";
+            this.teLength.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.teLength.Size = new System.Drawing.Size(64, 20);
+            this.teLength.TabIndex = 99;
             // 
-            // textEdit11
+            // teGostMat
             // 
-            this.textEdit11.Location = new System.Drawing.Point(242, 165);
-            this.textEdit11.Name = "textEdit11";
-            this.textEdit11.Size = new System.Drawing.Size(64, 20);
-            this.textEdit11.TabIndex = 100;
+            this.teGostMat.Location = new System.Drawing.Point(488, 138);
+            this.teGostMat.Name = "teGostMat";
+            this.teGostMat.Size = new System.Drawing.Size(259, 20);
+            this.teGostMat.TabIndex = 98;
             // 
-            // textEdit10
+            // teGostSort
             // 
-            this.textEdit10.Location = new System.Drawing.Point(116, 164);
-            this.textEdit10.Name = "textEdit10";
-            this.textEdit10.Size = new System.Drawing.Size(64, 20);
-            this.textEdit10.TabIndex = 99;
+            this.teGostSort.Location = new System.Drawing.Point(116, 138);
+            this.teGostSort.Name = "teGostSort";
+            this.teGostSort.Size = new System.Drawing.Size(267, 20);
+            this.teGostSort.TabIndex = 97;
             // 
-            // textEdit9
+            // teMarkSteal
             // 
-            this.textEdit9.Location = new System.Drawing.Point(488, 138);
-            this.textEdit9.Name = "textEdit9";
-            this.textEdit9.Size = new System.Drawing.Size(259, 20);
-            this.textEdit9.TabIndex = 98;
+            this.teMarkSteal.Location = new System.Drawing.Point(488, 111);
+            this.teMarkSteal.Name = "teMarkSteal";
+            this.teMarkSteal.Size = new System.Drawing.Size(259, 20);
+            this.teMarkSteal.TabIndex = 96;
             // 
-            // textEdit8
+            // teProfile
             // 
-            this.textEdit8.Location = new System.Drawing.Point(116, 138);
-            this.textEdit8.Name = "textEdit8";
-            this.textEdit8.Size = new System.Drawing.Size(267, 20);
-            this.textEdit8.TabIndex = 97;
-            // 
-            // textEdit7
-            // 
-            this.textEdit7.Location = new System.Drawing.Point(488, 111);
-            this.textEdit7.Name = "textEdit7";
-            this.textEdit7.Size = new System.Drawing.Size(259, 20);
-            this.textEdit7.TabIndex = 96;
-            // 
-            // textEdit6
-            // 
-            this.textEdit6.Location = new System.Drawing.Point(488, 85);
-            this.textEdit6.Name = "textEdit6";
-            this.textEdit6.Size = new System.Drawing.Size(259, 20);
-            this.textEdit6.TabIndex = 95;
+            this.teProfile.Location = new System.Drawing.Point(488, 85);
+            this.teProfile.Name = "teProfile";
+            this.teProfile.Size = new System.Drawing.Size(259, 20);
+            this.teProfile.TabIndex = 95;
             // 
             // labelControl18
             // 
@@ -267,13 +292,6 @@
             this.labelControl18.TabIndex = 94;
             this.labelControl18.Text = "Профиль";
             // 
-            // textEdit5
-            // 
-            this.textEdit5.Location = new System.Drawing.Point(116, 33);
-            this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Size = new System.Drawing.Size(318, 20);
-            this.textEdit5.TabIndex = 93;
-            // 
             // labelControl17
             // 
             this.labelControl17.Location = new System.Drawing.Point(12, 37);
@@ -282,33 +300,33 @@
             this.labelControl17.TabIndex = 92;
             this.labelControl17.Text = "Надпроект";
             // 
-            // textEdit4
+            // teDesignation
             // 
-            this.textEdit4.Location = new System.Drawing.Point(116, 59);
-            this.textEdit4.Name = "textEdit4";
-            this.textEdit4.Size = new System.Drawing.Size(267, 20);
-            this.textEdit4.TabIndex = 91;
+            this.teDesignation.Location = new System.Drawing.Point(116, 59);
+            this.teDesignation.Name = "teDesignation";
+            this.teDesignation.Size = new System.Drawing.Size(267, 20);
+            this.teDesignation.TabIndex = 91;
             // 
-            // textEdit3
+            // teNumberOnSpec
             // 
-            this.textEdit3.Location = new System.Drawing.Point(517, 59);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(43, 20);
-            this.textEdit3.TabIndex = 90;
+            this.teNumberOnSpec.Location = new System.Drawing.Point(517, 59);
+            this.teNumberOnSpec.Name = "teNumberOnSpec";
+            this.teNumberOnSpec.Size = new System.Drawing.Size(43, 20);
+            this.teNumberOnSpec.TabIndex = 90;
             // 
-            // textEdit2
+            // teStandartSize
             // 
-            this.textEdit2.Location = new System.Drawing.Point(116, 111);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(267, 20);
-            this.textEdit2.TabIndex = 89;
+            this.teStandartSize.Location = new System.Drawing.Point(116, 111);
+            this.teStandartSize.Name = "teStandartSize";
+            this.teStandartSize.Size = new System.Drawing.Size(267, 20);
+            this.teStandartSize.TabIndex = 89;
             // 
-            // textEdit1
+            // teName
             // 
-            this.textEdit1.Location = new System.Drawing.Point(116, 85);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(267, 20);
-            this.textEdit1.TabIndex = 88;
+            this.teName.Location = new System.Drawing.Point(116, 85);
+            this.teName.Name = "teName";
+            this.teName.Size = new System.Drawing.Size(267, 20);
+            this.teName.TabIndex = 88;
             // 
             // labelControl16
             // 
@@ -438,14 +456,87 @@
             this.labelControl1.TabIndex = 72;
             this.labelControl1.Text = "Наименование";
             // 
-            // treeListDrawingsControl1
+            // drawingBindingSource
             // 
-            this.treeListDrawingsControl1.Controller = null;
-            this.treeListDrawingsControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeListDrawingsControl1.Location = new System.Drawing.Point(0, 0);
-            this.treeListDrawingsControl1.Name = "treeListDrawingsControl1";
-            this.treeListDrawingsControl1.Size = new System.Drawing.Size(753, 302);
-            this.treeListDrawingsControl1.TabIndex = 0;
+            this.drawingBindingSource.DataSource = typeof(Core.DomainModel.Drawing);
+            // 
+            // teParent
+            // 
+            this.teParent.Location = new System.Drawing.Point(116, 33);
+            this.teParent.Name = "teParent";
+            this.teParent.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.teParent.Properties.DataSource = this.drawingBindingSource;
+            this.teParent.Properties.DisplayMember = "Designation";
+            this.teParent.Properties.NullText = "";
+            this.teParent.Properties.TreeList = this.treeListLookUpEdit1TreeList;
+            this.teParent.Properties.ValueMember = "Id";
+            this.teParent.Size = new System.Drawing.Size(318, 20);
+            this.teParent.TabIndex = 93;
+            // 
+            // treeListLookUpEdit1TreeList
+            // 
+            this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(0, 0);
+            this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
+            this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndentAsRowStyle = true;
+            this.treeListLookUpEdit1TreeList.RootValue = null;
+            this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(400, 200);
+            this.treeListLookUpEdit1TreeList.TabIndex = 0;
+            // 
+            // tePartOf
+            // 
+            this.tePartOf.Location = new System.Drawing.Point(502, 34);
+            this.tePartOf.Name = "tePartOf";
+            this.tePartOf.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.tePartOf.Properties.DataSource = this.drawingBindingSource1;
+            this.tePartOf.Properties.DisplayMember = "Designation";
+            this.tePartOf.Properties.NullText = "";
+            this.tePartOf.Properties.TreeList = this.treeList1;
+            this.tePartOf.Properties.ValueMember = "Id";
+            this.tePartOf.Size = new System.Drawing.Size(245, 20);
+            this.tePartOf.TabIndex = 105;
+            // 
+            // treeList1
+            // 
+            this.treeList1.DataSource = this.drawingBindingSource1;
+            this.treeList1.Location = new System.Drawing.Point(0, 0);
+            this.treeList1.Name = "treeList1";
+            this.treeList1.OptionsBehavior.EnableFiltering = true;
+            this.treeList1.OptionsView.ShowIndentAsRowStyle = true;
+            this.treeList1.RootValue = null;
+            this.treeList1.Size = new System.Drawing.Size(400, 200);
+            this.treeList1.TabIndex = 0;
+            // 
+            // drawingBindingSource1
+            // 
+            this.drawingBindingSource1.DataSource = typeof(Core.DomainModel.Drawing);
+            // 
+            // teTechRoute
+            // 
+            this.teTechRoute.Location = new System.Drawing.Point(116, 216);
+            this.teTechRoute.Name = "teTechRoute";
+            this.teTechRoute.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.teTechRoute.Properties.DataSource = this.techRouteBindingSource;
+            this.teTechRoute.Properties.DisplayMember = "Name";
+            this.teTechRoute.Properties.NullText = "";
+            this.teTechRoute.Properties.ValueMember = "Id";
+            this.teTechRoute.Properties.View = this.gridLookUpEdit1View;
+            this.teTechRoute.Size = new System.Drawing.Size(631, 20);
+            this.teTechRoute.TabIndex = 107;
+            // 
+            // gridLookUpEdit1View
+            // 
+            this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
+            this.gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // techRouteBindingSource
+            // 
+            this.techRouteBindingSource.DataSource = typeof(Core.DomainModel.TechRoute);
             // 
             // DrawingForm
             // 
@@ -453,32 +544,39 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 577);
             this.Controls.Add(this.xtraTabControl1);
-            this.Controls.Add(this.expandCollapsePanel1);
+            this.Controls.Add(this.ecpDocumentsField);
             this.Name = "DrawingForm";
             this.Text = "DrawingForm";
+            this.Load += new System.EventHandler(this.DrawingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
-            this.expandCollapsePanel1.ResumeLayout(false);
-            this.expandCollapsePanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit14.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit13.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit11.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit9.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            this.ecpDocumentsField.ResumeLayout(false);
+            this.ecpDocumentsField.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teOP.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teWeightAll.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teWeight.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teCountAll.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teCount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teWidth.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teLength.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teGostMat.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teGostSort.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teMarkSteal.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teProfile.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teDesignation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teNumberOnSpec.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teStandartSize.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drawingBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teParent.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePartOf.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drawingBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teTechRoute.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -487,27 +585,24 @@
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel1;
-        private DevExpress.XtraEditors.TextEdit textEdit18;
-        private DevExpress.XtraEditors.TextEdit textEdit17;
-        private DevExpress.XtraEditors.TextEdit textEdit16;
-        private DevExpress.XtraEditors.TextEdit textEdit15;
-        private DevExpress.XtraEditors.TextEdit textEdit14;
-        private DevExpress.XtraEditors.TextEdit textEdit13;
-        private DevExpress.XtraEditors.TextEdit textEdit12;
-        private DevExpress.XtraEditors.TextEdit textEdit11;
-        private DevExpress.XtraEditors.TextEdit textEdit10;
-        private DevExpress.XtraEditors.TextEdit textEdit9;
-        private DevExpress.XtraEditors.TextEdit textEdit8;
-        private DevExpress.XtraEditors.TextEdit textEdit7;
-        private DevExpress.XtraEditors.TextEdit textEdit6;
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel ecpDocumentsField;
+        private DevExpress.XtraEditors.TextEdit teOP;
+        private DevExpress.XtraEditors.TextEdit teWeightAll;
+        private DevExpress.XtraEditors.TextEdit teWeight;
+        private DevExpress.XtraEditors.TextEdit teCountAll;
+        private DevExpress.XtraEditors.TextEdit teCount;
+        private DevExpress.XtraEditors.TextEdit teWidth;
+        private DevExpress.XtraEditors.TextEdit teLength;
+        private DevExpress.XtraEditors.TextEdit teGostMat;
+        private DevExpress.XtraEditors.TextEdit teGostSort;
+        private DevExpress.XtraEditors.TextEdit teMarkSteal;
+        private DevExpress.XtraEditors.TextEdit teProfile;
         private DevExpress.XtraEditors.LabelControl labelControl18;
-        private DevExpress.XtraEditors.TextEdit textEdit5;
         private DevExpress.XtraEditors.LabelControl labelControl17;
-        private DevExpress.XtraEditors.TextEdit textEdit4;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit teDesignation;
+        private DevExpress.XtraEditors.TextEdit teNumberOnSpec;
+        private DevExpress.XtraEditors.TextEdit teStandartSize;
+        private DevExpress.XtraEditors.TextEdit teName;
         private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.LabelControl labelControl14;
@@ -525,5 +620,14 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private Controls.Drawings.TreeListDrawingsControl treeListDrawingsControl1;
+        private DevExpress.XtraEditors.TreeListLookUpEdit teParent;
+        private System.Windows.Forms.BindingSource drawingBindingSource;
+        private DevExpress.XtraTreeList.TreeList treeListLookUpEdit1TreeList;
+        private DevExpress.XtraEditors.TreeListLookUpEdit tePartOf;
+        private System.Windows.Forms.BindingSource drawingBindingSource1;
+        private DevExpress.XtraTreeList.TreeList treeList1;
+        private DevExpress.XtraEditors.GridLookUpEdit teTechRoute;
+        private System.Windows.Forms.BindingSource techRouteBindingSource;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
     }
 }
