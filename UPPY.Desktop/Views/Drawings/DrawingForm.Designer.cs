@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.treeListDrawingsControl1 = new UPPY.Desktop.Views.Controls.Drawings.TreeListDrawingsControl();
+            this.tlDrawings = new UPPY.Desktop.Views.Controls.Drawings.TreeListDrawingsControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.ecpDocumentsField = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.teOP = new DevExpress.XtraEditors.TextEdit();
@@ -67,15 +67,20 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.drawingBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.teParent = new DevExpress.XtraEditors.TreeListLookUpEdit();
+            this.parentDrawingSource = new System.Windows.Forms.BindingSource(this.components);
             this.treeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
+            this.colId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colDesignation = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colNumberOnSpec = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colProfile = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tePartOf = new DevExpress.XtraEditors.TreeListLookUpEdit();
+            this.partOfdrawingSource = new System.Windows.Forms.BindingSource(this.components);
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
-            this.drawingBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.teTechRoute = new DevExpress.XtraEditors.GridLookUpEdit();
-            this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.techRouteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -95,15 +100,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.teNumberOnSpec.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teStandartSize.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drawingBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teParent.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parentDrawingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePartOf.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partOfdrawingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drawingBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teTechRoute.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -120,19 +125,19 @@
             // 
             // xtraTabPage1
             // 
-            this.xtraTabPage1.Controls.Add(this.treeListDrawingsControl1);
+            this.xtraTabPage1.Controls.Add(this.tlDrawings);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(753, 302);
             this.xtraTabPage1.Text = "Древовидная структура";
             // 
-            // treeListDrawingsControl1
+            // tlDrawings
             // 
-            this.treeListDrawingsControl1.Controller = null;
-            this.treeListDrawingsControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeListDrawingsControl1.Location = new System.Drawing.Point(0, 0);
-            this.treeListDrawingsControl1.Name = "treeListDrawingsControl1";
-            this.treeListDrawingsControl1.Size = new System.Drawing.Size(753, 302);
-            this.treeListDrawingsControl1.TabIndex = 0;
+            this.tlDrawings.Controller = null;
+            this.tlDrawings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlDrawings.Location = new System.Drawing.Point(0, 0);
+            this.tlDrawings.Name = "tlDrawings";
+            this.tlDrawings.Size = new System.Drawing.Size(753, 302);
+            this.tlDrawings.TabIndex = 0;
             // 
             // xtraTabPage2
             // 
@@ -456,26 +461,33 @@
             this.labelControl1.TabIndex = 72;
             this.labelControl1.Text = "Наименование";
             // 
-            // drawingBindingSource
-            // 
-            this.drawingBindingSource.DataSource = typeof(Core.DomainModel.Drawing);
-            // 
             // teParent
             // 
             this.teParent.Location = new System.Drawing.Point(116, 33);
             this.teParent.Name = "teParent";
             this.teParent.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.teParent.Properties.DataSource = this.drawingBindingSource;
-            this.teParent.Properties.DisplayMember = "Designation";
+            this.teParent.Properties.DataSource = this.parentDrawingSource;
+            this.teParent.Properties.DisplayMember = "Name";
             this.teParent.Properties.NullText = "";
             this.teParent.Properties.TreeList = this.treeListLookUpEdit1TreeList;
             this.teParent.Properties.ValueMember = "Id";
             this.teParent.Size = new System.Drawing.Size(318, 20);
             this.teParent.TabIndex = 93;
             // 
+            // parentDrawingSource
+            // 
+            this.parentDrawingSource.DataSource = typeof(Core.DomainModel.Drawing);
+            // 
             // treeListLookUpEdit1TreeList
             // 
+            this.treeListLookUpEdit1TreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.colId,
+            this.colName,
+            this.colDesignation,
+            this.colNumberOnSpec,
+            this.colProfile});
+            this.treeListLookUpEdit1TreeList.DataSource = this.parentDrawingSource;
             this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(0, 0);
             this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
             this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
@@ -484,13 +496,48 @@
             this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(400, 200);
             this.treeListLookUpEdit1TreeList.TabIndex = 0;
             // 
+            // colId
+            // 
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
+            this.colId.Visible = true;
+            this.colId.VisibleIndex = 4;
+            // 
+            // colName
+            // 
+            this.colName.FieldName = "Name";
+            this.colName.Name = "colName";
+            this.colName.Visible = true;
+            this.colName.VisibleIndex = 0;
+            // 
+            // colDesignation
+            // 
+            this.colDesignation.FieldName = "Designation";
+            this.colDesignation.Name = "colDesignation";
+            this.colDesignation.Visible = true;
+            this.colDesignation.VisibleIndex = 1;
+            // 
+            // colNumberOnSpec
+            // 
+            this.colNumberOnSpec.FieldName = "NumberOnSpec";
+            this.colNumberOnSpec.Name = "colNumberOnSpec";
+            this.colNumberOnSpec.Visible = true;
+            this.colNumberOnSpec.VisibleIndex = 2;
+            // 
+            // colProfile
+            // 
+            this.colProfile.FieldName = "Profile";
+            this.colProfile.Name = "colProfile";
+            this.colProfile.Visible = true;
+            this.colProfile.VisibleIndex = 3;
+            // 
             // tePartOf
             // 
             this.tePartOf.Location = new System.Drawing.Point(502, 34);
             this.tePartOf.Name = "tePartOf";
             this.tePartOf.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.tePartOf.Properties.DataSource = this.drawingBindingSource1;
+            this.tePartOf.Properties.DataSource = this.partOfdrawingSource;
             this.tePartOf.Properties.DisplayMember = "Designation";
             this.tePartOf.Properties.NullText = "";
             this.tePartOf.Properties.TreeList = this.treeList1;
@@ -498,9 +545,13 @@
             this.tePartOf.Size = new System.Drawing.Size(245, 20);
             this.tePartOf.TabIndex = 105;
             // 
+            // partOfdrawingSource
+            // 
+            this.partOfdrawingSource.DataSource = typeof(Core.DomainModel.Drawing);
+            // 
             // treeList1
             // 
-            this.treeList1.DataSource = this.drawingBindingSource1;
+            this.treeList1.DataSource = this.partOfdrawingSource;
             this.treeList1.Location = new System.Drawing.Point(0, 0);
             this.treeList1.Name = "treeList1";
             this.treeList1.OptionsBehavior.EnableFiltering = true;
@@ -508,10 +559,6 @@
             this.treeList1.RootValue = null;
             this.treeList1.Size = new System.Drawing.Size(400, 200);
             this.treeList1.TabIndex = 0;
-            // 
-            // drawingBindingSource1
-            // 
-            this.drawingBindingSource1.DataSource = typeof(Core.DomainModel.Drawing);
             // 
             // teTechRoute
             // 
@@ -527,16 +574,16 @@
             this.teTechRoute.Size = new System.Drawing.Size(631, 20);
             this.teTechRoute.TabIndex = 107;
             // 
+            // techRouteBindingSource
+            // 
+            this.techRouteBindingSource.DataSource = typeof(Core.DomainModel.TechRoute);
+            // 
             // gridLookUpEdit1View
             // 
             this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
             this.gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // techRouteBindingSource
-            // 
-            this.techRouteBindingSource.DataSource = typeof(Core.DomainModel.TechRoute);
             // 
             // DrawingForm
             // 
@@ -568,15 +615,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.teNumberOnSpec.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teStandartSize.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drawingBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teParent.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parentDrawingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePartOf.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partOfdrawingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drawingBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teTechRoute.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -619,15 +666,20 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private Controls.Drawings.TreeListDrawingsControl treeListDrawingsControl1;
+        private Controls.Drawings.TreeListDrawingsControl tlDrawings;
         private DevExpress.XtraEditors.TreeListLookUpEdit teParent;
-        private System.Windows.Forms.BindingSource drawingBindingSource;
+        private System.Windows.Forms.BindingSource parentDrawingSource;
         private DevExpress.XtraTreeList.TreeList treeListLookUpEdit1TreeList;
         private DevExpress.XtraEditors.TreeListLookUpEdit tePartOf;
-        private System.Windows.Forms.BindingSource drawingBindingSource1;
+        private System.Windows.Forms.BindingSource partOfdrawingSource;
         private DevExpress.XtraTreeList.TreeList treeList1;
         private DevExpress.XtraEditors.GridLookUpEdit teTechRoute;
         private System.Windows.Forms.BindingSource techRouteBindingSource;
         private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colId;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colName;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colDesignation;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colNumberOnSpec;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colProfile;
     }
 }

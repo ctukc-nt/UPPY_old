@@ -17,6 +17,5 @@ namespace UPPY.Desktop.Views.Orders
         public Order Document { get; set; }
 
         public bool AutoSaveDocument { get; set; }
-
     }
 }

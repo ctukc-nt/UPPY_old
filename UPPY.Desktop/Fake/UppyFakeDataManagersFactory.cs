@@ -11,10 +11,6 @@ namespace UPPY.Desktop.Fake
     {
         private static readonly Dictionary<string, object> _data = new Dictionary<string, object>();
 
-        public UppyFakeDataManagersFactory()
-        {
-        }
-
         public IClassDataManager<T> GetDataManager<T>() where T : IEntity
         {
             if (typeof (T) == typeof (Drawing))
@@ -47,6 +43,14 @@ namespace UPPY.Desktop.Fake
                     _data.Add("to", new TechOperationClassFakeDataManager());
 
                 return (IClassDataManager<T>) _data["to"];
+            }
+
+            if (typeof(T) == typeof(Order))
+            {
+                if (!_data.ContainsKey("or"))
+                    _data.Add("or", new OrderClassFakeDataManager());
+
+                return (IClassDataManager<T>)_data["or"];
             }
 
             return null;

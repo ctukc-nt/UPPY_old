@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Interfaces;
 
 namespace Core.DomainModel
 {
-    public class Order
+    public class Order:IEntity
     {
         /// <summary>
         /// Наименование
@@ -51,6 +52,8 @@ namespace Core.DomainModel
         /// <summary>
         /// Продукция
         /// </summary>
-        public int? DrawingId { get; set; } 
+        public int? DrawingId { get; set; }
+
+        public int? Id { get; set; }
     }
 }

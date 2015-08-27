@@ -63,7 +63,10 @@
     <Compile Include="Concrete\Controllers\Drawings\DrawingListController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\HierarchyNumberDrawingController.cs" />
     <Compile Include="Concrete\Controllers\Orders\OrderDocumentController.cs" />
+    <Compile Include="Concrete\Controllers\Orders\OrderListController.cs" />
     <Compile Include="Concrete\DataManager\Drawings\DrawingsFilteredDataManager.cs" />
+    <Compile Include="Fake\OrderClassFakeDataManager.cs" />
+    <Compile Include="Interfaces\Controllers\Drawings\IDrawingController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingListController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingsSelectionController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IHierarchyNumberDrawingController.cs" />

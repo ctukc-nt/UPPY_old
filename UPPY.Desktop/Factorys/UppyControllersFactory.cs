@@ -1,9 +1,12 @@
 ﻿using System;
 using Core.DomainModel;
 using UPPY.Desktop.Concrete.Controllers.Drawings;
+using UPPY.Desktop.Concrete.Controllers.Orders;
 using UPPY.Desktop.Concrete.Controllers.TechRoutes;
 using UPPY.Desktop.Interfaces.Controllers;
+using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
+using UPPY.Desktop.Interfaces.Controllers.Orders;
 using UPPY.Desktop.Interfaces.DataManagers;
 
 namespace UPPY.Desktop.Factorys
@@ -57,6 +60,11 @@ namespace UPPY.Desktop.Factorys
         public IListDocumentController GetDrawingsViewController(int? parentId)
         {
             return new DrawingsListDocumentController(_dataManagersFactory.GetFilteredDrawingsByParent(parentId), _dataManagersFactory.GetDataManager<TechRoute>(), this);
+        }
+
+        public IOrderListController GetOrdersListController()
+        {
+            return new OrderListController(_dataManagersFactory.GetDataManager<Order>(), this);
         }
     }
 }

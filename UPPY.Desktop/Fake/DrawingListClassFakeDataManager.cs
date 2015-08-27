@@ -13,17 +13,17 @@ namespace UPPY.Desktop.Fake
 
         public DrawingListClassFakeDataManager()
         {
-            AddRange(new List<Drawing>
-            {
-                new Drawing {Id = 1, Name = "1"},
-                new Drawing {Id = 2, Name = "2"},
-                new Drawing {Id = 8, ParentId = 2, Name = "2.1."},
-                new Drawing {Id = 3, Name = "3"},
-                new Drawing {Id = 4, ParentId = 2, Name = "2.2."},
-                new Drawing {Id = 5, ParentId = 4, Name = "2.2.1"},
-                new Drawing {Id = 6, Name = "4"},
-                new Drawing {Id = 7, ParentId = 5, Name = "2.1.1.1"}
-            });
+            //AddRange(new List<Drawing>
+            //{
+            //    new Drawing {Id = 1, Name = "1"},
+            //    new Drawing {Id = 2, Name = "2"},
+            //    new Drawing {Id = 8, ParentId = 2, Name = "2.1."},
+            //    new Drawing {Id = 3, Name = "3"},
+            //    new Drawing {Id = 4, ParentId = 2, Name = "2.2."},
+            //    new Drawing {Id = 5, ParentId = 4, Name = "2.2.1"},
+            //    new Drawing {Id = 6, Name = "4"},
+            //    new Drawing {Id = 7, ParentId = 5, Name = "2.1.1.1"}
+           //});
         }
 
         public Task<List<Drawing>> GetListCollectionAsync()
