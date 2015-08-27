@@ -11,16 +11,46 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 {
     public partial class TreeListDrawingsControl : UserControl
     {
+        private IDrawingListController _controller;
+        private int? _parentId;
+
         public List<Drawing> SelectedDrawings
         {
             get
             {
                 var selection = tlDarwings.Selection;
-                return (from TreeListNode slc in selection select (Drawing) tlDarwings.GetDataRecordByNode(slc)).ToList();
+                return (from TreeListNode slc in selection select (Drawing)tlDarwings.GetDataRecordByNode(slc)).ToList();
             }
         }
 
-        public IDrawingListController Controller { get; set; }
+        public IDrawingListController Controller
+        {
+            get
+            {
+                return _controller;
+            }
+            set
+            {
+                _controller = value;
+                btnRefresh.Enabled = _controller != null;
+                btnAdd.Enabled = _controller != null;
+                btnAddChild.Enabled = _controller != null;
+                btnCopy.Enabled = _controller != null;
+               // btnDelete.Enabled = _controller != null;
+                //btnPaste.Enabled = _controller != null;
+                btnShowAnotherView.Enabled = _controller != null;
+            }
+        }
+
+        public int? ParentId
+        {
+            get { return _parentId; }
+            set
+            {
+                _parentId = value;
+                tlDarwings.RootValue = _parentId;
+            }
+        }
 
         public TreeListDrawingsControl()
         {
@@ -130,8 +160,19 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Controller.Save(Controller.CreateDocument());
+           
+            var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
+            if (data is Drawing)
+            {
+                var draw = data as Drawing;
+                Controller.Save(Controller.CreateDocument(draw.ParentId));
+            }
+            else
+            {
+                Controller.Save(Controller.CreateDocument(_parentId));
+            }
             tlDarwings.Focus();
+            tlDarwings.RefreshDataSource();
         }
 
         private void btnAddChild_Click(object sender, EventArgs e)
@@ -140,8 +181,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             if (data != null)
             {
                 var parentDrw = (Drawing)data;
-                var newDoc = Controller.CreateDocument();
-                newDoc.ParentId = parentDrw.Id;
+                var newDoc = Controller.CreateDocument(parentDrw.Id);
                 Controller.Save(newDoc);
                 tlDarwings.RefreshDataSource();
             }
@@ -163,6 +203,13 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
             Controller.Delete((Drawing)data);
             tlDarwings.RefreshDataSource();
+        }
+
+        private void tlDarwings_CellValueChanged(object sender, DevExpress.XtraTreeList.CellValueChangedEventArgs e)
+        {
+            var data = tlDarwings.GetDataRecordByNode(e.Node);
+            if (data is Drawing)
+                Controller.Save((Drawing)data);
         }
     }
 }

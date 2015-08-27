@@ -6,8 +6,9 @@ namespace UPPY.Desktop.Interfaces.Controllers.Common
     public interface IUppyControllersFactory : IControllersFactory
     {
         IDrawingListController GetDrawingsListController(int? parentId);
-
+        IDrawingListController GetDrawingsListController();
         IListDocumentController GetDrawingsViewController(int? parentId);
+        IListDocumentController GetDrawingsViewController();
 
         IOrderListController GetOrdersListController();
     }

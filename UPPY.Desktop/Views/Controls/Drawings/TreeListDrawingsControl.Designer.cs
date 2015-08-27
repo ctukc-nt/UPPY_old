@@ -97,6 +97,7 @@
             this.tlDarwings.RootValue = null;
             this.tlDarwings.Size = new System.Drawing.Size(910, 418);
             this.tlDarwings.TabIndex = 4;
+            this.tlDarwings.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.tlDarwings_CellValueChanged);
             // 
             // tlcName
             // 

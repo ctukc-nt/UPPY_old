@@ -20,7 +20,7 @@ namespace UPPY.Desktop.Ninject
             Bind(typeof(IUppyControllersFactory)).To(typeof(UppyControllersFactory));
             Bind(typeof(IDataManagersFactory)).To(typeof(UppyFakeDataManagersFactory));
             Bind(typeof(IUppyDataManagersFactory)).To(typeof(UppyFakeDataManagersFactory));
-            Bind(typeof(IOrderDocumentController)).ToConstant(new OrderDocumentController());
+            //Bind(typeof(IOrderDocumentController)).ToConstant(new OrderDocumentController());
         }
     }
 }

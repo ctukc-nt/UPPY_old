@@ -30,7 +30,7 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.ceIsClosed = new DevExpress.XtraEditors.CheckEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.teName = new DevExpress.XtraEditors.TextEdit();
             this.dtcDeadlineDate = new DevExpress.XtraEditors.DateEdit();
             this.dtcDateSend = new DevExpress.XtraEditors.DateEdit();
             this.lDeadlineDate = new DevExpress.XtraEditors.LabelControl();
@@ -38,14 +38,13 @@
             this.lDateStart = new DevExpress.XtraEditors.LabelControl();
             this.dtcDateStart = new DevExpress.XtraEditors.DateEdit();
             this.lNote = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
+            this.teNote = new DevExpress.XtraEditors.TextEdit();
             this.lClient = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.teClient = new DevExpress.XtraEditors.TextEdit();
             this.lOrderNo = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.teNumber = new DevExpress.XtraEditors.TextEdit();
             this.lName = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.treeListDrawingsControl1 = new UPPY.Desktop.Views.Controls.Drawings.TreeListDrawingsControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -59,21 +58,23 @@
             this.selectedDrawingInAnotherWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drawingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asLinearGridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.initToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ceIsClosed.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtcDeadlineDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtcDeadlineDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtcDateSend.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtcDateSend.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtcDateStart.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtcDateStart.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teNote.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teClient.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teNumber.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -91,7 +92,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.ceIsClosed);
-            this.splitContainer1.Panel1.Controls.Add(this.textEdit1);
+            this.splitContainer1.Panel1.Controls.Add(this.teName);
             this.splitContainer1.Panel1.Controls.Add(this.dtcDeadlineDate);
             this.splitContainer1.Panel1.Controls.Add(this.dtcDateSend);
             this.splitContainer1.Panel1.Controls.Add(this.lDeadlineDate);
@@ -99,11 +100,11 @@
             this.splitContainer1.Panel1.Controls.Add(this.lDateStart);
             this.splitContainer1.Panel1.Controls.Add(this.dtcDateStart);
             this.splitContainer1.Panel1.Controls.Add(this.lNote);
-            this.splitContainer1.Panel1.Controls.Add(this.textEdit4);
+            this.splitContainer1.Panel1.Controls.Add(this.teNote);
             this.splitContainer1.Panel1.Controls.Add(this.lClient);
-            this.splitContainer1.Panel1.Controls.Add(this.textEdit3);
+            this.splitContainer1.Panel1.Controls.Add(this.teClient);
             this.splitContainer1.Panel1.Controls.Add(this.lOrderNo);
-            this.splitContainer1.Panel1.Controls.Add(this.textEdit2);
+            this.splitContainer1.Panel1.Controls.Add(this.teNumber);
             this.splitContainer1.Panel1.Controls.Add(this.lName);
             this.splitContainer1.Panel1MinSize = 100;
             // 
@@ -123,14 +124,14 @@
             this.ceIsClosed.Size = new System.Drawing.Size(88, 19);
             this.ceIsClosed.TabIndex = 7;
             // 
-            // textEdit1
+            // teName
             // 
-            this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.teName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit1.Location = new System.Drawing.Point(285, 19);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(627, 20);
-            this.textEdit1.TabIndex = 1;
+            this.teName.Location = new System.Drawing.Point(285, 19);
+            this.teName.Name = "teName";
+            this.teName.Size = new System.Drawing.Size(627, 20);
+            this.teName.TabIndex = 1;
             // 
             // dtcDeadlineDate
             // 
@@ -206,14 +207,14 @@
             this.lNote.TabIndex = 7;
             this.lNote.Text = "Примечание";
             // 
-            // textEdit4
+            // teNote
             // 
-            this.textEdit4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.teNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit4.Location = new System.Drawing.Point(86, 71);
-            this.textEdit4.Name = "textEdit4";
-            this.textEdit4.Size = new System.Drawing.Size(758, 20);
-            this.textEdit4.TabIndex = 5;
+            this.teNote.Location = new System.Drawing.Point(86, 71);
+            this.teNote.Name = "teNote";
+            this.teNote.Size = new System.Drawing.Size(758, 20);
+            this.teNote.TabIndex = 5;
             // 
             // lClient
             // 
@@ -223,14 +224,14 @@
             this.lClient.TabIndex = 5;
             this.lClient.Text = "Заказчик";
             // 
-            // textEdit3
+            // teClient
             // 
-            this.textEdit3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.teClient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit3.Location = new System.Drawing.Point(86, 45);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(826, 20);
-            this.textEdit3.TabIndex = 3;
+            this.teClient.Location = new System.Drawing.Point(86, 45);
+            this.teClient.Name = "teClient";
+            this.teClient.Size = new System.Drawing.Size(826, 20);
+            this.teClient.TabIndex = 3;
             // 
             // lOrderNo
             // 
@@ -241,12 +242,12 @@
             this.lOrderNo.TabIndex = 10;
             this.lOrderNo.Text = "Номер заказа";
             // 
-            // textEdit2
+            // teNumber
             // 
-            this.textEdit2.Location = new System.Drawing.Point(86, 19);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(114, 20);
-            this.textEdit2.TabIndex = 0;
+            this.teNumber.Location = new System.Drawing.Point(86, 19);
+            this.teNumber.Name = "teNumber";
+            this.teNumber.Size = new System.Drawing.Size(114, 20);
+            this.teNumber.TabIndex = 0;
             // 
             // lName
             // 
@@ -261,18 +262,12 @@
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
             this.xtraTabControl1.Size = new System.Drawing.Size(1122, 557);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2});
-            // 
-            // xtraTabPage2
-            // 
-            this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1116, 529);
-            this.xtraTabPage2.Text = "Список файлов чертежей";
             // 
             // xtraTabPage1
             // 
@@ -284,6 +279,7 @@
             // 
             // treeListDrawingsControl1
             // 
+            this.treeListDrawingsControl1.Controller = null;
             this.treeListDrawingsControl1.Location = new System.Drawing.Point(3, 27);
             this.treeListDrawingsControl1.Name = "treeListDrawingsControl1";
             this.treeListDrawingsControl1.Size = new System.Drawing.Size(1110, 499);
@@ -294,7 +290,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadToolStripMenuItem,
             this.unloadToolStripMenuItem,
-            this.viewToolStripMenuItem});
+            this.viewToolStripMenuItem,
+            this.initToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -373,6 +370,19 @@
             this.asLinearGridToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
             this.asLinearGridToolStripMenuItem.Text = "As linear grid";
             // 
+            // xtraTabPage2
+            // 
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(1116, 529);
+            this.xtraTabPage2.Text = "Список файлов чертежей";
+            // 
+            // initToolStripMenuItem
+            // 
+            this.initToolStripMenuItem.Name = "initToolStripMenuItem";
+            this.initToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
+            this.initToolStripMenuItem.Text = "Init";
+            this.initToolStripMenuItem.Click += new System.EventHandler(this.initToolStripMenuItem_Click);
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,22 +392,23 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "OrderForm";
             this.Text = "OrderForm";
+            this.Load += new System.EventHandler(this.OrderForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ceIsClosed.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtcDeadlineDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtcDeadlineDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtcDateSend.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtcDateSend.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtcDateStart.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtcDateStart.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teNote.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teClient.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teNumber.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -415,11 +426,11 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraEditors.LabelControl lClient;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private DevExpress.XtraEditors.TextEdit teClient;
         private DevExpress.XtraEditors.LabelControl lOrderNo;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraEditors.TextEdit teNumber;
         private DevExpress.XtraEditors.LabelControl lName;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit teName;
         private DevExpress.XtraEditors.DateEdit dtcDeadlineDate;
         private DevExpress.XtraEditors.DateEdit dtcDateSend;
         private DevExpress.XtraEditors.LabelControl lDeadlineDate;
@@ -428,7 +439,7 @@
         private DevExpress.XtraEditors.DateEdit dtcDateStart;
         private DevExpress.XtraEditors.CheckEdit ceIsClosed;
         private DevExpress.XtraEditors.LabelControl lNote;
-        private DevExpress.XtraEditors.TextEdit textEdit4;
+        private DevExpress.XtraEditors.TextEdit teNote;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fromSiemensToolStripMenuItem;
@@ -441,5 +452,6 @@
         private System.Windows.Forms.ToolStripMenuItem drawingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asLinearGridToolStripMenuItem;
         private Controls.Drawings.TreeListDrawingsControl treeListDrawingsControl1;
+        private System.Windows.Forms.ToolStripMenuItem initToolStripMenuItem;
     }
 }

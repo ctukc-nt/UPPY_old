@@ -51,6 +51,9 @@
             // 
             // gcOrders
             // 
+            this.gcOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gcOrders.DataSource = this.orderBindingSource;
             this.gcOrders.Location = new System.Drawing.Point(12, 12);
             this.gcOrders.MainView = this.gvOrders;
@@ -77,9 +80,11 @@
             this.colNote});
             this.gvOrders.GridControl = this.gcOrders;
             this.gvOrders.Name = "gvOrders";
+            this.gvOrders.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvOrders_CellValueChanged);
             // 
             // colName
             // 
+            this.colName.Caption = "Наименование";
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
             this.colName.Visible = true;
@@ -87,6 +92,7 @@
             // 
             // colOrderNo
             // 
+            this.colOrderNo.Caption = "Номер заказа";
             this.colOrderNo.FieldName = "OrderNo";
             this.colOrderNo.Name = "colOrderNo";
             this.colOrderNo.Visible = true;
@@ -94,6 +100,7 @@
             // 
             // colClient
             // 
+            this.colClient.Caption = "Покупатель";
             this.colClient.FieldName = "Client";
             this.colClient.Name = "colClient";
             this.colClient.Visible = true;
@@ -101,6 +108,7 @@
             // 
             // colDateStart
             // 
+            this.colDateStart.Caption = "Дата запуска";
             this.colDateStart.FieldName = "DateStart";
             this.colDateStart.Name = "colDateStart";
             this.colDateStart.Visible = true;
@@ -108,6 +116,7 @@
             // 
             // colDeadlineDate
             // 
+            this.colDeadlineDate.Caption = "Дата поставки по договору";
             this.colDeadlineDate.FieldName = "DeadlineDate";
             this.colDeadlineDate.Name = "colDeadlineDate";
             this.colDeadlineDate.Visible = true;
@@ -115,6 +124,7 @@
             // 
             // colDateSend
             // 
+            this.colDateSend.Caption = "Дата отправки";
             this.colDateSend.FieldName = "DateSend";
             this.colDateSend.Name = "colDateSend";
             this.colDateSend.Visible = true;
@@ -122,6 +132,7 @@
             // 
             // colIsClosed
             // 
+            this.colIsClosed.Caption = "Заказ выполнен";
             this.colIsClosed.FieldName = "IsClosed";
             this.colIsClosed.Name = "colIsClosed";
             this.colIsClosed.Visible = true;
@@ -129,7 +140,7 @@
             // 
             // colNote
             // 
-            this.colNote.Caption = "Note";
+            this.colNote.Caption = "Примечание";
             this.colNote.FieldName = "Note";
             this.colNote.Name = "colNote";
             this.colNote.Visible = true;
@@ -138,7 +149,7 @@
             // btnRefreshSource
             // 
             this.btnRefreshSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefreshSource.Location = new System.Drawing.Point(898, 150);
+            this.btnRefreshSource.Location = new System.Drawing.Point(905, 150);
             this.btnRefreshSource.Name = "btnRefreshSource";
             this.btnRefreshSource.Size = new System.Drawing.Size(124, 40);
             this.btnRefreshSource.TabIndex = 11;
@@ -148,7 +159,7 @@
             // btnOpen
             // 
             this.btnOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpen.Location = new System.Drawing.Point(898, 58);
+            this.btnOpen.Location = new System.Drawing.Point(905, 58);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(124, 40);
             this.btnOpen.TabIndex = 10;
@@ -158,7 +169,7 @@
             // btnDel
             // 
             this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDel.Location = new System.Drawing.Point(898, 104);
+            this.btnDel.Location = new System.Drawing.Point(905, 104);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(124, 40);
             this.btnDel.TabIndex = 9;
@@ -168,7 +179,7 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(898, 12);
+            this.btnAdd.Location = new System.Drawing.Point(905, 12);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(124, 40);
             this.btnAdd.TabIndex = 8;
@@ -179,7 +190,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1034, 567);
+            this.ClientSize = new System.Drawing.Size(1041, 567);
             this.Controls.Add(this.btnRefreshSource);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.btnDel);

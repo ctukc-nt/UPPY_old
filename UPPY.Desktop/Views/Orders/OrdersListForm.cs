@@ -30,6 +30,7 @@ namespace UPPY.Desktop.Views.Orders
         {
             _сontroller.Save(_сontroller.CreateDocument());
             gvOrders.Focus();
+            RefreshSource();
         }
 
         private void btnDel_Click(object sender, System.EventArgs e)
@@ -37,11 +38,25 @@ namespace UPPY.Desktop.Views.Orders
             var order = gvOrders.GetFocusedRow() as Order;
             if (order != null)
                 _сontroller.Delete(order);
+
+            RefreshSource();
         }
 
         private void btnRefreshSource_Click(object sender, System.EventArgs e)
         {
+            RefreshSource();
+        }
+
+        private void RefreshSource()
+        {
             gcOrders.DataSource = _сontroller.GetOrdersList();
+            gvOrders.RefreshData();
+        }
+
+        private void gvOrders_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var data = gvOrders.GetRow(e.RowHandle);
+            _сontroller.Save((Order)data);
         }
     }
 }

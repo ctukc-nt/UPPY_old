@@ -1,6 +1,7 @@
 
 using System;
 using Core.DomainModel;
+using UPPY.Desktop.Interfaces.Controllers.Drawings;
 
 namespace UPPY.Desktop.Interfaces.Controllers.Orders
 {
@@ -9,10 +10,12 @@ namespace UPPY.Desktop.Interfaces.Controllers.Orders
     /// </summary>
     public interface IOrderDocumentController
     {
-        Order Order { get; set; }
+        Order Document { get; set; }
 
         void Save(Order order);
 
         event EventHandler<EventArgs> DataRefreshed;
+        IDrawingListController GetDrawingsController(int? drawingId);
+        IDrawingListController InitNewDrawingAndGetController();
     }
 }

@@ -47,9 +47,9 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
             controller.ShowViewDialog();
         }
 
-        public Drawing CreateDocument()
+        public Drawing CreateDocument(int? parentId)
         {
-            return new Drawing();
+            return new Drawing() {ParentId = parentId};
         }
 
         public void Save(Drawing document)

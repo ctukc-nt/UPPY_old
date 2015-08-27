@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Core.DomainModel;
 using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
@@ -10,11 +11,13 @@ namespace UPPY.Desktop.Concrete.Controllers.Orders
     public class OrderListController : IOrderListController
     {
         private readonly IClassDataManager<Order> _orderDataManager;
+        private readonly IClassDataManager<Drawing> _drawingDataManager;
         private readonly IUppyControllersFactory _factory;
 
-        public OrderListController(IClassDataManager<Order> orderDataManager, IUppyControllersFactory factory)
+        public OrderListController(IClassDataManager<Order> orderDataManager,  IClassDataManager<Drawing> drawingDataManager, IUppyControllersFactory factory)
         {
             _orderDataManager = orderDataManager;
+            _drawingDataManager = drawingDataManager;
             _factory = factory;
         }
 
@@ -35,12 +38,19 @@ namespace UPPY.Desktop.Concrete.Controllers.Orders
 
         public void Save(Order order)
         {
+            if (order.DrawingId == null)
+            {
+                var drawing = new Drawing();
+                _drawingDataManager.Insert(drawing);
+                order.DrawingId = drawing.Id;
+            }
+
             _orderDataManager.InsertOrUpdate(order);
         }
 
         public Order CreateDocument()
         {
-            return new Order();
+            return new Order() {DateStart = DateTime.Now, DeadlineDate = DateTime.Now, IsClosed = false};
         }
 
         public void Delete(Order order)
