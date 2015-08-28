@@ -192,6 +192,9 @@
     <EmbeddedResource Include="Views\Orders\OrdersListForm.resx">
       <DependentUpon>OrdersListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Standarts\StandartForm.resx">
+      <DependentUpon>StandartForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Standarts\StandartsListForm.resx">
       <DependentUpon>StandartsListForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,6 +206,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Core.DomainModel.Drawing.datasource" />
+    <None Include="Properties\DataSources\Core.DomainModel.PositionStandart.datasource" />
     <None Include="Properties\DataSources\Core.DomainModel.Standart.datasource" />
     <None Include="Properties\DataSources\Core.DomainModel.TechOperation.datasource" />
     <None Include="Properties\DataSources\Core.DomainModel.TechRoute.datasource" />
