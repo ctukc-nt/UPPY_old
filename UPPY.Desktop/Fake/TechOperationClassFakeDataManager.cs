@@ -29,6 +29,11 @@ namespace UPPY.Desktop.Fake
             return this;
         }
 
+        public List<TechOperation> GetListCollection(Func<TechOperation, bool> filter)
+        {
+            return this.Where(filter).ToList();
+        }
+
         public void Insert(TechOperation doc)
         {
             Add(doc);

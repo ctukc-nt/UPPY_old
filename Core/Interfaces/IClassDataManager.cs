@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.DomainModel;
 
 namespace Core.Interfaces
 {
@@ -16,6 +17,8 @@ namespace Core.Interfaces
         ///     Получить список документов
         /// </summary>
         List<T> GetListCollection();
+
+        List<T> GetListCollection(Func<T, bool> filter);
 
         /// <summary>
         ///     Вставить документ

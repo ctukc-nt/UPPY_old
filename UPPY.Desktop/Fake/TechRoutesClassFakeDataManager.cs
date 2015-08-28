@@ -45,6 +45,11 @@ namespace UPPY.Desktop.Fake
             return this;
         }
 
+        public List<TechRoute> GetListCollection(Func<TechRoute, bool> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Insert(TechRoute doc)
         {
             Add(doc);

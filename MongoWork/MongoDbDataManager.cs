@@ -38,6 +38,12 @@ namespace MongoWork
             return collection.Find(x => true).ToListAsync().Result;
         }
 
+        public List<T> GetListCollection(Func<T, bool> filter)
+        {
+            var collection = GetCollection();
+            return collection.Find(x => filter(x)).ToListAsync().Result;
+        }
+
         /// <summary>
         ///     Вставить документ
         /// </summary>

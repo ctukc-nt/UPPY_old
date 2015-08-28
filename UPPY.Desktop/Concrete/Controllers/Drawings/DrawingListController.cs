@@ -47,6 +47,16 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
             controller.ShowViewDialog();
         }
 
+        public void ChangeDrawingCount(Drawing drawing)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ChangeDrawingWeight(Drawing drawing)
+        {
+            throw new NotImplementedException();
+        }
+
         public Drawing CreateDocument(int? parentId)
         {
             return new Drawing() {ParentId = parentId};

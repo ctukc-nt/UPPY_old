@@ -16,5 +16,7 @@ namespace UPPY.Desktop.Interfaces.Controllers.Drawings
 
         event EventHandler<EventArgs> DataRefreshed;
         void ShowDrawingInAnotherView(Drawing drawing);
+        void ChangeDrawingCount(Drawing drawing);
+        void ChangeDrawingWeight(Drawing drawing);
     }
 }

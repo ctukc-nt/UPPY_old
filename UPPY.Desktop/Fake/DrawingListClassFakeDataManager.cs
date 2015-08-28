@@ -36,6 +36,11 @@ namespace UPPY.Desktop.Fake
             return this;
         }
 
+        public List<Drawing> GetListCollection(Func<Drawing, bool> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Insert(Drawing doc)
         {
             Add(doc);
@@ -85,7 +90,7 @@ namespace UPPY.Desktop.Fake
             return new Task<Drawing>(() => GetDocument(id));
         }
 
-        public List<Drawing> FindInDbDirectly(Func<Drawing, bool> id)
+        public List<Drawing> FindInDbDirectly(Func<Drawing, bool> filter)
         {
             throw new NotImplementedException();
         }

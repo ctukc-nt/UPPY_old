@@ -21,6 +21,11 @@ namespace UPPY.Desktop.Fake
             return this;
         }
 
+        public List<Standart> GetListCollection(Func<Standart, bool> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Insert(Standart doc)
         {
             Add(doc);

@@ -203,6 +203,7 @@
             this.tlcCountAll.Caption = "Кол-во всего";
             this.tlcCountAll.FieldName = "CountAll";
             this.tlcCountAll.Name = "tlcCountAll";
+            this.tlcCountAll.OptionsColumn.AllowEdit = false;
             this.tlcCountAll.Visible = true;
             this.tlcCountAll.VisibleIndex = 11;
             this.tlcCountAll.Width = 52;
@@ -221,6 +222,7 @@
             this.tlcWeightAll.Caption = "Вес всего";
             this.tlcWeightAll.FieldName = "WeightAll";
             this.tlcWeightAll.Name = "tlcWeightAll";
+            this.tlcWeightAll.OptionsColumn.AllowEdit = false;
             this.tlcWeightAll.Visible = true;
             this.tlcWeightAll.VisibleIndex = 13;
             this.tlcWeightAll.Width = 66;

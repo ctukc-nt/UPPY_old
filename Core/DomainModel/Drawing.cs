@@ -111,6 +111,8 @@ namespace Core.DomainModel
         public Color Color { get; set; }
 
         public FileDrawingInfo FileDrawingInfo { get; set; }
+
+        public void RecalculateWeightAll() => WeightAll = Weight*CountAll;
     }
 
     public class FileDrawingInfo

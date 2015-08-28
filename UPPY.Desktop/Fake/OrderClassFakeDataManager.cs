@@ -21,6 +21,11 @@ namespace UPPY.Desktop.Fake
             return this;
         }
 
+        public List<Order> GetListCollection(Func<Order, bool> filter)
+        {
+            return this.Where(filter).ToList();
+        }
+
         public void Insert(Order doc)
         {
             Add(doc);

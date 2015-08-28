@@ -14,6 +14,10 @@ namespace UPPY.Desktop.Views.Controls.Drawings
         private IDrawingListController _controller;
         private int? _parentId;
 
+        public event DrawingChangeEventHandler DrawingWeightChanged;
+
+        public event DrawingChangeEventHandler DrawingCountChanged;
+
         public List<Drawing> SelectedDrawings
         {
             get
@@ -39,6 +43,13 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                // btnDelete.Enabled = _controller != null;
                 //btnPaste.Enabled = _controller != null;
                 btnShowAnotherView.Enabled = _controller != null;
+
+                if (_controller != null)
+                {
+                    DrawingCountChanged += _controller.ChangeDrawingCount;
+                    DrawingWeightChanged += _controller.ChangeDrawingWeight;
+                }
+
             }
         }
 
@@ -211,5 +222,18 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             if (data is Drawing)
                 Controller.Save((Drawing)data);
         }
+
+        public delegate void DrawingChangeEventHandler(Drawing drawing);
+
+        protected virtual void OnDrawingWeightChanged(Drawing arg)
+        {
+            DrawingWeightChanged?.Invoke(arg);
+        }
+
+        protected virtual void OnDrawingCountChanged(Drawing drawing)
+        {
+            DrawingCountChanged?.Invoke(drawing);
+        }
     }
+
 }
