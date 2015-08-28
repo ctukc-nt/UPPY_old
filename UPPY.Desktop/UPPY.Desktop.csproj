@@ -137,6 +137,18 @@
     <Compile Include="Views\Orders\OrdersListForm.Designer.cs">
       <DependentUpon>OrdersListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Standarts\StandartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Standarts\StandartForm.Designer.cs">
+      <DependentUpon>StandartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Standarts\StandartsListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Standarts\StandartsListForm.Designer.cs">
+      <DependentUpon>StandartsListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\TechRoutes\TechRouteDocumentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +192,9 @@
     <EmbeddedResource Include="Views\Orders\OrdersListForm.resx">
       <DependentUpon>OrdersListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Standarts\StandartsListForm.resx">
+      <DependentUpon>StandartsListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\TechRoutes\TechRouteDocumentForm.resx">
       <DependentUpon>TechRouteDocumentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,6 +203,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Core.DomainModel.Drawing.datasource" />
+    <None Include="Properties\DataSources\Core.DomainModel.Standart.datasource" />
     <None Include="Properties\DataSources\Core.DomainModel.TechOperation.datasource" />
     <None Include="Properties\DataSources\Core.DomainModel.TechRoute.datasource" />
     <None Include="Properties\Settings.settings">
@@ -203,7 +219,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interfaces\Controllers\Standarts\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{876F668F-5017-4CEE-8AE4-91E9B0E9E6B6}</Project>
