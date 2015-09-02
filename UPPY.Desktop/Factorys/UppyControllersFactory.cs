@@ -1,5 +1,7 @@
 ﻿using System;
 using Core.DomainModel;
+using UPPY.Desktop.Classes;
+using UPPY.Desktop.Concrete.Controllers.Common;
 using UPPY.Desktop.Concrete.Controllers.Drawings;
 using UPPY.Desktop.Concrete.Controllers.Orders;
 using UPPY.Desktop.Concrete.Controllers.TechRoutes;
@@ -78,6 +80,16 @@ namespace UPPY.Desktop.Factorys
         public IOrderListController GetOrdersListController()
         {
             return new OrderListController(_dataManagersFactory.GetDataManager<Order>(), _dataManagersFactory.GetDataManager<Drawing>(), this);
+        }
+
+        public IDrawingBulkChangesHelper GetDrawingBulkChangesHelper()
+        {
+            return new DrawingBulkChangesHelper(_dataManagersFactory);
+        }
+
+        public IDrawingsToStandartController GetDrawingsToStandartController()
+        {
+            return new DrawingsToStandartController(_dataManagersFactory);
         }
     }
 }

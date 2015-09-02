@@ -9,9 +9,12 @@ namespace UPPY.Desktop.Concrete.DataManager.Drawings
 {
     public class DrawingsFilteredDataManager : MongoDbDataManager<Drawing>
     {
-        private List<Drawing> _cashedList = null;
-
         private readonly int? _parentId;
+
+        public DrawingsFilteredDataManager(IMongoDatabase db, int? parentId) : base(db)
+        {
+            _parentId = parentId;
+        }
 
         private Task<List<Drawing>> GetChildrenDrawingsAsync(int? parentId)
         {
@@ -21,7 +24,6 @@ namespace UPPY.Desktop.Concrete.DataManager.Drawings
 
         private List<Drawing> GetChildrenDrawings(int? parentId)
         {
-            var collection = GetCollection();
             return GetChildrenDrawingsAsync(parentId).Result;
         }
 
@@ -36,11 +38,6 @@ namespace UPPY.Desktop.Concrete.DataManager.Drawings
             }
 
             return result;
-        }
-
-        public DrawingsFilteredDataManager(IMongoDatabase db, int? parentId) : base(db)
-        {
-            _parentId = parentId;
         }
 
         public new async Task<List<Drawing>> GetListCollectionAsync()
@@ -78,7 +75,7 @@ namespace UPPY.Desktop.Concrete.DataManager.Drawings
             }
             else
             {
-                SetIdDocument((int)doc.Id);
+                SetIdDocument((int) doc.Id);
             }
 
             await collection.InsertOneAsync(doc);
@@ -92,6 +89,7 @@ namespace UPPY.Desktop.Concrete.DataManager.Drawings
             var collection = GetCollection();
             collection.ReplaceOneAsync(x => x.Id == doc.Id, doc).Wait();
         }
+
         /// <summary>
         ///     Обновить документ асинхронно
         /// </summary>
@@ -151,18 +149,13 @@ namespace UPPY.Desktop.Concrete.DataManager.Drawings
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<Drawing> GetDocumentAsync(int? id)
+        public new async Task<Drawing> GetDocumentAsync(int? id)
         {
             var collection = MongoDb.GetCollection<Drawing>(GetNameColection());
             var res = collection.Find(x => x.Id == id).FirstOrDefaultAsync();
             await res;
 
             return res.Result;
-        }
-
-        public new List<Drawing> FindInDbDirectly(Func<Drawing, bool> filter)
-        {
-            return GetCollection().Find(x => filter(x)).ToListAsync().Result;
         }
     }
 }

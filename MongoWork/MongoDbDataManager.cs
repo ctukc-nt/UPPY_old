@@ -156,12 +156,6 @@ namespace MongoWork
             return res.Result;
         }
 
-        public List<T> FindInDbDirectly(Func<T, bool> filter)
-        {
-            return GetCollection().Find(x => filter(x)).ToListAsync().Result;
-        }
-
-
         protected IMongoCollection<T> GetCollection()
         {
             return MongoDb.GetCollection<T>(GetNameColection());

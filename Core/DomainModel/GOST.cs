@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Interfaces;
 
 namespace Core.DomainModel
 {
-    public class Gost
+    public class Gost:IEntity
     {
 
         public Gost()
@@ -44,6 +45,8 @@ namespace Core.DomainModel
                         x.StandartSize.ToLower().Replace("x", "").Replace("х", "") ==
                         standartSize.ToLower().Replace("x", "").Replace("х", ""));
         }
+
+        public int? Id { get; set; }
     }
 
     public class StandartWeight

@@ -9,48 +9,48 @@ namespace UPPY.Desktop.Fake
 {
     public class UppyFakeDataManagersFactory : IUppyDataManagersFactory
     {
-        private static readonly Dictionary<string, object> _data = new Dictionary<string, object>();
+        private static readonly Dictionary<string, object> Data = new Dictionary<string, object>();
 
         public IClassDataManager<T> GetDataManager<T>() where T : IEntity
         {
             if (typeof (T) == typeof (Drawing))
             {
-                if (!_data.ContainsKey("dr"))
-                    _data.Add("dr", new DrawingListClassFakeDataManager());
+                if (!Data.ContainsKey("dr"))
+                    Data.Add("dr", new DrawingListClassFakeDataManager());
 
-                return (IClassDataManager<T>) _data["dr"];
+                return (IClassDataManager<T>) Data["dr"];
             }
 
             if (typeof (T) == typeof (TechRoute))
             {
-                if (!_data.ContainsKey("tr"))
-                    _data.Add("tr", new TechRoutesClassFakeDataManager());
+                if (!Data.ContainsKey("tr"))
+                    Data.Add("tr", new TechRoutesClassFakeDataManager());
 
-                return (IClassDataManager<T>) _data["tr"];
+                return (IClassDataManager<T>) Data["tr"];
             }
 
             if (typeof (T) == typeof (Standart))
             {
-                if (!_data.ContainsKey("st"))
-                    _data.Add("st", new StandartClassFakeDataManager());
+                if (!Data.ContainsKey("st"))
+                    Data.Add("st", new StandartClassFakeDataManager());
 
-                return (IClassDataManager<T>) _data["st"];
+                return (IClassDataManager<T>) Data["st"];
             }
 
             if (typeof (T) == typeof (TechOperation))
             {
-                if (!_data.ContainsKey("to"))
-                    _data.Add("to", new TechOperationClassFakeDataManager());
+                if (!Data.ContainsKey("to"))
+                    Data.Add("to", new TechOperationClassFakeDataManager());
 
-                return (IClassDataManager<T>) _data["to"];
+                return (IClassDataManager<T>) Data["to"];
             }
 
             if (typeof(T) == typeof(Order))
             {
-                if (!_data.ContainsKey("or"))
-                    _data.Add("or", new OrderClassFakeDataManager());
+                if (!Data.ContainsKey("or"))
+                    Data.Add("or", new OrderClassFakeDataManager());
 
-                return (IClassDataManager<T>)_data["or"];
+                return (IClassDataManager<T>)Data["or"];
             }
 
             return null;
@@ -63,7 +63,7 @@ namespace UPPY.Desktop.Fake
         }
 
         private List<Drawing> GetAllChildrens(int? parentId, List<Drawing> data)
-        {
+        { 
             var result = new List<Drawing>();
             var childrens = GetChildrenDrawings(parentId, data);
             result.AddRange(childrens);
@@ -84,6 +84,28 @@ namespace UPPY.Desktop.Fake
             ((List<Drawing>) manager).RemoveAll(x => childrens.All(y => y.Id != x.Id));
 
             return manager;
+        }
+
+        public IHierClassDataManager<Drawing> GetDrawingsHierClassDataManager()
+        {
+            var manager = GetDataManager<Drawing>();
+            return (IHierClassDataManager<Drawing>) manager;
+        }
+
+        private int? GetTopParentId(int? startDrawingId, IClassDataManager<Drawing> drawingDm)
+        {
+            var drawing = drawingDm.GetDocument(startDrawingId);
+            if (drawing != null)
+            {
+                if (drawing.ParentId != null)
+                    return GetTopParentId(drawing.ParentId, drawingDm);
+                else
+                {
+                    return startDrawingId;
+                }
+            }
+
+            return startDrawingId;
         }
     }
 }

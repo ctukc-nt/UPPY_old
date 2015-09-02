@@ -7,7 +7,7 @@ using Core.Interfaces;
 
 namespace UPPY.Desktop.Fake
 {
-    public class DrawingListClassFakeDataManager : List<Drawing>, IClassDataManager<Drawing>
+    public class DrawingListClassFakeDataManager : List<Drawing>, IHierClassDataManager<Drawing>
     {
         private int _count = 9;
 
@@ -38,7 +38,7 @@ namespace UPPY.Desktop.Fake
 
         public List<Drawing> GetListCollection(Func<Drawing, bool> filter)
         {
-            throw new NotImplementedException();
+            return this.Where(filter).ToList();
         }
 
         public void Insert(Drawing doc)
@@ -90,14 +90,54 @@ namespace UPPY.Desktop.Fake
             return new Task<Drawing>(() => GetDocument(id));
         }
 
-        public List<Drawing> FindInDbDirectly(Func<Drawing, bool> filter)
+        public List<Drawing> GetListDocsInHierarchy(int? id)
         {
-            throw new NotImplementedException();
+            var topParentId = GetTopParentId(id, this);
+            return GetListAllChildrens(topParentId);
         }
 
-        public List<Drawing> FindInDbDirectlyById(int? id)
+        public List<Drawing> GetListAllChildrens(int? id)
         {
-            throw new NotImplementedException();
+            return GetAllChildrens(id, this);
+        }
+
+        private static int? GetTopParentId(int? id, List<Drawing> drawingMongoCollection)
+        {
+            while (true)
+            {
+                var copyId = id;
+                var drawing = drawingMongoCollection.FirstOrDefault(x => x.Id == copyId);
+                if (drawing != null)
+                {
+                    if (drawing.ParentId != null)
+                    {
+                        id = drawing.ParentId;
+                        continue;
+                    }
+
+                    return id;
+                }
+
+                return id;
+            }
+        }
+
+        private List<Drawing> GetAllChildrens(int? parentId, List<Drawing> data)
+        {
+            var result = new List<Drawing>();
+            var childrens = GetChildrenDrawings(parentId, data);
+            result.AddRange(childrens);
+            foreach (var drawing in childrens.AsParallel())
+            {
+                result.AddRange(GetAllChildrens(drawing.Id, data));
+            }
+
+            return result;
+        }
+
+        private List<Drawing> GetChildrenDrawings(int? parentId, List<Drawing> data)
+        {
+            return data.Where(x => x.ParentId == parentId).ToList();
         }
     }
 }

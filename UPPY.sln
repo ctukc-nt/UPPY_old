@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OneC", "OneC", "{FF18CEFA-B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakarovDev.ExpandCollapsePanel", "MakarovDev.ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel.csproj", "{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Tests", "Core.Tests\Core.Tests.csproj", "{A921CF8C-5608-497D-8375-0E789630A5EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A921CF8C-5608-497D-8375-0E789630A5EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A921CF8C-5608-497D-8375-0E789630A5EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A921CF8C-5608-497D-8375-0E789630A5EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A921CF8C-5608-497D-8375-0E789630A5EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,5 +82,6 @@ Global
 		{189C0673-3783-4A64-9B87-74B262D831F3} = {FF18CEFA-B7FD-4689-85C5-42E582E04441}
 		{37422C27-882D-47B9-89B4-B7ABB4B504F2} = {0A42868B-2FF1-4B12-B426-D2494A601B80}
 		{0CB94D57-DA1E-49BD-B31D-32BC0D0B0F51} = {0A42868B-2FF1-4B12-B426-D2494A601B80}
+		{A921CF8C-5608-497D-8375-0E789630A5EA} = {0A42868B-2FF1-4B12-B426-D2494A601B80}
 	EndGlobalSection
 EndGlobal

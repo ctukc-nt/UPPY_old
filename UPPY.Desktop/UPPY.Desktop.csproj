@@ -60,12 +60,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DrawingBulkChangesHelper.cs" />
+    <Compile Include="Classes\IDrawingBulkChangesHelper.cs" />
+    <Compile Include="Concrete\Controllers\Common\DrawingsToStandartController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\DrawingListController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\HierarchyNumberDrawingController.cs" />
     <Compile Include="Concrete\Controllers\Orders\OrderDocumentController.cs" />
     <Compile Include="Concrete\Controllers\Orders\OrderListController.cs" />
     <Compile Include="Concrete\DataManager\Drawings\DrawingsFilteredDataManager.cs" />
+    <Compile Include="Concrete\DataManager\Drawings\HierarchyDrawingsDataManager.cs" />
     <Compile Include="Fake\OrderClassFakeDataManager.cs" />
+    <Compile Include="Interfaces\Controllers\Common\IDrawingsToStandartController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingListController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingsSelectionController.cs" />

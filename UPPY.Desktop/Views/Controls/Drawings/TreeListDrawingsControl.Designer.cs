@@ -174,7 +174,7 @@
             // tlcLength
             // 
             this.tlcLength.Caption = "Длина";
-            this.tlcLength.FieldName = "GostOnMaterial";
+            this.tlcLength.FieldName = "Length";
             this.tlcLength.Name = "tlcLength";
             this.tlcLength.Visible = true;
             this.tlcLength.VisibleIndex = 8;

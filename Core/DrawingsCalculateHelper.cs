@@ -51,7 +51,7 @@ namespace Core
             }
             else
             {
-                drawing.RecalculateWeightAll();
+                RecalculateProjectByWeight(drawing, drawDataManager);
             }
 
             drawDataManager.Update(drawing);

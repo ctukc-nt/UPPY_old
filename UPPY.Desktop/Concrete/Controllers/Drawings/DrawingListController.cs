@@ -36,7 +36,8 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
 
         public void CreateStandartByDrawing()
         {
-            throw new NotImplementedException();
+            var converterController = _controllersFactory.GetDrawingsToStandartController();
+           // converterController.CreateStandartByDrawing();
         }
 
         public event EventHandler<EventArgs> DataRefreshed;
@@ -49,28 +50,37 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
 
         public void ChangeDrawingCount(Drawing drawing)
         {
-            throw new NotImplementedException();
+            var quantHelper = _controllersFactory.GetDrawingBulkChangesHelper();
+            quantHelper.RecalculateProjectByCount(drawing);
+            OnDataRefreshed();
         }
 
         public void ChangeDrawingWeight(Drawing drawing)
         {
-            throw new NotImplementedException();
+            var quantHelper = _controllersFactory.GetDrawingBulkChangesHelper();
+            quantHelper.RecalculateProjectByWeight(drawing);
+            OnDataRefreshed();
         }
 
         public Drawing CreateDocument(int? parentId)
         {
-            return new Drawing() {ParentId = parentId};
+            return new Drawing() { ParentId = parentId, Count = 1, CountAll = 1};
         }
 
         public void Save(Drawing document)
         {
             _drawingsDataManager.InsertOrUpdate(document);
-            if (DataRefreshed != null)DataRefreshed(this, new EventArgs());
+            OnDataRefreshed();
         }
 
         public void Delete(Drawing document)
         {
             _drawingsDataManager.Delete(document);
+            OnDataRefreshed();
+        }
+
+        private void OnDataRefreshed()
+        {
             if (DataRefreshed != null)
                 DataRefreshed(this, new EventArgs());
         }

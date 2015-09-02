@@ -40,7 +40,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                 btnAdd.Enabled = _controller != null;
                 btnAddChild.Enabled = _controller != null;
                 btnCopy.Enabled = _controller != null;
-               // btnDelete.Enabled = _controller != null;
+                // btnDelete.Enabled = _controller != null;
                 //btnPaste.Enabled = _controller != null;
                 btnShowAnotherView.Enabled = _controller != null;
 
@@ -171,7 +171,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-           
+
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
             if (data is Drawing)
             {
@@ -219,8 +219,23 @@ namespace UPPY.Desktop.Views.Controls.Drawings
         private void tlDarwings_CellValueChanged(object sender, DevExpress.XtraTreeList.CellValueChangedEventArgs e)
         {
             var data = tlDarwings.GetDataRecordByNode(e.Node);
-            if (data is Drawing)
-                Controller.Save((Drawing)data);
+
+            if (!(data is Drawing))
+                return;
+
+            if (e.Column.FieldName == "Count")
+            {
+                OnDrawingCountChanged((Drawing)data);
+                return;
+            }
+
+            if (e.Column.FieldName == "Weight")
+            {
+                OnDrawingWeightChanged((Drawing)data);
+                return;
+            }
+
+            Controller.Save((Drawing)data);
         }
 
         public delegate void DrawingChangeEventHandler(Drawing drawing);

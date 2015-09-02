@@ -9,5 +9,7 @@ namespace UPPY.Desktop.Interfaces.DataManagers
     public interface IUppyDataManagersFactory : IDataManagersFactory
     {
         IClassDataManager<Drawing> GetFilteredDrawingsByParent(int? parentId);
+
+        IHierClassDataManager<Drawing> GetDrawingsHierClassDataManager();
     }
 }
