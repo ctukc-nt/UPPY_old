@@ -42,6 +42,7 @@
     <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraNavBar.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraWizard.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="MongoDB.Driver">
       <HintPath>..\Assemblies\MongoDriver\MongoDB.Driver.dll</HintPath>
     </Reference>
@@ -142,6 +143,12 @@
     <Compile Include="Views\Orders\OrdersListForm.Designer.cs">
       <DependentUpon>OrdersListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Standarts\DrawingToStandartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Standarts\DrawingToStandartForm.Designer.cs">
+      <DependentUpon>DrawingToStandartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Standarts\StandartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\OrdersListForm.resx">
       <DependentUpon>OrdersListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Standarts\DrawingToStandartForm.resx">
+      <DependentUpon>DrawingToStandartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Standarts\StandartForm.resx">
       <DependentUpon>StandartForm.cs</DependentUpon>

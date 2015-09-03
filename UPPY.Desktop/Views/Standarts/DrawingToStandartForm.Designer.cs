@@ -1,6 +1,6 @@
 ﻿namespace UPPY.Desktop.Views.Standarts
 {
-    partial class StandartForm
+    partial class DrawingToStandartForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.wizardControl1 = new DevExpress.XtraWizard.WizardControl();
+            this.welcomeWizardPage1 = new DevExpress.XtraWizard.WelcomeWizardPage();
+            this.completionWizardPage1 = new DevExpress.XtraWizard.CompletionWizardPage();
+            this.wizardPage2 = new DevExpress.XtraWizard.WizardPage();
+            this.wizardPage3 = new DevExpress.XtraWizard.WizardPage();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.positionStandartBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colProfile = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStandartSize = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -43,38 +46,76 @@
             this.colAdditionalMeasurementWithWaste = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTypeAdditionalMeasurement = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNote = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.expandCollapsePanel1 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.teName = new DevExpress.XtraEditors.TextEdit();
-            this.teDrawing = new DevExpress.XtraEditors.TextEdit();
-            this.teUtilRation = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).BeginInit();
+            this.wizardControl1.SuspendLayout();
+            this.wizardPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.positionStandartBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            this.expandCollapsePanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teDrawing.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teUtilRation.Properties)).BeginInit();
             this.SuspendLayout();
+            // 
+            // wizardControl1
+            // 
+            this.wizardControl1.CancelText = "Отмена";
+            this.wizardControl1.Controls.Add(this.welcomeWizardPage1);
+            this.wizardControl1.Controls.Add(this.completionWizardPage1);
+            this.wizardControl1.Controls.Add(this.wizardPage2);
+            this.wizardControl1.Controls.Add(this.wizardPage3);
+            this.wizardControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wizardControl1.FinishText = "&Конец";
+            this.wizardControl1.HelpText = "&Помощь";
+            this.wizardControl1.Location = new System.Drawing.Point(0, 0);
+            this.wizardControl1.Name = "wizardControl1";
+            this.wizardControl1.NextText = "&Далее >";
+            this.wizardControl1.Pages.AddRange(new DevExpress.XtraWizard.BaseWizardPage[] {
+            this.welcomeWizardPage1,
+            this.wizardPage2,
+            this.wizardPage3,
+            this.completionWizardPage1});
+            this.wizardControl1.PreviousText = "< &Назад";
+            this.wizardControl1.Size = new System.Drawing.Size(889, 499);
+            this.wizardControl1.Text = "Создание норм на основании сборки";
+            // 
+            // welcomeWizardPage1
+            // 
+            this.welcomeWizardPage1.IntroductionText = "Создание норм на основании сборки";
+            this.welcomeWizardPage1.Name = "welcomeWizardPage1";
+            this.welcomeWizardPage1.ProceedText = "Для продолжения, нажмите Далее";
+            this.welcomeWizardPage1.Size = new System.Drawing.Size(672, 389);
+            this.welcomeWizardPage1.Text = "";
+            // 
+            // completionWizardPage1
+            // 
+            this.completionWizardPage1.FinishText = "Создание норм завершено";
+            this.completionWizardPage1.Name = "completionWizardPage1";
+            this.completionWizardPage1.ProceedText = "Для сохранения нажмите Готово";
+            this.completionWizardPage1.Size = new System.Drawing.Size(672, 366);
+            this.completionWizardPage1.Text = "Завершение";
+            // 
+            // wizardPage2
+            // 
+            this.wizardPage2.Controls.Add(this.gridControl1);
+            this.wizardPage2.DescriptionText = "Анализ по позиционно";
+            this.wizardPage2.Name = "wizardPage2";
+            this.wizardPage2.Size = new System.Drawing.Size(857, 354);
+            this.wizardPage2.Text = "Предварительный анализ";
+            // 
+            // wizardPage3
+            // 
+            this.wizardPage3.DescriptionText = "Сгруппированные и просуммированные нормы ";
+            this.wizardPage3.Name = "wizardPage3";
+            this.wizardPage3.Size = new System.Drawing.Size(857, 354);
+            this.wizardPage3.Text = "Сводные нормы";
             // 
             // gridControl1
             // 
-            this.gridControl1.DataSource = this.positionStandartBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 92);
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1008, 596);
-            this.gridControl1.TabIndex = 0;
+            this.gridControl1.Size = new System.Drawing.Size(857, 354);
+            this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            // 
-            // positionStandartBindingSource
-            // 
-            this.positionStandartBindingSource.DataSource = typeof(Core.DomainModel.PositionStandart);
             // 
             // gridView1
             // 
@@ -170,113 +211,31 @@
             this.colNote.Visible = true;
             this.colNote.VisibleIndex = 10;
             // 
-            // expandCollapsePanel1
-            // 
-            this.expandCollapsePanel1.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
-            this.expandCollapsePanel1.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
-            this.expandCollapsePanel1.Controls.Add(this.labelControl3);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl2);
-            this.expandCollapsePanel1.Controls.Add(this.labelControl1);
-            this.expandCollapsePanel1.Controls.Add(this.teUtilRation);
-            this.expandCollapsePanel1.Controls.Add(this.teDrawing);
-            this.expandCollapsePanel1.Controls.Add(this.teName);
-            this.expandCollapsePanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.expandCollapsePanel1.ExpandedHeight = 0;
-            this.expandCollapsePanel1.IsExpanded = true;
-            this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 0);
-            this.expandCollapsePanel1.Name = "expandCollapsePanel1";
-            this.expandCollapsePanel1.Size = new System.Drawing.Size(1008, 92);
-            this.expandCollapsePanel1.TabIndex = 1;
-            this.expandCollapsePanel1.Text = "Общие данные";
-            this.expandCollapsePanel1.UseAnimation = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 688);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1008, 41);
-            this.panel1.TabIndex = 2;
-            // 
-            // teName
-            // 
-            this.teName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.teName.Location = new System.Drawing.Point(127, 35);
-            this.teName.Name = "teName";
-            this.teName.Size = new System.Drawing.Size(364, 20);
-            this.teName.TabIndex = 1;
-            // 
-            // teDrawing
-            // 
-            this.teDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.teDrawing.Location = new System.Drawing.Point(566, 35);
-            this.teDrawing.Name = "teDrawing";
-            this.teDrawing.Properties.Mask.EditMask = "n2";
-            this.teDrawing.Properties.ReadOnly = true;
-            this.teDrawing.Size = new System.Drawing.Size(426, 20);
-            this.teDrawing.TabIndex = 2;
-            // 
-            // teUtilRation
-            // 
-            this.teUtilRation.Location = new System.Drawing.Point(127, 61);
-            this.teUtilRation.Name = "teUtilRation";
-            this.teUtilRation.Properties.Mask.EditMask = "n2";
-            this.teUtilRation.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.teUtilRation.Size = new System.Drawing.Size(137, 20);
-            this.teUtilRation.TabIndex = 3;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 38);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(73, 13);
-            this.labelControl1.TabIndex = 4;
-            this.labelControl1.Text = "Наименование";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(12, 64);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(109, 13);
-            this.labelControl2.TabIndex = 5;
-            this.labelControl2.Text = "Коэф. использования";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl3.Location = new System.Drawing.Point(497, 38);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(63, 13);
-            this.labelControl3.TabIndex = 6;
-            this.labelControl3.Text = "Сб. единица";
-            // 
-            // StandartForm
+            // DrawingToStandartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.gridControl1);
-            this.Controls.Add(this.expandCollapsePanel1);
-            this.Controls.Add(this.panel1);
-            this.Name = "StandartForm";
-            this.Text = "StandartForm";
+            this.ClientSize = new System.Drawing.Size(889, 499);
+            this.Controls.Add(this.wizardControl1);
+            this.Name = "DrawingToStandartForm";
+            this.Text = "DrawingToStandartForm";
+            ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).EndInit();
+            this.wizardControl1.ResumeLayout(false);
+            this.wizardPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.positionStandartBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.expandCollapsePanel1.ResumeLayout(false);
-            this.expandCollapsePanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teDrawing.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teUtilRation.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private DevExpress.XtraWizard.WizardControl wizardControl1;
+        private DevExpress.XtraWizard.WelcomeWizardPage welcomeWizardPage1;
+        private DevExpress.XtraWizard.CompletionWizardPage completionWizardPage1;
+        private DevExpress.XtraWizard.WizardPage wizardPage2;
+        private DevExpress.XtraWizard.WizardPage wizardPage3;
         private DevExpress.XtraGrid.GridControl gridControl1;
-        private System.Windows.Forms.BindingSource positionStandartBindingSource;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colProfile;
         private DevExpress.XtraGrid.Columns.GridColumn colStandartSize;
@@ -289,13 +248,5 @@
         private DevExpress.XtraGrid.Columns.GridColumn colAdditionalMeasurementWithWaste;
         private DevExpress.XtraGrid.Columns.GridColumn colTypeAdditionalMeasurement;
         private DevExpress.XtraGrid.Columns.GridColumn colNote;
-        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel1;
-        private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraEditors.TextEdit teDrawing;
-        private DevExpress.XtraEditors.TextEdit teName;
-        private DevExpress.XtraEditors.TextEdit teUtilRation;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

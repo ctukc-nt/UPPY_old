@@ -37,7 +37,7 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
         public void CreateStandartByDrawing()
         {
             var converterController = _controllersFactory.GetDrawingsToStandartController();
-           // converterController.CreateStandartByDrawing();
+           // converterController.CreateAndGroupPositionsStandartByDrawing();
         }
 
         public event EventHandler<EventArgs> DataRefreshed;
