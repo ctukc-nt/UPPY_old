@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.wizardControl1 = new DevExpress.XtraWizard.WizardControl();
-            this.welcomeWizardPage1 = new DevExpress.XtraWizard.WelcomeWizardPage();
-            this.completionWizardPage1 = new DevExpress.XtraWizard.CompletionWizardPage();
-            this.wizardPage2 = new DevExpress.XtraWizard.WizardPage();
-            this.wizardPage3 = new DevExpress.XtraWizard.WizardPage();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.wcStandarts = new DevExpress.XtraWizard.WizardControl();
+            this.welcomeWizardPage = new DevExpress.XtraWizard.WelcomeWizardPage();
+            this.completionWizardPage = new DevExpress.XtraWizard.CompletionWizardPage();
+            this.wpUngrouppedPositions = new DevExpress.XtraWizard.WizardPage();
+            this.gcUngPositions = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colProfile = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStandartSize = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -46,75 +45,86 @@
             this.colAdditionalMeasurementWithWaste = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTypeAdditionalMeasurement = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNote = new DevExpress.XtraGrid.Columns.GridColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).BeginInit();
-            this.wizardControl1.SuspendLayout();
-            this.wizardPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            this.wpGrouppedPositions = new DevExpress.XtraWizard.WizardPage();
+            this.gcGrpPositions = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.wcStandarts)).BeginInit();
+            this.wcStandarts.SuspendLayout();
+            this.wpUngrouppedPositions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcUngPositions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.wpGrouppedPositions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcGrpPositions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.SuspendLayout();
             // 
-            // wizardControl1
+            // wcStandarts
             // 
-            this.wizardControl1.CancelText = "Отмена";
-            this.wizardControl1.Controls.Add(this.welcomeWizardPage1);
-            this.wizardControl1.Controls.Add(this.completionWizardPage1);
-            this.wizardControl1.Controls.Add(this.wizardPage2);
-            this.wizardControl1.Controls.Add(this.wizardPage3);
-            this.wizardControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wizardControl1.FinishText = "&Конец";
-            this.wizardControl1.HelpText = "&Помощь";
-            this.wizardControl1.Location = new System.Drawing.Point(0, 0);
-            this.wizardControl1.Name = "wizardControl1";
-            this.wizardControl1.NextText = "&Далее >";
-            this.wizardControl1.Pages.AddRange(new DevExpress.XtraWizard.BaseWizardPage[] {
-            this.welcomeWizardPage1,
-            this.wizardPage2,
-            this.wizardPage3,
-            this.completionWizardPage1});
-            this.wizardControl1.PreviousText = "< &Назад";
-            this.wizardControl1.Size = new System.Drawing.Size(889, 499);
-            this.wizardControl1.Text = "Создание норм на основании сборки";
+            this.wcStandarts.CancelText = "Отмена";
+            this.wcStandarts.Controls.Add(this.welcomeWizardPage);
+            this.wcStandarts.Controls.Add(this.completionWizardPage);
+            this.wcStandarts.Controls.Add(this.wpUngrouppedPositions);
+            this.wcStandarts.Controls.Add(this.wpGrouppedPositions);
+            this.wcStandarts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wcStandarts.FinishText = "&Конец";
+            this.wcStandarts.HelpText = "&Помощь";
+            this.wcStandarts.Location = new System.Drawing.Point(0, 0);
+            this.wcStandarts.Name = "wcStandarts";
+            this.wcStandarts.NextText = "&Далее >";
+            this.wcStandarts.Pages.AddRange(new DevExpress.XtraWizard.BaseWizardPage[] {
+            this.welcomeWizardPage,
+            this.wpUngrouppedPositions,
+            this.wpGrouppedPositions,
+            this.completionWizardPage});
+            this.wcStandarts.PreviousText = "< &Назад";
+            this.wcStandarts.Size = new System.Drawing.Size(889, 499);
+            this.wcStandarts.Text = "Создание норм на основании сборки";
+            this.wcStandarts.SelectedPageChanging += new DevExpress.XtraWizard.WizardPageChangingEventHandler(this.wizardControl1_SelectedPageChanging);
             // 
-            // welcomeWizardPage1
+            // welcomeWizardPage
             // 
-            this.welcomeWizardPage1.IntroductionText = "Создание норм на основании сборки";
-            this.welcomeWizardPage1.Name = "welcomeWizardPage1";
-            this.welcomeWizardPage1.ProceedText = "Для продолжения, нажмите Далее";
-            this.welcomeWizardPage1.Size = new System.Drawing.Size(672, 389);
-            this.welcomeWizardPage1.Text = "";
+            this.welcomeWizardPage.IntroductionText = "Создание норм на основании сборки";
+            this.welcomeWizardPage.Name = "welcomeWizardPage";
+            this.welcomeWizardPage.ProceedText = "Для продолжения, нажмите Далее";
+            this.welcomeWizardPage.Size = new System.Drawing.Size(672, 389);
+            this.welcomeWizardPage.Text = "";
             // 
-            // completionWizardPage1
+            // completionWizardPage
             // 
-            this.completionWizardPage1.FinishText = "Создание норм завершено";
-            this.completionWizardPage1.Name = "completionWizardPage1";
-            this.completionWizardPage1.ProceedText = "Для сохранения нажмите Готово";
-            this.completionWizardPage1.Size = new System.Drawing.Size(672, 366);
-            this.completionWizardPage1.Text = "Завершение";
+            this.completionWizardPage.FinishText = "Создание норм завершено";
+            this.completionWizardPage.Name = "completionWizardPage";
+            this.completionWizardPage.ProceedText = "Для сохранения нажмите Готово";
+            this.completionWizardPage.Size = new System.Drawing.Size(672, 366);
+            this.completionWizardPage.Text = "Завершение";
             // 
-            // wizardPage2
+            // wpUngrouppedPositions
             // 
-            this.wizardPage2.Controls.Add(this.gridControl1);
-            this.wizardPage2.DescriptionText = "Анализ по позиционно";
-            this.wizardPage2.Name = "wizardPage2";
-            this.wizardPage2.Size = new System.Drawing.Size(857, 354);
-            this.wizardPage2.Text = "Предварительный анализ";
+            this.wpUngrouppedPositions.Controls.Add(this.gcUngPositions);
+            this.wpUngrouppedPositions.DescriptionText = "Анализ по позиционно";
+            this.wpUngrouppedPositions.Name = "wpUngrouppedPositions";
+            this.wpUngrouppedPositions.Size = new System.Drawing.Size(857, 354);
+            this.wpUngrouppedPositions.Text = "Предварительный анализ";
             // 
-            // wizardPage3
+            // gcUngPositions
             // 
-            this.wizardPage3.DescriptionText = "Сгруппированные и просуммированные нормы ";
-            this.wizardPage3.Name = "wizardPage3";
-            this.wizardPage3.Size = new System.Drawing.Size(857, 354);
-            this.wizardPage3.Text = "Сводные нормы";
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(857, 354);
-            this.gridControl1.TabIndex = 1;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gcUngPositions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcUngPositions.Location = new System.Drawing.Point(0, 0);
+            this.gcUngPositions.MainView = this.gridView1;
+            this.gcUngPositions.Name = "gcUngPositions";
+            this.gcUngPositions.Size = new System.Drawing.Size(857, 354);
+            this.gcUngPositions.TabIndex = 1;
+            this.gcUngPositions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
@@ -131,7 +141,7 @@
             this.colAdditionalMeasurementWithWaste,
             this.colTypeAdditionalMeasurement,
             this.colNote});
-            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.GridControl = this.gcUngPositions;
             this.gridView1.Name = "gridView1";
             // 
             // colProfile
@@ -211,31 +221,147 @@
             this.colNote.Visible = true;
             this.colNote.VisibleIndex = 10;
             // 
+            // wpGrouppedPositions
+            // 
+            this.wpGrouppedPositions.Controls.Add(this.gcGrpPositions);
+            this.wpGrouppedPositions.DescriptionText = "Сгруппированные и просуммированные нормы ";
+            this.wpGrouppedPositions.Name = "wpGrouppedPositions";
+            this.wpGrouppedPositions.Size = new System.Drawing.Size(857, 354);
+            this.wpGrouppedPositions.Text = "Сводные нормы";
+            // 
+            // gcGrpPositions
+            // 
+            this.gcGrpPositions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcGrpPositions.Location = new System.Drawing.Point(0, 0);
+            this.gcGrpPositions.MainView = this.gridView2;
+            this.gcGrpPositions.Name = "gcGrpPositions";
+            this.gcGrpPositions.Size = new System.Drawing.Size(857, 354);
+            this.gcGrpPositions.TabIndex = 2;
+            this.gcGrpPositions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn9,
+            this.gridColumn10,
+            this.gridColumn11});
+            this.gridView2.GridControl = this.gcGrpPositions;
+            this.gridView2.Name = "gridView2";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.FieldName = "Profile";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.FieldName = "StandartSize";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.FieldName = "GostOnSort";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.FieldName = "MarkSteal";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.FieldName = "UtilizationRatio";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 4;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.FieldName = "Weight";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 5;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.FieldName = "WeightWithWaste";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 6;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.FieldName = "AdditionalMeasurement";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 7;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.FieldName = "AdditionalMeasurementWithWaste";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 8;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.FieldName = "TypeAdditionalMeasurement";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 9;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.FieldName = "Note";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 10;
+            // 
             // DrawingToStandartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(889, 499);
-            this.Controls.Add(this.wizardControl1);
+            this.Controls.Add(this.wcStandarts);
             this.Name = "DrawingToStandartForm";
             this.Text = "DrawingToStandartForm";
-            ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).EndInit();
-            this.wizardControl1.ResumeLayout(false);
-            this.wizardPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wcStandarts)).EndInit();
+            this.wcStandarts.ResumeLayout(false);
+            this.wpUngrouppedPositions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcUngPositions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.wpGrouppedPositions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcGrpPositions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraWizard.WizardControl wizardControl1;
-        private DevExpress.XtraWizard.WelcomeWizardPage welcomeWizardPage1;
-        private DevExpress.XtraWizard.CompletionWizardPage completionWizardPage1;
-        private DevExpress.XtraWizard.WizardPage wizardPage2;
-        private DevExpress.XtraWizard.WizardPage wizardPage3;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraWizard.WizardControl wcStandarts;
+        private DevExpress.XtraWizard.WelcomeWizardPage welcomeWizardPage;
+        private DevExpress.XtraWizard.CompletionWizardPage completionWizardPage;
+        private DevExpress.XtraWizard.WizardPage wpUngrouppedPositions;
+        private DevExpress.XtraWizard.WizardPage wpGrouppedPositions;
+        private DevExpress.XtraGrid.GridControl gcUngPositions;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colProfile;
         private DevExpress.XtraGrid.Columns.GridColumn colStandartSize;
@@ -248,5 +374,18 @@
         private DevExpress.XtraGrid.Columns.GridColumn colAdditionalMeasurementWithWaste;
         private DevExpress.XtraGrid.Columns.GridColumn colTypeAdditionalMeasurement;
         private DevExpress.XtraGrid.Columns.GridColumn colNote;
+        private DevExpress.XtraGrid.GridControl gcGrpPositions;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
     }
 }

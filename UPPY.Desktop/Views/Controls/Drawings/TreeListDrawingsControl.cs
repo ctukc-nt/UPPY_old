@@ -4,7 +4,9 @@ using System.Linq;
 using System.Windows.Forms;
 using Core.DomainModel;
 using DevExpress.Skins;
+using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
+using DevExpress.XtraTreeList.ViewInfo;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
 
 namespace UPPY.Desktop.Views.Controls.Drawings
@@ -39,8 +41,10 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                 btnRefresh.Enabled = _controller != null;
                 btnAdd.Enabled = _controller != null;
                 btnAddChild.Enabled = _controller != null;
-                btnCopy.Enabled = _controller != null;
-                // btnDelete.Enabled = _controller != null;
+                btnDelete.Enabled = _controller != null;
+
+                //btnCopy.Enabled = _controller != null;
+                //btnPaste.Enabled = _controller != null;
                 //btnPaste.Enabled = _controller != null;
                 btnShowAnotherView.Enabled = _controller != null;
 
@@ -248,6 +252,14 @@ namespace UPPY.Desktop.Views.Controls.Drawings
         protected virtual void OnDrawingCountChanged(Drawing drawing)
         {
             DrawingCountChanged?.Invoke(drawing);
+        }
+
+        private void sbCreateStandart_Click(object sender, EventArgs e)
+        {
+            var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
+            var drawing = data as Drawing;
+            if (drawing != null)
+                _controller.CreateStandartByDrawing(drawing);
         }
     }
 

@@ -87,7 +87,7 @@ namespace UPPY.Desktop.Factorys
             return new DrawingBulkChangesHelper(_dataManagersFactory);
         }
 
-        public IDrawingsToStandartController GetDrawingsToStandartController()
+        public IDrawingsToStandartShower GetDrawingsToStandartController()
         {
             return new DrawingsToStandartController(_dataManagersFactory);
         }

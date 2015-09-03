@@ -34,10 +34,10 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
             c.ShowViewDialog();
         }
 
-        public void CreateStandartByDrawing()
+        public void CreateStandartByDrawing(Drawing drawing)
         {
             var converterController = _controllersFactory.GetDrawingsToStandartController();
-           // converterController.CreateAndGroupPositionsStandartByDrawing();
+            converterController.ShowView(drawing);
         }
 
         public event EventHandler<EventArgs> DataRefreshed;
@@ -64,7 +64,7 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
 
         public Drawing CreateDocument(int? parentId)
         {
-            return new Drawing() { ParentId = parentId, Count = 1, CountAll = 1};
+            return new Drawing() { ParentId = parentId, Count = 1, CountAll = 1 };
         }
 
         public void Save(Drawing document)

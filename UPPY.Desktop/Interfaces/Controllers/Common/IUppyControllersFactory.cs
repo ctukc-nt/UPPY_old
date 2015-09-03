@@ -12,6 +12,6 @@ namespace UPPY.Desktop.Interfaces.Controllers.Common
         IListDocumentController GetDrawingsViewController();
         IOrderListController GetOrdersListController();
         IDrawingBulkChangesHelper GetDrawingBulkChangesHelper();
-        IDrawingsToStandartController GetDrawingsToStandartController();
+        IDrawingsToStandartShower GetDrawingsToStandartController();
     }
 }

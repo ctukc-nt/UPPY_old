@@ -58,6 +58,7 @@
             this.btnAddChild = new DevExpress.XtraEditors.SimpleButton();
             this.btnCopy = new DevExpress.XtraEditors.SimpleButton();
             this.btnPaste = new DevExpress.XtraEditors.SimpleButton();
+            this.sbCreateStandart = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.tlDarwings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoTechRoutes)).BeginInit();
             this.SuspendLayout();
@@ -338,10 +339,22 @@
             this.btnPaste.Text = "&V";
             this.btnPaste.ToolTip = "Вставить";
             // 
+            // sbCreateStandart
+            // 
+            this.sbCreateStandart.Image = ((System.Drawing.Image)(resources.GetObject("sbCreateStandart.Image")));
+            this.sbCreateStandart.Location = new System.Drawing.Point(330, 5);
+            this.sbCreateStandart.Name = "sbCreateStandart";
+            this.sbCreateStandart.Size = new System.Drawing.Size(25, 28);
+            this.sbCreateStandart.TabIndex = 12;
+            this.sbCreateStandart.Text = "&L";
+            this.sbCreateStandart.ToolTip = "Вставить";
+            this.sbCreateStandart.Click += new System.EventHandler(this.sbCreateStandart_Click);
+            // 
             // TreeListDrawingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.sbCreateStandart);
             this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.btnAddChild);
@@ -387,5 +400,6 @@
         private DevExpress.XtraEditors.SimpleButton btnAddChild;
         private DevExpress.XtraEditors.SimpleButton btnCopy;
         private DevExpress.XtraEditors.SimpleButton btnPaste;
+        private DevExpress.XtraEditors.SimpleButton sbCreateStandart;
     }
 }

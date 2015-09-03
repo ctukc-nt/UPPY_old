@@ -70,8 +70,10 @@
     <Compile Include="Concrete\Controllers\Orders\OrderListController.cs" />
     <Compile Include="Concrete\DataManager\Drawings\DrawingsFilteredDataManager.cs" />
     <Compile Include="Concrete\DataManager\Drawings\HierarchyDrawingsDataManager.cs" />
+    <Compile Include="Fake\GostClassFakeDataManager.cs" />
     <Compile Include="Fake\OrderClassFakeDataManager.cs" />
     <Compile Include="Interfaces\Controllers\Common\IDrawingsToStandartController.cs" />
+    <Compile Include="Interfaces\Controllers\Common\IDrawingsToStandartShower.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingListController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingsSelectionController.cs" />

@@ -4,9 +4,12 @@ namespace UPPY.Desktop.Interfaces.Controllers.Common
 {
     public interface IDrawingsToStandartController
     {
-        Standart CreateAndGroupPositionsStandartByDrawing(Drawing drawing);
 
-        Standart CreateStandartByDrawing(Drawing drawing);
+        Drawing Drawing { get; set; }
+
+        Standart CreateAndGroupPositionsStandartByDrawing();
+
+        Standart CreateStandartByDrawing();
 
         Standart GroupPositionsStandart(Standart standart);
 
