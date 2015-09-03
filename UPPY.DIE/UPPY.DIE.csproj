@@ -32,8 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,16 +57,22 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Import\Siemens\Article.cs" />
-    <Compile Include="Import\Siemens\FileNotSearizableException.cs" />
+    <Compile Include="Import\Siemens\DataFormat\Article.cs" />
+    <Compile Include="Import\Siemens\Exceptions\ErrorWhenProjectLoadingException.cs" />
+    <Compile Include="Import\Siemens\Exceptions\FileNotSearizableException.cs" />
     <Compile Include="Import\Siemens\FilesArticlesFactory.cs" />
     <Compile Include="Import\Siemens\Interfaces\IArticlesFactory.cs" />
     <Compile Include="Import\Siemens\Interfaces\IFilesNameGetter.cs" />
     <Compile Include="Import\Siemens\Interfaces\ILogging.cs" />
     <Compile Include="Import\Siemens\SiemensProjectLoader.cs" />
     <Compile Include="Import\Siemens\SiemensProject.cs" />
+    <Compile Include="Import\Siemens\SiemensXmlDataFilesNameGetter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

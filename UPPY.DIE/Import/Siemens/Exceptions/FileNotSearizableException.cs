@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace UPPY.DIE.Import.Siemens
+namespace UPPY.DIE.Import.Siemens.Exceptions
 {
     internal class FileNotSearizableException : FileNotFoundException
     {

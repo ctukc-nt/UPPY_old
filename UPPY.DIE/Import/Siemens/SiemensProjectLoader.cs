@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using UPPY.DIE.Import.Siemens.Exceptions;
 using UPPY.DIE.Import.Siemens.Interfaces;
 
 namespace UPPY.DIE.Import.Siemens
@@ -11,8 +12,6 @@ namespace UPPY.DIE.Import.Siemens
     public class SiemensProjectLoader
     {
         private readonly IArticlesFactory _articlesFactory;
-        private SiemensProject _project;
-        private bool _exception = false;
         public ILogging Log { get; set; }
 
         public SiemensProjectLoader(IArticlesFactory factory)
@@ -26,24 +25,13 @@ namespace UPPY.DIE.Import.Siemens
             Log = logger;
         }
 
-        /// <summary>
-        ///  Структура проекта
-        /// </summary>
-        public SiemensProject Project
-        {
-            get { return _project; }
-        }
-
-        public bool ErrorDuringLoad
-        {
-            get { return _exception; }
-        }
+        public bool ErrorDuringLoad { get; private set; } = false;
 
         private void AppendMessageToLog(string message)
         {
             try
             {
-                _exception = true;
+                ErrorDuringLoad = true;
 
                 if (Log != null)
                 {
@@ -60,37 +48,32 @@ namespace UPPY.DIE.Import.Siemens
         /// <summary>
         /// Загрузить структуру проекта
         /// </summary>
-        public void LoadStructureProject()
+        public SiemensProject LoadStructureProject()
         {
             try
             {
-                _exception = false;
+                ErrorDuringLoad = false;
                 var firstArticle = _articlesFactory.GetFirstArticle();
                 var structure = new SiemensProject { Article = firstArticle };
                 LoadStructureRecursiveWithLog(structure);
-                _project = structure;
+                return structure;
             }
             catch (FileNotSearizableException ex)
             {
                 AppendMessageToLog("Невозможно загрузить стартовый файл, загрузка прервана.");
-                _project = null;
+                return null;
             }
             catch (FileNotFoundException ex)
             {
                 AppendMessageToLog("Стартовый файл не найден, загрузка прервана.");
-                _project = null;
+                return null;
             }
             catch (Exception ex)
             {
                 AppendMessageToLog(string.Format("{0}\n{1}", ex.Message, ex.StackTrace));
-                _project = null;
+                return null;
             }
         }
-
-        //public void Save(ISaveProject saver)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         private void LoadStructureRecursiveWithLog(SiemensProject structure)
         {
@@ -135,9 +118,5 @@ namespace UPPY.DIE.Import.Siemens
                 return " Входит в: " + structure.Article.Head.ARTPartID + GetFullStrucutrePath(structure.Parent);
             return " Входит в: " + structure.Article.Head.ARTPartID;
         }
-    }
-
-    public class ErrorWhenProjectLoadingException : Exception
-    {
     }
 }

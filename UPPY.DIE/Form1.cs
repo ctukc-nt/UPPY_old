@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
+using DevExpress.XtraEditors.Controls;
+using UPPY.DIE.Import.Siemens;
 
 namespace UPPY.DIE
 {
@@ -15,6 +11,32 @@ namespace UPPY.DIE
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void buttonEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(buttonEdit1.Text) && Directory.Exists(buttonEdit1.Text))
+            {
+                fbdSlctFolderSiemens.SelectedPath = buttonEdit1.Text;
+            }
+
+            if (fbdSlctFolderSiemens.ShowDialog(this) == DialogResult.OK)
+            {
+                buttonEdit1.Text = fbdSlctFolderSiemens.SelectedPath;
+            }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(buttonEdit1.Text) && Directory.Exists(buttonEdit1.Text))
+            {
+                var filesNameGetter = new SiemensXmlDataFilesNameGetter();
+                filesNameGetter.LocationDirectory = buttonEdit1.Text;
+                var filesArticlesFactory = new FilesArticlesFactory(filesNameGetter);
+                var siemensProjectLoader = new SiemensProjectLoader(filesArticlesFactory);
+
+                var project = siemensProjectLoader.LoadStructureProject();
+            }
         }
     }
 }
