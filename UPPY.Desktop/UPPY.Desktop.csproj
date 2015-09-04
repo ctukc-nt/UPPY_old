@@ -102,6 +102,12 @@
     <Compile Include="Fake\StandartClassFakeDataManager.cs" />
     <Compile Include="Fake\TechOperationClassFakeDataManager.cs" />
     <Compile Include="Fake\TechRoutesClassFakeDataManager.cs" />
+    <Compile Include="Views\Controls\Drawings\HierarListDraweingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\Drawings\HierarListDraweingsControl.Designer.cs">
+      <DependentUpon>HierarListDraweingsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\Drawings\TreeListDrawingsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -185,6 +191,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Controls\Drawings\HierarListDraweingsControl.resx">
+      <DependentUpon>HierarListDraweingsControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Controls\Drawings\TreeListDrawingsControl.resx">
       <DependentUpon>TreeListDrawingsControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -9,6 +9,8 @@ namespace Core.DomainModel
     {
         public int? Id { get; set; }
 
+        public bool IsDelete { get; set; }
+
         /// <summary>
         ///     Сокращённое наименование
         /// </summary>

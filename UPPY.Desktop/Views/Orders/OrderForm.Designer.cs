@@ -58,8 +58,8 @@
             this.selectedDrawingInAnotherWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drawingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asLinearGridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.initToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -282,6 +282,7 @@
             this.treeListDrawingsControl1.Controller = null;
             this.treeListDrawingsControl1.Location = new System.Drawing.Point(3, 27);
             this.treeListDrawingsControl1.Name = "treeListDrawingsControl1";
+            this.treeListDrawingsControl1.ParentId = null;
             this.treeListDrawingsControl1.Size = new System.Drawing.Size(1110, 499);
             this.treeListDrawingsControl1.TabIndex = 5;
             // 
@@ -312,13 +313,14 @@
             // fromSiemensToolStripMenuItem
             // 
             this.fromSiemensToolStripMenuItem.Name = "fromSiemensToolStripMenuItem";
-            this.fromSiemensToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.fromSiemensToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fromSiemensToolStripMenuItem.Text = "From Siemens";
+            this.fromSiemensToolStripMenuItem.Click += new System.EventHandler(this.fromSiemensToolStripMenuItem_Click);
             // 
             // fromExcelToolStripMenuItem
             // 
             this.fromExcelToolStripMenuItem.Name = "fromExcelToolStripMenuItem";
-            this.fromExcelToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.fromExcelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fromExcelToolStripMenuItem.Text = "From Excel";
             // 
             // unloadToolStripMenuItem
@@ -370,18 +372,18 @@
             this.asLinearGridToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
             this.asLinearGridToolStripMenuItem.Text = "As linear grid";
             // 
-            // xtraTabPage2
-            // 
-            this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1116, 529);
-            this.xtraTabPage2.Text = "Список файлов чертежей";
-            // 
             // initToolStripMenuItem
             // 
             this.initToolStripMenuItem.Name = "initToolStripMenuItem";
             this.initToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
             this.initToolStripMenuItem.Text = "Init";
             this.initToolStripMenuItem.Click += new System.EventHandler(this.initToolStripMenuItem_Click);
+            // 
+            // xtraTabPage2
+            // 
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(1116, 529);
+            this.xtraTabPage2.Text = "Список файлов чертежей";
             // 
             // OrderForm
             // 
