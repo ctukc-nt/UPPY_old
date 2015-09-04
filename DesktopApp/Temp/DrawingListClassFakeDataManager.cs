@@ -36,6 +36,11 @@ namespace DesktopApp.Temp
             return this;
         }
 
+        public List<Drawing> GetListCollection(Func<Drawing, bool> filter)
+        {
+            return this.Where(filter).ToList();
+        }
+
         public void Insert(Drawing doc)
         {
             Add(doc);

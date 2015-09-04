@@ -43,12 +43,16 @@ namespace UPPY.Desktop.Concrete.Controllers.Orders
             return drawingsController;
         }
 
+        public void LoadDataFromSiemens()
+        {
+            
+        }
+
         public Order Document { get; set; }
 
         public bool ShowViewDialog()
         {
-            var orderForm = new OrderForm(this);
-            orderForm.Document = Document;
+            var orderForm = new OrderForm(this) {Document = Document};
             orderForm.ShowDialog();
             return true;
         }

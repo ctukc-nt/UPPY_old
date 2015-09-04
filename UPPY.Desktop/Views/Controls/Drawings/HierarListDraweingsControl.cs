@@ -15,7 +15,6 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 {
     public partial class HierarListDraweingsControl : UserControl
     {
-
         private const string ColumnTechOperStart = "colTO";
 
         public HierarListDraweingsControl(IHierarchyNumberDrawingController controller)
@@ -33,6 +32,9 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 
         private void CreateColumns()
         {
+            if (Controller == null)
+                return;
+
             var techOpers = Controller.GetTechOperations();
             foreach (var techOperation in techOpers)
             {
@@ -52,7 +54,8 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 
         private void LoadTechOpersColumns()
         {
-            var source = (List<HierarchyNumberDrawing>)gcDrawings.DataSource;
+            if (Controller == null)
+                return;
 
             var techRoutes = Controller.GetTechRoutes();
 
@@ -69,7 +72,16 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                     }
                 }
             }
+        }
 
+        private void HierarListDraweingsControl_Load(object sender, EventArgs e)
+        {
+            if (Controller == null)
+                return;
+
+            CreateColumns();
+            gcDrawings.DataSource = Controller.GetData();
+            LoadTechOpersColumns();
         }
     }
 }

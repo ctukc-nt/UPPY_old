@@ -14,17 +14,15 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
 {
     public class HierarchyNumberDrawingController : IHierarchyNumberDrawingController
     {
-        private readonly IDataManagersFactory _dataManagersFactory;
         private Dictionary<int?, int> _dctChildrens;
 
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechRoute> _techRouteDataManager;
 
-        public HierarchyNumberDrawingController(IDataManagersFactory dataManagersFactory, IControllersFactory controllersFactory)
+        public HierarchyNumberDrawingController(IClassDataManager<Drawing> drawingDataManager, IClassDataManager<TechRoute> techRouteDataManager)
         {
-            _dataManagersFactory = dataManagersFactory;
-            _drawingsDataManager = dataManagersFactory.GetDataManager<Drawing>();
-            _techRouteDataManager = dataManagersFactory.GetDataManager<TechRoute>();
+            _drawingsDataManager = drawingDataManager;
+            _techRouteDataManager = techRouteDataManager;
         }
 
 
@@ -103,6 +101,11 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
         }
 
         public List<TechRoute> GetTechRoutes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<TechOperation> GetTechOperations()
         {
             throw new NotImplementedException();
         }

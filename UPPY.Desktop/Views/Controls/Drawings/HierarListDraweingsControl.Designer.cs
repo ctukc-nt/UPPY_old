@@ -60,16 +60,14 @@
             // 
             // gcDrawings
             // 
-            this.gcDrawings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcDrawings.Location = new System.Drawing.Point(0, 29);
+            this.gcDrawings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcDrawings.Location = new System.Drawing.Point(0, 0);
             this.gcDrawings.MainView = this.gvDrawings;
             this.gcDrawings.Name = "gcDrawings";
             this.gcDrawings.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1,
             this.repoCheckEdit});
-            this.gcDrawings.Size = new System.Drawing.Size(817, 383);
+            this.gcDrawings.Size = new System.Drawing.Size(820, 426);
             this.gcDrawings.TabIndex = 1;
             this.gcDrawings.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDrawings});
@@ -279,6 +277,7 @@
             this.Controls.Add(this.gcDrawings);
             this.Name = "HierarListDraweingsControl";
             this.Size = new System.Drawing.Size(820, 426);
+            this.Load += new System.EventHandler(this.HierarListDraweingsControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcDrawings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDrawings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
