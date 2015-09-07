@@ -91,5 +91,11 @@ namespace UPPY.Desktop.Factorys
         {
             return new DrawingsToStandartController(_dataManagersFactory);
         }
+
+        public IListDocumentController GetDrawingsGridViewController(int? parentId)
+        {
+            return new HierarchyNumberDrawingController(_dataManagersFactory.GetFilteredDrawingsByParent(parentId),
+                _dataManagersFactory.GetDataManager<TechRoute>(), _dataManagersFactory.GetDataManager<TechOperation>()) {ParentId = parentId};
+        }
     }
 }

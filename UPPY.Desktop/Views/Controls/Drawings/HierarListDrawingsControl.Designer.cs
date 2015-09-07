@@ -1,6 +1,6 @@
 ﻿namespace UPPY.Desktop.Views.Controls.Drawings
 {
-    partial class HierarListDraweingsControl
+    partial class HierarListDrawingsControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -99,6 +99,7 @@
             this.gvDrawings.Name = "gvDrawings";
             this.gvDrawings.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colNumber, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gvDrawings.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.gvDrawings_CustomUnboundColumnData);
             // 
             // colNumber
             // 
@@ -270,12 +271,12 @@
             this.repoCheckEdit.AutoHeight = false;
             this.repoCheckEdit.Name = "repoCheckEdit";
             // 
-            // HierarListDraweingsControl
+            // HierarListDrawingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gcDrawings);
-            this.Name = "HierarListDraweingsControl";
+            this.Name = "HierarListDrawingsControl";
             this.Size = new System.Drawing.Size(820, 426);
             this.Load += new System.EventHandler(this.HierarListDraweingsControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcDrawings)).EndInit();

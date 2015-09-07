@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Core.DomainModel;
+using UPPY.Desktop.Classes;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Ninject;
@@ -16,6 +17,7 @@ namespace UPPY.Desktop
         [STAThread]
         private static void Main()
         {
+            AutoMapper.Mapper.CreateMap<Drawing, HierarchyNumberDrawing>();
             CompositionRoot.Wire(new ApplicationModule());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

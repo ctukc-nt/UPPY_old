@@ -261,6 +261,11 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             if (drawing != null)
                 _controller.CreateStandartByDrawing(drawing);
         }
+
+        private void sbShowInTable_Click(object sender, EventArgs e)
+        {
+            _controller.ShowDrawingInGridView(_parentId);
+        }
     }
 
 }

@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Columns;
 using UPPY.Desktop.Classes;
@@ -13,17 +8,18 @@ using UPPY.Desktop.Interfaces.Controllers.Drawings;
 
 namespace UPPY.Desktop.Views.Controls.Drawings
 {
-    public partial class HierarListDraweingsControl : UserControl
+    public partial class HierarListDrawingsControl : UserControl
     {
         private const string ColumnTechOperStart = "colTO";
+        private Dictionary<Tuple<int, int>, bool> _techOpers = new Dictionary<Tuple<int, int>, bool>();
 
-        public HierarListDraweingsControl(IHierarchyNumberDrawingController controller)
+        public HierarListDrawingsControl(IHierarchyNumberDrawingController controller)
         {
             Controller = controller;
             InitializeComponent();
         }
 
-        public HierarListDraweingsControl()
+        public HierarListDrawingsControl()
         {
             InitializeComponent();
         }
@@ -36,13 +32,32 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                 return;
 
             var techOpers = Controller.GetTechOperations();
+            var indexColumn = gvDrawings.Columns.Max(x => x.VisibleIndex);
             foreach (var techOperation in techOpers)
             {
                 if (gvDrawings.Columns.All(x => x.Name != (ColumnTechOperStart + techOperation.Id.ToString())))
                 {
-                    var column = gvDrawings.Columns.Add();
+                    var column = new GridColumn();
                     column.Name = ColumnTechOperStart + techOperation.Id;
-                    column.ColumnEdit = repoCheckEdit;
+                    column.Caption = techOperation.ShortName;
+                    column.FieldName = column.Name;
+                   // column.ColumnEdit = repoCheckEdit;
+                    column.Visible = true;
+                    column.VisibleIndex = indexColumn++;
+                    column.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
+                    gvDrawings.Columns.Add(column);
+                }
+            }
+        }
+
+        private void SetTechOpersToFalse()
+        {
+            foreach (
+                GridColumn column in gvDrawings.Columns.Where(x => x.Name.StartsWith(ColumnTechOperStart)).AsParallel())
+            {
+                for (var i = 0; i < gvDrawings.RowCount; i++)
+                {
+                    gvDrawings.SetRowCellValue(i, column, false);
                 }
             }
         }
@@ -59,9 +74,9 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 
             var techRoutes = Controller.GetTechRoutes();
 
-            for (int i = 0; i < gvDrawings.RowCount; i++)
+            for (var i = 0; i < gvDrawings.RowCount; i++)
             {
-                var hierarchyNumberDrawing = (HierarchyNumberDrawing)gvDrawings.GetRow(i);
+                var hierarchyNumberDrawing = (HierarchyNumberDrawing) gvDrawings.GetRow(i);
 
                 var techRoute = techRoutes.FirstOrDefault(t => t.Id == hierarchyNumberDrawing.TechRouteId);
                 if (techRoute != null)
@@ -81,7 +96,19 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 
             CreateColumns();
             gcDrawings.DataSource = Controller.GetData();
+            SetTechOpersToFalse();
             LoadTechOpersColumns();
+        }
+
+        private void gvDrawings_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
+        {
+            if (e.IsGetData)
+            {
+
+            }
+            if (e.IsSetData)
+            {
+            }
         }
     }
 }

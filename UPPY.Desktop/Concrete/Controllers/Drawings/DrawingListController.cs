@@ -62,6 +62,13 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
             OnDataRefreshed();
         }
 
+        public void ShowDrawingInGridView(int? drawingId)
+        {
+            var controller = _controllersFactory.GetDrawingsGridViewController(drawingId);
+            controller.ShowViewDialog();
+            
+        }
+
         public Drawing CreateDocument(int? parentId)
         {
             return new Drawing() { ParentId = parentId, Count = 1, CountAll = 1 };

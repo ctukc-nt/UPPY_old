@@ -17,5 +17,6 @@ namespace UPPY.Desktop.Interfaces.Controllers.Drawings
         void ShowDrawingInAnotherView(Drawing drawing);
         void ChangeDrawingCount(Drawing drawing);
         void ChangeDrawingWeight(Drawing drawing);
+        void ShowDrawingInGridView(int? drawingId);
     }
 }
