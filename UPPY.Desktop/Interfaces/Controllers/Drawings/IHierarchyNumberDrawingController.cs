@@ -15,5 +15,6 @@ namespace UPPY.Desktop.Interfaces.Controllers.Drawings
         void EditDocument(HierarchyNumberDrawing document);
         List<TechRoute> GetTechRoutes();
         List<TechOperation> GetTechOperations();
+        int? CreateTechToute(List<TechOperation> techOpers);
     }
 }

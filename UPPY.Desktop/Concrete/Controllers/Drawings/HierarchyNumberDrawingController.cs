@@ -71,6 +71,7 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
 
         public void Save(HierarchyNumberDrawing document)
         {
+            _drawingsDataManager.InsertOrUpdate(document);
         }
 
         public void Delete(HierarchyNumberDrawing document)
@@ -91,6 +92,15 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
         public List<TechOperation> GetTechOperations()
         {
             return _techOperDataManager.GetListCollection();
+        }
+
+        public int? CreateTechToute(List<TechOperation> techOpers)
+        {
+            var techRoute = new TechRoute();
+            techRoute.TechOperations.AddRange(techOpers);
+            _techRouteDataManager.InsertOrUpdate(techRoute);
+
+            return techRoute.Id;
         }
 
         public void ShowViewDialog()

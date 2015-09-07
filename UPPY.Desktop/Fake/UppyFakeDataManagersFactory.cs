@@ -9,7 +9,7 @@ namespace UPPY.Desktop.Fake
 {
     public class UppyFakeDataManagersFactory : IUppyDataManagersFactory
     {
-        private static readonly Dictionary<string, object> Data = new Dictionary<string, object>();
+        public static readonly Dictionary<string, object> Data = new Dictionary<string, object>();
 
         public IClassDataManager<T> GetDataManager<T>() where T : IEntity
         {

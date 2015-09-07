@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.gcDrawings = new DevExpress.XtraGrid.GridControl();
             this.gvDrawings = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colNumber = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -51,22 +52,26 @@
             this.colPartOfDrawingId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTechRouteId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.repoCheckEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.colButtonSave = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDrawings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDrawings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoCheckEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // gcDrawings
             // 
             this.gcDrawings.Dock = System.Windows.Forms.DockStyle.Fill;
+            gridLevelNode1.RelationName = "Level1";
+            this.gcDrawings.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
             this.gcDrawings.Location = new System.Drawing.Point(0, 0);
             this.gcDrawings.MainView = this.gvDrawings;
             this.gcDrawings.Name = "gcDrawings";
             this.gcDrawings.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1,
-            this.repoCheckEdit});
+            this.repositoryItemButtonEdit1});
             this.gcDrawings.Size = new System.Drawing.Size(820, 426);
             this.gcDrawings.TabIndex = 1;
             this.gcDrawings.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -94,7 +99,8 @@
             this.colWeightAll,
             this.colOP,
             this.colPartOfDrawingId,
-            this.colTechRouteId});
+            this.colTechRouteId,
+            this.colButtonSave});
             this.gvDrawings.GridControl = this.gcDrawings;
             this.gvDrawings.Name = "gvDrawings";
             this.gvDrawings.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
@@ -266,10 +272,22 @@
             this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
             this.repositoryItemLookUpEdit1.ValueMember = "Id";
             // 
-            // repoCheckEdit
+            // colButtonSave
             // 
-            this.repoCheckEdit.AutoHeight = false;
-            this.repoCheckEdit.Name = "repoCheckEdit";
+            this.colButtonSave.Caption = "gridColumn1";
+            this.colButtonSave.ColumnEdit = this.repositoryItemButtonEdit1;
+            this.colButtonSave.Name = "colButtonSave";
+            this.colButtonSave.Visible = true;
+            this.colButtonSave.VisibleIndex = 18;
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemButtonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1_ButtonClick);
             // 
             // HierarListDrawingsControl
             // 
@@ -282,7 +300,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcDrawings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDrawings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoCheckEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -312,6 +330,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colPartOfDrawingId;
         private DevExpress.XtraGrid.Columns.GridColumn colTechRouteId;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repoCheckEdit;
+        private DevExpress.XtraGrid.Columns.GridColumn colButtonSave;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
     }
 }

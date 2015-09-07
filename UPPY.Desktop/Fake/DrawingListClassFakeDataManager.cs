@@ -9,7 +9,20 @@ namespace UPPY.Desktop.Fake
 {
     public class DrawingListClassFakeDataManager : List<Drawing>, IHierClassDataManager<Drawing>
     {
-        private int _count = 9;
+        
+        private void SetUp()
+        {
+            var rndRandom = new Random();
+
+            for (var i = 1; i < 2000; i++)
+            {
+                var random = new Random(i);
+                var parentId = rndRandom.Next(0, 1) == 1 ? null : (i - 1 > 1 ? rndRandom.Next(1, i - 1) : (int?)null);
+                Add(new Drawing { Id = i, ParentId = parentId });
+            }
+        }
+
+        private int _count = 2100;
 
         public DrawingListClassFakeDataManager()
         {
@@ -24,6 +37,8 @@ namespace UPPY.Desktop.Fake
             //    new Drawing {Id = 6, Name = "4"},
             //    new Drawing {Id = 7, ParentId = 5, Name = "2.1.1.1"}
            //});
+
+            SetUp();
         }
 
         public Task<List<Drawing>> GetListCollectionAsync()
@@ -54,6 +69,8 @@ namespace UPPY.Desktop.Fake
 
         public void Update(Drawing doc)
         {
+            var index =this.FindIndex(x => x.Id == doc.Id);
+            this[index] = doc;
         }
 
         public void UpdateAsync(Drawing doc)
