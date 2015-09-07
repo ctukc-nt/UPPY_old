@@ -111,14 +111,14 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.xtraTabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(1122, 661);
+            this.splitContainer1.Size = new System.Drawing.Size(1145, 661);
             this.splitContainer1.SplitterDistance = 100;
             this.splitContainer1.TabIndex = 0;
             // 
             // ceIsClosed
             // 
             this.ceIsClosed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ceIsClosed.Location = new System.Drawing.Point(1026, 71);
+            this.ceIsClosed.Location = new System.Drawing.Point(827, 71);
             this.ceIsClosed.Name = "ceIsClosed";
             this.ceIsClosed.Properties.Caption = "Заказ закрыт";
             this.ceIsClosed.Size = new System.Drawing.Size(88, 19);
@@ -130,14 +130,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.teName.Location = new System.Drawing.Point(285, 19);
             this.teName.Name = "teName";
-            this.teName.Size = new System.Drawing.Size(627, 20);
+            this.teName.Size = new System.Drawing.Size(428, 20);
             this.teName.TabIndex = 1;
             // 
             // dtcDeadlineDate
             // 
             this.dtcDeadlineDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtcDeadlineDate.EditValue = null;
-            this.dtcDeadlineDate.Location = new System.Drawing.Point(1027, 45);
+            this.dtcDeadlineDate.Location = new System.Drawing.Point(828, 45);
             this.dtcDeadlineDate.Name = "dtcDeadlineDate";
             this.dtcDeadlineDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -150,7 +150,7 @@
             // 
             this.dtcDateSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtcDateSend.EditValue = null;
-            this.dtcDateSend.Location = new System.Drawing.Point(933, 71);
+            this.dtcDateSend.Location = new System.Drawing.Point(734, 71);
             this.dtcDateSend.Name = "dtcDateSend";
             this.dtcDateSend.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -162,7 +162,7 @@
             // lDeadlineDate
             // 
             this.lDeadlineDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lDeadlineDate.Location = new System.Drawing.Point(918, 48);
+            this.lDeadlineDate.Location = new System.Drawing.Point(719, 48);
             this.lDeadlineDate.Name = "lDeadlineDate";
             this.lDeadlineDate.Size = new System.Drawing.Size(98, 13);
             this.lDeadlineDate.TabIndex = 12;
@@ -171,7 +171,7 @@
             // lDateSend
             // 
             this.lDateSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lDateSend.Location = new System.Drawing.Point(850, 74);
+            this.lDateSend.Location = new System.Drawing.Point(651, 74);
             this.lDateSend.Name = "lDateSend";
             this.lDateSend.Size = new System.Drawing.Size(77, 13);
             this.lDateSend.TabIndex = 11;
@@ -180,7 +180,7 @@
             // lDateStart
             // 
             this.lDateStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lDateStart.Location = new System.Drawing.Point(918, 22);
+            this.lDateStart.Location = new System.Drawing.Point(719, 22);
             this.lDateStart.Name = "lDateStart";
             this.lDateStart.Size = new System.Drawing.Size(69, 13);
             this.lDateStart.TabIndex = 10;
@@ -190,7 +190,7 @@
             // 
             this.dtcDateStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtcDateStart.EditValue = null;
-            this.dtcDateStart.Location = new System.Drawing.Point(1027, 19);
+            this.dtcDateStart.Location = new System.Drawing.Point(828, 19);
             this.dtcDateStart.Name = "dtcDateStart";
             this.dtcDateStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -213,7 +213,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.teNote.Location = new System.Drawing.Point(86, 71);
             this.teNote.Name = "teNote";
-            this.teNote.Size = new System.Drawing.Size(758, 20);
+            this.teNote.Size = new System.Drawing.Size(559, 20);
             this.teNote.TabIndex = 5;
             // 
             // lClient
@@ -230,7 +230,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.teClient.Location = new System.Drawing.Point(86, 45);
             this.teClient.Name = "teClient";
-            this.teClient.Size = new System.Drawing.Size(826, 20);
+            this.teClient.Size = new System.Drawing.Size(627, 20);
             this.teClient.TabIndex = 3;
             // 
             // lOrderNo
@@ -263,7 +263,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1122, 557);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1145, 557);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -274,16 +274,19 @@
             this.xtraTabPage1.Controls.Add(this.treeListDrawingsControl1);
             this.xtraTabPage1.Controls.Add(this.menuStrip1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1116, 529);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1139, 529);
             this.xtraTabPage1.Text = "Древовидная структура";
             // 
             // treeListDrawingsControl1
             // 
+            this.treeListDrawingsControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.treeListDrawingsControl1.Controller = null;
             this.treeListDrawingsControl1.Location = new System.Drawing.Point(3, 27);
             this.treeListDrawingsControl1.Name = "treeListDrawingsControl1";
             this.treeListDrawingsControl1.ParentId = null;
-            this.treeListDrawingsControl1.Size = new System.Drawing.Size(1110, 499);
+            this.treeListDrawingsControl1.Size = new System.Drawing.Size(1133, 499);
             this.treeListDrawingsControl1.TabIndex = 5;
             // 
             // menuStrip1
@@ -297,7 +300,7 @@
             this.menuStrip1.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1116, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1139, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -313,14 +316,14 @@
             // fromSiemensToolStripMenuItem
             // 
             this.fromSiemensToolStripMenuItem.Name = "fromSiemensToolStripMenuItem";
-            this.fromSiemensToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fromSiemensToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.fromSiemensToolStripMenuItem.Text = "From Siemens";
             this.fromSiemensToolStripMenuItem.Click += new System.EventHandler(this.fromSiemensToolStripMenuItem_Click);
             // 
             // fromExcelToolStripMenuItem
             // 
             this.fromExcelToolStripMenuItem.Name = "fromExcelToolStripMenuItem";
-            this.fromExcelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fromExcelToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.fromExcelToolStripMenuItem.Text = "From Excel";
             // 
             // unloadToolStripMenuItem
@@ -389,7 +392,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1122, 661);
+            this.ClientSize = new System.Drawing.Size(1145, 661);
             this.Controls.Add(this.splitContainer1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "OrderForm";
