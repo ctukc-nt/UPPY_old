@@ -283,7 +283,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 
             if (drawing != null && drawing.Id.HasValue && dataXmlBase64 is string)
             {
-                _controller.InsertIntoDrawing(drawing.Id.Value, (string)dataXmlBase64);
+                _controller.InsertIntoDrawing(drawing.ParentId, (string)dataXmlBase64);
             }
         }
     }
