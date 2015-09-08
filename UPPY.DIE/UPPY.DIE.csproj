@@ -66,6 +66,7 @@
     <Compile Include="Import\Siemens\Interfaces\ILogging.cs" />
     <Compile Include="Import\Siemens\SiemensProjectLoader.cs" />
     <Compile Include="Import\Siemens\SiemensProject.cs" />
+    <Compile Include="Import\Siemens\SiemensDocsFilesNameGetter.cs" />
     <Compile Include="Import\Siemens\SiemensXmlDataFilesNameGetter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

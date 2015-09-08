@@ -5,6 +5,7 @@ using UPPY.Desktop.Concrete.Controllers.Common;
 using UPPY.Desktop.Concrete.Controllers.Drawings;
 using UPPY.Desktop.Concrete.Controllers.Orders;
 using UPPY.Desktop.Concrete.Controllers.TechRoutes;
+using UPPY.Desktop.Interfaces.Common;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
@@ -39,7 +40,7 @@ namespace UPPY.Desktop.Factorys
         public IDocumentController<T> GetDocumentController<T>()
         {
             if (typeof (T) == typeof (Order))
-                return (IDocumentController<T>) new OrderDocumentController(this, _dataManagersFactory);
+                return (IDocumentController<T>) new OrderDocumentController(this, _dataManagersFactory.GetDataManager<Drawing>());
 
             return null;
         }
@@ -96,6 +97,11 @@ namespace UPPY.Desktop.Factorys
         {
             return new HierarchyNumberDrawingController(_dataManagersFactory.GetFilteredDrawingsByParent(parentId),
                 _dataManagersFactory.GetDataManager<TechRoute>(), _dataManagersFactory.GetDataManager<TechOperation>()) {ParentId = parentId};
+        }
+
+        public IUppyDataImport GetSiemensLoaderController(int? parentId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

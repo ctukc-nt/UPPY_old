@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UPPY.DIE.Import.Siemens.Exceptions;
@@ -12,6 +13,7 @@ namespace UPPY.DIE.Import.Siemens
     public class SiemensProjectLoader
     {
         private readonly IArticlesFactory _articlesFactory;
+        private readonly IFilesNameGetter _docsFileName;
         public ILogging Log { get; set; }
 
         public SiemensProjectLoader(IArticlesFactory factory)
@@ -22,6 +24,13 @@ namespace UPPY.DIE.Import.Siemens
         public SiemensProjectLoader(IArticlesFactory factory, ILogging logger)
         {
             _articlesFactory = factory;
+            Log = logger;
+        }
+
+        public SiemensProjectLoader(IArticlesFactory factory, ILogging logger, IFilesNameGetter docsFileName)
+        {
+            _articlesFactory = factory;
+            _docsFileName = docsFileName;
             Log = logger;
         }
 
@@ -55,6 +64,7 @@ namespace UPPY.DIE.Import.Siemens
                 ErrorDuringLoad = false;
                 var firstArticle = _articlesFactory.GetFirstArticle();
                 var structure = new SiemensProject { Article = firstArticle };
+                structure.FileNames = GetFileNames(firstArticle);
                 LoadStructureRecursiveWithLog(structure);
                 return structure;
             }
@@ -75,6 +85,14 @@ namespace UPPY.DIE.Import.Siemens
             }
         }
 
+        private List<string> GetFileNames(Article article)
+        {
+            if (_docsFileName == null)
+                return new List<string>();
+
+            return _docsFileName.GetFilesByNameDrawing(article.Head.ARTPartID);
+        }
+
         private void LoadStructureRecursiveWithLog(SiemensProject structure)
         {
             foreach (var position in structure.Article.BOM.Where(x => !x.ARTARTPartID.Contains("#")).Where(y => !string.IsNullOrWhiteSpace(y.ARTARTPartID)))
@@ -83,6 +101,7 @@ namespace UPPY.DIE.Import.Siemens
                 {
                     var firstArticle = _articlesFactory.GetArticle(position.ARTARTPartID);
                     var subStructure = new SiemensProject { Article = firstArticle, Parent = structure };
+                    subStructure.FileNames = GetFileNames(firstArticle);
                     structure.Positions.Add(subStructure);
                     LoadStructureRecursiveWithLog(subStructure);
                 }

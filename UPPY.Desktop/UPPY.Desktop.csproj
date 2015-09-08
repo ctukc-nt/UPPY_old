@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Classes\DrawingBulkChangesHelper.cs" />
     <Compile Include="Classes\IDrawingBulkChangesHelper.cs" />
+    <Compile Include="Classes\SiemensDataImport.cs" />
     <Compile Include="Concrete\Controllers\Common\DrawingsToStandartController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\DrawingListController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\HierarchyNumberDrawingController.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Fake\OrderClassFakeDataManager.cs" />
     <Compile Include="Interfaces\Controllers\Common\IDrawingsToStandartController.cs" />
     <Compile Include="Interfaces\Controllers\Common\IDrawingsToStandartShower.cs" />
+    <Compile Include="Interfaces\Common\IUPPYDataImport.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingListController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingsSelectionController.cs" />
