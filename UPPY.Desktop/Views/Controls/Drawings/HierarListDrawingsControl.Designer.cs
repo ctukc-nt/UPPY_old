@@ -105,6 +105,7 @@
             this.gvDrawings.Name = "gvDrawings";
             this.gvDrawings.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colNumber, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gvDrawings.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvDrawings_RowCellStyle);
             this.gvDrawings.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.gvDrawings_CustomUnboundColumnData);
             // 
             // colNumber

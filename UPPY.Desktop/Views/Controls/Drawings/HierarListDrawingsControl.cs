@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Columns;
@@ -11,7 +12,9 @@ namespace UPPY.Desktop.Views.Controls.Drawings
     public partial class HierarListDrawingsControl : UserControl
     {
         private const string ColumnTechOperStart = "colTO";
-        private List<Tuple<int, int, bool>> _techOpersToDrawings = new List<Tuple<int, int, bool>>();
+        private readonly List<Tuple<int, int, bool>> _techOpersToDrawings = new List<Tuple<int, int, bool>>();
+        private readonly List<int> _rowsChangedHandlers = new List<int>();
+        private bool _loadTechOpersFlag;
 
         public HierarListDrawingsControl(IHierarchyNumberDrawingController controller)
         {
@@ -32,21 +35,24 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                 return;
 
             var techOpers = Controller.GetTechOperations();
-            var indexColumn = gvDrawings.Columns.Max(x => x.VisibleIndex)-1;
+            var indexColumn = gvDrawings.Columns.Max(x => x.VisibleIndex) - 1;
             foreach (var techOperation in techOpers)
             {
                 if (gvDrawings.Columns.All(x => x.Name != (ColumnTechOperStart + techOperation.Id.ToString())))
                 {
-                    var column = new GridColumn();
-                    column.Name = ColumnTechOperStart + techOperation.Id;
+                    var column = new GridColumn
+                    {
+                        Name = ColumnTechOperStart + techOperation.Id,
+                        Caption = techOperation.ShortName,
+                        Visible = true,
+                        VisibleIndex = indexColumn,
+                        UnboundType = DevExpress.Data.UnboundColumnType.Boolean,
+                        Width = 10
+                    };
 
-                    column.Caption = techOperation.ShortName;
-                    column.FieldName = column.Name;
-                    column.Visible = true;
-                    column.VisibleIndex = indexColumn;
-                    column.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
-                    column.Width = 10;
                     column.OptionsColumn.AllowSize = false;
+                    column.FieldName = column.Name;
+                    
                     gvDrawings.Columns.Add(column);
                 }
             }
@@ -79,6 +85,8 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             if (Controller == null)
                 return;
 
+            _loadTechOpersFlag = true;
+
             var techRoutes = Controller.GetTechRoutes();
 
             for (var i = 0; i < gvDrawings.RowCount; i++)
@@ -94,6 +102,8 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                     }
                 }
             }
+
+            _loadTechOpersFlag = false;
         }
 
         private void HierarListDraweingsControl_Load(object sender, EventArgs e)
@@ -130,6 +140,12 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             }
             if (e.IsSetData)
             {
+                if (!_loadTechOpersFlag)
+                {
+                    _rowsChangedHandlers.Add(gvDrawings.GetRowHandle(e.ListSourceRowIndex));
+                    gvDrawings.RefreshRow(e.ListSourceRowIndex);
+                }
+
                 if (hierDraw != null)
                 {
                     var rec =
@@ -150,18 +166,44 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            var dd = gvDrawings.FocusedColumn;
-            var rr = gvDrawings.FocusedRowHandle;
+            var rowHandle = gvDrawings.FocusedRowHandle;
 
-            if (rr >= 0)
+            if (rowHandle >= 0)
             {
-                var row = (HierarchyNumberDrawing)gvDrawings.GetRow(rr);
+                var row = (HierarchyNumberDrawing)gvDrawings.GetRow(rowHandle);
                 var opers = _techOpersToDrawings.Where(x => x.Item1 == row.Id && x.Item3);
                 var techOpers = Controller.GetTechOperations();
                 var dcskjhf = opers.Select(x => techOpers.FirstOrDefault(y => x.Item2 == y.Id)).ToList();
                 row.TechRouteId = Controller.CreateTechToute(dcskjhf);
                 Controller.Save(row);
+
+                _rowsChangedHandlers.Remove(rowHandle);
+                gvDrawings.InvalidateRows();
+                gvDrawings.RefreshRow(rowHandle);
             }
+        }
+
+        public void SaveAllTechRoutes()
+        {
+            foreach (var rowsChangedHandler in _rowsChangedHandlers)
+            {
+                var row = (HierarchyNumberDrawing)gvDrawings.GetRow(rowsChangedHandler);
+                var opers = _techOpersToDrawings.Where(x => x.Item1 == row.Id && x.Item3);
+                var techOpers = Controller.GetTechOperations();
+                var dcskjhf = opers.Select(x => techOpers.FirstOrDefault(y => x.Item2 == y.Id)).ToList();
+                row.TechRouteId = Controller.CreateTechToute(dcskjhf);
+                Controller.Save(row);
+
+                _rowsChangedHandlers.Remove(rowsChangedHandler);
+                gvDrawings.InvalidateRows();
+                gvDrawings.RefreshRow(rowsChangedHandler);
+            }
+        }
+
+        private void gvDrawings_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            if (_rowsChangedHandlers.Contains(e.RowHandle))
+                e.Appearance.BackColor = Color.BurlyWood;
         }
     }
 }
