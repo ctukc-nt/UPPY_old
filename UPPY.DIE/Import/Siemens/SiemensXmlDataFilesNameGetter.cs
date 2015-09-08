@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -44,7 +45,7 @@ namespace UPPY.DIE.Import.Siemens
         {
             var pathData = Path.Combine(LocationDirectory, "BOM_data");
             var dataFilesPatch = new List<string>(Directory.GetFiles(pathData, "*.xml", SearchOption.AllDirectories));
-            var fileName = dataFilesPatch.FirstOrDefault(x => x.Contains(name));
+            var fileName = dataFilesPatch.FirstOrDefault(x => x.Replace(pathData, String.Empty).Contains(name));
             if (string.IsNullOrEmpty(fileName))
             {
                 throw new FileNotFoundException(name, fileName);
