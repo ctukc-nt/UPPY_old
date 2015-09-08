@@ -6,7 +6,6 @@ using Core.DomainModel;
 using DevExpress.Skins;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
-using DevExpress.XtraTreeList.ViewInfo;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
 
 namespace UPPY.Desktop.Views.Controls.Drawings
@@ -43,15 +42,16 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                 btnAddChild.Enabled = _controller != null;
                 btnDelete.Enabled = _controller != null;
 
-                //btnCopy.Enabled = _controller != null;
-                //btnPaste.Enabled = _controller != null;
-                //btnPaste.Enabled = _controller != null;
+                btnCopy.Enabled = _controller != null;
+                btnPaste.Enabled = _controller != null;
+
                 btnShowAnotherView.Enabled = _controller != null;
 
                 if (_controller != null)
                 {
                     DrawingCountChanged += _controller.ChangeDrawingCount;
                     DrawingWeightChanged += _controller.ChangeDrawingWeight;
+                    Controller.DataRefreshed += RefreshData;
                 }
 
             }
@@ -175,7 +175,6 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
             var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
             if (data is Drawing)
             {
@@ -220,7 +219,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             tlDarwings.RefreshDataSource();
         }
 
-        private void tlDarwings_CellValueChanged(object sender, DevExpress.XtraTreeList.CellValueChangedEventArgs e)
+        private void tlDarwings_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             var data = tlDarwings.GetDataRecordByNode(e.Node);
 
@@ -265,6 +264,27 @@ namespace UPPY.Desktop.Views.Controls.Drawings
         private void sbShowInTable_Click(object sender, EventArgs e)
         {
             _controller.ShowDrawingInGridView(_parentId);
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            var data = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]) as Drawing;
+            if (data != null && data.Id.HasValue)
+            {
+                var xmlBase64 = _controller.GetCopy(data.Id.Value);
+                Clipboard.SetData("DrawingXmlCopy", xmlBase64);
+            }
+        }
+
+        private void btnPaste_Click(object sender, EventArgs e)
+        {
+            var drawing = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]) as Drawing;
+            var dataXmlBase64 = Clipboard.GetData("DrawingXmlCopy");
+
+            if (drawing != null && drawing.Id.HasValue && dataXmlBase64 is string)
+            {
+                _controller.InsertIntoDrawing(drawing.Id.Value, (string)dataXmlBase64);
+            }
         }
     }
 

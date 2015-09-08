@@ -22,7 +22,7 @@ namespace UPPY.Desktop.Fake
             }
         }
 
-        private int _count = 2100;
+        private int _count = 1;
 
         public DrawingListClassFakeDataManager()
         {
@@ -38,7 +38,7 @@ namespace UPPY.Desktop.Fake
             //    new Drawing {Id = 7, ParentId = 5, Name = "2.1.1.1"}
            //});
 
-            SetUp();
+            //SetUp();
         }
 
         public Task<List<Drawing>> GetListCollectionAsync()
