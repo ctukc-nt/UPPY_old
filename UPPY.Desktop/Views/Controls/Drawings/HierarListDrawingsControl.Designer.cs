@@ -109,7 +109,7 @@
             // 
             // colNumber
             // 
-            this.colNumber.Caption = "Number p/p";
+            this.colNumber.Caption = "Номер п/п";
             this.colNumber.FieldName = "HierarchyNumber";
             this.colNumber.Name = "colNumber";
             this.colNumber.SortMode = DevExpress.XtraGrid.ColumnSortMode.Custom;
@@ -129,6 +129,7 @@
             // 
             // colName
             // 
+            this.colName.Caption = "Наименование";
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
             this.colName.Visible = true;
@@ -137,6 +138,7 @@
             // 
             // colDesignation
             // 
+            this.colDesignation.Caption = "Обозначение";
             this.colDesignation.FieldName = "Designation";
             this.colDesignation.Name = "colDesignation";
             this.colDesignation.Visible = true;
@@ -145,6 +147,7 @@
             // 
             // colNumberOnSpec
             // 
+            this.colNumberOnSpec.Caption = "Номер по сп-ции";
             this.colNumberOnSpec.FieldName = "NumberOnSpec";
             this.colNumberOnSpec.Name = "colNumberOnSpec";
             this.colNumberOnSpec.Visible = true;
@@ -153,6 +156,7 @@
             // 
             // colProfile
             // 
+            this.colProfile.Caption = "Профиль";
             this.colProfile.FieldName = "Profile";
             this.colProfile.Name = "colProfile";
             this.colProfile.Visible = true;
@@ -161,6 +165,7 @@
             // 
             // colStandartSize
             // 
+            this.colStandartSize.Caption = "Типоразмер";
             this.colStandartSize.FieldName = "StandartSize";
             this.colStandartSize.Name = "colStandartSize";
             this.colStandartSize.Visible = true;
@@ -169,6 +174,7 @@
             // 
             // colGostOnSort
             // 
+            this.colGostOnSort.Caption = "ГОСТ на сортамент";
             this.colGostOnSort.FieldName = "GostOnSort";
             this.colGostOnSort.Name = "colGostOnSort";
             this.colGostOnSort.Visible = true;
@@ -177,6 +183,7 @@
             // 
             // colMarkSteal
             // 
+            this.colMarkSteal.Caption = "Марка стали";
             this.colMarkSteal.FieldName = "MarkSteal";
             this.colMarkSteal.Name = "colMarkSteal";
             this.colMarkSteal.Visible = true;
@@ -185,6 +192,7 @@
             // 
             // colGostOnMaterial
             // 
+            this.colGostOnMaterial.Caption = "ГОСТ на материал";
             this.colGostOnMaterial.FieldName = "GostOnMaterial";
             this.colGostOnMaterial.Name = "colGostOnMaterial";
             this.colGostOnMaterial.Visible = true;
@@ -193,6 +201,7 @@
             // 
             // colLength
             // 
+            this.colLength.Caption = "Длина";
             this.colLength.FieldName = "Length";
             this.colLength.Name = "colLength";
             this.colLength.Visible = true;
@@ -201,6 +210,7 @@
             // 
             // colWidth
             // 
+            this.colWidth.Caption = "Ширина";
             this.colWidth.FieldName = "Width";
             this.colWidth.Name = "colWidth";
             this.colWidth.Visible = true;
@@ -209,6 +219,7 @@
             // 
             // colCount
             // 
+            this.colCount.Caption = "Кол-во";
             this.colCount.FieldName = "Count";
             this.colCount.Name = "colCount";
             this.colCount.Visible = true;
@@ -217,6 +228,7 @@
             // 
             // colCountAll
             // 
+            this.colCountAll.Caption = "Кол-во всего";
             this.colCountAll.FieldName = "CountAll";
             this.colCountAll.Name = "colCountAll";
             this.colCountAll.Visible = true;
@@ -225,6 +237,7 @@
             // 
             // colWeight
             // 
+            this.colWeight.Caption = "Вес";
             this.colWeight.FieldName = "Weight";
             this.colWeight.Name = "colWeight";
             this.colWeight.Visible = true;
@@ -233,6 +246,7 @@
             // 
             // colWeightAll
             // 
+            this.colWeightAll.Caption = "Вес всего";
             this.colWeightAll.FieldName = "WeightAll";
             this.colWeightAll.Name = "colWeightAll";
             this.colWeightAll.Visible = true;
@@ -241,6 +255,7 @@
             // 
             // colOP
             // 
+            this.colOP.Caption = "ОП";
             this.colOP.FieldName = "OP";
             this.colOP.Name = "colOP";
             this.colOP.Visible = true;
@@ -249,6 +264,7 @@
             // 
             // colPartOfDrawingId
             // 
+            this.colPartOfDrawingId.Caption = "Входит в...";
             this.colPartOfDrawingId.FieldName = "PartOfDrawingId";
             this.colPartOfDrawingId.Name = "colPartOfDrawingId";
             this.colPartOfDrawingId.Visible = true;
@@ -257,6 +273,7 @@
             // 
             // colTechRouteId
             // 
+            this.colTechRouteId.Caption = "Тех. маршрут";
             this.colTechRouteId.ColumnEdit = this.repositoryItemLookUpEdit1;
             this.colTechRouteId.FieldName = "TechRouteId";
             this.colTechRouteId.Name = "colTechRouteId";
@@ -274,7 +291,7 @@
             // 
             // colButtonSave
             // 
-            this.colButtonSave.Caption = "gridColumn1";
+            this.colButtonSave.Caption = "Сохранить";
             this.colButtonSave.ColumnEdit = this.repositoryItemButtonEdit1;
             this.colButtonSave.Name = "colButtonSave";
             this.colButtonSave.Visible = true;

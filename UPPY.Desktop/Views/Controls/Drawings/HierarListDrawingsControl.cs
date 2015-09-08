@@ -32,7 +32,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                 return;
 
             var techOpers = Controller.GetTechOperations();
-            var indexColumn = gvDrawings.Columns.Max(x => x.VisibleIndex);
+            var indexColumn = gvDrawings.Columns.Max(x => x.VisibleIndex)-1;
             foreach (var techOperation in techOpers)
             {
                 if (gvDrawings.Columns.All(x => x.Name != (ColumnTechOperStart + techOperation.Id.ToString())))
@@ -43,28 +43,31 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                     column.Caption = techOperation.ShortName;
                     column.FieldName = column.Name;
                     column.Visible = true;
-                    column.VisibleIndex = indexColumn++;
+                    column.VisibleIndex = indexColumn;
                     column.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
                     column.Width = 10;
                     column.OptionsColumn.AllowSize = false;
                     gvDrawings.Columns.Add(column);
                 }
             }
+
+            colButtonSave.AbsoluteIndex = indexColumn;
+            //colButtonSave.VisibleIndex = indexColumn;
         }
 
-/*
-        private void SetTechOpersToFalse()
-        {
-            foreach (
-                GridColumn column in gvDrawings.Columns.Where(x => x.Name.StartsWith(ColumnTechOperStart)).AsParallel())
-            {
-                for (var i = 0; i < gvDrawings.RowCount; i++)
+        /*
+                private void SetTechOpersToFalse()
                 {
-                    gvDrawings.SetRowCellValue(i, column, false);
+                    foreach (
+                        GridColumn column in gvDrawings.Columns.Where(x => x.Name.StartsWith(ColumnTechOperStart)).AsParallel())
+                    {
+                        for (var i = 0; i < gvDrawings.RowCount; i++)
+                        {
+                            gvDrawings.SetRowCellValue(i, column, false);
+                        }
+                    }
                 }
-            }
-        }
-*/
+        */
 
         private GridColumn GetColumn(int? toId)
         {
