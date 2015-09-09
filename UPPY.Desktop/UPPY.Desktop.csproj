@@ -85,6 +85,8 @@
     <Compile Include="Interfaces\Controllers\Common\IDrawingsToStandartController.cs" />
     <Compile Include="Interfaces\Controllers\Common\IDrawingsToStandartShower.cs" />
     <Compile Include="Interfaces\Common\IUPPYDataImport.cs" />
+    <Compile Include="Interfaces\Controllers\Common\IDataImportController.cs" />
+    <Compile Include="Interfaces\Controllers\Common\ISiemensDataImportController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingListController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingsSelectionController.cs" />
@@ -155,6 +157,12 @@
     </Compile>
     <Compile Include="Views\Drawings\HierarchyDrawingsForm.Designer.cs">
       <DependentUpon>HierarchyDrawingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Drawings\ImportDrawingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Drawings\ImportDrawingsForm.Designer.cs">
+      <DependentUpon>ImportDrawingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Orders\OrderForm.cs">
       <SubType>Form</SubType>
@@ -228,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Drawings\HierarchyDrawingsForm.resx">
       <DependentUpon>HierarchyDrawingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Drawings\ImportDrawingsForm.resx">
+      <DependentUpon>ImportDrawingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\OrderForm.resx">
       <DependentUpon>OrderForm.cs</DependentUpon>

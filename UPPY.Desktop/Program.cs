@@ -5,6 +5,7 @@ using UPPY.Desktop.Classes;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Ninject;
+using UPPY.Desktop.Views.Drawings;
 using UPPY.Desktop.Views.Orders;
 
 namespace UPPY.Desktop
@@ -24,9 +25,12 @@ namespace UPPY.Desktop
             var uppyFactory = CompositionRoot.Resolve<IUppyControllersFactory>();
             var controller = uppyFactory.GetOrdersListController();
 
-            var formOrders = new OrdersListForm(controller);
+            //var formOrders = new OrdersListForm(controller);
 
-            Application.Run(formOrders);
+            var foemWizard = new ImportDrawingsForm();
+
+
+            Application.Run(foemWizard);
         }
     }
 }
