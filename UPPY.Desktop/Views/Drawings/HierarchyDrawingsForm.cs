@@ -26,5 +26,10 @@ namespace UPPY.Desktop.Views.Drawings
         {
             Close();
         }
+
+        private void HierarchyDrawingsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            hierarListDrawingsControl.SaveAllTechRoutes();
+        }
     }
 }

@@ -58,22 +58,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             }
 
             colButtonSave.AbsoluteIndex = indexColumn;
-            //colButtonSave.VisibleIndex = indexColumn;
         }
-
-        /*
-                private void SetTechOpersToFalse()
-                {
-                    foreach (
-                        GridColumn column in gvDrawings.Columns.Where(x => x.Name.StartsWith(ColumnTechOperStart)).AsParallel())
-                    {
-                        for (var i = 0; i < gvDrawings.RowCount; i++)
-                        {
-                            gvDrawings.SetRowCellValue(i, column, false);
-                        }
-                    }
-                }
-        */
 
         private GridColumn GetColumn(int? toId)
         {
