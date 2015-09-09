@@ -71,6 +71,7 @@
             this.Name = "HierarchyDrawingsForm";
             this.Text = "HierarchyDrawingsForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HierarchyDrawingsForm_FormClosing);
+            this.Load += new System.EventHandler(this.HierarchyDrawingsForm_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
