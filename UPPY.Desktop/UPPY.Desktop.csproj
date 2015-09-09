@@ -124,12 +124,6 @@
     <Compile Include="Views\Drawings\DrawingForm.Designer.cs">
       <DependentUpon>DrawingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Drawings\DrawingsListForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Drawings\DrawingsListForm.Designer.cs">
-      <DependentUpon>DrawingsListForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Drawings\DrawingsSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,9 +203,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Drawings\DrawingForm.resx">
       <DependentUpon>DrawingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Drawings\DrawingsListForm.resx">
-      <DependentUpon>DrawingsListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Drawings\DrawingsSelectionForm.resx">
       <DependentUpon>DrawingsSelectionForm.cs</DependentUpon>
