@@ -61,8 +61,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ConverterSiemensProject.cs" />
     <Compile Include="Classes\DrawingBulkChangesHelper.cs" />
+    <Compile Include="Classes\FieldsNormalizer.cs" />
     <Compile Include="Classes\IDrawingBulkChangesHelper.cs" />
+    <Compile Include="Classes\MaterialParser.cs" />
+    <Compile Include="Classes\NameMaterialSearch.cs" />
+    <Compile Include="Classes\ProjectExcluder.cs" />
     <Compile Include="Classes\SiemensDataImport.cs" />
     <Compile Include="Concrete\Controllers\Common\DrawingsToStandartController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\DrawingListController.cs" />
@@ -73,6 +78,10 @@
     <Compile Include="Concrete\DataManager\Drawings\HierarchyDrawingsDataManager.cs" />
     <Compile Include="Fake\GostClassFakeDataManager.cs" />
     <Compile Include="Fake\OrderClassFakeDataManager.cs" />
+    <Compile Include="Interfaces\Common\IFieldsNormalizer.cs" />
+    <Compile Include="Interfaces\Common\IMaterialParser.cs" />
+    <Compile Include="Interfaces\Common\INameMaterialSearch.cs" />
+    <Compile Include="Interfaces\Common\IProjectExcluder.cs" />
     <Compile Include="Interfaces\Controllers\Common\IDrawingsToStandartController.cs" />
     <Compile Include="Interfaces\Controllers\Common\IDrawingsToStandartShower.cs" />
     <Compile Include="Interfaces\Common\IUPPYDataImport.cs" />
@@ -275,6 +284,10 @@
     <ProjectReference Include="..\MongoWork\MongoWork.csproj">
       <Project>{371A01EB-92FF-4FEF-871D-DA6E19A8FDD8}</Project>
       <Name>MongoWork</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UPPY.DIE\UPPY.DIE.csproj">
+      <Project>{04B0D4BE-D7A1-4F6A-8A97-BBE47746BB44}</Project>
+      <Name>UPPY.DIE</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

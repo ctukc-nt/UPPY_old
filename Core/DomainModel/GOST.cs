@@ -47,6 +47,8 @@ namespace Core.DomainModel
         }
 
         public int? Id { get; set; }
+
+        public string Profile { get; set; }
     }
 
     public class StandartWeight

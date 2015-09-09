@@ -23,7 +23,7 @@ namespace Core.DomainModel
         /// <summary>
         ///     Номер по спецификации
         /// </summary>
-        public uint? NumberOnSpec { get; set; }
+        public string NumberOnSpec { get; set; }
 
         /// <summary>
         ///     Профиль
@@ -73,12 +73,12 @@ namespace Core.DomainModel
         /// <summary>
         ///     Вес
         /// </summary>
-        public double Weight { get; set; }
+        public decimal Weight { get; set; }
 
         /// <summary>
         ///     Вес всего
         /// </summary>
-        public double WeightAll { get; set; }
+        public decimal WeightAll { get; set; }
 
         /// <summary>
         ///     Отправочная позиция
@@ -111,6 +111,7 @@ namespace Core.DomainModel
         public Color Color { get; set; }
 
         public FileDrawingInfo FileDrawingInfo { get; set; }
+        public string Note { get; set; }
 
         public void RecalculateWeightAll() => WeightAll = Weight*CountAll;
     }
