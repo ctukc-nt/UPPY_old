@@ -42,17 +42,26 @@ namespace UPPY.Desktop.Concrete.Controllers.Orders
             return drawingsController;
         }
 
-        public bool LoadDataFromSiemens()
+        public IDrawingListController LoadDataFromSiemens()
         {
-            var doc = _drawingDataManager.GetDocument(Document.DrawingId);
-            _drawingDataManager.Delete(doc);
-
             var drawing = new Drawing();
             _drawingDataManager.Insert(drawing);
-            Document.DrawingId = drawing.Id;
+           
+
+            var drawingsController = _controllersFactory.GetDrawingsListController(drawing.Id);
 
             var loader = _controllersFactory.GetSiemensLoaderController(Document.DrawingId);
-            return loader.ImportData();
+            if (loader.ShowDialog())
+            {
+                Document.DrawingId = drawing.Id;
+                var doc = _drawingDataManager.GetDocument(Document.DrawingId);
+                _drawingDataManager.Delete(doc);
+                return drawingsController;
+            }
+            else
+            {
+                return _controllersFactory.GetDrawingsListController(Document.DrawingId);
+            }
         }
 
         public Order Document { get; set; }

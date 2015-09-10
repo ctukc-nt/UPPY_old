@@ -25,12 +25,12 @@ namespace UPPY.Desktop
             var uppyFactory = CompositionRoot.Resolve<IUppyControllersFactory>();
             var controller = uppyFactory.GetOrdersListController();
 
-            //var formOrders = new OrdersListForm(controller);
+            var formOrders = new OrdersListForm(controller);
 
-            var foemWizard = new ImportDrawingsForm();
+            //var foemWizard = new ImportDrawingsForm();
+            //controller.ShowDialog();
 
-
-            Application.Run(foemWizard);
+            Application.Run(formOrders);
         }
     }
 }

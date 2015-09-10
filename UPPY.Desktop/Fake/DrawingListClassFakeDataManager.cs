@@ -79,6 +79,8 @@ namespace UPPY.Desktop.Fake
 
         public void Delete(Drawing doc)
         {
+            if (doc == null)
+                return;
 
             var allChildrens = GetListAllChildrens(doc.Id);
             RemoveAll(x => allChildrens.Any(y => y.Id == x.Id));

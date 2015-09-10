@@ -101,7 +101,7 @@ namespace UPPY.Desktop.Factorys
 
         public IUppyDataImport GetSiemensLoaderController(int? parentId)
         {
-            throw new NotImplementedException();
+            return new SiemensDataImportController(_dataManagersFactory.GetDataManager<Drawing>(), parentId);
         }
     }
 }

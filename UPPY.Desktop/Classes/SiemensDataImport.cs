@@ -7,7 +7,7 @@ using UPPY.DIE.Import.Siemens.Interfaces;
 
 namespace UPPY.Desktop.Classes
 {
-    public class SiemensDataImport : IUppyDataImport
+    public class SiemensDataImport// : IUppyDataImport
     {
         private class LoggerLoad : List<string>,  ILogging
         {

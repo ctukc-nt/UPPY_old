@@ -36,10 +36,11 @@ namespace UPPY.Desktop.Views.Drawings
             if (e.Page == welcomeWizardPage)
             {
                 wpPreviewPackSiemens.Enabled = false;
+                rtbPreviewLoad.Text = string.Empty;
                 var logger = new LoggerLoad();
                 SiemensProject project = null;
 
-                var task = new Task(() => { project = Controller.LoadStructureSiemens(_pathFolder, logger); });
+                var task = new Task(() => { project = Controller.LoadStructureSiemens(btnPath.Text, logger); });
 
                 waitPanel.Visible = true;
                 wpPreviewPackSiemens.AllowNext = false;
@@ -64,7 +65,7 @@ namespace UPPY.Desktop.Views.Drawings
                 {
                     _project = project;
                     wpPreviewPackSiemens.AllowNext = true;
-                    rtbPreviewLoad.Text = "Загрузка прошла успешно, ошибок нет!\n Можно переходить к следующему этапу.";
+                    rtbPreviewLoad.Text += rtbPreviewLoad.Text.Length == 0 ? "Загрузка прошла успешно, ошибок нет!\nМожно переходить к следующему этапу." : "Есть предупреждения. Переходите к следующему этапу, если вы игнорируете их.";
                 }
             }
 

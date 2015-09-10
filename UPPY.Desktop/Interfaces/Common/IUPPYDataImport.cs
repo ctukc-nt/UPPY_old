@@ -2,6 +2,6 @@
 {
     public interface IUppyDataImport
     {
-        bool ImportData();
+        bool ShowDialog();
     }
 }

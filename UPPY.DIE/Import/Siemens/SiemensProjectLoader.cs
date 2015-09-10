@@ -55,6 +55,26 @@ namespace UPPY.DIE.Import.Siemens
             }
         }
 
+        private void AppendErrorToLog(string error)
+        {
+            try
+            {
+                ErrorDuringLoad = true;
+
+
+                if (Log != null)
+                {
+                    Log.ErrorHappens = true;
+                    Log.AppendMessage(error);
+                }
+            }
+            catch (Exception)
+            {
+                // не зависеть от лога
+                // ignored
+            }
+        }
+
         /// <summary>
         /// Загрузить структуру проекта
         /// </summary>
@@ -71,17 +91,17 @@ namespace UPPY.DIE.Import.Siemens
             }
             catch (FileNotSearizableException ex)
             {
-                AppendMessageToLog("Невозможно загрузить стартовый файл, загрузка прервана.");
+                AppendErrorToLog("Невозможно загрузить стартовый файл. Загрузка прервана.");
                 return null;
             }
             catch (FileNotFoundException ex)
             {
-                AppendMessageToLog("Стартовый файл не найден, загрузка прервана.");
+                AppendErrorToLog(" Стартовый файл не найден. Загрузка прервана!");
                 return null;
             }
             catch (Exception ex)
             {
-                AppendMessageToLog(string.Format("{0}\n{1}", ex.Message, ex.StackTrace));
+                AppendErrorToLog(string.Format("{0}\n{1}", ex.Message, ex.StackTrace));
                 return null;
             }
         }
