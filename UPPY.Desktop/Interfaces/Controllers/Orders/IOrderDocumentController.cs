@@ -17,6 +17,6 @@ namespace UPPY.Desktop.Interfaces.Controllers.Orders
         event EventHandler<EventArgs> DataRefreshed;
         IDrawingListController GetDrawingsController(int? drawingId);
         IDrawingListController InitNewDrawingAndGetController();
-        void LoadDataFromSiemens();
+        IDrawingListController LoadDataFromSiemens();
     }
 }

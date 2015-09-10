@@ -1,23 +1,23 @@
 ﻿using System;
 using Core.DomainModel;
+using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
 using UPPY.Desktop.Interfaces.Controllers.Orders;
-using UPPY.Desktop.Interfaces.DataManagers;
 using UPPY.Desktop.Views.Orders;
 
 namespace UPPY.Desktop.Concrete.Controllers.Orders
 {
     class OrderDocumentController : IOrderDocumentController, IDocumentController<Order>
     {
-        private readonly IUppyControllersFactory _factory;
-        private readonly IUppyDataManagersFactory _dataManagersFactory;
+        private readonly IUppyControllersFactory _controllersFactory;
+        private readonly IClassDataManager<Drawing> _drawingDataManager;
 
-        public OrderDocumentController(IUppyControllersFactory factory, IUppyDataManagersFactory dataManagersFactory)
+        public OrderDocumentController(IUppyControllersFactory controllersFactory, IClassDataManager<Drawing> drawingDataManager)
         {
-            _factory = factory;
-            _dataManagersFactory = dataManagersFactory;
+            _controllersFactory = controllersFactory;
+            _drawingDataManager = drawingDataManager;
         }
 
         public void Save(Order order)
@@ -30,22 +30,38 @@ namespace UPPY.Desktop.Concrete.Controllers.Orders
 
         public IDrawingListController GetDrawingsController(int? drawingId)
         {
-            return _factory.GetDrawingsListController(drawingId);
+            return _controllersFactory.GetDrawingsListController(drawingId);
         }
 
         public IDrawingListController InitNewDrawingAndGetController()
         {
             var drawing = new Drawing();
-            var drawingDataManager = _dataManagersFactory.GetDataManager<Drawing>();
-            drawingDataManager.Insert(drawing);
-            var drawingsController = _factory.GetDrawingsListController(drawing.Id);
+            _drawingDataManager.Insert(drawing);
+            var drawingsController = _controllersFactory.GetDrawingsListController(drawing.Id);
             Document.DrawingId = drawing.Id;
             return drawingsController;
         }
 
-        public void LoadDataFromSiemens()
+        public IDrawingListController LoadDataFromSiemens()
         {
-            
+            var drawing = new Drawing();
+            _drawingDataManager.Insert(drawing);
+           
+
+            var drawingsController = _controllersFactory.GetDrawingsListController(drawing.Id);
+
+            var loader = _controllersFactory.GetSiemensLoaderController(Document.DrawingId);
+            if (loader.ShowDialog())
+            {
+                Document.DrawingId = drawing.Id;
+                var doc = _drawingDataManager.GetDocument(Document.DrawingId);
+                _drawingDataManager.Delete(doc);
+                return drawingsController;
+            }
+            else
+            {
+                return _controllersFactory.GetDrawingsListController(Document.DrawingId);
+            }
         }
 
         public Order Document { get; set; }

@@ -1,4 +1,5 @@
 ﻿using UPPY.Desktop.Classes;
+using UPPY.Desktop.Interfaces.Common;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
 using UPPY.Desktop.Interfaces.Controllers.Orders;
 
@@ -14,5 +15,6 @@ namespace UPPY.Desktop.Interfaces.Controllers.Common
         IDrawingBulkChangesHelper GetDrawingBulkChangesHelper();
         IDrawingsToStandartShower GetDrawingsToStandartController();
         IListDocumentController GetDrawingsGridViewController(int? parentId);
+        IUppyDataImport GetSiemensLoaderController(int? parentId);
     }
 }

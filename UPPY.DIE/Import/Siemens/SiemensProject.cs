@@ -26,6 +26,8 @@ namespace UPPY.DIE.Import.Siemens
             }
         }
 
+        public List<string> FileNames { get; set; } = new List<string>(); 
+
         public SiemensProject Parent { get; set; }
         public List<SiemensProject> Positions { get; set; }
     }

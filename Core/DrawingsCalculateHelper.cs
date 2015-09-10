@@ -39,7 +39,7 @@ namespace Core
             var childrens = drawDataManager.GetListCollection(x => x.ParentId == drawing.Id);
             if (childrens.Any())
             {
-                var sumWeight = 0.0;
+                decimal sumWeight = 0;
                 foreach (var children in childrens)
                 {
                     RecalculateProjectByCount(children, drawDataManager);

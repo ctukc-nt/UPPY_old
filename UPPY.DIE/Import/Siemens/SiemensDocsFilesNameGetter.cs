@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,7 +5,7 @@ using UPPY.DIE.Import.Siemens.Interfaces;
 
 namespace UPPY.DIE.Import.Siemens
 {
-    public class SiemensXmlDataFilesNameGetter : IFilesNameGetter
+    public class SiemensDocsFilesNameGetter : IFilesNameGetter
     {
         /// <summary>
         ///     Директория поиска
@@ -43,9 +42,8 @@ namespace UPPY.DIE.Import.Siemens
 
         public string GetFileByNameDrawing(string name)
         {
-            var pathData = Path.Combine(LocationDirectory, "BOM_data");
-            var dataFilesPatch = new List<string>(Directory.GetFiles(pathData, "*.xml", SearchOption.AllDirectories));
-            var fileName = dataFilesPatch.FirstOrDefault(x => x.Replace(pathData, String.Empty).Contains(name));
+            var fileName = GetFilesByNameDrawing(name).FirstOrDefault();
+
             if (string.IsNullOrEmpty(fileName))
             {
                 throw new FileNotFoundException(name, fileName);
@@ -58,7 +56,20 @@ namespace UPPY.DIE.Import.Siemens
 
         public List<string> GetFilesByNameDrawing(string name)
         {
-            throw new System.NotImplementedException();
+            var pathDataBom = Path.Combine(LocationDirectory, "BOM");
+            var pathDataDoc = Path.Combine(LocationDirectory, "Doc");
+
+            var dataFilesPatchBom = new List<string>(Directory.GetFiles(pathDataBom, "*.pdf", SearchOption.AllDirectories));
+            dataFilesPatchBom.AddRange(Directory.GetFiles(pathDataBom, "*.tif*", SearchOption.AllDirectories));
+
+            var dataFilesPatchDoc = new List<string>(Directory.GetFiles(pathDataDoc, "*.pdf", SearchOption.AllDirectories));
+            dataFilesPatchDoc.AddRange(Directory.GetFiles(pathDataDoc, "*.tif*", SearchOption.AllDirectories));
+
+            var searchName = name.Replace(" ", "_").Replace("-", "_");
+
+            var files = dataFilesPatchBom.Where(x => x.Replace(pathDataBom, string.Empty).Contains(searchName)).Union(dataFilesPatchDoc.Where(y => y.Replace(pathDataDoc, string.Empty).Contains(searchName))).ToList();
+
+            return files;
         }
     }
 }

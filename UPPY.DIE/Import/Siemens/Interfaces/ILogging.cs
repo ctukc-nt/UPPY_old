@@ -5,6 +5,8 @@ namespace UPPY.DIE.Import.Siemens.Interfaces
     /// </summary>
     public interface ILogging
     {
+        bool ErrorHappens { get; set; }
+
         /// <summary>
         /// Добавить сообщение в лог
         /// </summary>

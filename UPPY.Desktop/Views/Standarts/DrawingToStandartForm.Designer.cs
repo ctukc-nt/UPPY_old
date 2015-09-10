@@ -88,7 +88,7 @@
             this.wpGrouppedPositions,
             this.completionWizardPage});
             this.wcStandarts.PreviousText = "< &Назад";
-            this.wcStandarts.Size = new System.Drawing.Size(889, 499);
+            this.wcStandarts.Size = new System.Drawing.Size(754, 458);
             this.wcStandarts.Text = "Создание норм на основании сборки";
             this.wcStandarts.SelectedPageChanging += new DevExpress.XtraWizard.WizardPageChangingEventHandler(this.wizardControl1_SelectedPageChanging);
             // 
@@ -97,7 +97,7 @@
             this.welcomeWizardPage.IntroductionText = "Создание норм на основании сборки";
             this.welcomeWizardPage.Name = "welcomeWizardPage";
             this.welcomeWizardPage.ProceedText = "Для продолжения, нажмите Далее";
-            this.welcomeWizardPage.Size = new System.Drawing.Size(672, 389);
+            this.welcomeWizardPage.Size = new System.Drawing.Size(537, 348);
             this.welcomeWizardPage.Text = "";
             // 
             // completionWizardPage
@@ -105,7 +105,7 @@
             this.completionWizardPage.FinishText = "Создание норм завершено";
             this.completionWizardPage.Name = "completionWizardPage";
             this.completionWizardPage.ProceedText = "Для сохранения нажмите Готово";
-            this.completionWizardPage.Size = new System.Drawing.Size(672, 366);
+            this.completionWizardPage.Size = new System.Drawing.Size(537, 325);
             this.completionWizardPage.Text = "Завершение";
             // 
             // wpUngrouppedPositions
@@ -113,7 +113,7 @@
             this.wpUngrouppedPositions.Controls.Add(this.gcUngPositions);
             this.wpUngrouppedPositions.DescriptionText = "Анализ по позиционно";
             this.wpUngrouppedPositions.Name = "wpUngrouppedPositions";
-            this.wpUngrouppedPositions.Size = new System.Drawing.Size(857, 354);
+            this.wpUngrouppedPositions.Size = new System.Drawing.Size(722, 313);
             this.wpUngrouppedPositions.Text = "Предварительный анализ";
             // 
             // gcUngPositions
@@ -122,7 +122,7 @@
             this.gcUngPositions.Location = new System.Drawing.Point(0, 0);
             this.gcUngPositions.MainView = this.gridView1;
             this.gcUngPositions.Name = "gcUngPositions";
-            this.gcUngPositions.Size = new System.Drawing.Size(857, 354);
+            this.gcUngPositions.Size = new System.Drawing.Size(722, 313);
             this.gcUngPositions.TabIndex = 1;
             this.gcUngPositions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -226,7 +226,7 @@
             this.wpGrouppedPositions.Controls.Add(this.gcGrpPositions);
             this.wpGrouppedPositions.DescriptionText = "Сгруппированные и просуммированные нормы ";
             this.wpGrouppedPositions.Name = "wpGrouppedPositions";
-            this.wpGrouppedPositions.Size = new System.Drawing.Size(857, 354);
+            this.wpGrouppedPositions.Size = new System.Drawing.Size(722, 313);
             this.wpGrouppedPositions.Text = "Сводные нормы";
             // 
             // gcGrpPositions
@@ -235,7 +235,7 @@
             this.gcGrpPositions.Location = new System.Drawing.Point(0, 0);
             this.gcGrpPositions.MainView = this.gridView2;
             this.gcGrpPositions.Name = "gcGrpPositions";
-            this.gcGrpPositions.Size = new System.Drawing.Size(857, 354);
+            this.gcGrpPositions.Size = new System.Drawing.Size(722, 313);
             this.gcGrpPositions.TabIndex = 2;
             this.gcGrpPositions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -338,7 +338,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(889, 499);
+            this.ClientSize = new System.Drawing.Size(754, 458);
             this.Controls.Add(this.wcStandarts);
             this.Name = "DrawingToStandartForm";
             this.Text = "DrawingToStandartForm";

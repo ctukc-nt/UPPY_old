@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using UPPY.DIE.Import.Siemens.Exceptions;
 using UPPY.DIE.Import.Siemens.Interfaces;
 
@@ -12,6 +14,7 @@ namespace UPPY.DIE.Import.Siemens
     public class SiemensProjectLoader
     {
         private readonly IArticlesFactory _articlesFactory;
+        private readonly IFilesNameGetter _docsFileName;
         public ILogging Log { get; set; }
 
         public SiemensProjectLoader(IArticlesFactory factory)
@@ -22,6 +25,13 @@ namespace UPPY.DIE.Import.Siemens
         public SiemensProjectLoader(IArticlesFactory factory, ILogging logger)
         {
             _articlesFactory = factory;
+            Log = logger;
+        }
+
+        public SiemensProjectLoader(IArticlesFactory factory, ILogging logger, IFilesNameGetter docsFileName)
+        {
+            _articlesFactory = factory;
+            _docsFileName = docsFileName;
             Log = logger;
         }
 
@@ -45,6 +55,26 @@ namespace UPPY.DIE.Import.Siemens
             }
         }
 
+        private void AppendErrorToLog(string error)
+        {
+            try
+            {
+                ErrorDuringLoad = true;
+
+
+                if (Log != null)
+                {
+                    Log.ErrorHappens = true;
+                    Log.AppendMessage(error);
+                }
+            }
+            catch (Exception)
+            {
+                // не зависеть от лога
+                // ignored
+            }
+        }
+
         /// <summary>
         /// Загрузить структуру проекта
         /// </summary>
@@ -55,24 +85,33 @@ namespace UPPY.DIE.Import.Siemens
                 ErrorDuringLoad = false;
                 var firstArticle = _articlesFactory.GetFirstArticle();
                 var structure = new SiemensProject { Article = firstArticle };
+                structure.FileNames = GetFileNames(firstArticle);
                 LoadStructureRecursiveWithLog(structure);
                 return structure;
             }
             catch (FileNotSearizableException ex)
             {
-                AppendMessageToLog("Невозможно загрузить стартовый файл, загрузка прервана.");
+                AppendErrorToLog("Невозможно загрузить стартовый файл. Загрузка прервана.");
                 return null;
             }
             catch (FileNotFoundException ex)
             {
-                AppendMessageToLog("Стартовый файл не найден, загрузка прервана.");
+                AppendErrorToLog(" Стартовый файл не найден. Загрузка прервана!");
                 return null;
             }
             catch (Exception ex)
             {
-                AppendMessageToLog(string.Format("{0}\n{1}", ex.Message, ex.StackTrace));
+                AppendErrorToLog(string.Format("{0}\n{1}", ex.Message, ex.StackTrace));
                 return null;
             }
+        }
+
+        private List<string> GetFileNames(Article article)
+        {
+            if (_docsFileName == null)
+                return new List<string>();
+
+            return _docsFileName.GetFilesByNameDrawing(article.Head.ARTPartID);
         }
 
         private void LoadStructureRecursiveWithLog(SiemensProject structure)
@@ -83,6 +122,7 @@ namespace UPPY.DIE.Import.Siemens
                 {
                     var firstArticle = _articlesFactory.GetArticle(position.ARTARTPartID);
                     var subStructure = new SiemensProject { Article = firstArticle, Parent = structure };
+                    subStructure.FileNames = GetFileNames(firstArticle);
                     structure.Positions.Add(subStructure);
                     LoadStructureRecursiveWithLog(subStructure);
                 }

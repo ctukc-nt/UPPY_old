@@ -70,6 +70,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
         public TreeListDrawingsControl()
         {
             InitializeComponent();
+            SetVisibleLevelsLine();
         }
 
         public TreeListDrawingsControl(IDrawingListController controller)

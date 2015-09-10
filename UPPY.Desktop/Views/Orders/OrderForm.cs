@@ -76,7 +76,10 @@ namespace UPPY.Desktop.Views.Orders
 
         private void fromSiemensToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _controller.LoadDataFromSiemens();
+            treeListDrawingsControl1.Controller = _controller.LoadDataFromSiemens();
+            treeListDrawingsControl1.ParentId = Document.DrawingId;
+            treeListDrawingsControl1.Refresh();
+
         }
     }
 }
