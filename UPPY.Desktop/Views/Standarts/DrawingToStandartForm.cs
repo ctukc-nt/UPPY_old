@@ -1,13 +1,15 @@
-﻿using System.Windows.Forms;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
 using Core.DomainModel;
+using DevExpress.XtraWizard;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 
 namespace UPPY.Desktop.Views.Standarts
 {
     public partial class DrawingToStandartForm : Form
     {
-        private IDrawingsToStandartController _controller;
-        private Standart _standart = null;
+        private readonly IDrawingsToStandartController _controller;
+        private Standart _standart;
 
         public DrawingToStandartForm(IDrawingsToStandartController controller)
         {
@@ -15,7 +17,7 @@ namespace UPPY.Desktop.Views.Standarts
             InitializeComponent();
         }
 
-        private void wizardControl1_SelectedPageChanging(object sender, DevExpress.XtraWizard.WizardPageChangingEventArgs e)
+        private void wizardControl1_SelectedPageChanging(object sender, WizardPageChangingEventArgs e)
         {
             if (e.Page == wpUngrouppedPositions)
             {
@@ -28,6 +30,11 @@ namespace UPPY.Desktop.Views.Standarts
                 _standart = _controller.GroupPositionsStandart(_standart);
                 gcUngPositions.DataSource = _standart.Positions;
             }
+        }
+
+        private void wcStandarts_FinishClick(object sender, CancelEventArgs e)
+        {
+            _controller.Save(_standart);
         }
     }
 }

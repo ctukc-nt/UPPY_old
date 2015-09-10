@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows.Forms;
 using Core.DomainModel;
 using Core.Interfaces;
@@ -33,7 +32,7 @@ namespace UPPY.Desktop.Concrete.Controllers.Common
         {
             storage.Drawings.Where(x => x.ParentId == null).Map(x => x.ParentId = _parentId);
 
-            foreach (var drawing in storage.Drawings.OrderBy(x => x.Id).AsParallel())
+            foreach (var drawing in storage.Drawings.OrderBy(x => x.Id))
             {
                 var oldId = drawing.Id;
                 drawing.Id = null;

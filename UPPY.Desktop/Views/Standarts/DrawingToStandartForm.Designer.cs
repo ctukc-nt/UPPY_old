@@ -91,6 +91,7 @@
             this.wcStandarts.Size = new System.Drawing.Size(754, 458);
             this.wcStandarts.Text = "Создание норм на основании сборки";
             this.wcStandarts.SelectedPageChanging += new DevExpress.XtraWizard.WizardPageChangingEventHandler(this.wizardControl1_SelectedPageChanging);
+            this.wcStandarts.FinishClick += new System.ComponentModel.CancelEventHandler(this.wcStandarts_FinishClick);
             // 
             // welcomeWizardPage
             // 

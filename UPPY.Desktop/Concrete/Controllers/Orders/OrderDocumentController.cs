@@ -46,15 +46,14 @@ namespace UPPY.Desktop.Concrete.Controllers.Orders
         {
             var drawing = new Drawing();
             _drawingDataManager.Insert(drawing);
-           
 
             var drawingsController = _controllersFactory.GetDrawingsListController(drawing.Id);
 
-            var loader = _controllersFactory.GetSiemensLoaderController(Document.DrawingId);
+            var loader = _controllersFactory.GetSiemensLoaderController(drawing.Id);
             if (loader.ShowDialog())
             {
-                Document.DrawingId = drawing.Id;
                 var doc = _drawingDataManager.GetDocument(Document.DrawingId);
+                Document.DrawingId = drawing.Id;
                 _drawingDataManager.Delete(doc);
                 return drawingsController;
             }
