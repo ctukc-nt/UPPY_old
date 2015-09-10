@@ -11,6 +11,8 @@ namespace UPPY.Desktop.Classes
     {
         private class LoggerLoad : List<string>,  ILogging
         {
+            public bool ErrorHappens { get; set; }
+
             public void AppendMessage(string message)
             {
                 Add(message);

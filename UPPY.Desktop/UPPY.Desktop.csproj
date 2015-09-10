@@ -69,6 +69,7 @@
     <Compile Include="Classes\NameMaterialSearch.cs" />
     <Compile Include="Classes\ProjectExcluder.cs" />
     <Compile Include="Classes\SiemensDataImport.cs" />
+    <Compile Include="Concrete\Controllers\Common\SiemensDataImportController.cs" />
     <Compile Include="Concrete\Controllers\Common\DrawingsToStandartController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\DrawingListController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\HierarchyNumberDrawingController.cs" />

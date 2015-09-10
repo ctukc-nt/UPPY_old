@@ -29,20 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportDrawingsForm));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            this.wizardControl1 = new DevExpress.XtraWizard.WizardControl();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            this.wcSiemensDataImport = new DevExpress.XtraWizard.WizardControl();
             this.welcomeWizardPage = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnPath = new DevExpress.XtraEditors.ButtonEdit();
             this.wpPreviewPackSiemens = new DevExpress.XtraWizard.WizardPage();
             this.waitPanel = new DevExpress.XtraWaitForm.ProgressPanel();
             this.rtbPreviewLoad = new System.Windows.Forms.RichTextBox();
-            this.completionWizardPage1 = new DevExpress.XtraWizard.CompletionWizardPage();
+            this.completionWizardPage = new DevExpress.XtraWizard.CompletionWizardPage();
             this.wpConvertedDataView = new DevExpress.XtraWizard.WizardPage();
-            this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.waitPanelConversion = new DevExpress.XtraWaitForm.ProgressPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.rtbConvertLog = new System.Windows.Forms.RichTextBox();
             this.tlDarwings = new DevExpress.XtraTreeList.TreeList();
             this.tlcName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcDesignation = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -59,8 +57,10 @@
             this.tlcWeigth = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcWeightAll = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repoTechRoutes = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).BeginInit();
-            this.wizardControl1.SuspendLayout();
+            this.rtbConvertLog = new System.Windows.Forms.RichTextBox();
+            this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.wcSiemensDataImport)).BeginInit();
+            this.wcSiemensDataImport.SuspendLayout();
             this.welcomeWizardPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPath.Properties)).BeginInit();
             this.wpPreviewPackSiemens.SuspendLayout();
@@ -73,23 +73,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.repoTechRoutes)).BeginInit();
             this.SuspendLayout();
             // 
-            // wizardControl1
+            // wcSiemensDataImport
             // 
-            this.wizardControl1.Controls.Add(this.welcomeWizardPage);
-            this.wizardControl1.Controls.Add(this.wpPreviewPackSiemens);
-            this.wizardControl1.Controls.Add(this.completionWizardPage1);
-            this.wizardControl1.Controls.Add(this.wpConvertedDataView);
-            this.wizardControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wizardControl1.Location = new System.Drawing.Point(0, 0);
-            this.wizardControl1.Name = "wizardControl1";
-            this.wizardControl1.Pages.AddRange(new DevExpress.XtraWizard.BaseWizardPage[] {
+            this.wcSiemensDataImport.Controls.Add(this.welcomeWizardPage);
+            this.wcSiemensDataImport.Controls.Add(this.wpPreviewPackSiemens);
+            this.wcSiemensDataImport.Controls.Add(this.completionWizardPage);
+            this.wcSiemensDataImport.Controls.Add(this.wpConvertedDataView);
+            this.wcSiemensDataImport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wcSiemensDataImport.Location = new System.Drawing.Point(0, 0);
+            this.wcSiemensDataImport.Name = "wcSiemensDataImport";
+            this.wcSiemensDataImport.Pages.AddRange(new DevExpress.XtraWizard.BaseWizardPage[] {
             this.welcomeWizardPage,
             this.wpPreviewPackSiemens,
             this.wpConvertedDataView,
-            this.completionWizardPage1});
-            this.wizardControl1.Size = new System.Drawing.Size(965, 550);
-            this.wizardControl1.NextClick += new DevExpress.XtraWizard.WizardCommandButtonClickEventHandler(this.wizardControl1_NextClick);
-            this.wizardControl1.CustomizeCommandButtons += new DevExpress.XtraWizard.WizardCustomizeCommandButtonsEventHandler(this.wizardControl1_CustomizeCommandButtons);
+            this.completionWizardPage});
+            this.wcSiemensDataImport.Size = new System.Drawing.Size(965, 550);
+            this.wcSiemensDataImport.FinishClick += new System.ComponentModel.CancelEventHandler(this.wizardControl1_FinishClick);
+            this.wcSiemensDataImport.NextClick += new DevExpress.XtraWizard.WizardCommandButtonClickEventHandler(this.wizardControl1_NextClick);
             // 
             // welcomeWizardPage
             // 
@@ -159,15 +159,20 @@
             this.rtbPreviewLoad.TabIndex = 0;
             this.rtbPreviewLoad.Text = "";
             // 
-            // completionWizardPage1
+            // completionWizardPage
             // 
-            this.completionWizardPage1.Name = "completionWizardPage1";
-            this.completionWizardPage1.Size = new System.Drawing.Size(748, 417);
+            this.completionWizardPage.FinishText = "По нажатию на кнопку Финиш произойдёт сохранение данных в базу.\r\nНажмите Назад дл" +
+    "я повторной проверки данных, Отмена - для отмены загрузки.";
+            this.completionWizardPage.Name = "completionWizardPage";
+            this.completionWizardPage.ProceedText = "";
+            this.completionWizardPage.Size = new System.Drawing.Size(748, 417);
+            this.completionWizardPage.Text = "Завершение работы мастера";
             // 
             // wpConvertedDataView
             // 
             this.wpConvertedDataView.Controls.Add(this.waitPanelConversion);
             this.wpConvertedDataView.Controls.Add(this.splitContainer1);
+            this.wpConvertedDataView.DescriptionText = "После обработки данных в окне отобразится результат";
             this.wpConvertedDataView.Name = "wpConvertedDataView";
             this.wpConvertedDataView.Size = new System.Drawing.Size(933, 405);
             this.wpConvertedDataView.Text = "Преобразование данных";
@@ -207,15 +212,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(933, 405);
             this.splitContainer1.SplitterDistance = 312;
             this.splitContainer1.TabIndex = 3;
-            // 
-            // rtbConvertLog
-            // 
-            this.rtbConvertLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbConvertLog.Location = new System.Drawing.Point(0, 0);
-            this.rtbConvertLog.Name = "rtbConvertLog";
-            this.rtbConvertLog.Size = new System.Drawing.Size(933, 89);
-            this.rtbConvertLog.TabIndex = 0;
-            this.rtbConvertLog.Text = "";
             // 
             // tlDarwings
             // 
@@ -387,21 +383,30 @@
             this.repoTechRoutes.AutoHeight = false;
             this.repoTechRoutes.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", "showlist", null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "", "showlist", null, true)});
             this.repoTechRoutes.DisplayMember = "Name";
             this.repoTechRoutes.Name = "repoTechRoutes";
             this.repoTechRoutes.ValueMember = "Id";
+            // 
+            // rtbConvertLog
+            // 
+            this.rtbConvertLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbConvertLog.Location = new System.Drawing.Point(0, 0);
+            this.rtbConvertLog.Name = "rtbConvertLog";
+            this.rtbConvertLog.Size = new System.Drawing.Size(933, 89);
+            this.rtbConvertLog.TabIndex = 0;
+            this.rtbConvertLog.Text = "";
             // 
             // ImportDrawingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(965, 550);
-            this.Controls.Add(this.wizardControl1);
+            this.Controls.Add(this.wcSiemensDataImport);
             this.Name = "ImportDrawingsForm";
             this.Text = "ImportDrawingsForm";
-            ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).EndInit();
-            this.wizardControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.wcSiemensDataImport)).EndInit();
+            this.wcSiemensDataImport.ResumeLayout(false);
             this.welcomeWizardPage.ResumeLayout(false);
             this.welcomeWizardPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPath.Properties)).EndInit();
@@ -419,10 +424,10 @@
 
         #endregion
 
-        private DevExpress.XtraWizard.WizardControl wizardControl1;
+        private DevExpress.XtraWizard.WizardControl wcSiemensDataImport;
         private DevExpress.XtraWizard.WelcomeWizardPage welcomeWizardPage;
         private DevExpress.XtraWizard.WizardPage wpPreviewPackSiemens;
-        private DevExpress.XtraWizard.CompletionWizardPage completionWizardPage1;
+        private DevExpress.XtraWizard.CompletionWizardPage completionWizardPage;
         private DevExpress.XtraEditors.ButtonEdit btnPath;
         private System.Windows.Forms.FolderBrowserDialog folderBrowser;
         private DevExpress.XtraEditors.LabelControl labelControl1;

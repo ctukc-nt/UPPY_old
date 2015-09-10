@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.Skins;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraWizard;
 using UPPY.Desktop.Classes;
-using UPPY.Desktop.Interfaces.Common;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.DIE.Import.Siemens;
 using UPPY.DIE.Import.Siemens.Interfaces;
@@ -17,6 +16,7 @@ namespace UPPY.Desktop.Views.Drawings
     {
         private string _pathFolder = string.Empty;
         private SiemensProject _project;
+        private TempDrawingsStorage _storage;
 
         public ImportDrawingsForm()
         {
@@ -37,13 +37,9 @@ namespace UPPY.Desktop.Views.Drawings
             {
                 wpPreviewPackSiemens.Enabled = false;
                 var logger = new LoggerLoad();
-                var filesNameGetter = new SiemensXmlDataFilesNameGetter { LocationDirectory = _pathFolder };
-
-                var docFilesGetter = new SiemensDocsFilesNameGetter { LocationDirectory = _pathFolder };
                 SiemensProject project = null;
-                var filesArticlesFactory = new FilesArticlesFactory(filesNameGetter);
-                var siemensProjectLoader = new SiemensProjectLoader(filesArticlesFactory, logger, docFilesGetter);
-                var task = new Task(() => { project = siemensProjectLoader.LoadStructureProject(); });
+
+                var task = new Task(() => { project = Controller.LoadStructureSiemens(_pathFolder, logger); });
 
                 waitPanel.Visible = true;
                 wpPreviewPackSiemens.AllowNext = false;
@@ -59,14 +55,12 @@ namespace UPPY.Desktop.Views.Drawings
 
                 wpPreviewPackSiemens.Enabled = true;
 
-                if (siemensProjectLoader.ErrorDuringLoad)
+                foreach (var mess in logger)
                 {
-                    foreach (var mess in logger)
-                    {
-                        rtbPreviewLoad.AppendText(string.Format("{0}\n\r", mess));
-                    }
+                    rtbPreviewLoad.AppendText(string.Format("{0}\n\r", mess));
                 }
-                else
+
+                if (!logger.ErrorHappens)
                 {
                     _project = project;
                     wpPreviewPackSiemens.AllowNext = true;
@@ -83,31 +77,15 @@ namespace UPPY.Desktop.Views.Drawings
                 waitPanelConversion.Visible = true;
 
                 LoggerLoad logger = new LoggerLoad();
-                var converter = new ConverterSiemensProject(logger);
-                MaterialParser parser = new MaterialParser();
-                ProjectExcluder excluder = new ProjectExcluder();
-                NameMatSearcherStubber searcher = new NameMatSearcherStubber();
-                FieldsNormalizer normalizer = new FieldsNormalizer();
-                converter.ExcluderProject = excluder;
-                converter.Log = logger;
-                converter.MaterialParser = parser;
-                converter.NameMaterialSearch = searcher;
-                converter.Normalizer = normalizer;
-                TempDrawingsStorage storage = null;
-
-                wpConvertedDataView.AllowNext = false;
-                wpConvertedDataView.AllowBack = false;
-                wpConvertedDataView.AllowCancel = false;
-
-                var task = new Task(() => { storage = converter.ConvertSiemensProjectToDomainModel(_project); });
+                var task = new Task(() => { _storage = Controller.ConvertSiemensToDrawings(_project, logger); });
                
                 task.Start();
                 await task;
 
                 waitPanelConversion.Visible = false;
-                if (storage != null)
+                if (_storage != null)
                 {
-                    tlDarwings.DataSource = storage.Drawings;
+                    tlDarwings.DataSource = _storage.Drawings;
                 }
 
                 foreach (var mess in logger)
@@ -139,20 +117,10 @@ namespace UPPY.Desktop.Views.Drawings
             }
         }
 
-        private void wizardControl1_CustomizeCommandButtons(object sender, CustomizeCommandButtonsEventArgs e)
-        {
-        }
-
-        private class NameMatSearcherStubber : INameMaterialSearch
-        {
-            public string GetNameMaterialByGost(string gost)
-            {
-                return String.Empty;
-            }
-        }
-
         private class LoggerLoad : List<string>, ILogging
         {
+            public bool ErrorHappens { get; set; }
+
             public void AppendMessage(string message)
             {
                 Add(message);
@@ -162,6 +130,11 @@ namespace UPPY.Desktop.Views.Drawings
             {
                 base.Clear();
             }
+        }
+
+        private void wizardControl1_FinishClick(object sender, CancelEventArgs e)
+        {
+            Controller.SaveDrawingsToDataBase(_storage);
         }
     }
 }
