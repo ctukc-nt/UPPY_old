@@ -33,5 +33,33 @@ namespace UPPY.Desktop.Classes
                 return numberBySpec;
             }
         }
+
+        public string SetEmptySpacesGost(string gost)
+        {
+            var result = gost;
+            result = result.Replace(" ", "");
+            if (result.ToUpper().Contains("ГОСТ"))
+            {
+                result = result.Replace("ГОСТ", "ГОСТ ");
+            }
+
+            if (result.ToUpper().Contains("SN"))
+            {
+                result = result.Replace("SN", "SN ");
+            }
+
+            if (result.ToUpper().Contains("DIN"))
+            {
+                result = result.Replace("DIN", "DIN ");
+            }
+
+            if (result.ToUpper().Contains("GOST"))
+            {
+                result = result.Replace("ГОСТ", "ГОСТ ");
+            }
+
+            return result;
+
+        }
     }
 }

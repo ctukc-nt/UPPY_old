@@ -6,7 +6,6 @@ using Core.DomainModel;
 using DevExpress.Skins;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
-using DevExpress.XtraTreeList.ViewInfo;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
 
 namespace UPPY.Desktop.Views.Controls.Drawings
@@ -70,6 +69,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
         public TreeListDrawingsControl()
         {
             InitializeComponent();
+            SetVisibleLevelsLine();
         }
 
         public TreeListDrawingsControl(IDrawingListController controller)
@@ -220,7 +220,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             tlDarwings.RefreshDataSource();
         }
 
-        private void tlDarwings_CellValueChanged(object sender, DevExpress.XtraTreeList.CellValueChangedEventArgs e)
+        private void tlDarwings_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             var data = tlDarwings.GetDataRecordByNode(e.Node);
 

@@ -146,9 +146,9 @@ namespace UPPY.Desktop.Classes
         {
             try
             {
-                return Convert.ToInt32(str);
+                return Convert.ToInt32(Convert.ToDecimal(str.Replace(".", DecimalSeparator).Replace(",", DecimalSeparator)));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return 0;
             }

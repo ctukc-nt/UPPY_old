@@ -45,61 +45,69 @@ namespace UPPY.Desktop.Classes
         /// </summary>
         public IProjectExcluder ExcluderProject { get; set; }
 
-        public Drawing ConvertSiemensProjectToDomainModel(SiemensProject siemensProject)
+        public TempDrawingsStorage ConvertSiemensProjectToDomainModel(SiemensProject siemensProject)
         {
+            var drawSotrage = new TempDrawingsStorage();
             var project = new Drawing { Count = 1, CountAll = 1 };
-            LoadFromArticle(siemensProject, project);
-            return project;
+            LoadFromArticle(siemensProject, project, drawSotrage);
+            return drawSotrage;
         }
 
-        private void LoadFromArticle(SiemensProject siemensProject, Drawing above)
+        private void LoadFromArticle(SiemensProject siemensProject, Drawing drawing, TempDrawingsStorage drawStorage)
         {
             var childrenProject = new List<Drawing>();
 
-            above.Name = string.Format("{0} {1}", siemensProject.Article.Head.ARTName, siemensProject.Article.Head.ARTNameRem).Trim();
-            above.Designation = siemensProject.Article.Head.ARTPartID.Trim();
-            //above.Dimension = string.Empty;
-            above.GostOnMaterial = string.Empty;
-            above.GostOnSort = string.Empty;
-            above.MarkSteal = string.Empty;
-            above.StandartSize = string.Empty;
-            above.Profile = string.Empty;
+            drawing.Name = string.Format("{0} {1}", siemensProject.Article.Head.ARTName, siemensProject.Article.Head.ARTNameRem).Trim();
+            drawing.Designation = siemensProject.Article.Head.ARTPartID.Trim();
+            //drawing.Dimension = string.Empty;
+            drawing.GostOnMaterial = string.Empty;
+            drawing.GostOnSort = string.Empty;
+            drawing.MarkSteal = string.Empty;
+            drawing.StandartSize = string.Empty;
+            drawing.Profile = string.Empty;
 
             if (siemensProject.Article.BOM.Length == 1 && siemensProject.Article.BOM[0].ARTARTPartID.Contains("#"))
             {
                 //для проектов состоящих из одного подпроекта, являющегося терминальным - загоняем всю инфу в проект
                 var position = siemensProject.Article.BOM[0];
 
-                above.Weight = Convert.ToDecimal(siemensProject.Article.Head.ARTWeight)/
-                               Convert.ToInt32(position.ARTARTQuant)/1000;
-                above.CountAll = above.CountAll*Convert.ToInt32(position.ARTARTQuant);
-                above.WeightAll = above.Weight*above.CountAll;
-                above.Count = Convert.ToInt32(position.ARTARTQuant);
+                drawing.Weight = Convert.ToDecimal(siemensProject.Article.Head.ARTWeight) /
+                               Convert.ToInt32(position.ARTARTQuant) / 1000;
+                drawing.CountAll = drawing.CountAll * Convert.ToInt32(position.ARTARTQuant);
+                drawing.WeightAll = drawing.Weight * drawing.CountAll;
+                drawing.Count = Convert.ToInt32(position.ARTARTQuant) * drawing.Count;
 
                 try
                 {
-                    above.Length = MaterialParser.GetLength(position);
-                    above.Width = MaterialParser.GetWidth(position);
+                    drawing.Length = MaterialParser.GetLength(position);
+                    drawing.Width = MaterialParser.GetWidth(position);
                 }
                 catch (Exception ex)
                 {
                     AppendMessageToLog(ex.Message);
                 }
 
-                above.GostOnSort = MaterialParser.GetGOSTS(position);
-                above.StandartSize = MaterialParser.GetStandartSize(position);
-                above.Designation = MaterialParser.GetDesignation(position) == string.Empty ? above.Designation : MaterialParser.GetDesignation(position);
-                above.MarkSteal = MaterialParser.GetMarkSteal(position);
-                above.Profile = NameMaterialSearch.GetNameMaterialByGost(above.GostOnSort);
-                above.MarkSteal = Normalizer.RemoveUnUseInfoAboutMarkSteal(above.MarkSteal);
+                drawing.GostOnSort = Normalizer.SetEmptySpacesGost(MaterialParser.GetGOSTS(position));
+                drawing.StandartSize = MaterialParser.GetStandartSize(position);
+                drawing.Designation = MaterialParser.GetDesignation(position) == string.Empty ? drawing.Designation : MaterialParser.GetDesignation(position);
+                drawing.MarkSteal = MaterialParser.GetMarkSteal(position);
+                drawing.Profile = NameMaterialSearch.GetNameMaterialByGost(drawing.GostOnSort);
+                drawing.MarkSteal = Normalizer.RemoveUnUseInfoAboutMarkSteal(drawing.MarkSteal);
+
+                drawStorage.Add(drawing);
             }
             else
             {
+                drawStorage.Add(drawing);
+
                 foreach (var position in siemensProject.Article.BOM.Where(x => (ExcluderProject != null && !ExcluderProject.IsNeedExclude(x)) || ExcluderProject == null))
                 {
                     var subProject = new Drawing();
+
+                    subProject.ParentId = drawing.Id;
+
                     subProject.Count = Convert.ToInt32(position.ARTARTQuant);
-                    subProject.CountAll = subProject.Count*above.CountAll;
+                    subProject.CountAll = subProject.Count * drawing.CountAll;
                     subProject.Note = string.Empty;
                     subProject.NumberOnSpec = Normalizer.NormalizePositionNumber(position.ARTARTPosNo);
                     subProject.Profile = string.Empty;
@@ -112,7 +120,7 @@ namespace UPPY.Desktop.Classes
 
                         if (subProject.Designation == string.Empty)
                         {
-                            subProject.Designation = string.Format("{0} поз. {1}", above.Designation, subProject.NumberOnSpec).Trim();
+                            subProject.Designation = string.Format("{0} поз. {1}", drawing.Designation, subProject.NumberOnSpec).Trim();
                         }
 
                         try
@@ -125,18 +133,19 @@ namespace UPPY.Desktop.Classes
                             AppendMessageToLog(ex.Message);
                         }
 
-                        subProject.GostOnSort = MaterialParser.GetGOSTS(position);
+                        subProject.GostOnSort = Normalizer.SetEmptySpacesGost(MaterialParser.GetGOSTS(position));
                         subProject.StandartSize = MaterialParser.GetStandartSize(position);
                         subProject.Designation = MaterialParser.GetDesignation(position) == string.Empty ? subProject.Designation : MaterialParser.GetDesignation(position);
                         subProject.MarkSteal = MaterialParser.GetMarkSteal(position);
                         subProject.Profile = NameMaterialSearch.GetNameMaterialByGost(subProject.GostOnSort);
                         //subProject.Dimension = string.Empty;
                         subProject.GostOnMaterial = string.Empty;
-                        subProject.Weight = Convert.ToDecimal(position.ARTARTPosWeight)/1000/subProject.Count;
-                        subProject.WeightAll = subProject.CountAll*subProject.Weight;
+                        subProject.Weight = Convert.ToDecimal(position.ARTARTPosWeight) / 1000 / subProject.Count;
+                        subProject.WeightAll = subProject.CountAll * subProject.Weight;
                         subProject.MarkSteal = Normalizer.RemoveUnUseInfoAboutMarkSteal(subProject.MarkSteal);
 
                         childrenProject.Add(subProject);
+                        drawStorage.Add(subProject);
                     }
                     else
                     {
@@ -147,7 +156,7 @@ namespace UPPY.Desktop.Classes
                                 siemensProject.Positions.FirstOrDefault(
                                     x => x.Article.Head.ARTPartID.Contains(position.ARTARTPartID));
 
-                            LoadFromArticle(subSiemensProject, subProject);
+                            LoadFromArticle(subSiemensProject, subProject, drawStorage);
 
                             childrenProject.Add(subProject);
                         }
@@ -167,16 +176,16 @@ namespace UPPY.Desktop.Classes
                     }
                 }
 
-                above.WeightAll = childrenProject.Sum(x => x.WeightAll);
+                drawing.WeightAll = childrenProject.Sum(x => x.WeightAll);
             }
 
-            if (Math.Round(above.WeightAll) == 0)
+            if (Math.Round(drawing.WeightAll) == 0)
             {
-                above.WeightAll = Convert.ToDecimal(siemensProject.Article.Head.ARTWeight)*above.CountAll/1000;
+                drawing.WeightAll = Convert.ToDecimal(siemensProject.Article.Head.ARTWeight) * drawing.CountAll / 1000;
             }
 
-            above.Weight = above.WeightAll/above.CountAll;
-            //above.SubProjects = childrenProject;
+            drawing.Weight = drawing.WeightAll / drawing.CountAll;
+            //drawing.SubProjects = childrenProject;
         }
 
         private void AppendMessageToLog(string message)
@@ -194,5 +203,23 @@ namespace UPPY.Desktop.Classes
                 // ignored
             }
         }
+    }
+
+    public class TempDrawingsStorage
+    {
+        private int _count = 1;
+
+        private List<Drawing> _drawings = new List<Drawing>();
+
+        public IEnumerable<Drawing> Drawings { get { return _drawings; } }
+
+        public void Add(Drawing drawing)
+        {
+            _drawings.Add(drawing);
+            drawing.Id = _count++;
+        }
+
+
+
     }
 }

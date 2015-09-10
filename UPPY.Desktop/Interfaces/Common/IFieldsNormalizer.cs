@@ -4,5 +4,6 @@ namespace UPPY.Desktop.Interfaces.Common
     {
         string RemoveUnUseInfoAboutMarkSteal(string markSteal);
         string NormalizePositionNumber(string numberBySpec);
+        string SetEmptySpacesGost(string gost);
     }
 }
