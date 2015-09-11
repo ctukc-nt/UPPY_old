@@ -7,7 +7,6 @@ using UPPY.Desktop.Concrete.Controllers.Orders;
 using UPPY.Desktop.Concrete.Controllers.Standarts;
 using UPPY.Desktop.Concrete.Controllers.TechRoutes;
 using UPPY.Desktop.Interfaces.Common;
-using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
 using UPPY.Desktop.Interfaces.Controllers.Orders;
@@ -36,7 +35,7 @@ namespace UPPY.Desktop.Factorys
                 return new OrderListController(this, _dataManagersFactory.GetDataManager<Order>(), _dataManagersFactory.GetDataManager<Drawing>());
 
             if (typeof(T) == typeof(Standart))
-                return new StandartsListController();
+                return new StandartsListController(this, _dataManagersFactory.GetDataManager<Standart>());
 
             return null;
         }

@@ -29,67 +29,70 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gcStandarts = new DevExpress.XtraGrid.GridControl();
             this.standartBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colUtilizationRatio = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDrawing = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gvStandarts = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDrawing = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colUtilizationRatio = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcStandarts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.standartBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvStandarts)).BeginInit();
             this.SuspendLayout();
             // 
-            // gridControl1
+            // gcStandarts
             // 
-            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gcStandarts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.DataSource = this.standartBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(12, 12);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(844, 459);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gcStandarts.DataSource = this.standartBindingSource;
+            this.gcStandarts.Location = new System.Drawing.Point(12, 12);
+            this.gcStandarts.MainView = this.gvStandarts;
+            this.gcStandarts.Name = "gcStandarts";
+            this.gcStandarts.Size = new System.Drawing.Size(844, 459);
+            this.gcStandarts.TabIndex = 0;
+            this.gcStandarts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvStandarts});
             // 
             // standartBindingSource
             // 
             this.standartBindingSource.DataSource = typeof(Core.DomainModel.Standart);
             // 
-            // gridView1
+            // gvStandarts
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvStandarts.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colName,
             this.colDrawing,
             this.colUtilizationRatio,
             this.colId});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsDetail.EnableMasterViewMode = false;
-            // 
-            // colUtilizationRatio
-            // 
-            this.colUtilizationRatio.FieldName = "UtilizationRatio";
-            this.colUtilizationRatio.Name = "colUtilizationRatio";
-            this.colUtilizationRatio.Visible = true;
-            this.colUtilizationRatio.VisibleIndex = 0;
-            // 
-            // colDrawing
-            // 
-            this.colDrawing.FieldName = "Drawing";
-            this.colDrawing.Name = "colDrawing";
-            this.colDrawing.Visible = true;
-            this.colDrawing.VisibleIndex = 1;
+            this.gvStandarts.GridControl = this.gcStandarts;
+            this.gvStandarts.Name = "gvStandarts";
+            this.gvStandarts.OptionsDetail.EnableMasterViewMode = false;
             // 
             // colName
             // 
+            this.colName.Caption = "Наименование";
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
             this.colName.Visible = true;
             this.colName.VisibleIndex = 0;
+            // 
+            // colDrawing
+            // 
+            this.colDrawing.Caption = "Сброчная единица";
+            this.colDrawing.FieldName = "Drawing";
+            this.colDrawing.Name = "colDrawing";
+            this.colDrawing.Visible = true;
+            this.colDrawing.VisibleIndex = 2;
+            // 
+            // colUtilizationRatio
+            // 
+            this.colUtilizationRatio.Caption = "Коэф. использования";
+            this.colUtilizationRatio.FieldName = "UtilizationRatio";
+            this.colUtilizationRatio.Name = "colUtilizationRatio";
+            this.colUtilizationRatio.Visible = true;
+            this.colUtilizationRatio.VisibleIndex = 1;
             // 
             // colId
             // 
@@ -103,20 +106,21 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 483);
-            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.gcStandarts);
             this.Name = "StandartsListForm";
             this.Text = "StandartsListForm";
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            this.Load += new System.EventHandler(this.StandartsListForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gcStandarts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.standartBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvStandarts)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl gcStandarts;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvStandarts;
         private System.Windows.Forms.BindingSource standartBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colUtilizationRatio;
         private DevExpress.XtraGrid.Columns.GridColumn colDrawing;

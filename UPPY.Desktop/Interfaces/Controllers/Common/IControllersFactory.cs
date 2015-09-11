@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace UPPY.Desktop.Interfaces.Controllers
+namespace UPPY.Desktop.Interfaces.Controllers.Common
 {
     public interface IControllersFactory
     {

@@ -80,7 +80,7 @@
     <Compile Include="Concrete\Controllers\Drawings\HierarchyNumberDrawingController.cs" />
     <Compile Include="Concrete\Controllers\Orders\OrderDocumentController.cs" />
     <Compile Include="Concrete\Controllers\Orders\OrderListController.cs" />
-    <Compile Include="Concrete\Controllers\Standarts\Class1.cs" />
+    <Compile Include="Concrete\Controllers\Standarts\StandartController.cs" />
     <Compile Include="Concrete\Controllers\Standarts\StandartsListController.cs" />
     <Compile Include="Concrete\DataManager\Drawings\DrawingsFilteredDataManager.cs" />
     <Compile Include="Concrete\DataManager\Drawings\HierarchyDrawingsDataManager.cs" />

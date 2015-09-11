@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using Core.DomainModel;
 using Core.Interfaces;
-using UPPY.Desktop.Interfaces.Controllers;
+using ObjectExtensions.Copy;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
-using UPPY.Desktop.Views.Drawings;
 
 namespace UPPY.Desktop.Concrete.Controllers.Drawings
 {
@@ -115,7 +114,7 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
         private int? CopyDrawingToAnotherParent(int? idSource, int? idNewParent)
         {
             var sourceDrawing = _drawingsDataManager.GetDocument(idSource);
-            var copySource = ObjectExtensions.Copy.CopyExtensions.Copy(sourceDrawing);
+            var copySource = CopyExtensions.Copy(sourceDrawing);
             if (copySource != null)
             {
                 copySource.ParentId = idNewParent;
