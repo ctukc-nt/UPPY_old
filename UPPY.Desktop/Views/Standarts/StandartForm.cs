@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Core.DomainModel;
 using UPPY.Desktop.Interfaces.Controllers.Standarts;
@@ -15,13 +8,13 @@ namespace UPPY.Desktop.Views.Standarts
 {
     public partial class StandartForm : Form
     {
-        private IStandartController _controller;
+        private readonly IStandartController _controller;
 
         public StandartForm(IStandartController controller)
         {
             _controller = controller;
             InitializeComponent();
-            Standart = _controller.Standart;
+            Standart = _controller.Document;
         }
 
         public Standart Standart { get; set; }

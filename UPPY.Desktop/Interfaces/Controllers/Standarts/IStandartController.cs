@@ -4,6 +4,6 @@ namespace UPPY.Desktop.Interfaces.Controllers.Standarts
 {
     public interface IStandartController
     {
-        Standart Standart { get; set; }
+        Standart Document { get; set; }
     }
 }

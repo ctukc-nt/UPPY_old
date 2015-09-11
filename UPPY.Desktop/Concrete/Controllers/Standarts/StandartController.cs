@@ -1,10 +1,19 @@
-﻿using Core.DomainModel;
+﻿using System.Windows.Forms;
+using Core.DomainModel;
+using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.Controllers.Standarts;
+using UPPY.Desktop.Views.Standarts;
 
 namespace UPPY.Desktop.Concrete.Controllers.Standarts
 {
-    public class StandartController : IStandartController
+    public class StandartController : IStandartController, IDocumentController<Standart>
     {
-        public Standart Standart { get; set; }
+        public bool ShowViewDialog()
+        {
+            var form = new StandartForm(this);
+            return form.ShowDialog() == DialogResult.OK;
+        }
+
+        public Standart Document { get; set; }
     }
 }
