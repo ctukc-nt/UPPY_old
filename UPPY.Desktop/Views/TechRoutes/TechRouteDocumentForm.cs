@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Core.DomainModel;
-using UPPY.Desktop.Interfaces;
-using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Interfaces.Controllers.TechRoutes;
 using UPPY.Desktop.Interfaces.Views;
 

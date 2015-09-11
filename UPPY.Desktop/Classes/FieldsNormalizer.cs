@@ -48,6 +48,11 @@ namespace UPPY.Desktop.Classes
                 result = result.Replace("SN", "SN ");
             }
 
+            if (result.ToUpper().Contains("EN"))
+            {
+                result = result.Replace("EN", "EN ");
+            }
+
             if (result.ToUpper().Contains("DIN"))
             {
                 result = result.Replace("DIN", "DIN ");

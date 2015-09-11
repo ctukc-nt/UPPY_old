@@ -48,7 +48,7 @@ namespace UPPY.Desktop.Factorys
             if (typeof(T) == typeof(Drawing))
                 return (IDocumentController<T>)new DrawingController(this);
 
-            if (typeof(T) == typeof(Drawing))
+            if (typeof(T) == typeof(Standart))
                 return (IDocumentController<T>)new StandartController();
 
             return null;
