@@ -38,5 +38,17 @@ namespace UPPY.Desktop.Concrete.Controllers.Standarts
         {
             _standartDataManager.InsertOrUpdate(document);
         }
+
+        public void EditDocumentInAnotherWindow(Standart doc)
+        {
+            var docController = _factory.GetDocumentController<Standart>();
+            docController.Document = doc;
+            docController.ShowViewDialog();
+        }
+
+        public void Delete(Standart doc)
+        {
+            _standartDataManager.Delete(doc);
+        }
     }
 }

@@ -8,5 +8,7 @@ namespace UPPY.Desktop.Interfaces.Controllers.Standarts
         List<Standart> GetStandartsList();
         Standart CreateDocument();
         void Save(Standart document);
+        void EditDocumentInAnotherWindow(Standart doc);
+        void Delete(Standart doc);
     }
 }
