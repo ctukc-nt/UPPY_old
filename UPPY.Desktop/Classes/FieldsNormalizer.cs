@@ -58,6 +58,11 @@ namespace UPPY.Desktop.Classes
                 result = result.Replace("ГОСТ", "ГОСТ ");
             }
 
+            if (result.ToUpper().Contains("ISO"))
+            {
+                result = result.Replace("ISO", "ISO ");
+            }
+
             return result;
 
         }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TreeListDrawingsControl));
             this.tlDarwings = new DevExpress.XtraTreeList.TreeList();
@@ -53,7 +54,7 @@
             this.btnShowAnotherView = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
-            this.toolTipController1 = new DevExpress.Utils.ToolTipController();
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             this.btnAddChild = new DevExpress.XtraEditors.SimpleButton();
             this.btnCopy = new DevExpress.XtraEditors.SimpleButton();
             this.btnPaste = new DevExpress.XtraEditors.SimpleButton();
@@ -213,6 +214,8 @@
             // 
             this.tlcWeigth.Caption = "Вес";
             this.tlcWeigth.FieldName = "Weight";
+            this.tlcWeigth.Format.FormatString = "n3";
+            this.tlcWeigth.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.tlcWeigth.Name = "tlcWeigth";
             this.tlcWeigth.Visible = true;
             this.tlcWeigth.VisibleIndex = 12;
@@ -222,6 +225,8 @@
             // 
             this.tlcWeightAll.Caption = "Вес всего";
             this.tlcWeightAll.FieldName = "WeightAll";
+            this.tlcWeightAll.Format.FormatString = "n3";
+            this.tlcWeightAll.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.tlcWeightAll.Name = "tlcWeightAll";
             this.tlcWeightAll.OptionsColumn.AllowEdit = false;
             this.tlcWeightAll.Visible = true;
@@ -280,7 +285,7 @@
             this.btnShowAnotherView.Size = new System.Drawing.Size(25, 28);
             this.btnShowAnotherView.TabIndex = 6;
             this.btnShowAnotherView.Text = "&O";
-            this.btnShowAnotherView.ToolTip = "Открыть в отделшьном окне";
+            this.btnShowAnotherView.ToolTip = "Открыть в отдельном окне";
             this.btnShowAnotherView.Click += new System.EventHandler(this.btnShowAnotherView_Click);
             // 
             // btnDelete

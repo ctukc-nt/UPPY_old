@@ -32,8 +32,9 @@
             this.welcomeWizardPage = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.completionWizardPage = new DevExpress.XtraWizard.CompletionWizardPage();
             this.wpUngrouppedPositions = new DevExpress.XtraWizard.WizardPage();
+            this.wpGrouppedPositions = new DevExpress.XtraWizard.WizardPage();
             this.gcUngPositions = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvPositions = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colProfile = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStandartSize = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGostOnSort = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -45,9 +46,8 @@
             this.colAdditionalMeasurementWithWaste = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTypeAdditionalMeasurement = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNote = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.wpGrouppedPositions = new DevExpress.XtraWizard.WizardPage();
             this.gcGrpPositions = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -62,11 +62,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.wcStandarts)).BeginInit();
             this.wcStandarts.SuspendLayout();
             this.wpUngrouppedPositions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcUngPositions)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.wpGrouppedPositions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcUngPositions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPositions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcGrpPositions)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // wcStandarts
@@ -117,20 +117,28 @@
             this.wpUngrouppedPositions.Size = new System.Drawing.Size(722, 313);
             this.wpUngrouppedPositions.Text = "Предварительный анализ";
             // 
+            // wpGrouppedPositions
+            // 
+            this.wpGrouppedPositions.Controls.Add(this.gcGrpPositions);
+            this.wpGrouppedPositions.DescriptionText = "Сгруппированные и просуммированные нормы ";
+            this.wpGrouppedPositions.Name = "wpGrouppedPositions";
+            this.wpGrouppedPositions.Size = new System.Drawing.Size(722, 313);
+            this.wpGrouppedPositions.Text = "Сводные нормы";
+            // 
             // gcUngPositions
             // 
             this.gcUngPositions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcUngPositions.Location = new System.Drawing.Point(0, 0);
-            this.gcUngPositions.MainView = this.gridView1;
+            this.gcUngPositions.MainView = this.gvPositions;
             this.gcUngPositions.Name = "gcUngPositions";
             this.gcUngPositions.Size = new System.Drawing.Size(722, 313);
             this.gcUngPositions.TabIndex = 1;
             this.gcUngPositions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gvPositions});
             // 
-            // gridView1
+            // gvPositions
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvPositions.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colProfile,
             this.colStandartSize,
             this.colGostOnSort,
@@ -142,11 +150,12 @@
             this.colAdditionalMeasurementWithWaste,
             this.colTypeAdditionalMeasurement,
             this.colNote});
-            this.gridView1.GridControl = this.gcUngPositions;
-            this.gridView1.Name = "gridView1";
+            this.gvPositions.GridControl = this.gcUngPositions;
+            this.gvPositions.Name = "gvPositions";
             // 
             // colProfile
             // 
+            this.colProfile.Caption = "Профиль";
             this.colProfile.FieldName = "Profile";
             this.colProfile.Name = "colProfile";
             this.colProfile.Visible = true;
@@ -154,6 +163,7 @@
             // 
             // colStandartSize
             // 
+            this.colStandartSize.Caption = "Типоразмер";
             this.colStandartSize.FieldName = "StandartSize";
             this.colStandartSize.Name = "colStandartSize";
             this.colStandartSize.Visible = true;
@@ -161,6 +171,7 @@
             // 
             // colGostOnSort
             // 
+            this.colGostOnSort.Caption = "ГОСТ на сортамент";
             this.colGostOnSort.FieldName = "GostOnSort";
             this.colGostOnSort.Name = "colGostOnSort";
             this.colGostOnSort.Visible = true;
@@ -168,6 +179,7 @@
             // 
             // colMarkSteal
             // 
+            this.colMarkSteal.Caption = "Марка стали";
             this.colMarkSteal.FieldName = "MarkSteal";
             this.colMarkSteal.Name = "colMarkSteal";
             this.colMarkSteal.Visible = true;
@@ -175,6 +187,7 @@
             // 
             // colUtilizationRatio
             // 
+            this.colUtilizationRatio.Caption = "Коэфф. исп.";
             this.colUtilizationRatio.FieldName = "UtilizationRatio";
             this.colUtilizationRatio.Name = "colUtilizationRatio";
             this.colUtilizationRatio.Visible = true;
@@ -182,6 +195,7 @@
             // 
             // colWeight
             // 
+            this.colWeight.Caption = "Вес";
             this.colWeight.FieldName = "Weight";
             this.colWeight.Name = "colWeight";
             this.colWeight.Visible = true;
@@ -189,6 +203,7 @@
             // 
             // colWeightWithWaste
             // 
+            this.colWeightWithWaste.Caption = "Вес с отходом";
             this.colWeightWithWaste.FieldName = "WeightWithWaste";
             this.colWeightWithWaste.Name = "colWeightWithWaste";
             this.colWeightWithWaste.Visible = true;
@@ -196,6 +211,7 @@
             // 
             // colAdditionalMeasurement
             // 
+            this.colAdditionalMeasurement.Caption = "Доп. ед. изм.";
             this.colAdditionalMeasurement.FieldName = "AdditionalMeasurement";
             this.colAdditionalMeasurement.Name = "colAdditionalMeasurement";
             this.colAdditionalMeasurement.Visible = true;
@@ -203,6 +219,7 @@
             // 
             // colAdditionalMeasurementWithWaste
             // 
+            this.colAdditionalMeasurementWithWaste.Caption = "Доп. ед. изм. с отх.";
             this.colAdditionalMeasurementWithWaste.FieldName = "AdditionalMeasurementWithWaste";
             this.colAdditionalMeasurementWithWaste.Name = "colAdditionalMeasurementWithWaste";
             this.colAdditionalMeasurementWithWaste.Visible = true;
@@ -210,6 +227,7 @@
             // 
             // colTypeAdditionalMeasurement
             // 
+            this.colTypeAdditionalMeasurement.Caption = "Тип доп. ед. изм.";
             this.colTypeAdditionalMeasurement.FieldName = "TypeAdditionalMeasurement";
             this.colTypeAdditionalMeasurement.Name = "colTypeAdditionalMeasurement";
             this.colTypeAdditionalMeasurement.Visible = true;
@@ -217,33 +235,26 @@
             // 
             // colNote
             // 
+            this.colNote.Caption = "Примечание";
             this.colNote.FieldName = "Note";
             this.colNote.Name = "colNote";
             this.colNote.Visible = true;
             this.colNote.VisibleIndex = 10;
             // 
-            // wpGrouppedPositions
-            // 
-            this.wpGrouppedPositions.Controls.Add(this.gcGrpPositions);
-            this.wpGrouppedPositions.DescriptionText = "Сгруппированные и просуммированные нормы ";
-            this.wpGrouppedPositions.Name = "wpGrouppedPositions";
-            this.wpGrouppedPositions.Size = new System.Drawing.Size(722, 313);
-            this.wpGrouppedPositions.Text = "Сводные нормы";
-            // 
             // gcGrpPositions
             // 
             this.gcGrpPositions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcGrpPositions.Location = new System.Drawing.Point(0, 0);
-            this.gcGrpPositions.MainView = this.gridView2;
+            this.gcGrpPositions.MainView = this.gridView1;
             this.gcGrpPositions.Name = "gcGrpPositions";
             this.gcGrpPositions.Size = new System.Drawing.Size(722, 313);
             this.gcGrpPositions.TabIndex = 2;
             this.gcGrpPositions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.gridView1});
             // 
-            // gridView2
+            // gridView1
             // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
@@ -255,11 +266,12 @@
             this.gridColumn9,
             this.gridColumn10,
             this.gridColumn11});
-            this.gridView2.GridControl = this.gcGrpPositions;
-            this.gridView2.Name = "gridView2";
+            this.gridView1.GridControl = this.gcGrpPositions;
+            this.gridView1.Name = "gridView1";
             // 
             // gridColumn1
             // 
+            this.gridColumn1.Caption = "Профиль";
             this.gridColumn1.FieldName = "Profile";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
@@ -267,6 +279,7 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.Caption = "Типоразмер";
             this.gridColumn2.FieldName = "StandartSize";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
@@ -274,6 +287,7 @@
             // 
             // gridColumn3
             // 
+            this.gridColumn3.Caption = "ГОСТ на сортамент";
             this.gridColumn3.FieldName = "GostOnSort";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
@@ -281,6 +295,7 @@
             // 
             // gridColumn4
             // 
+            this.gridColumn4.Caption = "Марка стали";
             this.gridColumn4.FieldName = "MarkSteal";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
@@ -288,6 +303,7 @@
             // 
             // gridColumn5
             // 
+            this.gridColumn5.Caption = "Коэфф. исп.";
             this.gridColumn5.FieldName = "UtilizationRatio";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
@@ -295,6 +311,7 @@
             // 
             // gridColumn6
             // 
+            this.gridColumn6.Caption = "Вес";
             this.gridColumn6.FieldName = "Weight";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
@@ -302,6 +319,7 @@
             // 
             // gridColumn7
             // 
+            this.gridColumn7.Caption = "Вес с отходом";
             this.gridColumn7.FieldName = "WeightWithWaste";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
@@ -309,6 +327,7 @@
             // 
             // gridColumn8
             // 
+            this.gridColumn8.Caption = "Доп. ед. изм.";
             this.gridColumn8.FieldName = "AdditionalMeasurement";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
@@ -316,6 +335,7 @@
             // 
             // gridColumn9
             // 
+            this.gridColumn9.Caption = "Доп. ед. изм. с отх.";
             this.gridColumn9.FieldName = "AdditionalMeasurementWithWaste";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
@@ -323,6 +343,7 @@
             // 
             // gridColumn10
             // 
+            this.gridColumn10.Caption = "Тип доп. ед. изм.";
             this.gridColumn10.FieldName = "TypeAdditionalMeasurement";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
@@ -330,6 +351,7 @@
             // 
             // gridColumn11
             // 
+            this.gridColumn11.Caption = "Примечание";
             this.gridColumn11.FieldName = "Note";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
@@ -346,11 +368,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.wcStandarts)).EndInit();
             this.wcStandarts.ResumeLayout(false);
             this.wpUngrouppedPositions.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gcUngPositions)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.wpGrouppedPositions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcUngPositions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPositions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcGrpPositions)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -363,7 +385,7 @@
         private DevExpress.XtraWizard.WizardPage wpUngrouppedPositions;
         private DevExpress.XtraWizard.WizardPage wpGrouppedPositions;
         private DevExpress.XtraGrid.GridControl gcUngPositions;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvPositions;
         private DevExpress.XtraGrid.Columns.GridColumn colProfile;
         private DevExpress.XtraGrid.Columns.GridColumn colStandartSize;
         private DevExpress.XtraGrid.Columns.GridColumn colGostOnSort;
@@ -376,7 +398,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTypeAdditionalMeasurement;
         private DevExpress.XtraGrid.Columns.GridColumn colNote;
         private DevExpress.XtraGrid.GridControl gcGrpPositions;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;

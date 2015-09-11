@@ -53,6 +53,14 @@ namespace UPPY.Desktop.Fake
                 return (IClassDataManager<T>)Data["or"];
             }
 
+            if (typeof(T) == typeof(Gost))
+            {
+                if (!Data.ContainsKey("go"))
+                    Data.Add("go", new GostClassFakeDataManager());
+
+                return (IClassDataManager<T>)Data["go"];
+            }
+
             return null;
         }
 

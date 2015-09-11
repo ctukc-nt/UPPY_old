@@ -38,8 +38,8 @@ namespace Core
             List<Gost> gosts)
         {
             var allChildrens = dataManager.GetListAllChildrens(headDrawing.Id);
-            var allParentId = allChildrens.Select(x => x.ParentId);
-            var allDetails = allChildrens.Where(x => allParentId.Any(y => y.HasValue && y.Value == x.Id));
+            var allParentId = allChildrens.Select(x => x.ParentId).Distinct();
+            var allDetails = allChildrens.AsParallel().Where(x => allParentId.FirstOrDefault(y => y != null && y.Value == x.Id) == null);
 
             var standart = new Standart();
 
@@ -66,7 +66,7 @@ namespace Core
                             string.Equals(x.Name.Replace(" ", ""), position.GostOnSort.Replace(" ", ""),
                                 StringComparison.CurrentCultureIgnoreCase));
 
-                if (gost == null )
+                if (gost == null)
                 {
                     if (ThrowExceptions)
                     {
@@ -81,7 +81,7 @@ namespace Core
                         continue;
                     }
                 }
-                
+
 
 
                 switch (gost.WeightMethodCalculate)
@@ -134,6 +134,7 @@ namespace Core
 
             return standart;
         }
+
 
         /// <summary>
         ///     Сгруппировать позиции нормы на сборку

@@ -28,7 +28,7 @@ namespace UPPY.Desktop.Views.Standarts
             if (e.Page == wpGrouppedPositions)
             {
                 _standart = _controller.GroupPositionsStandart(_standart);
-                gcUngPositions.DataSource = _standart.Positions;
+                gcGrpPositions.DataSource = _standart.Positions;
             }
         }
 
