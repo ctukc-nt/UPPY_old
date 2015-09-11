@@ -7,14 +7,13 @@ namespace UPPY.Desktop.Interfaces.Controllers.Common
 {
     public interface IUppyControllersFactory : IControllersFactory
     {
+        IListViewController GetViewListController<T>(int? id);
         IDrawingListController GetDrawingsListController(int? parentId);
         IDrawingListController GetDrawingsListController();
-        IListDocumentController GetDrawingsViewController(int? parentId);
-        IListDocumentController GetDrawingsViewController();
         IOrderListController GetOrdersListController();
         IDrawingBulkChangesHelper GetDrawingBulkChangesHelper();
         IDrawingsToStandartShower GetDrawingsToStandartController();
-        IListDocumentController GetDrawingsGridViewController(int? parentId);
+        IListViewController GetDrawingsGridViewController(int? parentId);
         IUppyDataImport GetSiemensLoaderController(int? parentId);
     }
 }

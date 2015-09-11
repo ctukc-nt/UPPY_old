@@ -5,16 +5,17 @@ using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.Controllers.Orders;
+using UPPY.Desktop.Views.Orders;
 
 namespace UPPY.Desktop.Concrete.Controllers.Orders
 {
-    public class OrderListController : IOrderListController
+    public class OrderListController : IOrderListController, IListViewController
     {
         private readonly IClassDataManager<Order> _orderDataManager;
         private readonly IClassDataManager<Drawing> _drawingDataManager;
         private readonly IUppyControllersFactory _factory;
 
-        public OrderListController(IClassDataManager<Order> orderDataManager,  IClassDataManager<Drawing> drawingDataManager, IUppyControllersFactory factory)
+        public OrderListController(IUppyControllersFactory factory, IClassDataManager<Order> orderDataManager,  IClassDataManager<Drawing> drawingDataManager)
         {
             _orderDataManager = orderDataManager;
             _drawingDataManager = drawingDataManager;
@@ -56,6 +57,12 @@ namespace UPPY.Desktop.Concrete.Controllers.Orders
         public void Delete(Order order)
         {
            _orderDataManager.Delete(order);
+        }
+
+        public void ShowViewDialog()
+        {
+            OrdersListForm form = new OrdersListForm(this);
+            form.ShowDialog();
         }
     }
 }

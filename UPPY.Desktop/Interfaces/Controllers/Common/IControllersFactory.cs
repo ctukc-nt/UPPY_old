@@ -9,7 +9,7 @@ namespace UPPY.Desktop.Interfaces.Controllers
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        IListDocumentController GetListController<T>();
+        IListViewController GetListController<T>();
 
         /// <summary>
         /// Получить контроллер редактирования документа
@@ -25,7 +25,7 @@ namespace UPPY.Desktop.Interfaces.Controllers
         /// <returns></returns>
         ISelectionController<T> GetDocumentSelectionController<T>();
 
-        IListDocumentController GetStartController();
+        IListViewController GetStartController();
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ namespace UPPY.Desktop.Interfaces.Controllers
     /// <summary>
     /// Контроллер может показывать список документов
     /// </summary>
-    public interface IListDocumentController
+    public interface IListViewController
     {
         void ShowViewDialog();
     }

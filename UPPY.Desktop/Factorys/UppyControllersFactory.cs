@@ -4,6 +4,7 @@ using UPPY.Desktop.Classes;
 using UPPY.Desktop.Concrete.Controllers.Common;
 using UPPY.Desktop.Concrete.Controllers.Drawings;
 using UPPY.Desktop.Concrete.Controllers.Orders;
+using UPPY.Desktop.Concrete.Controllers.Standarts;
 using UPPY.Desktop.Concrete.Controllers.TechRoutes;
 using UPPY.Desktop.Interfaces.Common;
 using UPPY.Desktop.Interfaces.Controllers;
@@ -23,24 +24,27 @@ namespace UPPY.Desktop.Factorys
             _dataManagersFactory = dataManagersFactory;
         }
 
-        public IListDocumentController GetListController<T>()
+        public IListViewController GetListController<T>()
         {
-            if (typeof (T) == typeof (Drawing))
-                return new DrawingsListDocumentController(_dataManagersFactory.GetDataManager<Drawing>(), _dataManagersFactory.GetDataManager<TechRoute>(), this);
+            if (typeof(T) == typeof(Drawing))
+                return new DrawingsListViewController(_dataManagersFactory.GetDataManager<Drawing>(), _dataManagersFactory.GetDataManager<TechRoute>(), this);
 
             if (typeof(T) == typeof(TechRoute))
-                return new TechRouteListController(_dataManagersFactory, this);
+                return new TechRouteListController(this, _dataManagersFactory.GetDataManager<TechRoute>());
 
-            if (typeof(T) == typeof(TechRoute))
-                return new TechRouteListController(_dataManagersFactory, this);
+            if (typeof(T) == typeof(Order))
+                return new OrderListController(this, _dataManagersFactory.GetDataManager<Order>(), _dataManagersFactory.GetDataManager<Drawing>());
+
+            if (typeof(T) == typeof(Standart))
+                return new StandartsListController();
 
             return null;
         }
 
         public IDocumentController<T> GetDocumentController<T>()
         {
-            if (typeof (T) == typeof (Order))
-                return (IDocumentController<T>) new OrderDocumentController(this, _dataManagersFactory.GetDataManager<Drawing>());
+            if (typeof(T) == typeof(Order))
+                return (IDocumentController<T>)new OrderDocumentController(this, _dataManagersFactory.GetDataManager<Drawing>());
 
             if (typeof(T) == typeof(Drawing))
                 return (IDocumentController<T>)new DrawingController(this);
@@ -50,20 +54,30 @@ namespace UPPY.Desktop.Factorys
 
         public ISelectionController<T> GetDocumentSelectionController<T>()
         {
-            if (typeof (T) == typeof (Drawing))
+            if (typeof(T) == typeof(Drawing))
                 return (ISelectionController<T>)new DrawingsSelectionController(_dataManagersFactory, this);
 
             throw new NotImplementedException();
         }
 
-        public IListDocumentController GetStartController()
+        public IListViewController GetStartController()
         {
-            return new DrawingsListDocumentController(_dataManagersFactory.GetDataManager<Drawing>(), _dataManagersFactory.GetDataManager<TechRoute>(), this);
+            return new DrawingsListViewController(_dataManagersFactory.GetDataManager<Drawing>(), _dataManagersFactory.GetDataManager<TechRoute>(), this);
+        }
+
+        public IListViewController GetViewListController<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IListViewController GetViewListController<T>(int? id)
+        {
+            throw new NotImplementedException();
         }
 
         public IDrawingListController GetDrawingsListController(int? parentId)
         {
-            return new DrawingsListDocumentController(_dataManagersFactory.GetFilteredDrawingsByParent(parentId), _dataManagersFactory.GetDataManager<TechRoute>(), this);
+            return new DrawingsListViewController(_dataManagersFactory.GetFilteredDrawingsByParent(parentId), _dataManagersFactory.GetDataManager<TechRoute>(), this);
         }
 
         public IDrawingListController GetDrawingsListController()
@@ -71,19 +85,9 @@ namespace UPPY.Desktop.Factorys
             throw new NotImplementedException();
         }
 
-        public IListDocumentController GetDrawingsViewController(int? parentId)
-        {
-            return new DrawingsListDocumentController(_dataManagersFactory.GetFilteredDrawingsByParent(parentId), _dataManagersFactory.GetDataManager<TechRoute>(), this);
-        }
-
-        public IListDocumentController GetDrawingsViewController()
-        {
-            throw new NotImplementedException();
-        }
-
         public IOrderListController GetOrdersListController()
         {
-            return new OrderListController(_dataManagersFactory.GetDataManager<Order>(), _dataManagersFactory.GetDataManager<Drawing>(), this);
+            return new OrderListController(this, _dataManagersFactory.GetDataManager<Order>(), _dataManagersFactory.GetDataManager<Drawing>());
         }
 
         public IDrawingBulkChangesHelper GetDrawingBulkChangesHelper()
@@ -96,10 +100,11 @@ namespace UPPY.Desktop.Factorys
             return new DrawingsToStandartController(_dataManagersFactory);
         }
 
-        public IListDocumentController GetDrawingsGridViewController(int? parentId)
+        public IListViewController GetDrawingsGridViewController(int? parentId)
         {
             return new HierarchyNumberDrawingController(_dataManagersFactory.GetFilteredDrawingsByParent(parentId),
-                _dataManagersFactory.GetDataManager<TechRoute>(), _dataManagersFactory.GetDataManager<TechOperation>()) {ParentId = parentId};
+                _dataManagersFactory.GetDataManager<TechRoute>(), _dataManagersFactory.GetDataManager<TechOperation>())
+            { ParentId = parentId };
         }
 
         public IUppyDataImport GetSiemensLoaderController(int? parentId)

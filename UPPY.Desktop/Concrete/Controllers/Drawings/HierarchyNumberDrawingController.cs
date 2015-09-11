@@ -12,7 +12,7 @@ using UPPY.Desktop.Views.Drawings;
 
 namespace UPPY.Desktop.Concrete.Controllers.Drawings
 {
-    public class HierarchyNumberDrawingController : IHierarchyNumberDrawingController, IListDocumentController
+    public class HierarchyNumberDrawingController : IHierarchyNumberDrawingController, IListViewController
     {
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechOperation> _techOperDataManager;

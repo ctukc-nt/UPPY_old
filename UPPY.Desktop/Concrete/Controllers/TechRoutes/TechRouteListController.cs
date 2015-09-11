@@ -8,15 +8,15 @@ using UPPY.Desktop.Views.TechRoutes;
 
 namespace UPPY.Desktop.Concrete.Controllers.TechRoutes
 {
-    public class TechRouteListController : ITechRouteListController, IListDocumentController
+    public class TechRouteListController : ITechRouteListController, IListViewController
     {
-        private readonly IDataManagersFactory _dataMangersfactory;
+        private readonly IClassDataManager<TechRoute> _techRouteDataManager;
         private IControllersFactory _controllersFactory;
 
-        public TechRouteListController(IDataManagersFactory dataMangersfactory, IControllersFactory controllersControllersFactory)
+        public TechRouteListController(IControllersFactory controllersControllersFactory, IClassDataManager<TechRoute> techRouteDataManager )
         {
             _controllersFactory = controllersControllersFactory;
-            _dataMangersfactory = dataMangersfactory;
+            _techRouteDataManager = techRouteDataManager;
         }
 
         public event EventHandler<EventArgs> DataRefreshed;
@@ -24,7 +24,7 @@ namespace UPPY.Desktop.Concrete.Controllers.TechRoutes
 
         public List<TechRoute> GetData()
         {
-            return _dataMangersfactory.GetDataManager<TechRoute>().GetListCollection();
+            return _techRouteDataManager.GetListCollection();
         }
 
         public TechRoute CreateDocument()
@@ -34,12 +34,12 @@ namespace UPPY.Desktop.Concrete.Controllers.TechRoutes
 
         public void Save(TechRoute document)
         {
-            _dataMangersfactory.GetDataManager<TechRoute>().InsertOrUpdate(document);
+            _techRouteDataManager.InsertOrUpdate(document);
         }
 
         public void Delete(TechRoute document)
         {
-            _dataMangersfactory.GetDataManager<TechRoute>().Delete(document);
+            _techRouteDataManager.Delete(document);
         }
 
         public void EditDocument(TechRoute document)
@@ -47,13 +47,6 @@ namespace UPPY.Desktop.Concrete.Controllers.TechRoutes
             var controller = _controllersFactory.GetDocumentController<TechRoute>();
             controller.Document = document;
             controller.ShowViewDialog();
-            //if ()
-            //{
-            //    document = controller.Document;
-            //    Save(document);
-            //    if (DataRefreshed != null)
-            //        DataRefreshed(this, new EventArgs());
-            //}
         }
         public void ShowViewDialog()
         {

@@ -9,13 +9,13 @@ using UPPY.Desktop.Views.Drawings;
 
 namespace UPPY.Desktop.Concrete.Controllers.Drawings
 {
-    public class DrawingsListDocumentController : IDrawingListController, IListDocumentController
+    public class DrawingsListViewController : IDrawingListController, IListViewController
     {
         private readonly IUppyControllersFactory _controllersFactory;
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechRoute> _techRouteDataManager;
 
-        public DrawingsListDocumentController(IClassDataManager<Drawing> drawingDataManager,
+        public DrawingsListViewController(IClassDataManager<Drawing> drawingDataManager,
             IClassDataManager<TechRoute> techRouteDataManager, IUppyControllersFactory controllersFactory)
         {
             _controllersFactory = controllersFactory;
