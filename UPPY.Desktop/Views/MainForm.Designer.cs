@@ -69,6 +69,7 @@
             this.btnGosts.Size = new System.Drawing.Size(108, 23);
             this.btnGosts.TabIndex = 3;
             this.btnGosts.Text = "ГОСТы";
+            this.btnGosts.Click += new System.EventHandler(this.btnGosts_Click);
             // 
             // btnTechOpers
             // 
@@ -77,6 +78,7 @@
             this.btnTechOpers.Size = new System.Drawing.Size(108, 23);
             this.btnTechOpers.TabIndex = 4;
             this.btnTechOpers.Text = "ТО";
+            this.btnTechOpers.Click += new System.EventHandler(this.btnTechOpers_Click);
             // 
             // btnTechRoutes
             // 
@@ -85,6 +87,7 @@
             this.btnTechRoutes.Size = new System.Drawing.Size(108, 23);
             this.btnTechRoutes.TabIndex = 5;
             this.btnTechRoutes.Text = "Тех. маршруты";
+            this.btnTechRoutes.Click += new System.EventHandler(this.btnTechRoutes_Click);
             // 
             // MainForm
             // 

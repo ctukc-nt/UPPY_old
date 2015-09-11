@@ -24,14 +24,32 @@ namespace UPPY.Desktop.Views
 
         private void btnOrders_Click(object sender, EventArgs e)
         {
-            var ordersController = _factory.GetListController<Order>();
-            ordersController.ShowViewDialog();
+            var controller = _factory.GetListController<Order>();
+            controller.ShowViewDialog();
         }
 
         private void btnStandarts_Click(object sender, EventArgs e)
         {
-            var ordersController = _factory.GetListController<Standart>();
-            ordersController.ShowViewDialog();
+            var controller = _factory.GetListController<Standart>();
+            controller.ShowViewDialog();
+        }
+
+        private void btnGosts_Click(object sender, EventArgs e)
+        {
+            var controller = _factory.GetListController<Gost>();
+            controller.ShowViewDialog();
+        }
+
+        private void btnTechOpers_Click(object sender, EventArgs e)
+        {
+            var controller = _factory.GetListController<TechOperation>();
+            controller.ShowViewDialog();
+        }
+
+        private void btnTechRoutes_Click(object sender, EventArgs e)
+        {
+            var controller = _factory.GetListController<TechRoute>();
+            controller.ShowViewDialog();
         }
     }
 }
