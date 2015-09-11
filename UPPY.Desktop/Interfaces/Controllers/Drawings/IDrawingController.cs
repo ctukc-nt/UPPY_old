@@ -8,7 +8,7 @@ namespace UPPY.Desktop.Interfaces.Controllers.Drawings
     /// </summary>
     public interface IDrawingController
     {
-        Drawing Drawing { get; set; }
+        Drawing Document { get; set; }
 
         void Save();
 

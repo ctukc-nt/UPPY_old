@@ -16,13 +16,13 @@ namespace UPPY.Desktop.Views.Drawings
             _drawingController = drawingController;
             InitializeComponent();
             tlDrawings.Controller = _listController;
-            Drawing = _drawingController.Drawing;
+            Drawing = _drawingController.Document;
             _drawingController.DataRefreshed += _drawingController_DataRefreshed;
         }
 
         private void _drawingController_DataRefreshed(object sender, System.EventArgs e)
         {
-            var curDraw = _drawingController.Drawing;
+            var curDraw = _drawingController.Document;
         }
 
         private void LoadDataField()

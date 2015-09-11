@@ -22,7 +22,7 @@ namespace UPPY.Desktop.Fake
             }
         }
 
-        private int _count = 1;
+        private int _count = 5000;
 
         public DrawingListClassFakeDataManager()
         {

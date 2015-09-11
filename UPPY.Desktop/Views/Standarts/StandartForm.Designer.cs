@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gcPositions = new DevExpress.XtraGrid.GridControl();
             this.positionStandartBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvPositions = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colProfile = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStandartSize = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGostOnSort = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -51,34 +51,34 @@
             this.teDrawing = new DevExpress.XtraEditors.TextEdit();
             this.teName = new DevExpress.XtraEditors.TextEdit();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcPositions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.positionStandartBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPositions)).BeginInit();
             this.expandCollapsePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teUtilRation.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teDrawing.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // gridControl1
+            // gcPositions
             // 
-            this.gridControl1.DataSource = this.positionStandartBindingSource;
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 102);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1008, 586);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gcPositions.DataSource = this.positionStandartBindingSource;
+            this.gcPositions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcPositions.Location = new System.Drawing.Point(0, 102);
+            this.gcPositions.MainView = this.gvPositions;
+            this.gcPositions.Name = "gcPositions";
+            this.gcPositions.Size = new System.Drawing.Size(1008, 586);
+            this.gcPositions.TabIndex = 0;
+            this.gcPositions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvPositions});
             // 
             // positionStandartBindingSource
             // 
             this.positionStandartBindingSource.DataSource = typeof(Core.DomainModel.PositionStandart);
             // 
-            // gridView1
+            // gvPositions
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvPositions.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colProfile,
             this.colStandartSize,
             this.colGostOnSort,
@@ -90,8 +90,8 @@
             this.colAdditionalMeasurementWithWaste,
             this.colTypeAdditionalMeasurement,
             this.colNote});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
+            this.gvPositions.GridControl = this.gcPositions;
+            this.gvPositions.Name = "gvPositions";
             // 
             // colProfile
             // 
@@ -267,14 +267,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.gcPositions);
             this.Controls.Add(this.expandCollapsePanel1);
             this.Controls.Add(this.panel1);
             this.Name = "StandartForm";
             this.Text = "StandartForm";
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            this.Load += new System.EventHandler(this.StandartForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gcPositions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.positionStandartBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPositions)).EndInit();
             this.expandCollapsePanel1.ResumeLayout(false);
             this.expandCollapsePanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teUtilRation.Properties)).EndInit();
@@ -286,9 +287,9 @@
 
         #endregion
 
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl gcPositions;
         private System.Windows.Forms.BindingSource positionStandartBindingSource;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvPositions;
         private DevExpress.XtraGrid.Columns.GridColumn colProfile;
         private DevExpress.XtraGrid.Columns.GridColumn colStandartSize;
         private DevExpress.XtraGrid.Columns.GridColumn colGostOnSort;

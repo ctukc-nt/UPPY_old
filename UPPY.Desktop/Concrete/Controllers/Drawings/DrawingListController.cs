@@ -44,7 +44,8 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
 
         public void ShowDrawingInAnotherView(Drawing drawing)
         {
-            var controller = _controllersFactory.GetDrawingsViewController(drawing.Id);
+            var controller = _controllersFactory.GetDocumentController<Drawing>();
+            controller.Document = drawing;
             controller.ShowViewDialog();
         }
 
@@ -157,8 +158,8 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
 
         public void ShowViewDialog()
         {
-            var view = new DrawingsListTreeForm(this);
-            view.ShowDialog();
+            //var view = new DrawingsListTreeForm(this);
+            //view.ShowDialog();
         }
     }
 }

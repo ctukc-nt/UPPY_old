@@ -42,6 +42,9 @@ namespace UPPY.Desktop.Factorys
             if (typeof (T) == typeof (Order))
                 return (IDocumentController<T>) new OrderDocumentController(this, _dataManagersFactory.GetDataManager<Drawing>());
 
+            if (typeof(T) == typeof(Drawing))
+                return (IDocumentController<T>)new DrawingController(this);
+
             return null;
         }
 

@@ -125,11 +125,11 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             }
             if (e.IsSetData)
             {
-                if (!_loadTechOpersFlag)
-                {
-                    _rowsChangedHandlers.Add(gvDrawings.GetRowHandle(e.ListSourceRowIndex));
-                    gvDrawings.RefreshRow(e.ListSourceRowIndex);
-                }
+                //if (!_loadTechOpersFlag)
+                //{
+                //    _rowsChangedHandlers.Add(gvDrawings.GetRowHandle(e.ListSourceRowIndex));
+                //    gvDrawings.RefreshRow(e.ListSourceRowIndex);
+                //}
 
                 if (hierDraw != null)
                 {

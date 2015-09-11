@@ -75,6 +75,7 @@
     <Compile Include="Classes\SiemensDataImport.cs" />
     <Compile Include="Concrete\Controllers\Common\SiemensDataImportController.cs" />
     <Compile Include="Concrete\Controllers\Common\DrawingsToStandartController.cs" />
+    <Compile Include="Concrete\Controllers\Drawings\DrawingController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\DrawingListController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\HierarchyNumberDrawingController.cs" />
     <Compile Include="Concrete\Controllers\Orders\OrderDocumentController.cs" />
@@ -106,6 +107,8 @@
     <Compile Include="Interfaces\Controllers\Common\IControllersFactory.cs" />
     <Compile Include="Interfaces\Controllers\Common\IUppyControllersFactory.cs" />
     <Compile Include="Interfaces\Controllers\Orders\IOrderListController.cs" />
+    <Compile Include="Interfaces\Controllers\Standarts\IStandartController.cs" />
+    <Compile Include="Interfaces\Controllers\Standarts\IStandartsListController.cs" />
     <Compile Include="Interfaces\Controllers\TechRoutes\ITechRouteDocumentController.cs" />
     <Compile Include="Interfaces\Controllers\TechRoutes\ITechRouteListController.cs" />
     <Compile Include="Interfaces\Views\IDocumentView.cs" />
@@ -143,12 +146,6 @@
     </Compile>
     <Compile Include="Views\Drawings\DrawingsSelectionForm.Designer.cs">
       <DependentUpon>DrawingsSelectionForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Drawings\DrawingsListTreeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Drawings\DrawingsListTreeForm.Designer.cs">
-      <DependentUpon>DrawingsListTreeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\Controllers\Orders\IOrderDocumentController.cs" />
     <Compile Include="Views\Drawings\HierarchyDrawingsForm.cs">
@@ -227,9 +224,6 @@
     <EmbeddedResource Include="Views\Drawings\DrawingsSelectionForm.resx">
       <DependentUpon>DrawingsSelectionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Drawings\DrawingsListTreeForm.resx">
-      <DependentUpon>DrawingsListTreeForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Drawings\HierarchyDrawingsForm.resx">
       <DependentUpon>HierarchyDrawingsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,9 +270,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\Controllers\Standarts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{876F668F-5017-4CEE-8AE4-91E9B0E9E6B6}</Project>
