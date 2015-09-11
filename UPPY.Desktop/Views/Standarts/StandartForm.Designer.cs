@@ -64,10 +64,10 @@
             // 
             this.gridControl1.DataSource = this.positionStandartBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 100);
+            this.gridControl1.Location = new System.Drawing.Point(0, 102);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1008, 588);
+            this.gridControl1.Size = new System.Drawing.Size(1008, 586);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -196,7 +196,7 @@
             this.expandCollapsePanel1.IsExpanded = true;
             this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 0);
             this.expandCollapsePanel1.Name = "expandCollapsePanel1";
-            this.expandCollapsePanel1.Size = new System.Drawing.Size(1008, 100);
+            this.expandCollapsePanel1.Size = new System.Drawing.Size(1008, 102);
             this.expandCollapsePanel1.TabIndex = 1;
             this.expandCollapsePanel1.Text = "Общие данные";
             this.expandCollapsePanel1.UseAnimation = true;
