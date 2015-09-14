@@ -17,6 +17,11 @@ namespace UPPY.Desktop.Views.Standarts
 
         private void StandartsListForm_Load(object sender, EventArgs e)
         {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
             gcStandarts.DataSource = _controller.GetStandartsList();
         }
 
@@ -30,6 +35,11 @@ namespace UPPY.Desktop.Views.Standarts
         {
             var doc = (Standart) gvStandarts.GetFocusedRow();
             _controller.Delete(doc);
+        }
+
+        private void commandButtons1_ButtonRefreshClick(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

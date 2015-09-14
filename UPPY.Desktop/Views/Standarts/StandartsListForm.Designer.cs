@@ -36,8 +36,7 @@
             this.colDrawing = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUtilizationRatio = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.commandButtons1 = new UPPY.Desktop.Views.Controls.CommandButtons();
             ((System.ComponentModel.ISupportInitialize)(this.gcStandarts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.standartBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvStandarts)).BeginInit();
@@ -103,33 +102,25 @@
             this.colId.Visible = true;
             this.colId.VisibleIndex = 3;
             // 
-            // btnDelete
+            // commandButtons1
             // 
-            this.btnDelete.Location = new System.Drawing.Point(94, 12);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 6;
-            this.btnDelete.Text = "delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(12, 12);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 5;
-            this.btnEdit.Text = "edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.commandButtons1.AllowDelete = true;
+            this.commandButtons1.AllowEdit = true;
+            this.commandButtons1.AllowNew = false;
+            this.commandButtons1.Location = new System.Drawing.Point(12, 1);
+            this.commandButtons1.Name = "commandButtons1";
+            this.commandButtons1.Size = new System.Drawing.Size(147, 34);
+            this.commandButtons1.TabIndex = 7;
+            this.commandButtons1.ButtonRefreshClick += new System.EventHandler(this.commandButtons1_ButtonRefreshClick);
+            this.commandButtons1.ButtonEditClick += new System.EventHandler(this.btnEdit_Click);
+            this.commandButtons1.ButtonDeleteClick += new System.EventHandler(this.btnDelete_Click);
             // 
             // StandartsListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 483);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.commandButtons1);
             this.Controls.Add(this.gcStandarts);
             this.Name = "StandartsListForm";
             this.Text = "StandartsListForm";
@@ -150,7 +141,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDrawing;
         private DevExpress.XtraGrid.Columns.GridColumn colName;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnEdit;
+        private Controls.CommandButtons commandButtons1;
     }
 }
