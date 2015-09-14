@@ -11,12 +11,12 @@ using UPPY.Desktop.Views.Drawings;
 
 namespace UPPY.Desktop.Concrete.Controllers.Drawings
 {
-    public class DrawingsSelectionController :IDrawingsSelectionController, ISelectionController<Drawing>
+    public class DrawingsSelectionController : IDrawingsSelectionController, ISelectionController<Drawing>
     {
         private readonly IDataManagersFactory _dataManagersFactory;
         private readonly IControllersFactory _controllersFactory;
 
-        public DrawingsSelectionController(IDataManagersFactory dataManagersFactory, IControllersFactory controllersFactory)
+        public DrawingsSelectionController(IControllersFactory controllersFactory, IDataManagersFactory dataManagersFactory)
         {
             _dataManagersFactory = dataManagersFactory;
             _controllersFactory = controllersFactory;

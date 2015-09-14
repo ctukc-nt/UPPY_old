@@ -19,7 +19,13 @@ namespace UPPY.Desktop.Views.TechOpers
         public TechOpersListForm(ITechOpersListController controller)
         {
             _controller = controller;
+            _controller.DataRefreshed += _controller_DataRefreshed;
             InitializeComponent();
+        }
+
+        private void _controller_DataRefreshed(object sender, EventArgs e)
+        {
+            LoadData();
         }
 
         private void cmCommands_ButtonAddClick(object sender, EventArgs e)
@@ -46,11 +52,12 @@ namespace UPPY.Desktop.Views.TechOpers
         private void LoadData()
         {
             gcTechOpers.DataSource = _controller.GetTechOperationsList();
+            gcTechOpers.RefreshDataSource();
         }
 
         private void TechOpersListForm_Load(object sender, EventArgs e)
         {
-
+            LoadData();
         }
     }
 }

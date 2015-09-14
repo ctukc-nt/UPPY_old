@@ -50,10 +50,13 @@ namespace UPPY.Desktop.Factorys
                 return (IDocumentController<T>)new OrderDocumentController(this, _dataManagersFactory.GetDataManager<Drawing>());
 
             if (typeof(T) == typeof(Drawing))
-                return (IDocumentController<T>)new DrawingController(this);
+                return (IDocumentController<T>)new DrawingDocumentController(this);
 
             if (typeof(T) == typeof(Standart))
-                return (IDocumentController<T>)new StandartController();
+                return (IDocumentController<T>)new StandartDocumentController();
+
+            if (typeof(T) == typeof(TechRoute))
+                return (IDocumentController<T>)new TechRouteDocumentController(this, _dataManagersFactory);
 
             return null;
         }
@@ -61,7 +64,7 @@ namespace UPPY.Desktop.Factorys
         public ISelectionController<T> GetDocumentSelectionController<T>()
         {
             if (typeof(T) == typeof(Drawing))
-                return (ISelectionController<T>)new DrawingsSelectionController(_dataManagersFactory, this);
+                return (ISelectionController<T>)new DrawingsSelectionController(this, _dataManagersFactory);
 
             throw new NotImplementedException();
         }
@@ -70,7 +73,7 @@ namespace UPPY.Desktop.Factorys
         {
             return new DrawingsListViewController(_dataManagersFactory.GetDataManager<Drawing>(), _dataManagersFactory.GetDataManager<TechRoute>(), this);
         }
-      
+
         public IListViewController GetViewListController<T>(int? id)
         {
             throw new NotImplementedException();

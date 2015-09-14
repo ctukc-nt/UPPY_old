@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Core.DomainModel;
 using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers.Common;
@@ -29,12 +30,22 @@ namespace UPPY.Desktop.Concrete.Controllers.TechOpers
         public void Save(TechOperation document)
         {
             _techOpersDataManager.InsertOrUpdate(document);
+            OnDataRefreshed();
+        }
+
+        private void OnDataRefreshed()
+        {
+            if (DataRefreshed != null)
+                DataRefreshed(this, new EventArgs());
         }
 
         public void Delete(TechOperation doc)
         {
             _techOpersDataManager.Delete(doc);
+            OnDataRefreshed();
         }
+
+        public event EventHandler<EventArgs> DataRefreshed;
 
         public void ShowViewDialog()
         {

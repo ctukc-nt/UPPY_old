@@ -8,11 +8,11 @@ using UPPY.Desktop.Views.Drawings;
 
 namespace UPPY.Desktop.Concrete.Controllers.Drawings
 {
-    public class DrawingController : IDrawingController, IDocumentController<Drawing>
+    public class DrawingDocumentController : IDrawingController, IDocumentController<Drawing>
     {
         private readonly IUppyControllersFactory _factory;
 
-        public DrawingController(IUppyControllersFactory factory)
+        public DrawingDocumentController(IUppyControllersFactory factory)
         {
             _factory = factory;
         }

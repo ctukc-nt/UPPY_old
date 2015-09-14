@@ -6,7 +6,7 @@ using UPPY.Desktop.Views.Standarts;
 
 namespace UPPY.Desktop.Concrete.Controllers.Standarts
 {
-    public class StandartController : IStandartController, IDocumentController<Standart>
+    public class StandartDocumentController : IStandartController, IDocumentController<Standart>
     {
         public bool ShowViewDialog()
         {

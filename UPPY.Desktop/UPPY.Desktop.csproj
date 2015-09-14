@@ -75,14 +75,14 @@
     <Compile Include="Classes\SiemensDataImport.cs" />
     <Compile Include="Concrete\Controllers\Common\SiemensDataImportController.cs" />
     <Compile Include="Concrete\Controllers\Common\DrawingsToStandartController.cs" />
-    <Compile Include="Concrete\Controllers\Drawings\DrawingController.cs" />
+    <Compile Include="Concrete\Controllers\Drawings\DrawingDocumentController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\DrawingListController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\HierarchyNumberDrawingController.cs" />
     <Compile Include="Concrete\Controllers\Gosts\GostDocumentController.cs" />
     <Compile Include="Concrete\Controllers\Gosts\GostListController.cs" />
     <Compile Include="Concrete\Controllers\Orders\OrderDocumentController.cs" />
     <Compile Include="Concrete\Controllers\Orders\OrderListController.cs" />
-    <Compile Include="Concrete\Controllers\Standarts\StandartController.cs" />
+    <Compile Include="Concrete\Controllers\Standarts\StandartDocumentController.cs" />
     <Compile Include="Concrete\Controllers\Standarts\StandartsListController.cs" />
     <Compile Include="Concrete\Controllers\TechOpers\TechOpersListController.cs" />
     <Compile Include="Concrete\DataManager\Drawings\DrawingsFilteredDataManager.cs" />
