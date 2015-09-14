@@ -31,20 +31,20 @@
             this.components = new System.ComponentModel.Container();
             this.cmCommands = new UPPY.Desktop.Views.Controls.CommandButtons();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.gcGosts = new DevExpress.XtraGrid.GridControl();
-            this.gvGosts = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gostBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gvGosts = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colTypeExtraDimension = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWeightMethodCalculate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNote = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colProfile = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcGosts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvGosts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gostBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvGosts)).BeginInit();
             this.SuspendLayout();
             // 
             // cmCommands
@@ -70,6 +70,15 @@
             this.panel1.Size = new System.Drawing.Size(707, 45);
             this.panel1.TabIndex = 1;
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(614, 10);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(81, 23);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.Text = "Закрыть";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // gcGosts
             // 
             this.gcGosts.DataSource = this.gostBindingSource;
@@ -80,6 +89,10 @@
             this.gcGosts.TabIndex = 2;
             this.gcGosts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvGosts});
+            // 
+            // gostBindingSource
+            // 
+            this.gostBindingSource.DataSource = typeof(Core.DomainModel.Gost);
             // 
             // gvGosts
             // 
@@ -93,10 +106,6 @@
             this.gvGosts.GridControl = this.gcGosts;
             this.gvGosts.Name = "gvGosts";
             this.gvGosts.OptionsDetail.EnableMasterViewMode = false;
-            // 
-            // gostBindingSource
-            // 
-            this.gostBindingSource.DataSource = typeof(Core.DomainModel.Gost);
             // 
             // colTypeExtraDimension
             // 
@@ -144,15 +153,6 @@
             this.colProfile.Visible = true;
             this.colProfile.VisibleIndex = 1;
             // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(614, 10);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(81, 23);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.Text = "Закрыть";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // GostsListViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,10 +163,11 @@
             this.Controls.Add(this.cmCommands);
             this.Name = "GostsListViewForm";
             this.Text = "GostsListViewForm";
+            this.Load += new System.EventHandler(this.GostsListViewForm_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcGosts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvGosts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gostBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvGosts)).EndInit();
             this.ResumeLayout(false);
 
         }

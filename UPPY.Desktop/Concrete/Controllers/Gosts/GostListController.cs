@@ -7,7 +7,7 @@ namespace UPPY.Desktop.Concrete.Controllers.Gosts
 {
     public class GostListController : IGostListController
     {
-        public List<Gost> GetGostList()
+        public List<Gost> GetGostsList()
         {
             throw new NotImplementedException();
         }

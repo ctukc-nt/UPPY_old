@@ -76,7 +76,7 @@ namespace Core.DomainModel
         LengthAndThikness,
 
         /// <summary>
-        /// Длина и толщина (трубы)
+        /// Длина и толщина (круги)
         /// </summary>
         LengthAndDoubleThikness,
 

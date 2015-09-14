@@ -115,7 +115,6 @@ namespace Core
                         position.Weight = (Convert.ToDouble(outerSize) - Convert.ToDouble(widthWall)) *
                                           Convert.ToDouble(widthWall) / 40.55 *
                                           position.AdditionalMeasurement;
-
                         break;
                     case WeightMethodCalculate.LengthAndDoubleThikness:
                         position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
