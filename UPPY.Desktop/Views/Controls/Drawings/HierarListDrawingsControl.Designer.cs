@@ -196,8 +196,6 @@
             this.colGostOnMaterial.Caption = "ГОСТ на материал";
             this.colGostOnMaterial.FieldName = "GostOnMaterial";
             this.colGostOnMaterial.Name = "colGostOnMaterial";
-            this.colGostOnMaterial.Visible = true;
-            this.colGostOnMaterial.VisibleIndex = 8;
             this.colGostOnMaterial.Width = 49;
             // 
             // colLength
@@ -206,7 +204,7 @@
             this.colLength.FieldName = "Length";
             this.colLength.Name = "colLength";
             this.colLength.Visible = true;
-            this.colLength.VisibleIndex = 9;
+            this.colLength.VisibleIndex = 8;
             this.colLength.Width = 49;
             // 
             // colWidth
@@ -215,7 +213,7 @@
             this.colWidth.FieldName = "Width";
             this.colWidth.Name = "colWidth";
             this.colWidth.Visible = true;
-            this.colWidth.VisibleIndex = 10;
+            this.colWidth.VisibleIndex = 9;
             this.colWidth.Width = 49;
             // 
             // colCount
@@ -224,7 +222,7 @@
             this.colCount.FieldName = "Count";
             this.colCount.Name = "colCount";
             this.colCount.Visible = true;
-            this.colCount.VisibleIndex = 11;
+            this.colCount.VisibleIndex = 10;
             this.colCount.Width = 49;
             // 
             // colCountAll
@@ -233,7 +231,7 @@
             this.colCountAll.FieldName = "CountAll";
             this.colCountAll.Name = "colCountAll";
             this.colCountAll.Visible = true;
-            this.colCountAll.VisibleIndex = 12;
+            this.colCountAll.VisibleIndex = 11;
             this.colCountAll.Width = 49;
             // 
             // colWeight
@@ -242,7 +240,7 @@
             this.colWeight.FieldName = "Weight";
             this.colWeight.Name = "colWeight";
             this.colWeight.Visible = true;
-            this.colWeight.VisibleIndex = 13;
+            this.colWeight.VisibleIndex = 12;
             this.colWeight.Width = 49;
             // 
             // colWeightAll
@@ -251,7 +249,7 @@
             this.colWeightAll.FieldName = "WeightAll";
             this.colWeightAll.Name = "colWeightAll";
             this.colWeightAll.Visible = true;
-            this.colWeightAll.VisibleIndex = 14;
+            this.colWeightAll.VisibleIndex = 13;
             this.colWeightAll.Width = 49;
             // 
             // colOP
@@ -260,7 +258,7 @@
             this.colOP.FieldName = "OP";
             this.colOP.Name = "colOP";
             this.colOP.Visible = true;
-            this.colOP.VisibleIndex = 15;
+            this.colOP.VisibleIndex = 14;
             this.colOP.Width = 49;
             // 
             // colPartOfDrawingId
@@ -269,7 +267,7 @@
             this.colPartOfDrawingId.FieldName = "PartOfDrawingId";
             this.colPartOfDrawingId.Name = "colPartOfDrawingId";
             this.colPartOfDrawingId.Visible = true;
-            this.colPartOfDrawingId.VisibleIndex = 16;
+            this.colPartOfDrawingId.VisibleIndex = 15;
             this.colPartOfDrawingId.Width = 49;
             // 
             // colTechRouteId
@@ -279,7 +277,7 @@
             this.colTechRouteId.FieldName = "TechRouteId";
             this.colTechRouteId.Name = "colTechRouteId";
             this.colTechRouteId.Visible = true;
-            this.colTechRouteId.VisibleIndex = 17;
+            this.colTechRouteId.VisibleIndex = 16;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -296,7 +294,7 @@
             this.colButtonSave.ColumnEdit = this.repositoryItemButtonEdit1;
             this.colButtonSave.Name = "colButtonSave";
             this.colButtonSave.Visible = true;
-            this.colButtonSave.VisibleIndex = 18;
+            this.colButtonSave.VisibleIndex = 17;
             // 
             // repositoryItemButtonEdit1
             // 

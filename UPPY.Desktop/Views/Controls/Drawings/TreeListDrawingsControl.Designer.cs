@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TreeListDrawingsControl));
             this.tlDarwings = new DevExpress.XtraTreeList.TreeList();
             this.tlcName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -169,8 +169,6 @@
             this.tlcGostOnMaterial.Caption = "ГОСТ на материал";
             this.tlcGostOnMaterial.FieldName = "GostOnMaterial";
             this.tlcGostOnMaterial.Name = "tlcGostOnMaterial";
-            this.tlcGostOnMaterial.Visible = true;
-            this.tlcGostOnMaterial.VisibleIndex = 7;
             this.tlcGostOnMaterial.Width = 70;
             // 
             // tlcLength
@@ -179,7 +177,7 @@
             this.tlcLength.FieldName = "Length";
             this.tlcLength.Name = "tlcLength";
             this.tlcLength.Visible = true;
-            this.tlcLength.VisibleIndex = 8;
+            this.tlcLength.VisibleIndex = 7;
             this.tlcLength.Width = 46;
             // 
             // tlcWidth
@@ -188,7 +186,7 @@
             this.tlcWidth.FieldName = "Width";
             this.tlcWidth.Name = "tlcWidth";
             this.tlcWidth.Visible = true;
-            this.tlcWidth.VisibleIndex = 9;
+            this.tlcWidth.VisibleIndex = 8;
             this.tlcWidth.Width = 54;
             // 
             // tlcCount
@@ -197,7 +195,7 @@
             this.tlcCount.FieldName = "Count";
             this.tlcCount.Name = "tlcCount";
             this.tlcCount.Visible = true;
-            this.tlcCount.VisibleIndex = 10;
+            this.tlcCount.VisibleIndex = 9;
             this.tlcCount.Width = 56;
             // 
             // tlcCountAll
@@ -207,7 +205,7 @@
             this.tlcCountAll.Name = "tlcCountAll";
             this.tlcCountAll.OptionsColumn.AllowEdit = false;
             this.tlcCountAll.Visible = true;
-            this.tlcCountAll.VisibleIndex = 11;
+            this.tlcCountAll.VisibleIndex = 10;
             this.tlcCountAll.Width = 52;
             // 
             // tlcWeigth
@@ -218,7 +216,7 @@
             this.tlcWeigth.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.tlcWeigth.Name = "tlcWeigth";
             this.tlcWeigth.Visible = true;
-            this.tlcWeigth.VisibleIndex = 12;
+            this.tlcWeigth.VisibleIndex = 11;
             this.tlcWeigth.Width = 62;
             // 
             // tlcWeightAll
@@ -230,7 +228,7 @@
             this.tlcWeightAll.Name = "tlcWeightAll";
             this.tlcWeightAll.OptionsColumn.AllowEdit = false;
             this.tlcWeightAll.Visible = true;
-            this.tlcWeightAll.VisibleIndex = 13;
+            this.tlcWeightAll.VisibleIndex = 12;
             this.tlcWeightAll.Width = 66;
             // 
             // tlcOp
@@ -239,7 +237,7 @@
             this.tlcOp.FieldName = "Op";
             this.tlcOp.Name = "tlcOp";
             this.tlcOp.Visible = true;
-            this.tlcOp.VisibleIndex = 14;
+            this.tlcOp.VisibleIndex = 13;
             this.tlcOp.Width = 65;
             // 
             // tlcPartOfDrawingId
@@ -253,7 +251,7 @@
             this.tlcTechRouteId.FieldName = "TechRouteId";
             this.tlcTechRouteId.Name = "tlcTechRouteId";
             this.tlcTechRouteId.Visible = true;
-            this.tlcTechRouteId.VisibleIndex = 15;
+            this.tlcTechRouteId.VisibleIndex = 14;
             this.tlcTechRouteId.Width = 153;
             // 
             // repoTechRoutes
@@ -261,7 +259,7 @@
             this.repoTechRoutes.AutoHeight = false;
             this.repoTechRoutes.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", "showlist", null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", "showlist", null, true)});
             this.repoTechRoutes.DisplayMember = "Name";
             this.repoTechRoutes.Name = "repoTechRoutes";
             this.repoTechRoutes.ValueMember = "Id";
