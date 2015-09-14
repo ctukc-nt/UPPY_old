@@ -5,6 +5,7 @@ using UPPY.Desktop.Concrete.Controllers.Common;
 using UPPY.Desktop.Concrete.Controllers.Drawings;
 using UPPY.Desktop.Concrete.Controllers.Orders;
 using UPPY.Desktop.Concrete.Controllers.Standarts;
+using UPPY.Desktop.Concrete.Controllers.TechOpers;
 using UPPY.Desktop.Concrete.Controllers.TechRoutes;
 using UPPY.Desktop.Interfaces.Common;
 using UPPY.Desktop.Interfaces.Controllers.Common;
@@ -37,6 +38,9 @@ namespace UPPY.Desktop.Factorys
             if (typeof(T) == typeof(Standart))
                 return new StandartsListController(this, _dataManagersFactory.GetDataManager<Standart>());
 
+            if (typeof(T) == typeof(TechOperation))
+                return new TechOpersListController(_dataManagersFactory.GetDataManager<TechOperation>());
+
             return null;
         }
 
@@ -66,12 +70,7 @@ namespace UPPY.Desktop.Factorys
         {
             return new DrawingsListViewController(_dataManagersFactory.GetDataManager<Drawing>(), _dataManagersFactory.GetDataManager<TechRoute>(), this);
         }
-
-        public IListViewController GetViewListController<T>()
-        {
-            throw new NotImplementedException();
-        }
-
+      
         public IListViewController GetViewListController<T>(int? id)
         {
             throw new NotImplementedException();
