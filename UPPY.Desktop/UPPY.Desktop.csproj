@@ -82,6 +82,7 @@
     <Compile Include="Concrete\Controllers\Orders\OrderListController.cs" />
     <Compile Include="Concrete\Controllers\Standarts\StandartController.cs" />
     <Compile Include="Concrete\Controllers\Standarts\StandartsListController.cs" />
+    <Compile Include="Concrete\Controllers\TechOpers\TechOpersListController.cs" />
     <Compile Include="Concrete\DataManager\Drawings\DrawingsFilteredDataManager.cs" />
     <Compile Include="Concrete\DataManager\Drawings\HierarchyDrawingsDataManager.cs" />
     <Compile Include="Fake\GostClassFakeDataManager.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Interfaces\Controllers\Orders\IOrderListController.cs" />
     <Compile Include="Interfaces\Controllers\Standarts\IStandartController.cs" />
     <Compile Include="Interfaces\Controllers\Standarts\IStandartsListController.cs" />
+    <Compile Include="Interfaces\Controllers\TechOpers\ITechOpersListController.cs" />
     <Compile Include="Interfaces\Controllers\TechRoutes\ITechRouteDocumentController.cs" />
     <Compile Include="Interfaces\Controllers\TechRoutes\ITechRouteListController.cs" />
     <Compile Include="Interfaces\Views\IDocumentView.cs" />
@@ -125,6 +127,12 @@
     <Compile Include="Fake\StandartClassFakeDataManager.cs" />
     <Compile Include="Fake\TechOperationClassFakeDataManager.cs" />
     <Compile Include="Fake\TechRoutesClassFakeDataManager.cs" />
+    <Compile Include="Views\Controls\CommandButtons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\CommandButtons.Designer.cs">
+      <DependentUpon>CommandButtons.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\Drawings\HierarListDrawingsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -198,6 +206,12 @@
     <Compile Include="Views\Standarts\StandartsListForm.Designer.cs">
       <DependentUpon>StandartsListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\TechOpers\TechOpersListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TechOpers\TechOpersListForm.Designer.cs">
+      <DependentUpon>TechOpersListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\TechRoutes\TechRouteDocumentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +234,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Controls\CommandButtons.resx">
+      <DependentUpon>CommandButtons.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Controls\Drawings\HierarListDrawingsControl.resx">
       <DependentUpon>HierarListDrawingsControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Standarts\StandartsListForm.resx">
       <DependentUpon>StandartsListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TechOpers\TechOpersListForm.resx">
+      <DependentUpon>TechOpersListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TechRoutes\TechRouteDocumentForm.resx">
       <DependentUpon>TechRouteDocumentForm.cs</DependentUpon>
