@@ -12,7 +12,13 @@ namespace UPPY.Desktop.Views.Gosts
         public GostsListViewForm(IGostListController controller)
         {
             _controller = controller;
+            _controller.DataRefreshed += _controller_DataRefreshed;
             InitializeComponent();
+        }
+
+        private void _controller_DataRefreshed(object sender, EventArgs e)
+        {
+            LoadData();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -45,6 +51,7 @@ namespace UPPY.Desktop.Views.Gosts
         private void LoadData()
         {
             gcGosts.DataSource = _controller.GetGostsList();
+            gcGosts.RefreshDataSource();
         }
 
         private void GostsListViewForm_Load(object sender, EventArgs e)

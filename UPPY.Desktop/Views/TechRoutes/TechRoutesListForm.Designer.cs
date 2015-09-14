@@ -83,6 +83,7 @@
             this.gvTechRoutes.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
             this.gvTechRoutes.OptionsDetail.EnableMasterViewMode = false;
             this.gvTechRoutes.OptionsView.ShowGroupPanel = false;
+            this.gvTechRoutes.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvTechRoutes_CellValueChanged);
             // 
             // colId
             // 
@@ -128,6 +129,7 @@
             this.Controls.Add(this.gcTechRoutes);
             this.Name = "TechRoutesListForm";
             this.Text = "TechRoutesListForm";
+            this.Load += new System.EventHandler(this.TechRoutesListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.techOperationsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcTechRoutes)).EndInit();

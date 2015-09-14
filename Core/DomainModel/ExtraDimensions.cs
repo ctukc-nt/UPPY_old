@@ -1,5 +1,9 @@
-﻿namespace Core.DomainModel
+﻿using System.ComponentModel;
+using Core.Classes;
+
+namespace Core.DomainModel
 {
+    [TypeConverter(typeof(ExtraDimensionsConverter))]
     public enum ExtraDimensions
     {
         /// <summary>
@@ -15,5 +19,7 @@
         /// Штуки
         /// </summary>
         Piece,
+
+        
     }
 }

@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\WeightMethodCalculateConverter.cs" />
+    <Compile Include="Classes\ExtraDimensionsConverter.cs" />
     <Compile Include="DomainModel\Drawing.cs" />
     <Compile Include="DomainModel\DrawingWithTechOper.cs" />
     <Compile Include="DomainModel\ExtraDimensions.cs" />
@@ -52,6 +54,7 @@
     <Compile Include="DomainModel\Order.cs" />
     <Compile Include="DomainModel\PositionStandart.cs" />
     <Compile Include="DomainModel\Standart.cs" />
+    <Compile Include="DomainModel\WeightMethodCalculate.cs" />
     <Compile Include="DrawingsCalculateHelper.cs" />
     <Compile Include="DrawingsToStandartHelper.cs" />
     <Compile Include="Interfaces\IClassDataManager.cs" />
@@ -66,9 +69,7 @@
     <None Include="App.config" />
     <None Include="Properties\DataSources\Core.DomainModel.Order.datasource" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

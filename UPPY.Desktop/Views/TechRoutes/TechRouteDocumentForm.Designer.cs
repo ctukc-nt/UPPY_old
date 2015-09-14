@@ -28,61 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.gridControlTechOperations = new DevExpress.XtraGrid.GridControl();
+            this.components = new System.ComponentModel.Container();
+            this.teName = new DevExpress.XtraEditors.TextEdit();
+            this.teNote = new DevExpress.XtraEditors.TextEdit();
+            this.gcTechOperations = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gcOrder = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcTechOper = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repoTechOperations = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
-            this.techOperationBindingSource = new System.Windows.Forms.BindingSource();
+            this.techOperationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlTechOperations)).BeginInit();
+            this.commandButtons1 = new UPPY.Desktop.Views.Controls.CommandButtons();
+            ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teNote.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcTechOperations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoTechOperations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.techOperationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
             this.SuspendLayout();
             // 
-            // textEdit1
+            // teName
             // 
-            this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.teName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit1.Location = new System.Drawing.Point(105, 13);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(583, 20);
-            this.textEdit1.TabIndex = 0;
+            this.teName.Location = new System.Drawing.Point(105, 13);
+            this.teName.Name = "teName";
+            this.teName.Size = new System.Drawing.Size(583, 20);
+            this.teName.TabIndex = 0;
             // 
-            // textEdit2
+            // teNote
             // 
-            this.textEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.teNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit2.Location = new System.Drawing.Point(105, 40);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(583, 20);
-            this.textEdit2.TabIndex = 1;
+            this.teNote.Location = new System.Drawing.Point(105, 40);
+            this.teNote.Name = "teNote";
+            this.teNote.Size = new System.Drawing.Size(583, 20);
+            this.teNote.TabIndex = 1;
             // 
-            // gridControlTechOperations
+            // gcTechOperations
             // 
-            this.gridControlTechOperations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gcTechOperations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControlTechOperations.Location = new System.Drawing.Point(12, 112);
-            this.gridControlTechOperations.MainView = this.gridView1;
-            this.gridControlTechOperations.Name = "gridControlTechOperations";
-            this.gridControlTechOperations.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.gcTechOperations.Location = new System.Drawing.Point(12, 112);
+            this.gcTechOperations.MainView = this.gridView1;
+            this.gcTechOperations.Name = "gcTechOperations";
+            this.gcTechOperations.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repoTechOperations});
-            this.gridControlTechOperations.Size = new System.Drawing.Size(676, 228);
-            this.gridControlTechOperations.TabIndex = 2;
-            this.gridControlTechOperations.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gcTechOperations.Size = new System.Drawing.Size(676, 228);
+            this.gcTechOperations.TabIndex = 2;
+            this.gcTechOperations.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
@@ -90,7 +90,7 @@
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gcOrder,
             this.gcTechOper});
-            this.gridView1.GridControl = this.gridControlTechOperations;
+            this.gridView1.GridControl = this.gcTechOperations;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsCustomization.AllowColumnResizing = false;
             this.gridView1.OptionsCustomization.AllowFilter = false;
@@ -158,26 +158,6 @@
             this.labelControl2.TabIndex = 4;
             this.labelControl2.Text = "Примечание";
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(94, 83);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 7;
-            this.btnDelete.Text = "delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(13, 83);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 5;
-            this.btnAdd.Text = "add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -185,7 +165,7 @@
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 8;
-            this.btnOk.Text = "ОК";
+            this.btnOk.Text = "Сохранить";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -200,6 +180,18 @@
             this.btnClose.Text = "Отмена";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
+            // commandButtons1
+            // 
+            this.commandButtons1.AllowDelete = true;
+            this.commandButtons1.AllowEdit = false;
+            this.commandButtons1.AllowNew = true;
+            this.commandButtons1.Location = new System.Drawing.Point(13, 72);
+            this.commandButtons1.Name = "commandButtons1";
+            this.commandButtons1.Size = new System.Drawing.Size(147, 34);
+            this.commandButtons1.TabIndex = 10;
+            this.commandButtons1.ButtonAddClick += new System.EventHandler(this.btnAdd_Click);
+            this.commandButtons1.ButtonDeleteClick += new System.EventHandler(this.btnDelete_Click);
+            // 
             // TechRouteDocumentForm
             // 
             this.AcceptButton = this.btnOk;
@@ -207,21 +199,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(698, 391);
+            this.Controls.Add(this.commandButtons1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.gridControlTechOperations);
-            this.Controls.Add(this.textEdit2);
-            this.Controls.Add(this.textEdit1);
+            this.Controls.Add(this.gcTechOperations);
+            this.Controls.Add(this.teNote);
+            this.Controls.Add(this.teName);
             this.Name = "TechRouteDocumentForm";
             this.Text = "TechRouteDocumentForm";
             this.Load += new System.EventHandler(this.TechRouteForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlTechOperations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teNote.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcTechOperations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoTechOperations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.techOperationBindingSource)).EndInit();
@@ -233,9 +224,9 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraGrid.GridControl gridControlTechOperations;
+        private DevExpress.XtraEditors.TextEdit teName;
+        private DevExpress.XtraEditors.TextEdit teNote;
+        private DevExpress.XtraGrid.GridControl gcTechOperations;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gcOrder;
         private DevExpress.XtraGrid.Columns.GridColumn gcTechOper;
@@ -244,9 +235,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repoTechOperations;
         private System.Windows.Forms.BindingSource techOperationBindingSource;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit1View;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnClose;
+        private Controls.CommandButtons commandButtons1;
     }
 }

@@ -123,6 +123,7 @@
     <Compile Include="Interfaces\Views\IListView.cs" />
     <Compile Include="Interfaces\DataManagers\IUppyDataManagersFactory.cs" />
     <Compile Include="Interfaces\Views\IView.cs" />
+    <Compile Include="MonoFlat Theme.cs" />
     <Compile Include="Ninject\ApplicationModule.cs" />
     <Compile Include="Ninject\CompositionRoot.cs" />
     <Compile Include="Program.cs" />

@@ -22,10 +22,10 @@ namespace UPPY.Desktop.Views.TechRoutes
         {
             get
             {
-                _document.Name = textEdit1.Text;
-                _document.Note = textEdit2.Text;
+                _document.Name = teName.Text;
+                _document.Note = teNote.Text;
                 _document.TechOperations =
-                    ((List<OrdersOperations>) gridControlTechOperations.DataSource).ConvertAll(
+                    ((List<OrdersOperations>) gcTechOperations.DataSource).ConvertAll(
                         x => _techRouteDocumentController.GetDataTechOperations().Find(y => y.Id == x.TechOperationId));
                 return _document;
             }
@@ -36,14 +36,14 @@ namespace UPPY.Desktop.Views.TechRoutes
 
                 _document = value;
 
-                textEdit1.Text = _document.Name;
-                textEdit2.Text = _document.Note;
+                teName.Text = _document.Name;
+                teNote.Text = _document.Note;
                 var order = 1;
                 var sourdeDataGrid =
                     _document.TechOperations.ConvertAll(
                         x => new OrdersOperations {Order = order++, TechOperationId = x.Id});
 
-                gridControlTechOperations.DataSource = sourdeDataGrid;
+                gcTechOperations.DataSource = sourdeDataGrid;
             }
         }
 
@@ -55,19 +55,19 @@ namespace UPPY.Desktop.Views.TechRoutes
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            ((List<OrdersOperations>) gridControlTechOperations.DataSource).Add(new OrdersOperations
+            ((List<OrdersOperations>) gcTechOperations.DataSource).Add(new OrdersOperations
             {
-                Order = ((List<OrdersOperations>) gridControlTechOperations.DataSource).Count + 1,
+                Order = ((List<OrdersOperations>) gcTechOperations.DataSource).Count + 1,
                 TechOperationId = null
             });
-            gridControlTechOperations.RefreshDataSource();
+            gcTechOperations.RefreshDataSource();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            ((List<OrdersOperations>) gridControlTechOperations.DataSource).Remove(
+            ((List<OrdersOperations>) gcTechOperations.DataSource).Remove(
                 (OrdersOperations) gridView1.GetFocusedRow());
-            gridControlTechOperations.RefreshDataSource();
+            gcTechOperations.RefreshDataSource();
         }
 
         private void btnOk_Click(object sender, EventArgs e)

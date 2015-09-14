@@ -73,6 +73,7 @@
             this.colId});
             this.gvTechOpers.GridControl = this.gcTechOpers;
             this.gvTechOpers.Name = "gvTechOpers";
+            this.gvTechOpers.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvTechOpers_CellValueChanged);
             // 
             // colShortName
             // 

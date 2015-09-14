@@ -4,10 +4,11 @@ using Core.DomainModel;
 using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.Controllers.Gosts;
+using UPPY.Desktop.Views.Gosts;
 
 namespace UPPY.Desktop.Concrete.Controllers.Gosts
 {
-    public class GostListController : IGostListController
+    public class GostListController : IGostListController, IListViewController
     {
         private readonly IUppyControllersFactory _factory;
         private readonly IClassDataManager<Gost> _gostDataManager;
@@ -48,6 +49,12 @@ namespace UPPY.Desktop.Concrete.Controllers.Gosts
             {
                 Save(gost);
             }
+        }
+
+        public void ShowViewDialog()
+        {
+            GostsListViewForm form = new GostsListViewForm(this);
+            form.ShowDialog();
         }
     }
 }

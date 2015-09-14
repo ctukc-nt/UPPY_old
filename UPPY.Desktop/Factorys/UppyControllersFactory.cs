@@ -3,6 +3,7 @@ using Core.DomainModel;
 using UPPY.Desktop.Classes;
 using UPPY.Desktop.Concrete.Controllers.Common;
 using UPPY.Desktop.Concrete.Controllers.Drawings;
+using UPPY.Desktop.Concrete.Controllers.Gosts;
 using UPPY.Desktop.Concrete.Controllers.Orders;
 using UPPY.Desktop.Concrete.Controllers.Standarts;
 using UPPY.Desktop.Concrete.Controllers.TechOpers;
@@ -40,6 +41,9 @@ namespace UPPY.Desktop.Factorys
 
             if (typeof(T) == typeof(TechOperation))
                 return new TechOpersListController(_dataManagersFactory.GetDataManager<TechOperation>());
+
+            if (typeof (T) == typeof (Gost))
+                return new GostListController(this, _dataManagersFactory.GetDataManager<Gost>());
 
             return null;
         }

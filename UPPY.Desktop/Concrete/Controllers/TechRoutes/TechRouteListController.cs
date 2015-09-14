@@ -35,11 +35,21 @@ namespace UPPY.Desktop.Concrete.Controllers.TechRoutes
         public void Save(TechRoute document)
         {
             _techRouteDataManager.InsertOrUpdate(document);
+            OnDataRefreshed();
+        }
+
+        private void OnDataRefreshed()
+        {
+            if (DataRefreshed != null)
+            {
+                DataRefreshed(this, EventArgs.Empty);
+            }
         }
 
         public void Delete(TechRoute document)
         {
             _techRouteDataManager.Delete(document);
+            OnDataRefreshed();
         }
 
         public void EditDocument(TechRoute document)
