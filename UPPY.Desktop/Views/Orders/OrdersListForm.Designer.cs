@@ -40,10 +40,7 @@
             this.colDateSend = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsClosed = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNote = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnRefreshSource = new DevExpress.XtraEditors.SimpleButton();
-            this.btnOpen = new DevExpress.XtraEditors.SimpleButton();
-            this.btnDel = new DevExpress.XtraEditors.SimpleButton();
-            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.commandButtons1 = new UPPY.Desktop.Views.Controls.CommandButtons();
             ((System.ComponentModel.ISupportInitialize)(this.gcOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvOrders)).BeginInit();
@@ -55,10 +52,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gcOrders.DataSource = this.orderBindingSource;
-            this.gcOrders.Location = new System.Drawing.Point(12, 12);
+            this.gcOrders.Location = new System.Drawing.Point(12, 46);
             this.gcOrders.MainView = this.gvOrders;
             this.gcOrders.Name = "gcOrders";
-            this.gcOrders.Size = new System.Drawing.Size(880, 543);
+            this.gcOrders.Size = new System.Drawing.Size(1017, 509);
             this.gcOrders.TabIndex = 0;
             this.gcOrders.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvOrders});
@@ -146,55 +143,26 @@
             this.colNote.Visible = true;
             this.colNote.VisibleIndex = 7;
             // 
-            // btnRefreshSource
+            // commandButtons1
             // 
-            this.btnRefreshSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefreshSource.Location = new System.Drawing.Point(905, 150);
-            this.btnRefreshSource.Name = "btnRefreshSource";
-            this.btnRefreshSource.Size = new System.Drawing.Size(124, 40);
-            this.btnRefreshSource.TabIndex = 11;
-            this.btnRefreshSource.Text = "&Refresh";
-            this.btnRefreshSource.Click += new System.EventHandler(this.btnRefreshSource_Click);
-            // 
-            // btnOpen
-            // 
-            this.btnOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpen.Location = new System.Drawing.Point(905, 58);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(124, 40);
-            this.btnOpen.TabIndex = 10;
-            this.btnOpen.Text = "Open order";
-            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDel.Location = new System.Drawing.Point(905, 104);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(124, 40);
-            this.btnDel.TabIndex = 9;
-            this.btnDel.Text = "Del order";
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(905, 12);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(124, 40);
-            this.btnAdd.TabIndex = 8;
-            this.btnAdd.Text = "Add order";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.commandButtons1.AllowDelete = true;
+            this.commandButtons1.AllowEdit = true;
+            this.commandButtons1.AllowNew = true;
+            this.commandButtons1.Location = new System.Drawing.Point(12, 6);
+            this.commandButtons1.Name = "commandButtons1";
+            this.commandButtons1.Size = new System.Drawing.Size(147, 34);
+            this.commandButtons1.TabIndex = 12;
+            this.commandButtons1.ButtonRefreshClick += new System.EventHandler(this.btnRefreshSource_Click);
+            this.commandButtons1.ButtonAddClick += new System.EventHandler(this.btnAdd_Click);
+            this.commandButtons1.ButtonEditClick += new System.EventHandler(this.btnOpen_Click);
+            this.commandButtons1.ButtonDeleteClick += new System.EventHandler(this.btnDel_Click);
             // 
             // OrdersListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1041, 567);
-            this.Controls.Add(this.btnRefreshSource);
-            this.Controls.Add(this.btnOpen);
-            this.Controls.Add(this.btnDel);
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.commandButtons1);
             this.Controls.Add(this.gcOrders);
             this.Name = "OrdersListForm";
             this.Text = "OrdersListForm";
@@ -219,9 +187,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDateSend;
         private DevExpress.XtraGrid.Columns.GridColumn colIsClosed;
         private DevExpress.XtraGrid.Columns.GridColumn colNote;
-        private DevExpress.XtraEditors.SimpleButton btnRefreshSource;
-        private DevExpress.XtraEditors.SimpleButton btnOpen;
-        private DevExpress.XtraEditors.SimpleButton btnDel;
-        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        private Controls.CommandButtons commandButtons1;
     }
 }
