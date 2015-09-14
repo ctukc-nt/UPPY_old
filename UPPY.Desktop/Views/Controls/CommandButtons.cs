@@ -12,32 +12,60 @@ namespace UPPY.Desktop.Views.Controls
 {
     public partial class CommandButtons : UserControl
     {
+        private bool _allowNew = true;
+        private bool _allowEdit = true;
+        private bool _allowDelete = true;
+
         public CommandButtons()
         {
             InitializeComponent();
 
-            btnAdd.Enabled = AllowNew;
-            btnDelete.Enabled = AllowDelete;
-            btnShowAnotherView.Enabled = AllowEdit;
+           
+           
+            
         }
 
         /// <summary>
         /// Разрешить кнопку "Добавление"
         /// </summary>
         [Browsable(true)]
-        public bool AllowNew { get; set; } = true;
+        public bool AllowNew
+        {
+            get { return _allowNew; }
+            set
+            {
+                _allowNew = value;
+                btnAdd.Enabled = value;
+            }
+        }
 
         /// <summary>
         /// Разрешить кнопку "Редактировать"
         /// </summary>
         [Browsable(true)]
-        public bool AllowEdit { get; set; } = true;
+        public bool AllowEdit
+        {
+            get { return _allowEdit; }
+            set
+            {
+                _allowEdit = value;
+                btnShowAnotherView.Enabled = value;
+            }
+        }
 
         /// <summary>
         /// Разрешить кнопку "Удаление"
         /// </summary>
         [Browsable(true)]
-        public bool AllowDelete { get; set; } = true;
+        public bool AllowDelete
+        {
+            get { return _allowDelete; }
+            set
+            {
+                _allowDelete = value;
+                btnDelete.Enabled = value;
+            }
+        }
 
         /// <summary>
         /// Клик по кнопке  "Обновление"
