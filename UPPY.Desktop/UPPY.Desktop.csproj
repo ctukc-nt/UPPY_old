@@ -78,6 +78,8 @@
     <Compile Include="Concrete\Controllers\Drawings\DrawingController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\DrawingListController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\HierarchyNumberDrawingController.cs" />
+    <Compile Include="Concrete\Controllers\Gosts\Class1.cs" />
+    <Compile Include="Concrete\Controllers\Gosts\GostListController.cs" />
     <Compile Include="Concrete\Controllers\Orders\OrderDocumentController.cs" />
     <Compile Include="Concrete\Controllers\Orders\OrderListController.cs" />
     <Compile Include="Concrete\Controllers\Standarts\StandartController.cs" />
@@ -109,6 +111,8 @@
     <Compile Include="Classes\HierarchyNumberDrawing.cs" />
     <Compile Include="Interfaces\Controllers\Common\IControllersFactory.cs" />
     <Compile Include="Interfaces\Controllers\Common\IUppyControllersFactory.cs" />
+    <Compile Include="Interfaces\Controllers\Gosts\IGostDocumentController.cs" />
+    <Compile Include="Interfaces\Controllers\Gosts\IGostListController.cs" />
     <Compile Include="Interfaces\Controllers\Orders\IOrderListController.cs" />
     <Compile Include="Interfaces\Controllers\Standarts\IStandartController.cs" />
     <Compile Include="Interfaces\Controllers\Standarts\IStandartsListController.cs" />
@@ -169,6 +173,12 @@
     </Compile>
     <Compile Include="Views\Drawings\ImportDrawingsForm.Designer.cs">
       <DependentUpon>ImportDrawingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gosts\GostsListViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gosts\GostsListViewForm.Designer.cs">
+      <DependentUpon>GostsListViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
@@ -255,6 +265,9 @@
     <EmbeddedResource Include="Views\Drawings\ImportDrawingsForm.resx">
       <DependentUpon>ImportDrawingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gosts\GostsListViewForm.resx">
+      <DependentUpon>GostsListViewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,6 +297,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Core.DomainModel.Drawing.datasource" />
+    <None Include="Properties\DataSources\Core.DomainModel.Gost.datasource" />
     <None Include="Properties\DataSources\Core.DomainModel.PositionStandart.datasource" />
     <None Include="Properties\DataSources\Core.DomainModel.Standart.datasource" />
     <None Include="Properties\DataSources\Core.DomainModel.TechOperation.datasource" />
@@ -301,9 +315,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Gosts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{876F668F-5017-4CEE-8AE4-91E9B0E9E6B6}</Project>
