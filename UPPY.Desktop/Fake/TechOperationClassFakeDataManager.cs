@@ -18,7 +18,7 @@ namespace UPPY.Desktop.Fake
             Add(new TechOperation() {Id = 5, ShortName = "E", FullName = "EEEEE"});
         }
 
-        private int _count = 0;
+        private int _count = 6;
 
         public Task<List<TechOperation>> GetListCollectionAsync()
         {

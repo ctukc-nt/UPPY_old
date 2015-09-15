@@ -123,6 +123,8 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 
             tlDarwings.Focus();
             LoadNodesState(state);
+
+            repoTechRoutes.DataSource = _controller.GetTechRoutes();
             tlDarwings.EndUpdate();
         }
 
@@ -169,9 +171,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            var listId = SaveNodeStates(tlDarwings.Nodes).ToList();
             RefreshData(this, null);
-            LoadNodesState(listId);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

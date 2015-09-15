@@ -60,6 +60,7 @@
     <Compile Include="Interfaces\IClassDataManager.cs" />
     <Compile Include="Interfaces\IDataManagersFactory.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
+    <Compile Include="Interfaces\IFilesGetter.cs" />
     <Compile Include="Interfaces\IHierClassDataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DomainModel\TechOperation.cs" />

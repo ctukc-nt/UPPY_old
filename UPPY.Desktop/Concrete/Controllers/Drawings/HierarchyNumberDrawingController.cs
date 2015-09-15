@@ -98,8 +98,8 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
         {
             var techRoute = new TechRoute();
             techRoute.TechOperations.AddRange(techOpers);
+            techRoute.CreateNameByTechOperations();
             _techRouteDataManager.InsertOrUpdate(techRoute);
-
             return techRoute.Id;
         }
 

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Core.Interfaces;
 
 namespace Core.DomainModel
@@ -40,7 +42,15 @@ namespace Core.DomainModel
         /// </summary>
         public void CreateNameByTechOperations()
         {
-            
+            string name = string.Empty;
+            string delim = string.Empty;
+            foreach (var operation in this.TechOperations)
+            {
+                name = name + string.Format("{0} {1} ", delim, operation.ShortName);
+                delim = "->";
+            }
+
+            Name = name.Trim();
         }
     }
 }
