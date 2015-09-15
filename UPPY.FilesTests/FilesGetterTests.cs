@@ -13,7 +13,7 @@ namespace UPPY.Files.Tests
     public class FilesGetterTests
     {
         [Test()]
-        public void GetListFielsTest()
+        public void PutFileTest()
         {
             FilesRepository repository = new FilesRepository();
             var filePath = Path.GetTempPath() + Guid.NewGuid().ToString() + ".xls";
@@ -24,6 +24,22 @@ namespace UPPY.Files.Tests
 
             var fi = repository.PutFile(filePath);
             Assert.AreEqual(".xls", fi.Extension);
+
+        }
+
+        [Test()]
+        public void GetListFielsTest()
+        {
+            FilesRepository repository = new FilesRepository();
+            var filePath = Path.GetTempPath() + Guid.NewGuid().ToString() + ".xls";
+            var file = File.Create(filePath);
+            file.Write(new byte[] { 15, 12 }, 0, 2);
+            file.Flush();
+            file.Close();
+
+            repository.PutFile(filePath);
+            var fi = repository.GetListFiels();
+            Assert.AreNotEqual(null, fi);
 
         }
     }

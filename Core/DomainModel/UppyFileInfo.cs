@@ -1,9 +1,14 @@
-﻿namespace Core.DomainModel
+﻿using System.IO;
+
+namespace Core.DomainModel
 {
     public class UppyFileInfo
     {
-        public string Hash { get; set; }
+        public string FileName { get; set; }
 
-        public string Extension { get; set; }
+        public string Extension
+        {
+            get { return Path.GetExtension(FileName); } 
+        }
     }
 }
