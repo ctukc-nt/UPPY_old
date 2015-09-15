@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Additional", "Additional", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileServer.Services", "FileServer.Services\FileServer.Services.csproj", "{0357B25D-7F29-4CBD-930B-5571D15B9969}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPPY.Files", "UPPY.Files\UPPY.Files.csproj", "{34211894-FE42-41CC-9ACA-1501E1BED3B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{0357B25D-7F29-4CBD-930B-5571D15B9969}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0357B25D-7F29-4CBD-930B-5571D15B9969}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0357B25D-7F29-4CBD-930B-5571D15B9969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34211894-FE42-41CC-9ACA-1501E1BED3B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34211894-FE42-41CC-9ACA-1501E1BED3B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34211894-FE42-41CC-9ACA-1501E1BED3B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34211894-FE42-41CC-9ACA-1501E1BED3B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
