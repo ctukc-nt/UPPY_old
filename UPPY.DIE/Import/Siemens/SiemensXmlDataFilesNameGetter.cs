@@ -60,5 +60,10 @@ namespace UPPY.DIE.Import.Siemens
         {
             throw new System.NotImplementedException();
         }
+
+        public List<string> GetFilesByArticle(Article article)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

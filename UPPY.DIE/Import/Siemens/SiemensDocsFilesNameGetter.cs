@@ -71,5 +71,25 @@ namespace UPPY.DIE.Import.Siemens
 
             return files;
         }
+
+        private string GetFileNameToFind(Article article)
+        {
+            var designation = article.Head.ARTZNr;
+            if (string.IsNullOrWhiteSpace(designation))
+                designation = article.Head.ARTPartID.Trim();
+
+            if (designation.Contains("-"))
+            {
+                var strt = designation.LastIndexOf("-");
+                designation = designation.Substring(0, strt);
+            }
+
+            return designation;
+        }
+
+        public List<string> GetFilesByArticle(Article article)
+        {
+            return GetFilesByNameDrawing(GetFileNameToFind(article));
+        }
     }
 }

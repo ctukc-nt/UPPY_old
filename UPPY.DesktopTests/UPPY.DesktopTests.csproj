@@ -3,12 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{13540D22-3F08-454C-A865-B80262FCBAAD}</ProjectGuid>
+    <ProjectGuid>{AEA240DC-3D04-40F6-AE74-BD8BB1AD3CD3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UPPY.FilesTests</RootNamespace>
-    <AssemblyName>UPPY.FilesTests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>UPPY.DesktopTests</RootNamespace>
+    <AssemblyName>UPPY.DesktopTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -16,7 +16,6 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,22 +54,21 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="FilesGetterTests.cs" />
+    <Compile Include="Classes\FilesLoaderToRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{876F668F-5017-4CEE-8AE4-91E9B0E9E6B6}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UPPY.Files\UPPY.Files.csproj">
-      <Project>{34211894-FE42-41CC-9ACA-1501E1BED3B2}</Project>
-      <Name>UPPY.Files</Name>
+    <ProjectReference Include="..\UPPY.Desktop\UPPY.Desktop.csproj">
+      <Project>{5DD3D891-6B7C-49B1-B432-EEFC67041074}</Project>
+      <Name>UPPY.Desktop</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

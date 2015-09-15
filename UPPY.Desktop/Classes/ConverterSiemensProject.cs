@@ -65,6 +65,7 @@ namespace UPPY.Desktop.Classes
             drawing.MarkSteal = string.Empty;
             drawing.StandartSize = string.Empty;
             drawing.Profile = string.Empty;
+            drawing.Files = siemensProject.FileNames.Select(x => new UppyFileInfo() { FileName = x }).ToList();
 
             if (siemensProject.Article.BOM.Length == 1 && siemensProject.Article.BOM[0].ARTARTPartID.Contains("#"))
             {

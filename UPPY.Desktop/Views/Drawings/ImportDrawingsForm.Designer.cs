@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportDrawingsForm));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.wcSiemensDataImport = new DevExpress.XtraWizard.WizardControl();
             this.welcomeWizardPage = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -59,6 +59,7 @@
             this.repoTechRoutes = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.rtbConvertLog = new System.Windows.Forms.RichTextBox();
             this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            this.tlcCountFiles = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.wcSiemensDataImport)).BeginInit();
             this.wcSiemensDataImport.SuspendLayout();
             this.welcomeWizardPage.SuspendLayout();
@@ -229,7 +230,8 @@
             this.tlcCount,
             this.tlcCountAll,
             this.tlcWeigth,
-            this.tlcWeightAll});
+            this.tlcWeightAll,
+            this.tlcCountFiles});
             this.tlDarwings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlDarwings.FooterPanelHeight = 30;
             this.tlDarwings.KeyFieldName = "Id";
@@ -383,7 +385,7 @@
             this.repoTechRoutes.AutoHeight = false;
             this.repoTechRoutes.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "", "showlist", null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", "showlist", null, true)});
             this.repoTechRoutes.DisplayMember = "Name";
             this.repoTechRoutes.Name = "repoTechRoutes";
             this.repoTechRoutes.ValueMember = "Id";
@@ -396,6 +398,14 @@
             this.rtbConvertLog.Size = new System.Drawing.Size(933, 89);
             this.rtbConvertLog.TabIndex = 0;
             this.rtbConvertLog.Text = "";
+            // 
+            // tlcCountFiles
+            // 
+            this.tlcCountFiles.Caption = "Кол-во файлов";
+            this.tlcCountFiles.FieldName = "CountFiles";
+            this.tlcCountFiles.Name = "tlcCountFiles";
+            this.tlcCountFiles.Visible = true;
+            this.tlcCountFiles.VisibleIndex = 14;
             // 
             // ImportDrawingsForm
             // 
@@ -453,5 +463,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcWeigth;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcWeightAll;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repoTechRoutes;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcCountFiles;
     }
 }

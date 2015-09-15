@@ -16,5 +16,7 @@ namespace UPPY.DIE.Import.Siemens.Interfaces
         string GetFileByNameDrawing(string name);
 
         List<string> GetFilesByNameDrawing(string name);
+
+        List<string> GetFilesByArticle(Article article);
     }
 }

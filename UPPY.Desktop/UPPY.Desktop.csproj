@@ -65,6 +65,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\Controllers\Common\SiemensDataImportController.cs" />
+    <Compile Include="Interfaces\Common\IFilesLoaderToRepository.cs" />
+    <Compile Include="Classes\SimpleFilesLoaderToRepository.cs" />
+    <Compile Include="Classes\FilesLoaderToRepository.cs" />
     <Compile Include="Classes\ConverterSiemensProject.cs" />
     <Compile Include="Classes\DrawingBulkChangesHelper.cs" />
     <Compile Include="Classes\FieldsNormalizer.cs" />
@@ -72,8 +76,7 @@
     <Compile Include="Classes\MaterialParser.cs" />
     <Compile Include="Classes\NameMaterialSearch.cs" />
     <Compile Include="Classes\ProjectExcluder.cs" />
-    <Compile Include="Classes\SiemensDataImport.cs" />
-    <Compile Include="Concrete\Controllers\Common\SiemensDataImportController.cs" />
+    <Compile Include="Concrete\Controllers\Common\SiemensDataAndFilesImportController.cs" />
     <Compile Include="Concrete\Controllers\Common\DrawingsToStandartController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\DrawingDocumentController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\DrawingListController.cs" />
@@ -343,6 +346,10 @@
     <ProjectReference Include="..\UPPY.DIE\UPPY.DIE.csproj">
       <Project>{04B0D4BE-D7A1-4F6A-8A97-BBE47746BB44}</Project>
       <Name>UPPY.DIE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UPPY.Files\UPPY.Files.csproj">
+      <Project>{34211894-fe42-41cc-9aca-1501e1bed3b2}</Project>
+      <Name>UPPY.Files</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
