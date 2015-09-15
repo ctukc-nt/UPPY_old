@@ -110,16 +110,9 @@ namespace Core.DomainModel
         /// </summary>
         public Color Color { get; set; }
 
-        public FileDrawingInfo FileDrawingInfo { get; set; }
+        public UppyFileInfo UppyFileInfo { get; set; }
         public string Note { get; set; }
 
         public void RecalculateWeightAll() => WeightAll = Weight*CountAll;
-    }
-
-    public class FileDrawingInfo
-    {
-        public string Hash { get; set; }
-
-        public string Extension { get; set; }
     }
 }
