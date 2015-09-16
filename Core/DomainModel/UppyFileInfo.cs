@@ -10,5 +10,10 @@ namespace Core.DomainModel
         {
             get { return Path.GetExtension(FileName); } 
         }
+
+        public override string ToString()
+        {
+            return FileName;
+        }
     }
 }

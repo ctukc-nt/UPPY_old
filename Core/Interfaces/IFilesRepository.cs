@@ -7,7 +7,6 @@ namespace Core.Interfaces
     public interface IFilesRepository
     {
         List<UppyFileInfo> GetListFiels();
-        //UppyFileInfo PutFile(Stream stream);
 
         UppyFileInfo PutFile(string path);
 
@@ -19,12 +18,18 @@ namespace Core.Interfaces
         /// <returns></returns>
         UppyFileInfo PutFile(string path, string name);
 
+        /// <summary>
+        /// Получить файл из хранилища в поток
+        /// </summary>
+        /// <param name="fileInfo">>Инфо о файле в хранилище</param>
+        /// <returns>Поток с содержимым файла</returns>
         Stream GetFile(UppyFileInfo fileInfo);
 
         /// <summary>
+        /// Получить файл из хранилища и записать его во временные
         /// </summary>
-        /// <param name="fileInfo"></param>
-        /// <returns></returns>
+        /// <param name="fileInfo">Инфо о файле в хранилище</param>
+        /// <returns>Путь к временному файлу</returns>
         string GetFileToTemp(UppyFileInfo fileInfo);
     }
 }

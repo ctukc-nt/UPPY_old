@@ -287,6 +287,25 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                 _controller.InsertIntoDrawing(drawing.ParentId, (string)dataXmlBase64);
             }
         }
+
+        private void btnViewFiles_Click(object sender, EventArgs e)
+        {
+            ShowFielsViewer();
+        }
+
+        private void ShowFielsViewer()
+        {
+            var drawing = tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]) as Drawing;
+            if (drawing != null)
+            {
+                _controller.ShowFilesViewer(drawing);
+            }
+        }
+
+        private void repoFilesButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            ShowFielsViewer();
+        }
     }
 
 }

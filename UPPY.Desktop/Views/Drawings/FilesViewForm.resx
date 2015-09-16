@@ -117,20 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="welcomeWizardPage.IntroductionText" xml:space="preserve">
-    <value>С помощью данного мастера по шагам совершите следующие операции:
- - указать директорию, в которой хранятся файлы данных
- - анализ предварительной загрузки данных (проверка целостности пакета)
- - визульный анализ правильности выполнения преобразования данных
- - подтверждение импорта в базу данных</value>
-  </data>
-  <data name="completionWizardPage.FinishText" xml:space="preserve">
-    <value>По нажатию на кнопку Финиш произойдёт сохранение данных в базу.
-Нажмите Назад для повторной проверки данных, Отмена - для отмены загрузки.
-
-ВНИМАНИЕ: данная операция может выполняться длительное время!</value>
-  </data>
-  <metadata name="folderBrowser.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>

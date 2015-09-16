@@ -69,12 +69,25 @@ namespace UPPY.Files
 
         public Stream GetFile(UppyFileInfo fileInfo)
         {
-            throw new NotImplementedException();
+            using (var client = new FileRepositoryServiceClient())
+            {
+                return client.GetFile(fileInfo.FileName);
+            }
         }
 
         public string GetFileToTemp(UppyFileInfo fileInfo)
         {
-            throw new NotImplementedException();
+            using (var client = new FileRepositoryServiceClient())
+            {
+                var stream = client.GetFile(fileInfo.FileName);
+                var pathFileSave = Path.Combine(Path.GetTempPath(), "UPPY" + Environment.TickCount + fileInfo.FileName);
+                var writeFile = File.OpenWrite(pathFileSave);
+                stream.CopyTo(writeFile);
+                writeFile.Flush();
+                writeFile.Close();
+
+                return pathFileSave;
+            }
         }
     }
 }
