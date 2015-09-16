@@ -111,7 +111,7 @@ namespace UPPY.DIE.Import.Siemens
             if (_docsFileName == null)
                 return new List<string>();
 
-            return _docsFileName.GetFilesByNameDrawing(article.Head.ARTPartID);
+            return _docsFileName.GetFilesByArticle(article);
         }
 
         private void LoadStructureRecursiveWithLog(SiemensProject structure)

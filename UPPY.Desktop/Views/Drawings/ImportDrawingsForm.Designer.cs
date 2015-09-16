@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportDrawingsForm));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.wcSiemensDataImport = new DevExpress.XtraWizard.WizardControl();
             this.welcomeWizardPage = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -38,6 +38,7 @@
             this.waitPanel = new DevExpress.XtraWaitForm.ProgressPanel();
             this.rtbPreviewLoad = new System.Windows.Forms.RichTextBox();
             this.completionWizardPage = new DevExpress.XtraWizard.CompletionWizardPage();
+            this.ppFinishLoad = new DevExpress.XtraWaitForm.ProgressPanel();
             this.wpConvertedDataView = new DevExpress.XtraWizard.WizardPage();
             this.waitPanelConversion = new DevExpress.XtraWaitForm.ProgressPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -56,6 +57,7 @@
             this.tlcCountAll = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcWeigth = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcWeightAll = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlcCountFiles = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repoTechRoutes = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.rtbConvertLog = new System.Windows.Forms.RichTextBox();
             this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
@@ -64,6 +66,7 @@
             this.welcomeWizardPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPath.Properties)).BeginInit();
             this.wpPreviewPackSiemens.SuspendLayout();
+            this.completionWizardPage.SuspendLayout();
             this.wpConvertedDataView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -161,12 +164,29 @@
             // 
             // completionWizardPage
             // 
-            this.completionWizardPage.FinishText = "По нажатию на кнопку Финиш произойдёт сохранение данных в базу.\r\nНажмите Назад дл" +
-    "я повторной проверки данных, Отмена - для отмены загрузки.";
+            this.completionWizardPage.Controls.Add(this.ppFinishLoad);
+            this.completionWizardPage.FinishText = resources.GetString("completionWizardPage.FinishText");
             this.completionWizardPage.Name = "completionWizardPage";
             this.completionWizardPage.ProceedText = "";
             this.completionWizardPage.Size = new System.Drawing.Size(748, 417);
             this.completionWizardPage.Text = "Завершение работы мастера";
+            // 
+            // ppFinishLoad
+            // 
+            this.ppFinishLoad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ppFinishLoad.Appearance.BackColor = System.Drawing.Color.AliceBlue;
+            this.ppFinishLoad.Appearance.Options.UseBackColor = true;
+            this.ppFinishLoad.AppearanceCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.ppFinishLoad.AppearanceCaption.Options.UseFont = true;
+            this.ppFinishLoad.AppearanceDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ppFinishLoad.AppearanceDescription.Options.UseFont = true;
+            this.ppFinishLoad.Caption = "Пожалуйста, подождите";
+            this.ppFinishLoad.Description = "Сохранение данных в базу...";
+            this.ppFinishLoad.Location = new System.Drawing.Point(220, 178);
+            this.ppFinishLoad.Name = "ppFinishLoad";
+            this.ppFinishLoad.Size = new System.Drawing.Size(278, 66);
+            this.ppFinishLoad.TabIndex = 3;
+            this.ppFinishLoad.Visible = false;
             // 
             // wpConvertedDataView
             // 
@@ -229,7 +249,8 @@
             this.tlcCount,
             this.tlcCountAll,
             this.tlcWeigth,
-            this.tlcWeightAll});
+            this.tlcWeightAll,
+            this.tlcCountFiles});
             this.tlDarwings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlDarwings.FooterPanelHeight = 30;
             this.tlDarwings.KeyFieldName = "Id";
@@ -378,12 +399,20 @@
             this.tlcWeightAll.VisibleIndex = 13;
             this.tlcWeightAll.Width = 66;
             // 
+            // tlcCountFiles
+            // 
+            this.tlcCountFiles.Caption = "Кол-во файлов";
+            this.tlcCountFiles.FieldName = "CountFiles";
+            this.tlcCountFiles.Name = "tlcCountFiles";
+            this.tlcCountFiles.Visible = true;
+            this.tlcCountFiles.VisibleIndex = 14;
+            // 
             // repoTechRoutes
             // 
             this.repoTechRoutes.AutoHeight = false;
             this.repoTechRoutes.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "", "showlist", null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", "showlist", null, true)});
             this.repoTechRoutes.DisplayMember = "Name";
             this.repoTechRoutes.Name = "repoTechRoutes";
             this.repoTechRoutes.ValueMember = "Id";
@@ -411,6 +440,7 @@
             this.welcomeWizardPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPath.Properties)).EndInit();
             this.wpPreviewPackSiemens.ResumeLayout(false);
+            this.completionWizardPage.ResumeLayout(false);
             this.wpConvertedDataView.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -453,5 +483,7 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcWeigth;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcWeightAll;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repoTechRoutes;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcCountFiles;
+        private DevExpress.XtraWaitForm.ProgressPanel ppFinishLoad;
     }
 }

@@ -5,6 +5,8 @@ using Core.Interfaces;
 using ObjectExtensions.Copy;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
+using UPPY.Desktop.Views.Drawings;
+using UPPY.Files;
 
 namespace UPPY.Desktop.Concrete.Controllers.Drawings
 {
@@ -96,6 +98,13 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
                 
                 throw;
             }
+        }
+
+        public void ShowFilesViewer(Drawing drawing)
+        {
+            FilesViewForm filesViewForm = new FilesViewForm(new FilesRepository());
+            filesViewForm.Files = drawing.Files;
+            filesViewForm.ShowDialog();
         }
 
         private void CopyChildrens(int? parentIdOld, int? parentIdNew)

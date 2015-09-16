@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TreeListDrawingsControl));
             this.tlDarwings = new DevExpress.XtraTreeList.TreeList();
             this.tlcName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -50,6 +50,8 @@
             this.tlcPartOfDrawingId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcTechRouteId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repoTechRoutes = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.tlcCountFiles = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.repoFilesButtonEdit = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.btnShowAnotherView = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
@@ -60,8 +62,10 @@
             this.btnPaste = new DevExpress.XtraEditors.SimpleButton();
             this.sbCreateStandart = new DevExpress.XtraEditors.SimpleButton();
             this.sbShowInTable = new DevExpress.XtraEditors.SimpleButton();
+            this.btnViewFiles = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.tlDarwings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoTechRoutes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoFilesButtonEdit)).BeginInit();
             this.SuspendLayout();
             // 
             // tlDarwings
@@ -86,7 +90,8 @@
             this.tlcWeightAll,
             this.tlcOp,
             this.tlcPartOfDrawingId,
-            this.tlcTechRouteId});
+            this.tlcTechRouteId,
+            this.tlcCountFiles});
             this.tlDarwings.FooterPanelHeight = 30;
             this.tlDarwings.KeyFieldName = "Id";
             this.tlDarwings.Location = new System.Drawing.Point(0, 39);
@@ -95,7 +100,8 @@
             this.tlDarwings.OptionsFilter.FilterMode = DevExpress.XtraTreeList.FilterMode.Extended;
             this.tlDarwings.ParentFieldName = "ParentId";
             this.tlDarwings.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repoTechRoutes});
+            this.repoTechRoutes,
+            this.repoFilesButtonEdit});
             this.tlDarwings.RootValue = null;
             this.tlDarwings.Size = new System.Drawing.Size(910, 418);
             this.tlDarwings.TabIndex = 4;
@@ -259,10 +265,28 @@
             this.repoTechRoutes.AutoHeight = false;
             this.repoTechRoutes.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", "showlist", null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", "showlist", null, true)});
             this.repoTechRoutes.DisplayMember = "Name";
             this.repoTechRoutes.Name = "repoTechRoutes";
             this.repoTechRoutes.ValueMember = "Id";
+            // 
+            // tlcCountFiles
+            // 
+            this.tlcCountFiles.Caption = "Файлов...";
+            this.tlcCountFiles.ColumnEdit = this.repoFilesButtonEdit;
+            this.tlcCountFiles.FieldName = "CountFiles";
+            this.tlcCountFiles.Name = "tlcCountFiles";
+            this.tlcCountFiles.ShowButtonMode = DevExpress.XtraTreeList.ShowButtonModeEnum.ShowAlways;
+            this.tlcCountFiles.Visible = true;
+            this.tlcCountFiles.VisibleIndex = 15;
+            // 
+            // repoFilesButtonEdit
+            // 
+            this.repoFilesButtonEdit.AutoHeight = false;
+            this.repoFilesButtonEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repoFilesButtonEdit.Name = "repoFilesButtonEdit";
+            this.repoFilesButtonEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repoFilesButtonEdit_ButtonClick);
             // 
             // btnAdd
             // 
@@ -351,7 +375,6 @@
             this.sbCreateStandart.Name = "sbCreateStandart";
             this.sbCreateStandart.Size = new System.Drawing.Size(25, 28);
             this.sbCreateStandart.TabIndex = 12;
-            this.sbCreateStandart.Text = "&L";
             this.sbCreateStandart.ToolTip = "Создать нормы на основании выделенной строки";
             this.sbCreateStandart.Click += new System.EventHandler(this.sbCreateStandart_Click);
             // 
@@ -366,10 +389,22 @@
             this.sbShowInTable.ToolTip = "Показать в виде таблицы";
             this.sbShowInTable.Click += new System.EventHandler(this.sbShowInTable_Click);
             // 
+            // btnViewFiles
+            // 
+            this.btnViewFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViewFiles.Image = ((System.Drawing.Image)(resources.GetObject("btnViewFiles.Image")));
+            this.btnViewFiles.Location = new System.Drawing.Point(882, 5);
+            this.btnViewFiles.Name = "btnViewFiles";
+            this.btnViewFiles.Size = new System.Drawing.Size(25, 28);
+            this.btnViewFiles.TabIndex = 14;
+            this.btnViewFiles.ToolTip = "Создать нормы на основании выделенной строки";
+            this.btnViewFiles.Click += new System.EventHandler(this.btnViewFiles_Click);
+            // 
             // TreeListDrawingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnViewFiles);
             this.Controls.Add(this.sbShowInTable);
             this.Controls.Add(this.sbCreateStandart);
             this.Controls.Add(this.btnPaste);
@@ -384,6 +419,7 @@
             this.Size = new System.Drawing.Size(910, 457);
             ((System.ComponentModel.ISupportInitialize)(this.tlDarwings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoTechRoutes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoFilesButtonEdit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -419,5 +455,8 @@
         private DevExpress.XtraEditors.SimpleButton btnPaste;
         private DevExpress.XtraEditors.SimpleButton sbCreateStandart;
         private DevExpress.XtraEditors.SimpleButton sbShowInTable;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tlcCountFiles;
+        private DevExpress.XtraEditors.SimpleButton btnViewFiles;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repoFilesButtonEdit;
     }
 }

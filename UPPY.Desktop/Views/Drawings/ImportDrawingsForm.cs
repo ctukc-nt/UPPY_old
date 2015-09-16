@@ -79,7 +79,7 @@ namespace UPPY.Desktop.Views.Drawings
 
                 LoggerLoad logger = new LoggerLoad();
                 var task = new Task(() => { _storage = Controller.ConvertSiemensToDrawings(_project, logger); });
-               
+
                 task.Start();
                 await task;
 
@@ -133,9 +133,22 @@ namespace UPPY.Desktop.Views.Drawings
             }
         }
 
-        private void wizardControl1_FinishClick(object sender, CancelEventArgs e)
+        private async void wizardControl1_FinishClick(object sender, CancelEventArgs e)
         {
-            Controller.SaveDrawingsToDataBase(_storage);
+            completionWizardPage.AllowCancel = false;
+            completionWizardPage.AllowBack = false;
+            completionWizardPage.AllowFinish = false;
+            completionWizardPage.AllowDrop = false;
+            completionWizardPage.AllowNext = false;
+
+            e.Cancel = true;
+            ppFinishLoad.Visible = true;
+            var task = new Task(() => Controller.SaveDrawingsToDataBase(_storage));
+            task.Start();
+            await task;
+            DialogResult = DialogResult.OK;
+            Close();
+
         }
     }
 }

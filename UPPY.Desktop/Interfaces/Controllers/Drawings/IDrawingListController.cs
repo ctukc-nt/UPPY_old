@@ -20,5 +20,6 @@ namespace UPPY.Desktop.Interfaces.Controllers.Drawings
         void ShowDrawingInGridView(int? drawingId);
         string GetCopy(int drawingId);
         void InsertIntoDrawing(int? drawingId, string base64Xml);
+        void ShowFilesViewer(Drawing drawing);
     }
 }

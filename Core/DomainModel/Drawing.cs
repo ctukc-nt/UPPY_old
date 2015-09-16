@@ -1,10 +1,16 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using Core.Interfaces;
 
 namespace Core.DomainModel
 {
     public class Drawing : IEntity
     {
+        public Drawing()
+        {
+            Files = new List<UppyFileInfo>();
+        }
+
         /// <summary>
         ///     Родитель
         /// </summary>
@@ -110,16 +116,11 @@ namespace Core.DomainModel
         /// </summary>
         public Color Color { get; set; }
 
-        public FileDrawingInfo FileDrawingInfo { get; set; }
+        public List<UppyFileInfo> Files { get; set; }
         public string Note { get; set; }
 
+        public int CountFiles { get { return Files.Count; } }
+
         public void RecalculateWeightAll() => WeightAll = Weight*CountAll;
-    }
-
-    public class FileDrawingInfo
-    {
-        public string Hash { get; set; }
-
-        public string Extension { get; set; }
     }
 }

@@ -14,29 +14,29 @@ namespace UPPY.Desktop.Concrete.Controllers.Common
 {
     public class SiemensDataImportController : ISiemensDataImportController, IUppyDataImport
     {
-        private readonly IClassDataManager<Drawing> _drawingsDataManager;
-        private readonly int? _parentId;
+        protected readonly IClassDataManager<Drawing> DrawingsDataManager;
+        protected readonly int? ParentId;
 
         public SiemensDataImportController(IClassDataManager<Drawing> drawingsDataManager)
         {
-            _drawingsDataManager = drawingsDataManager;
+            DrawingsDataManager = drawingsDataManager;
         }
 
         public SiemensDataImportController(IClassDataManager<Drawing> drawingsDataManager, int? parentId)
         {
-            _drawingsDataManager = drawingsDataManager;
-            _parentId = parentId;
+            DrawingsDataManager = drawingsDataManager;
+            ParentId = parentId;
         }
 
-        public void SaveDrawingsToDataBase(TempDrawingsStorage storage)
+        public virtual void SaveDrawingsToDataBase(TempDrawingsStorage storage)
         {
-            storage.Drawings.Where(x => x.ParentId == null).Map(x => x.ParentId = _parentId);
+            storage.Drawings.Where(x => x.ParentId == null).Map(x => x.ParentId = ParentId);
 
             foreach (var drawing in storage.Drawings.OrderBy(x => x.Id))
             {
                 var oldId = drawing.Id;
                 drawing.Id = null;
-                _drawingsDataManager.Insert(drawing);
+                DrawingsDataManager.Insert(drawing);
                 storage.Drawings.Where(x => x.ParentId == oldId).Map(x => x.ParentId = drawing.Id);
             }
         }
