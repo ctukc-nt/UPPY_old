@@ -50,6 +50,7 @@
     <Compile Include="DomainModel\Drawing.cs" />
     <Compile Include="DomainModel\DrawingWithTechOper.cs" />
     <Compile Include="DomainModel\ExtraDimensions.cs" />
+    <Compile Include="DomainModel\HierarchyNumberDrawing.cs" />
     <Compile Include="DomainModel\UppyFileInfo.cs" />
     <Compile Include="DomainModel\GOST.cs" />
     <Compile Include="DomainModel\Order.cs" />

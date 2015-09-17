@@ -111,7 +111,6 @@
     <Compile Include="Concrete\Controllers\TechRoutes\TechRouteListController.cs" />
     <Compile Include="Factorys\UppyControllersFactory.cs" />
     <Compile Include="Fake\UppyFakeDataManagersFactory.cs" />
-    <Compile Include="Classes\HierarchyNumberDrawing.cs" />
     <Compile Include="Interfaces\Controllers\Common\IControllersFactory.cs" />
     <Compile Include="Interfaces\Controllers\Common\IUppyControllersFactory.cs" />
     <Compile Include="Interfaces\Controllers\Gosts\IGostDocumentController.cs" />
