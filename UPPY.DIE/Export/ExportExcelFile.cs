@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using Core.DomainModel;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
@@ -8,23 +10,138 @@ namespace UPPY.DIE.Export
 {
     public class ExportExcelFile
     {
-        public void CreatePassportProjectToFile(HierarchyNumberDrawing masterDrawing, List<HierarchyNumberDrawing> list, string fileName)
+        private const int CountFixedField = 18;
+        private const int AsciiTableStart = 64;
+
+        public void CreatePassportProjectToFile(HierarchyNumberDrawing masterDrawing, List<HierarchyNumberDrawing> list,
+            string fileName)
         {
-            ExcelPackage pck = new ExcelPackage();
+            var pck = new ExcelPackage();
             var ws = pck.Workbook.Worksheets.Add("Паспорт");
             CreateHeaderPassport(ws);
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < list.Count; i++)
             {
                 AppendProjectToSheetWithoutTechOper(list[i], ws, i + 4);
             }
             pck.SaveAs(new FileInfo(fileName));
         }
 
-        public void CreatePassportProjectToFile(HierarchyNumberDrawing masterDrawing, List<HierarchyNumberDrawing> list, List<TechOperation> techOperations, string fileName)
+        public void CreatePassportProjectToFile(HierarchyNumberDrawing masterDrawing, List<HierarchyNumberDrawing> list,
+            List<TechOperation> techOperations, List<TechRoute> techRoutes, string fileName)
         {
-            
+            var pck = new ExcelPackage();
+            var ws = pck.Workbook.Worksheets.Add("Паспорт");
+            CreateHeaderPassport(ws, techOperations);
+            for (var i = 0; i < list.Count; i++)
+            {
+                AppendProjectToSheetWithoutTechOper(list[i], ws, i + 4);
+                AppendTechOperToSheet(techRoutes.FirstOrDefault(x => x.Id == list[i].TechRouteId), techOperations, ws,
+                    i + 4);
+            }
+
+            pck.SaveAs(new FileInfo(fileName));
         }
 
+        public void CreateReportClearWeights(Standart standart, string fileName)
+        {
+            var pck = new ExcelPackage();
+            var workSheet = pck.Workbook.Worksheets.Add("Чистые веса");
+            CreateHeaderBigNorms(workSheet);
+            int i = 4;
+
+            workSheet.Cells["A2:J2"].Value = standart.Name;
+
+            foreach (PositionStandart positionStandart in standart.Positions)
+            {
+                workSheet.Cells["A" + i].Value = i - 3;
+                SetStyleToAllLinesSquare(workSheet.Cells["A" + i], ExcelBorderStyle.Thin);
+                workSheet.Cells["B" + i].Value = positionStandart.Profile;
+                SetStyleToAllLinesSquare(workSheet.Cells["B" + i], ExcelBorderStyle.Thin);
+                workSheet.Cells["C" + i].Value = positionStandart.StandartSize;
+                SetStyleToAllLinesSquare(workSheet.Cells["C" + i], ExcelBorderStyle.Thin);
+                workSheet.Cells["D" + i].Value = string.Empty;
+                SetStyleToAllLinesSquare(workSheet.Cells["D" + i], ExcelBorderStyle.Thin);
+                workSheet.Cells["E" + i].Value = positionStandart.GostOnSort;
+                SetStyleToAllLinesSquare(workSheet.Cells["E" + i], ExcelBorderStyle.Thin);
+                workSheet.Cells["F" + i].Value = positionStandart.MarkSteal;
+                SetStyleToAllLinesSquare(workSheet.Cells["F" + i], ExcelBorderStyle.Thin);
+                workSheet.Cells["G" + i].Value = string.Empty;
+                SetStyleToAllLinesSquare(workSheet.Cells["G" + i], ExcelBorderStyle.Thin);
+                workSheet.Cells["H" + i].Value = positionStandart.Weight;
+                SetStyleToAllLinesSquare(workSheet.Cells["H" + i], ExcelBorderStyle.Thin);
+                workSheet.Cells["I" + i].Value = positionStandart.UtilizationRatio;
+                SetStyleToAllLinesSquare(workSheet.Cells["I" + i], ExcelBorderStyle.Thin);
+                workSheet.Cells["J" + i].Formula = string.Format("=H{0}*I{0}", i);
+                SetStyleToAllLinesSquare(workSheet.Cells["J" + i], ExcelBorderStyle.Thin);
+                i++;
+            }
+
+            workSheet.Cells["G" + i].Value = "Итого: ";
+            SetStyleToAllLinesSquare(workSheet.Cells["G" + i], ExcelBorderStyle.Thin);
+            workSheet.Cells["H" + i].Formula = string.Format("=SUM(H4:H{0})", i - 1);
+            SetStyleToAllLinesSquare(workSheet.Cells["H" + i], ExcelBorderStyle.Thin);
+            workSheet.Cells["J" + i].Formula = string.Format("=SUM(J4:J{0})", i - 1);
+            SetStyleToAllLinesSquare(workSheet.Cells["J" + i], ExcelBorderStyle.Thin);
+
+            pck.SaveAs(new FileInfo(fileName));
+        }
+
+        private void CreateHeaderBigNorms(ExcelWorksheet workSheet)
+        {
+            var cell = workSheet.Cells["A2:J2"];
+            cell.Merge = true;
+            cell.Value = "AAAAAA";
+            cell.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+            SetStyleToAllLinesSquare(cell, ExcelBorderStyle.Thick);
+
+
+
+            FillHeaderSquare(workSheet.Cells["A3"], "№ п/п");
+            workSheet.Column(1).Width = 11;
+
+            FillHeaderSquare(workSheet.Cells["B3"], "Профиль");
+            workSheet.Column(2).Width = 11;
+
+            FillHeaderSquare(workSheet.Cells["C3"], "Типоразмер");
+            workSheet.Column(3).Width = 15;
+
+            FillHeaderSquare(workSheet.Cells["D3"], "Мерность");
+            workSheet.Column(4).Width = 8;
+
+            FillHeaderSquare(workSheet.Cells["E3"], "ГОСТ на сортамент");
+            workSheet.Column(5).Width = 25;
+
+            FillHeaderSquare(workSheet.Cells["F3"], "Марка стали");
+            workSheet.Column(6).Width = 25;
+
+            FillHeaderSquare(workSheet.Cells["G3"], "ГОСТ на материал");
+            workSheet.Column(7).Width = 12;
+
+            FillHeaderSquare(workSheet.Cells["H3"], "Вес");
+            workSheet.Column(8).Width = 14;
+
+            FillHeaderSquare(workSheet.Cells["I3"], "Коэфф. использ.");
+            workSheet.Column(9).Width = 8;
+
+            FillHeaderSquare(workSheet.Cells["J3"], "Вес с отходом");
+            workSheet.Column(10).Width = 14;
+        }
+
+        private void AppendTechOperToSheet(TechRoute route, List<TechOperation> techOperations, ExcelWorksheet ws, int i)
+        {
+            for (var j = 0; j < techOperations.Count; j++)
+            {
+                var colNumStr = GetColumnExcelName(AsciiTableStart + CountFixedField + j);
+                var cell = ws.Cells[string.Format("{0}{1}", colNumStr, i)];
+
+                if (route != null && route.TechOperations.Any(x => x.Id == techOperations[j].Id))
+                    cell.Value = "*";
+
+                SetStyleToAllLinesSquare(cell, ExcelBorderStyle.Thin);
+                SetCenterOrientation(cell);
+            }
+        }
 
         private void CreateHeaderPassport(ExcelWorksheet ws)
         {
@@ -86,7 +203,36 @@ namespace UPPY.DIE.Export
             ws.Column(17).Width = 25;
         }
 
-        private static void AppendProjectToSheetWithoutTechOper(HierarchyNumberDrawing drawing, ExcelWorksheet workSheet, int i)
+        private void CreateHeaderPassport(ExcelWorksheet ws, List<TechOperation> techOperations)
+        {
+            CreateHeaderPassport(ws);
+
+            for (var i = 0; i < techOperations.Count; i++)
+            {
+                var colNumInt = CountFixedField + i;
+                var colNumStr = GetColumnExcelName(AsciiTableStart + colNumInt);
+                FillHeaderSquare(ws.Cells[colNumStr + "3"], techOperations[i].ShortName);
+
+                ws.Column(colNumInt).Width = 3;
+            }
+
+            var rangeStr = string.Format("A2:{0}2",
+                GetColumnExcelName(AsciiTableStart + CountFixedField + techOperations.Count - 1));
+            var cell = ws.Cells[rangeStr];
+            cell.Merge = false;
+            cell.Merge = true;
+            cell.Value = "Заголовок";
+            SetCenterOrientation(cell);
+            SetStyleToAllLinesSquare(cell, ExcelBorderStyle.Thick);
+        }
+
+        private static string GetColumnExcelName(int colNumInt)
+        {
+            return Encoding.ASCII.GetString(new[] { (byte)(colNumInt) });
+        }
+
+        private static void AppendProjectToSheetWithoutTechOper(HierarchyNumberDrawing drawing, ExcelWorksheet workSheet,
+            int i)
         {
             workSheet.Cells["A" + i].Value = drawing.HierarchyNumber;
             SetStyleToAllLinesSquare(workSheet.Cells["A" + i], ExcelBorderStyle.Thin);
@@ -134,7 +280,7 @@ namespace UPPY.DIE.Export
             range.Style.Font.Bold = true;
         }
 
-        private static void SetStyleToAllLinesSquare(ExcelRange range ,ExcelBorderStyle style)
+        private static void SetStyleToAllLinesSquare(ExcelRange range, ExcelBorderStyle style)
         {
             range.Style.Border.Bottom.Style = style;
             range.Style.Border.Top.Style = style;
@@ -142,5 +288,10 @@ namespace UPPY.DIE.Export
             range.Style.Border.Right.Style = style;
         }
 
+        private static void SetCenterOrientation(ExcelRange range)
+        {
+            range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            range.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+        }
     }
 }
