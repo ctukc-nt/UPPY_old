@@ -62,7 +62,6 @@
     <Compile Include="Interfaces\IClassDataManager.cs" />
     <Compile Include="Interfaces\IDataManagersFactory.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
-    <Compile Include="Interfaces\IDataExportToFile.cs" />
     <Compile Include="Interfaces\IFilesRepository.cs" />
     <Compile Include="Interfaces\IHierClassDataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
