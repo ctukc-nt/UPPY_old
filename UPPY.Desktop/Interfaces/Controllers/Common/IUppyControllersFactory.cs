@@ -15,5 +15,6 @@ namespace UPPY.Desktop.Interfaces.Controllers.Common
         IDrawingsToStandartShower GetDrawingsToStandartController();
         IListViewController GetDrawingsGridViewController(int? parentId);
         IUppyDataImport GetSiemensLoaderController(int? parentId);
+        IPrintDrawingsController GetPrinDrawingsController();
     }
 }

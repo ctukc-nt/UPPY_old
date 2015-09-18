@@ -53,18 +53,18 @@
             this.fromExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.onlyChildrenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.childrensWithParentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asPassportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.passportWithoutTechOpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.withTechPassportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearWeigthsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectedDrawingInAnotherWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drawingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asLinearGridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.initToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.asPassportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.passportWithoutTechOpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.withTechPassportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearWeigthsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.onlyChildrenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.childrensWithParentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -351,6 +351,47 @@
             this.visibleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.visibleToolStripMenuItem.Text = "Видимые";
             // 
+            // onlyChildrenToolStripMenuItem
+            // 
+            this.onlyChildrenToolStripMenuItem.Name = "onlyChildrenToolStripMenuItem";
+            this.onlyChildrenToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.onlyChildrenToolStripMenuItem.Text = "Только сборочные единицы";
+            // 
+            // childrensWithParentToolStripMenuItem
+            // 
+            this.childrensWithParentToolStripMenuItem.Name = "childrensWithParentToolStripMenuItem";
+            this.childrensWithParentToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.childrensWithParentToolStripMenuItem.Text = "Вместе со сборочными узлами";
+            // 
+            // asPassportToolStripMenuItem
+            // 
+            this.asPassportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.passportWithoutTechOpersToolStripMenuItem,
+            this.withTechPassportToolStripMenuItem});
+            this.asPassportToolStripMenuItem.Name = "asPassportToolStripMenuItem";
+            this.asPassportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.asPassportToolStripMenuItem.Text = "Паспорт";
+            // 
+            // passportWithoutTechOpersToolStripMenuItem
+            // 
+            this.passportWithoutTechOpersToolStripMenuItem.Name = "passportWithoutTechOpersToolStripMenuItem";
+            this.passportWithoutTechOpersToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.passportWithoutTechOpersToolStripMenuItem.Text = "Без расцеховки";
+            this.passportWithoutTechOpersToolStripMenuItem.Click += new System.EventHandler(this.passportWithoutTechOpersToolStripMenuItem_Click);
+            // 
+            // withTechPassportToolStripMenuItem
+            // 
+            this.withTechPassportToolStripMenuItem.Name = "withTechPassportToolStripMenuItem";
+            this.withTechPassportToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.withTechPassportToolStripMenuItem.Text = "С расцеховкой";
+            this.withTechPassportToolStripMenuItem.Click += new System.EventHandler(this.withTechPassportToolStripMenuItem_Click);
+            // 
+            // clearWeigthsToolStripMenuItem
+            // 
+            this.clearWeigthsToolStripMenuItem.Name = "clearWeigthsToolStripMenuItem";
+            this.clearWeigthsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clearWeigthsToolStripMenuItem.Text = "Чистые веса";
+            // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -391,45 +432,6 @@
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1139, 529);
             this.xtraTabPage2.Text = "Список файлов чертежей";
-            // 
-            // asPassportToolStripMenuItem
-            // 
-            this.asPassportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.passportWithoutTechOpersToolStripMenuItem,
-            this.withTechPassportToolStripMenuItem});
-            this.asPassportToolStripMenuItem.Name = "asPassportToolStripMenuItem";
-            this.asPassportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.asPassportToolStripMenuItem.Text = "Паспорт";
-            // 
-            // passportWithoutTechOpersToolStripMenuItem
-            // 
-            this.passportWithoutTechOpersToolStripMenuItem.Name = "passportWithoutTechOpersToolStripMenuItem";
-            this.passportWithoutTechOpersToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.passportWithoutTechOpersToolStripMenuItem.Text = "Без расцеховки";
-            // 
-            // withTechPassportToolStripMenuItem
-            // 
-            this.withTechPassportToolStripMenuItem.Name = "withTechPassportToolStripMenuItem";
-            this.withTechPassportToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.withTechPassportToolStripMenuItem.Text = "С расцеховкой";
-            // 
-            // clearWeigthsToolStripMenuItem
-            // 
-            this.clearWeigthsToolStripMenuItem.Name = "clearWeigthsToolStripMenuItem";
-            this.clearWeigthsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.clearWeigthsToolStripMenuItem.Text = "Чистые веса";
-            // 
-            // onlyChildrenToolStripMenuItem
-            // 
-            this.onlyChildrenToolStripMenuItem.Name = "onlyChildrenToolStripMenuItem";
-            this.onlyChildrenToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.onlyChildrenToolStripMenuItem.Text = "Только сборочные единицы";
-            // 
-            // childrensWithParentToolStripMenuItem
-            // 
-            this.childrensWithParentToolStripMenuItem.Name = "childrensWithParentToolStripMenuItem";
-            this.childrensWithParentToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.childrensWithParentToolStripMenuItem.Text = "Вместе со сборочными узлами";
             // 
             // OrderForm
             // 

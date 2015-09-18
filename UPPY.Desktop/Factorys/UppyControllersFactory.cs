@@ -13,6 +13,7 @@ using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
 using UPPY.Desktop.Interfaces.Controllers.Orders;
 using UPPY.Desktop.Interfaces.DataManagers;
+using UPPY.DIE.Export;
 using UPPY.Files;
 
 namespace UPPY.Desktop.Factorys
@@ -119,6 +120,11 @@ namespace UPPY.Desktop.Factorys
         public IUppyDataImport GetSiemensLoaderController(int? parentId)
         {
             return new SiemensDataAndFilesImportController(_dataManagersFactory.GetDataManager<Drawing>(), new SimpleFilesLoaderToRepository(new FilesRepository()) ,parentId);
+        }
+
+        public IPrintDrawingsController GetPrinDrawingsController()
+        {
+            return new PrintDrawingsController(this, _dataManagersFactory, new ExportExcelFile());
         }
     }
 }

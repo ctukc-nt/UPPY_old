@@ -66,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\Controllers\Common\SiemensDataImportController.cs" />
+    <Compile Include="Concrete\Controllers\Drawings\PrintDrawingsController.cs" />
+    <Compile Include="Fake\FilteredDrawingListClassFakeDataManager.cs" />
     <Compile Include="Interfaces\Common\IFilesLoaderToRepository.cs" />
     <Compile Include="Classes\SimpleFilesLoaderToRepository.cs" />
     <Compile Include="Classes\FilesLoaderToRepository.cs" />

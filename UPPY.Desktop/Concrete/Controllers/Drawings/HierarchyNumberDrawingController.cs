@@ -4,8 +4,6 @@ using System.Linq;
 using AutoMapper;
 using Core.DomainModel;
 using Core.Interfaces;
-using Ninject.Infrastructure.Language;
-using UPPY.Desktop.Classes;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
 using UPPY.Desktop.Views.Drawings;
@@ -17,7 +15,6 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
         private readonly IClassDataManager<Drawing> _drawingsDataManager;
         private readonly IClassDataManager<TechOperation> _techOperDataManager;
         private readonly IClassDataManager<TechRoute> _techRouteDataManager;
-        private Dictionary<int?, int> _dctChildrens;
 
         public int? ParentId { get; set; } = null;
 
@@ -31,35 +28,40 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
 
         public List<HierarchyNumberDrawing> GetData()
         {
-            _dctChildrens = new Dictionary<int?, int>();
-
             var drawings =
                 _drawingsDataManager.GetListCollection()
                     .OrderBy(x => x.Id)
                     .ToList()
                     .ConvertAll(Mapper.Map<HierarchyNumberDrawing>);
 
-            drawings.AsParallel<HierarchyNumberDrawing>().Map(drawing =>
+            CreateHierarchyNumbers(drawings);
+
+            return drawings;
+        }
+
+        private void CreateHierarchyNumbers(List<HierarchyNumberDrawing> drawings)
+        {
+            var dctChildrens = new Dictionary<int?, int>(); 
+
+            drawings.ForEach(drawing =>
             {
                 int? id = int.MaxValue;
 
                 id = drawing.ParentId ?? id;
 
-                if (_dctChildrens.ContainsKey(id))
+                if (dctChildrens.ContainsKey(id))
                 {
-                    _dctChildrens[id]++;
+                    dctChildrens[id]++;
                 }
                 else
                 {
-                    _dctChildrens.Add(id, 1);
+                    dctChildrens.Add(id, 1);
                 }
 
-                drawing.Order = _dctChildrens[id];
+                drawing.Order = dctChildrens[id];
             });
 
-            drawings.AsParallel<HierarchyNumberDrawing>().Map(x => x.HierarchyNumber = GetHierarchyNumber(drawings, x));
-
-            return drawings;
+            drawings.ForEach(x => x.HierarchyNumber = GetHierarchyNumber(drawings, x));
         }
 
         public event EventHandler DataRefreshed;
@@ -120,29 +122,6 @@ namespace UPPY.Desktop.Concrete.Controllers.Drawings
             return drawing.Order + ".";
         }
 
-        public void SaveDocument(HierarchyNumberDrawing doc)
-        {
-            _drawingsDataManager.InsertOrUpdate(doc);
-            if (DataRefreshed != null)
-                DataRefreshed(this, new EventArgs());
-        }
-
-        public void DeleteDocument(HierarchyNumberDrawing doc)
-        {
-            _drawingsDataManager.Delete(doc);
-            if (DataRefreshed != null)
-                DataRefreshed(this, new EventArgs());
-        }
-
-        public List<IEntity> GetListRelatedDocument<TO>() where TO : IEntity
-        {
-            if (typeof (TO) == typeof (TechRoute))
-            {
-                return _techRouteDataManager.GetListCollection().ConvertAll(input => (IEntity) input);
-            }
-
-            return null;
-        }
 
         public int CompareTwoDocuments(HierarchyNumberDrawing doc1, HierarchyNumberDrawing doc2)
         {

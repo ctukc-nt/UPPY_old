@@ -15,10 +15,7 @@ namespace UPPY.Desktop.Fake
         {
             if (typeof (T) == typeof (Drawing))
             {
-                if (!Data.ContainsKey("dr"))
-                    Data.Add("dr", new DrawingListClassFakeDataManager());
-
-                return (IClassDataManager<T>) Data["dr"];
+                return (IClassDataManager<T>) new DrawingListClassFakeDataManager();
             }
 
             if (typeof (T) == typeof (TechRoute))
@@ -64,56 +61,16 @@ namespace UPPY.Desktop.Fake
             return null;
         }
 
-        private List<Drawing> GetChildrenDrawings(int? parentId, List<Drawing> data)
-        {
-           
-            return data.Where(x=>x.ParentId == parentId).ToList();
-        }
-
-        private List<Drawing> GetAllChildrens(int? parentId, List<Drawing> data)
-        { 
-            var result = new List<Drawing>();
-            var childrens = GetChildrenDrawings(parentId, data);
-            result.AddRange(childrens);
-            foreach (var drawing in childrens)
-            {
-                result.AddRange(GetAllChildrens(drawing.Id, data));
-            }
-
-            return result;
-        }
-
-
         public IClassDataManager<Drawing> GetFilteredDrawingsByParent(int? parentId)
         {
-            var manager = GetDataManager<Drawing>();
-            var childrens = GetAllChildrens(parentId, (List<Drawing>) manager);
-
-            ((List<Drawing>) manager).RemoveAll(x => childrens.All(y => y.Id != x.Id));
-
-            return manager;
+           var filtered = new FilteredDrawingListClassFakeDataManager(parentId);
+            return filtered;
         }
 
         public IHierClassDataManager<Drawing> GetDrawingsHierClassDataManager()
         {
             var manager = GetDataManager<Drawing>();
             return (IHierClassDataManager<Drawing>) manager;
-        }
-
-        private int? GetTopParentId(int? startDrawingId, IClassDataManager<Drawing> drawingDm)
-        {
-            var drawing = drawingDm.GetDocument(startDrawingId);
-            if (drawing != null)
-            {
-                if (drawing.ParentId != null)
-                    return GetTopParentId(drawing.ParentId, drawingDm);
-                else
-                {
-                    return startDrawingId;
-                }
-            }
-
-            return startDrawingId;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace UPPY.DIE.Export
         private const int CountFixedField = 18;
         private const int AsciiTableStart = 64;
 
-        public void CreatePassportProjectToFile(HierarchyNumberDrawing masterDrawing, List<HierarchyNumberDrawing> list,
+        public void CreatePassportProjectToFile(Order order, List<HierarchyNumberDrawing> list,
             string fileName)
         {
             var pck = new ExcelPackage();
@@ -26,7 +26,7 @@ namespace UPPY.DIE.Export
             pck.SaveAs(new FileInfo(fileName));
         }
 
-        public void CreatePassportProjectToFile(HierarchyNumberDrawing masterDrawing, List<HierarchyNumberDrawing> list,
+        public void CreatePassportProjectToFile(Order order, List<HierarchyNumberDrawing> list,
             List<TechOperation> techOperations, List<TechRoute> techRoutes, string fileName)
         {
             var pck = new ExcelPackage();

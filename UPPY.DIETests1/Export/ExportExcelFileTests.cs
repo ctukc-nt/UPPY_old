@@ -25,7 +25,7 @@ namespace UPPY.DIE.Export.Tests
             list.Add(new HierarchyNumberDrawing() { HierarchyNumber = "2." });
             list.Add(new HierarchyNumberDrawing() { HierarchyNumber = "3." });
 
-            var header = new HierarchyNumberDrawing();
+            var header = new Order();
 
             ExportExcelFile excelFile = new ExportExcelFile();
 
@@ -66,7 +66,7 @@ namespace UPPY.DIE.Export.Tests
             listTr.Add(new TechRoute() { Id = 5, TechOperations = new List<TechOperation>() { new TechOperation() { Id = 5 } } });
 
 
-            var header = new HierarchyNumberDrawing();
+            var header = new Order();
 
             ExportExcelFile excelFile = new ExportExcelFile();
 
