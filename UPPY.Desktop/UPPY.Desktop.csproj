@@ -113,6 +113,7 @@
     <Compile Include="Fake\UppyFakeDataManagersFactory.cs" />
     <Compile Include="Interfaces\Controllers\Common\IControllersFactory.cs" />
     <Compile Include="Interfaces\Controllers\Common\IUppyControllersFactory.cs" />
+    <Compile Include="Interfaces\Controllers\Drawings\IPrintDrawingsController.cs" />
     <Compile Include="Interfaces\Controllers\Gosts\IGostDocumentController.cs" />
     <Compile Include="Interfaces\Controllers\Gosts\IGostListController.cs" />
     <Compile Include="Interfaces\Controllers\Orders\IOrderListController.cs" />
