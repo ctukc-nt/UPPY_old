@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Export\ExportExcelFile.cs" />
+    <Compile Include="Export\IDataExportToFile.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

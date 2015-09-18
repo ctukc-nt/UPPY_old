@@ -8,7 +8,7 @@ using OfficeOpenXml.Style;
 
 namespace UPPY.DIE.Export
 {
-    public class ExportExcelFile
+    public class ExportExcelFile : IDataExportToFile
     {
         private const int CountFixedField = 18;
         private const int AsciiTableStart = 64;
