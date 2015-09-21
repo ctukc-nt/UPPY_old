@@ -119,7 +119,7 @@ namespace Core.DomainModel
         public List<UppyFileInfo> Files { get; set; }
         public string Note { get; set; }
 
-        public int CountFiles { get { return Files.Count; } }
+        public int CountFiles => Files.Count;
 
         public void RecalculateWeightAll() => WeightAll = Weight*CountAll;
     }
