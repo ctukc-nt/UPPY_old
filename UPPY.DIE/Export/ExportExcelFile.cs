@@ -78,12 +78,36 @@ namespace UPPY.DIE.Export
 
             workSheet.Cells["G" + i].Value = "Итого: ";
             SetStyleToAllLinesSquare(workSheet.Cells["G" + i], ExcelBorderStyle.Thin);
-            workSheet.Cells["H" + i].Formula = string.Format("=SUM(H4:H{0})", i - 1);
+            workSheet.Cells["H" + i].Formula = $"=SUM(H4:H{i - 1})";
             SetStyleToAllLinesSquare(workSheet.Cells["H" + i], ExcelBorderStyle.Thin);
-            workSheet.Cells["J" + i].Formula = string.Format("=SUM(J4:J{0})", i - 1);
+            workSheet.Cells["J" + i].Formula = $"=SUM(J4:J{i - 1})";
             SetStyleToAllLinesSquare(workSheet.Cells["J" + i], ExcelBorderStyle.Thin);
 
             pck.SaveAs(new FileInfo(fileName));
+        }
+
+        public void CreateReportLZK(Standart standart)
+        {
+            var pck = new ExcelPackage();
+            var workSheet = pck.Workbook.Worksheets.Add("Чистые веса");
+            CreateHeaderBigNorms(workSheet);
+            int i = 4;
+
+            workSheet.Cells["A2:J2"].Value = standart.Name;
+
+            foreach (var positionStandart in standart.Positions)
+            {
+                
+            }
+        }
+
+        private void CreateHeaderLZK(ExcelWorksheet workSheet)
+        {
+            workSheet.PrinterSettings.Orientation = eOrientation.Landscape;
+            workSheet.PrinterSettings.PaperSize = ePaperSize.A4;
+            workSheet.PrinterSettings.FitToPage = true;
+
+
         }
 
         private void CreateHeaderBigNorms(ExcelWorksheet workSheet)
