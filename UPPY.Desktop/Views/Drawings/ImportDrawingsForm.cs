@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.Skins;
@@ -8,7 +9,7 @@ using DevExpress.XtraWizard;
 using UPPY.Desktop.Classes;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.DIE.Import.Siemens;
-using UPPY.DIE.Import.Siemens.Interfaces;
+using Utils.Common;
 
 namespace UPPY.Desktop.Views.Drawings
 {
@@ -118,13 +119,31 @@ namespace UPPY.Desktop.Views.Drawings
             }
         }
 
-        private class LoggerLoad : List<string>, ILogging
+        private class LoggerLoad : List<LogMessage>, ILogging
         {
-            public bool ErrorHappens { get; set; }
+            public bool ErrorHappens {
+                get { return this.Any(x => x.Type == TypeMessage.Error); }
+            }
+            public IEnumerable<LogMessage> Messages { get { return this.AsEnumerable(); } }
 
             public void AppendMessage(string message)
             {
-                Add(message);
+                Add(new LogMessage(message));
+            }
+
+            public void AppendMessage(string message, TypeMessage typeMessage)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public void AppendMessage(string message, object obj)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public void AppendMessage(string message, object obj, TypeMessage typeMessage)
+            {
+                throw new System.NotImplementedException();
             }
 
             public new void Clear()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.DomainModel;
 using Core.Interfaces;
+using Utils.Common;
 
 namespace Core
 {
@@ -22,6 +23,8 @@ namespace Core
         ///     Делители в типоразмере
         /// </summary>
         public List<char> SplittersStandartSize { get; set; } = new List<char> { 'X', 'Х' };
+
+        public ILogging Log { get; set; }
 
         /// <summary>
         /// </summary>
@@ -82,39 +85,78 @@ namespace Core
                     }
                 }
 
-
-
                 switch (gost.WeightMethodCalculate)
                 {
                     case WeightMethodCalculate.LengthAndWidth:
-                        position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
-                        position.AdditionalMeasurement = ((double)detail.Length * detail.Width) / 1000 / 1000 * detail.CountAll;
-                        position.Weight = position.AdditionalMeasurement * ConvertStandartSize(position.StandartSize) *
-                                          Density;
 
+                        if (detail.Length.HasValue && detail.Width.HasValue)
+                        {
+                            position.AdditionalMeasurement = (double)(((double)detail.Length * detail.Width) / 1000 / 1000 *
+                                                                       detail.CountAll);
+                            position.Weight = position.AdditionalMeasurement * ConvertStandartSize(position.StandartSize) *
+                                              Density;
+                            position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
+                        }
+                        else
+                        {
+                            Log?.AppendMessage("Поля не соответствуют выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                        }
                         break;
                     case WeightMethodCalculate.Length:
-                        position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
-                        position.AdditionalMeasurement = ((double)detail.Length) / 1000 * detail.CountAll;
-                        position.Weight = Math.PI * Math.Pow(ConvertStandartSizeByDelim(dimensions[0]), 2) / 4000 *
-                                          position.AdditionalMeasurement * Density;
+                        if (detail.Length.HasValue && detail.Width.HasValue)
+                        {
+                            position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
+                            position.AdditionalMeasurement = ((double)detail.Length) / 1000 * detail.CountAll;
+                            position.Weight = Math.PI * Math.Pow(ConvertStandartSizeByDelim(dimensions[0]), 2) / 4000 *
+                                              position.AdditionalMeasurement * Density;
+                        }
+                        else
+                        {
+                            Log?.AppendMessage("Поля не соответствуют выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                        }
                         break;
                     case WeightMethodCalculate.ByTable:
-                        position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
-                        position.AdditionalMeasurement = ((double)detail.Length) / 1000 * detail.CountAll;
-                        var weigthByTable = gost.GetStandartWeight(position.StandartSize);
-                        if (weigthByTable != null)
-                            position.Weight = weigthByTable.Weight * position.AdditionalMeasurement;
-
+                        if (detail.Length.HasValue)
+                        {
+                            position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
+                            position.AdditionalMeasurement = ((double)detail.Length.Value) / 1000 * detail.CountAll;
+                            var weigthByTable = gost.GetStandartWeight(position.StandartSize);
+                            if (weigthByTable != null)
+                                position.Weight = weigthByTable.Weight * position.AdditionalMeasurement;
+                            else
+                            {
+                                Log?.AppendMessage(
+                                    $"Не заполнен табличный типоразмер для ГОСТа {gost.Name} и типоразмера {position.StandartSize}");
+                            }
+                        }
+                        else
+                        {
+                            Log?.AppendMessage("Поля не соответствуют выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                        }
                         break;
                     case WeightMethodCalculate.LengthAndThikness:
-                        position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
-                        position.AdditionalMeasurement = ((double)detail.Length) / 1000 * detail.CountAll;
                         var outerSize = dimensions[0];
                         var widthWall = dimensions[1];
-                        position.Weight = (Convert.ToDouble(outerSize) - Convert.ToDouble(widthWall)) *
-                                          Convert.ToDouble(widthWall) / 40.55 *
-                                          position.AdditionalMeasurement;
+
+                        if (detail.Length.HasValue)
+                        {
+                            if (!string.IsNullOrEmpty(outerSize) && !string.IsNullOrEmpty(widthWall))
+                            {
+                                position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
+                                position.AdditionalMeasurement = ((double) detail.Length)/1000*detail.CountAll;
+                                position.Weight = (Convert.ToDouble(outerSize) - Convert.ToDouble(widthWall))*
+                                                  Convert.ToDouble(widthWall)/40.55*
+                                                  position.AdditionalMeasurement;
+                            }
+                            else
+                            {
+                                Log?.AppendMessage("Поля не соответствуют выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                            }
+                        }
+                        else
+                        {
+                            
+                        }
                         break;
                     case WeightMethodCalculate.LengthAndDoubleThikness:
                         position.TypeAdditionalMeasurement = gost.TypeExtraDimension;

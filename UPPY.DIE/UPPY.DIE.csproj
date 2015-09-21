@@ -69,7 +69,6 @@
     <Compile Include="Import\Siemens\FilesArticlesFactory.cs" />
     <Compile Include="Import\Siemens\Interfaces\IArticlesFactory.cs" />
     <Compile Include="Import\Siemens\Interfaces\IFilesNameGetter.cs" />
-    <Compile Include="Import\Siemens\Interfaces\ILogging.cs" />
     <Compile Include="Import\Siemens\SiemensProjectLoader.cs" />
     <Compile Include="Import\Siemens\SiemensProject.cs" />
     <Compile Include="Import\Siemens\SiemensDocsFilesNameGetter.cs" />
@@ -109,6 +108,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{876f668f-5017-4cee-8ae4-91e9b0e9e6b6}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils.Common\Utils.Common.csproj">
+      <Project>{49232dd5-96d7-45cd-a063-09fa9c148849}</Project>
+      <Name>Utils.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
