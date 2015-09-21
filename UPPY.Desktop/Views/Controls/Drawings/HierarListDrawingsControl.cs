@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Core.DomainModel;
 using DevExpress.XtraGrid.Columns;
 using UPPY.Desktop.Classes;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;

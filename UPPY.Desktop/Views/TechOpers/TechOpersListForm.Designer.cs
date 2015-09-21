@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.gcTechOpers = new DevExpress.XtraGrid.GridControl();
-            this.techOperationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.techOperationBindingSource = new System.Windows.Forms.BindingSource();
             this.gvTechOpers = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colShortName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFullName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -39,6 +38,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.cmCommands = new UPPY.Desktop.Views.Controls.CommandButtons();
+            this.colOrderInPrint = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcTechOpers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.techOperationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvTechOpers)).BeginInit();
@@ -70,7 +70,8 @@
             this.colShortName,
             this.colFullName,
             this.colIsDelete,
-            this.colId});
+            this.colId,
+            this.colOrderInPrint});
             this.gvTechOpers.GridControl = this.gcTechOpers;
             this.gvTechOpers.Name = "gvTechOpers";
             this.gvTechOpers.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvTechOpers_CellValueChanged);
@@ -93,11 +94,11 @@
             // 
             // colIsDelete
             // 
-            this.colIsDelete.Caption = "Удалён";
+            this.colIsDelete.Caption = "Удалёна";
             this.colIsDelete.FieldName = "IsDelete";
             this.colIsDelete.Name = "colIsDelete";
             this.colIsDelete.Visible = true;
-            this.colIsDelete.VisibleIndex = 2;
+            this.colIsDelete.VisibleIndex = 3;
             // 
             // colId
             // 
@@ -138,6 +139,14 @@
             this.cmCommands.ButtonEditClick += new System.EventHandler(this.cmCommands_ButtonEditClick);
             this.cmCommands.ButtonDeleteClick += new System.EventHandler(this.cmCommands_ButtonDeleteClick);
             // 
+            // colOrderInPrint
+            // 
+            this.colOrderInPrint.Caption = "Порядок при выводе";
+            this.colOrderInPrint.FieldName = "OrderInPrint";
+            this.colOrderInPrint.Name = "colOrderInPrint";
+            this.colOrderInPrint.Visible = true;
+            this.colOrderInPrint.VisibleIndex = 2;
+            // 
             // TechOpersListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,5 +179,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colShortName;
         private DevExpress.XtraGrid.Columns.GridColumn colFullName;
         private Controls.CommandButtons cmCommands;
+        private DevExpress.XtraGrid.Columns.GridColumn colOrderInPrint;
     }
 }

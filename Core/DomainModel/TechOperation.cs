@@ -21,6 +21,11 @@ namespace Core.DomainModel
         /// </summary>
         public string FullName { get; set; }
 
+        /// <summary>
+        /// Порядок при печати (выводе на экран)
+        /// </summary>
+        public byte OrderInPrint { get; set; }
+
         public override string ToString()
         {
             return ShortName;

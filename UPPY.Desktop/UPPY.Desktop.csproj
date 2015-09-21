@@ -66,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\Controllers\Common\SiemensDataImportController.cs" />
+    <Compile Include="Concrete\Controllers\Drawings\PrintDrawingsController.cs" />
+    <Compile Include="Fake\FilteredDrawingListClassFakeDataManager.cs" />
     <Compile Include="Interfaces\Common\IFilesLoaderToRepository.cs" />
     <Compile Include="Classes\SimpleFilesLoaderToRepository.cs" />
     <Compile Include="Classes\FilesLoaderToRepository.cs" />
@@ -111,9 +113,9 @@
     <Compile Include="Concrete\Controllers\TechRoutes\TechRouteListController.cs" />
     <Compile Include="Factorys\UppyControllersFactory.cs" />
     <Compile Include="Fake\UppyFakeDataManagersFactory.cs" />
-    <Compile Include="Classes\HierarchyNumberDrawing.cs" />
     <Compile Include="Interfaces\Controllers\Common\IControllersFactory.cs" />
     <Compile Include="Interfaces\Controllers\Common\IUppyControllersFactory.cs" />
+    <Compile Include="Interfaces\Controllers\Drawings\IPrintDrawingsController.cs" />
     <Compile Include="Interfaces\Controllers\Gosts\IGostDocumentController.cs" />
     <Compile Include="Interfaces\Controllers\Gosts\IGostListController.cs" />
     <Compile Include="Interfaces\Controllers\Orders\IOrderListController.cs" />

@@ -7,9 +7,9 @@ using Core.Interfaces;
 
 namespace UPPY.Desktop.Fake
 {
-    public class DrawingListClassFakeDataManager : List<Drawing>, IHierClassDataManager<Drawing>
+    public class DrawingListClassFakeDataManager : IHierClassDataManager<Drawing>
     {
-        
+        protected static List<Drawing> _db = new List<Drawing>();
         private void SetUp()
         {
             var rndRandom = new Random();
@@ -18,11 +18,11 @@ namespace UPPY.Desktop.Fake
             {
                 var random = new Random(i);
                 var parentId = rndRandom.Next(0, 1) == 1 ? null : (i - 1 > 1 ? rndRandom.Next(1, i - 1) : (int?)null);
-                Add(new Drawing { Id = i, ParentId = parentId });
+                _db.Add(new Drawing { Id = i, ParentId = parentId });
             }
         }
 
-        private int _count = 5000;
+        private static int _count = 5000;
 
         public DrawingListClassFakeDataManager()
         {
@@ -43,22 +43,22 @@ namespace UPPY.Desktop.Fake
 
         public Task<List<Drawing>> GetListCollectionAsync()
         {
-            return new Task<List<Drawing>>(() => this);
+            return new Task<List<Drawing>>(() => _db);
         }
 
-        public List<Drawing> GetListCollection()
+        public virtual List<Drawing> GetListCollection()
         {
-            return this;
+            return _db;
         }
 
         public List<Drawing> GetListCollection(Func<Drawing, bool> filter)
         {
-            return this.Where(filter).ToList();
+            return _db.Where(filter).ToList();
         }
 
         public void Insert(Drawing doc)
         {
-            Add(doc);
+            _db.Add(doc);
             doc.Id = _count++;
         }
 
@@ -69,8 +69,8 @@ namespace UPPY.Desktop.Fake
 
         public void Update(Drawing doc)
         {
-            var index =this.FindIndex(x => x.Id == doc.Id);
-            this[index] = doc;
+            var index = _db.FindIndex(x => x.Id == doc.Id);
+            _db[index] = doc;
         }
 
         public void UpdateAsync(Drawing doc)
@@ -83,8 +83,8 @@ namespace UPPY.Desktop.Fake
                 return;
 
             var allChildrens = GetListAllChildrens(doc.Id);
-            RemoveAll(x => allChildrens.Any(y => y.Id == x.Id));
-            Remove(doc);
+            _db.RemoveAll(x => allChildrens.Any(y => y.Id == x.Id));
+            _db.Remove(doc);
         }
 
         public void DeleteAsync(Drawing doc)
@@ -104,7 +104,7 @@ namespace UPPY.Desktop.Fake
 
         public Drawing GetDocument(int? id)
         {
-            return this.FirstOrDefault(x => x.Id == id);
+            return _db.FirstOrDefault(x => x.Id == id);
         }
 
         public Task<Drawing> GetDocumentAsync(int? id)
@@ -114,13 +114,13 @@ namespace UPPY.Desktop.Fake
 
         public List<Drawing> GetListDocsInHierarchy(int? id)
         {
-            var topParentId = GetTopParentId(id, this);
+            var topParentId = GetTopParentId(id, _db);
             return GetListAllChildrens(topParentId);
         }
 
         public List<Drawing> GetListAllChildrens(int? id)
         {
-            return GetAllChildrens(id, this);
+            return GetAllChildrens(id, _db);
         }
 
         private static int? GetTopParentId(int? id, List<Drawing> drawingMongoCollection)

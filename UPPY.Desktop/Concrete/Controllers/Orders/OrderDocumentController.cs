@@ -67,7 +67,7 @@ namespace UPPY.Desktop.Concrete.Controllers.Orders
 
         public bool ShowViewDialog()
         {
-            var orderForm = new OrderForm(this) {Document = Document};
+            var orderForm = new OrderForm(this, _controllersFactory.GetPrinDrawingsController()) {Document = Document};
             orderForm.ShowDialog();
             return true;
         }

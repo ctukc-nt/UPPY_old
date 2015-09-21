@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Core.DomainModel;
+using UPPY.Desktop.Interfaces.Controllers.Drawings;
 using UPPY.Desktop.Interfaces.Controllers.Orders;
 using UPPY.Desktop.Interfaces.Views;
 
@@ -9,10 +10,18 @@ namespace UPPY.Desktop.Views.Orders
     public partial class OrderForm : Form, IDocumentView<Order>
     {
         private readonly IOrderDocumentController _controller;
+        private readonly IPrintDrawingsController _printDrawings;
 
         public OrderForm(IOrderDocumentController controller)
         {
             _controller = controller;
+            InitializeComponent();
+        }
+
+        public OrderForm(IOrderDocumentController controller, IPrintDrawingsController printDrawings)
+        {
+            _controller = controller;
+            _printDrawings = printDrawings;
             InitializeComponent();
         }
 
@@ -79,7 +88,16 @@ namespace UPPY.Desktop.Views.Orders
             treeListDrawingsControl1.Controller = _controller.LoadDataFromSiemens();
             treeListDrawingsControl1.ParentId = Document.DrawingId;
             treeListDrawingsControl1.Refresh();
+        }
 
+        private void withTechPassportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _printDrawings.PrintPassportWithTechOeprs(Document.DrawingId);
+        }
+
+        private void passportWithoutTechOpersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _printDrawings.PrintPassportWithoutTechOeprs(Document.DrawingId);
         }
     }
 }

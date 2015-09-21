@@ -53,7 +53,12 @@
             this.fromExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.allToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.onlyChildrenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.childrensWithParentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asPassportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.passportWithoutTechOpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.withTechPassportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearWeigthsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectedDrawingInAnotherWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drawingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -118,7 +123,7 @@
             // ceIsClosed
             // 
             this.ceIsClosed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ceIsClosed.Location = new System.Drawing.Point(827, 71);
+            this.ceIsClosed.Location = new System.Drawing.Point(827, 63);
             this.ceIsClosed.Name = "ceIsClosed";
             this.ceIsClosed.Properties.Caption = "Заказ закрыт";
             this.ceIsClosed.Size = new System.Drawing.Size(88, 19);
@@ -128,7 +133,7 @@
             // 
             this.teName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.teName.Location = new System.Drawing.Point(285, 19);
+            this.teName.Location = new System.Drawing.Point(285, 11);
             this.teName.Name = "teName";
             this.teName.Size = new System.Drawing.Size(428, 20);
             this.teName.TabIndex = 1;
@@ -137,7 +142,7 @@
             // 
             this.dtcDeadlineDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtcDeadlineDate.EditValue = null;
-            this.dtcDeadlineDate.Location = new System.Drawing.Point(828, 45);
+            this.dtcDeadlineDate.Location = new System.Drawing.Point(828, 37);
             this.dtcDeadlineDate.Name = "dtcDeadlineDate";
             this.dtcDeadlineDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -150,7 +155,7 @@
             // 
             this.dtcDateSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtcDateSend.EditValue = null;
-            this.dtcDateSend.Location = new System.Drawing.Point(734, 71);
+            this.dtcDateSend.Location = new System.Drawing.Point(734, 63);
             this.dtcDateSend.Name = "dtcDateSend";
             this.dtcDateSend.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -162,7 +167,7 @@
             // lDeadlineDate
             // 
             this.lDeadlineDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lDeadlineDate.Location = new System.Drawing.Point(719, 48);
+            this.lDeadlineDate.Location = new System.Drawing.Point(719, 40);
             this.lDeadlineDate.Name = "lDeadlineDate";
             this.lDeadlineDate.Size = new System.Drawing.Size(98, 13);
             this.lDeadlineDate.TabIndex = 12;
@@ -171,7 +176,7 @@
             // lDateSend
             // 
             this.lDateSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lDateSend.Location = new System.Drawing.Point(651, 74);
+            this.lDateSend.Location = new System.Drawing.Point(651, 66);
             this.lDateSend.Name = "lDateSend";
             this.lDateSend.Size = new System.Drawing.Size(77, 13);
             this.lDateSend.TabIndex = 11;
@@ -180,7 +185,7 @@
             // lDateStart
             // 
             this.lDateStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lDateStart.Location = new System.Drawing.Point(719, 22);
+            this.lDateStart.Location = new System.Drawing.Point(719, 14);
             this.lDateStart.Name = "lDateStart";
             this.lDateStart.Size = new System.Drawing.Size(69, 13);
             this.lDateStart.TabIndex = 10;
@@ -190,7 +195,7 @@
             // 
             this.dtcDateStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtcDateStart.EditValue = null;
-            this.dtcDateStart.Location = new System.Drawing.Point(828, 19);
+            this.dtcDateStart.Location = new System.Drawing.Point(828, 11);
             this.dtcDateStart.Name = "dtcDateStart";
             this.dtcDateStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -201,7 +206,7 @@
             // 
             // lNote
             // 
-            this.lNote.Location = new System.Drawing.Point(12, 74);
+            this.lNote.Location = new System.Drawing.Point(12, 66);
             this.lNote.Name = "lNote";
             this.lNote.Size = new System.Drawing.Size(61, 13);
             this.lNote.TabIndex = 7;
@@ -211,14 +216,14 @@
             // 
             this.teNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.teNote.Location = new System.Drawing.Point(86, 71);
+            this.teNote.Location = new System.Drawing.Point(86, 63);
             this.teNote.Name = "teNote";
             this.teNote.Size = new System.Drawing.Size(559, 20);
             this.teNote.TabIndex = 5;
             // 
             // lClient
             // 
-            this.lClient.Location = new System.Drawing.Point(12, 48);
+            this.lClient.Location = new System.Drawing.Point(12, 40);
             this.lClient.Name = "lClient";
             this.lClient.Size = new System.Drawing.Size(47, 13);
             this.lClient.TabIndex = 5;
@@ -228,7 +233,7 @@
             // 
             this.teClient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.teClient.Location = new System.Drawing.Point(86, 45);
+            this.teClient.Location = new System.Drawing.Point(86, 37);
             this.teClient.Name = "teClient";
             this.teClient.Size = new System.Drawing.Size(627, 20);
             this.teClient.TabIndex = 3;
@@ -236,7 +241,7 @@
             // lOrderNo
             // 
             this.lOrderNo.LineColor = System.Drawing.Color.White;
-            this.lOrderNo.Location = new System.Drawing.Point(12, 22);
+            this.lOrderNo.Location = new System.Drawing.Point(12, 14);
             this.lOrderNo.Name = "lOrderNo";
             this.lOrderNo.Size = new System.Drawing.Size(68, 13);
             this.lOrderNo.TabIndex = 10;
@@ -244,14 +249,14 @@
             // 
             // teNumber
             // 
-            this.teNumber.Location = new System.Drawing.Point(86, 19);
+            this.teNumber.Location = new System.Drawing.Point(86, 11);
             this.teNumber.Name = "teNumber";
             this.teNumber.Size = new System.Drawing.Size(114, 20);
             this.teNumber.TabIndex = 0;
             // 
             // lName
             // 
-            this.lName.Location = new System.Drawing.Point(206, 22);
+            this.lName.Location = new System.Drawing.Point(206, 14);
             this.lName.Name = "lName";
             this.lName.Size = new System.Drawing.Size(73, 13);
             this.lName.TabIndex = 1;
@@ -310,42 +315,82 @@
             this.fromSiemensToolStripMenuItem,
             this.fromExcelToolStripMenuItem});
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
-            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.loadToolStripMenuItem.Text = "Загрузка";
             // 
             // fromSiemensToolStripMenuItem
             // 
             this.fromSiemensToolStripMenuItem.Name = "fromSiemensToolStripMenuItem";
-            this.fromSiemensToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.fromSiemensToolStripMenuItem.Text = "From Siemens";
+            this.fromSiemensToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.fromSiemensToolStripMenuItem.Text = "Из спецификаций Siemens";
             this.fromSiemensToolStripMenuItem.Click += new System.EventHandler(this.fromSiemensToolStripMenuItem_Click);
             // 
             // fromExcelToolStripMenuItem
             // 
+            this.fromExcelToolStripMenuItem.Enabled = false;
             this.fromExcelToolStripMenuItem.Name = "fromExcelToolStripMenuItem";
-            this.fromExcelToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.fromExcelToolStripMenuItem.Text = "From Excel";
+            this.fromExcelToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.fromExcelToolStripMenuItem.Text = "Из Excel";
             // 
             // unloadToolStripMenuItem
             // 
             this.unloadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.visibleToolStripMenuItem,
-            this.allToolStripMenuItem});
+            this.asPassportToolStripMenuItem,
+            this.clearWeigthsToolStripMenuItem});
             this.unloadToolStripMenuItem.Name = "unloadToolStripMenuItem";
-            this.unloadToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.unloadToolStripMenuItem.Text = "Unload";
+            this.unloadToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.unloadToolStripMenuItem.Text = "Выгрузка";
             // 
             // visibleToolStripMenuItem
             // 
+            this.visibleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.onlyChildrenToolStripMenuItem,
+            this.childrensWithParentToolStripMenuItem});
             this.visibleToolStripMenuItem.Name = "visibleToolStripMenuItem";
-            this.visibleToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
-            this.visibleToolStripMenuItem.Text = "Visible";
+            this.visibleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.visibleToolStripMenuItem.Text = "Видимые";
             // 
-            // allToolStripMenuItem
+            // onlyChildrenToolStripMenuItem
             // 
-            this.allToolStripMenuItem.Name = "allToolStripMenuItem";
-            this.allToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
-            this.allToolStripMenuItem.Text = "All";
+            this.onlyChildrenToolStripMenuItem.Name = "onlyChildrenToolStripMenuItem";
+            this.onlyChildrenToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.onlyChildrenToolStripMenuItem.Text = "Только сборочные единицы";
+            // 
+            // childrensWithParentToolStripMenuItem
+            // 
+            this.childrensWithParentToolStripMenuItem.Name = "childrensWithParentToolStripMenuItem";
+            this.childrensWithParentToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.childrensWithParentToolStripMenuItem.Text = "Вместе со сборочными узлами";
+            // 
+            // asPassportToolStripMenuItem
+            // 
+            this.asPassportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.passportWithoutTechOpersToolStripMenuItem,
+            this.withTechPassportToolStripMenuItem});
+            this.asPassportToolStripMenuItem.Name = "asPassportToolStripMenuItem";
+            this.asPassportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.asPassportToolStripMenuItem.Text = "Паспорт";
+            // 
+            // passportWithoutTechOpersToolStripMenuItem
+            // 
+            this.passportWithoutTechOpersToolStripMenuItem.Name = "passportWithoutTechOpersToolStripMenuItem";
+            this.passportWithoutTechOpersToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.passportWithoutTechOpersToolStripMenuItem.Text = "Без расцеховки";
+            this.passportWithoutTechOpersToolStripMenuItem.Click += new System.EventHandler(this.passportWithoutTechOpersToolStripMenuItem_Click);
+            // 
+            // withTechPassportToolStripMenuItem
+            // 
+            this.withTechPassportToolStripMenuItem.Name = "withTechPassportToolStripMenuItem";
+            this.withTechPassportToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.withTechPassportToolStripMenuItem.Text = "С расцеховкой";
+            this.withTechPassportToolStripMenuItem.Click += new System.EventHandler(this.withTechPassportToolStripMenuItem_Click);
+            // 
+            // clearWeigthsToolStripMenuItem
+            // 
+            this.clearWeigthsToolStripMenuItem.Name = "clearWeigthsToolStripMenuItem";
+            this.clearWeigthsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clearWeigthsToolStripMenuItem.Text = "Чистые веса";
             // 
             // viewToolStripMenuItem
             // 
@@ -354,38 +399,38 @@
             this.drawingToolStripMenuItem,
             this.asLinearGridToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.viewToolStripMenuItem.Text = "Просмотр";
             // 
             // selectedDrawingInAnotherWindowToolStripMenuItem
             // 
             this.selectedDrawingInAnotherWindowToolStripMenuItem.Name = "selectedDrawingInAnotherWindowToolStripMenuItem";
-            this.selectedDrawingInAnotherWindowToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
-            this.selectedDrawingInAnotherWindowToolStripMenuItem.Text = "Selected drawing in another window";
+            this.selectedDrawingInAnotherWindowToolStripMenuItem.Size = new System.Drawing.Size(355, 22);
+            this.selectedDrawingInAnotherWindowToolStripMenuItem.Text = "Просмотр выделенной единицы в отдельном окне";
             // 
             // drawingToolStripMenuItem
             // 
             this.drawingToolStripMenuItem.Name = "drawingToolStripMenuItem";
-            this.drawingToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
-            this.drawingToolStripMenuItem.Text = "Image drawing";
+            this.drawingToolStripMenuItem.Size = new System.Drawing.Size(355, 22);
+            this.drawingToolStripMenuItem.Text = "Файлы сборочной единицы";
             // 
             // asLinearGridToolStripMenuItem
             // 
             this.asLinearGridToolStripMenuItem.Name = "asLinearGridToolStripMenuItem";
-            this.asLinearGridToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
-            this.asLinearGridToolStripMenuItem.Text = "As linear grid";
+            this.asLinearGridToolStripMenuItem.Size = new System.Drawing.Size(355, 22);
+            this.asLinearGridToolStripMenuItem.Text = "В виде таблицы для расцеховки";
             // 
             // initToolStripMenuItem
             // 
             this.initToolStripMenuItem.Name = "initToolStripMenuItem";
-            this.initToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
-            this.initToolStripMenuItem.Text = "Init";
+            this.initToolStripMenuItem.Size = new System.Drawing.Size(206, 20);
+            this.initToolStripMenuItem.Text = "Инициализировать новую сборку";
             this.initToolStripMenuItem.Click += new System.EventHandler(this.initToolStripMenuItem_Click);
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1116, 529);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1139, 529);
             this.xtraTabPage2.Text = "Список файлов чертежей";
             // 
             // OrderForm
@@ -451,12 +496,17 @@
         private System.Windows.Forms.ToolStripMenuItem fromExcelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unloadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem visibleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem allToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectedDrawingInAnotherWindowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem drawingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asLinearGridToolStripMenuItem;
         private Controls.Drawings.TreeListDrawingsControl treeListDrawingsControl1;
         private System.Windows.Forms.ToolStripMenuItem initToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem onlyChildrenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem childrensWithParentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asPassportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem passportWithoutTechOpersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem withTechPassportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clearWeigthsToolStripMenuItem;
     }
 }

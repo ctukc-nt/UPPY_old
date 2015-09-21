@@ -37,7 +37,7 @@ namespace UPPY.Desktop.Views.Drawings
                 teLength.Text = Drawing.Length.ToString();
                 teMarkSteal.Text = Drawing.MarkSteal;
                 teName.Text = Drawing.Name;
-                teNumberOnSpec.Text = Drawing.NumberOnSpec.ToString();
+                teNumberOnSpec.Text = Drawing.NumberOnSpec;
                 teOP.Text = Drawing.OP;
                 teProfile.Text = Drawing.Profile;
                 
