@@ -362,6 +362,10 @@
       <Project>{34211894-fe42-41cc-9aca-1501e1bed3b2}</Project>
       <Name>UPPY.Files</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utils.Common\Utils.Common.csproj">
+      <Project>{49232dd5-96d7-45cd-a063-09fa9c148849}</Project>
+      <Name>Utils.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />

@@ -8,7 +8,7 @@ using UPPY.Desktop.Interfaces.Common;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Views.Drawings;
 using UPPY.DIE.Import.Siemens;
-using UPPY.DIE.Import.Siemens.Interfaces;
+using Utils.Common;
 
 namespace UPPY.Desktop.Concrete.Controllers.Common
 {

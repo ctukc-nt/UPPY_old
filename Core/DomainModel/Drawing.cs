@@ -59,12 +59,12 @@ namespace Core.DomainModel
         /// <summary>
         ///     Длина
         /// </summary>
-        public int Length { get; set; }
+        public int? Length { get; set; }
 
         /// <summary>
         ///     Ширина
         /// </summary>
-        public int Width { get; set; }
+        public int? Width { get; set; }
 
         /// <summary>
         ///     Кол-во

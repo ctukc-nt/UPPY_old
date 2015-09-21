@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using UPPY.DIE.Import.Siemens.Exceptions;
 using UPPY.DIE.Import.Siemens.Interfaces;
+using Utils.Common;
 
 namespace UPPY.DIE.Import.Siemens
 {
@@ -35,7 +35,7 @@ namespace UPPY.DIE.Import.Siemens
             Log = logger;
         }
 
-        public bool ErrorDuringLoad { get; private set; } = false;
+        public bool ErrorDuringLoad { get; private set; }
 
         private void AppendMessageToLog(string message)
         {
@@ -43,10 +43,7 @@ namespace UPPY.DIE.Import.Siemens
             {
                 ErrorDuringLoad = true;
 
-                if (Log != null)
-                {
-                    Log.AppendMessage(message);
-                }
+                Log?.AppendMessage(message, TypeMessage.Information);
             }
             catch (Exception)
             {
@@ -60,13 +57,7 @@ namespace UPPY.DIE.Import.Siemens
             try
             {
                 ErrorDuringLoad = true;
-
-
-                if (Log != null)
-                {
-                    Log.ErrorHappens = true;
-                    Log.AppendMessage(error);
-                }
+                Log?.AppendMessage(error, TypeMessage.Error);
             }
             catch (Exception)
             {
@@ -84,8 +75,11 @@ namespace UPPY.DIE.Import.Siemens
             {
                 ErrorDuringLoad = false;
                 var firstArticle = _articlesFactory.GetFirstArticle();
-                var structure = new SiemensProject { Article = firstArticle };
-                structure.FileNames = GetFileNames(firstArticle);
+                var structure = new SiemensProject
+                {
+                    Article = firstArticle,
+                    FileNames = GetFileNames(firstArticle)
+                };
                 LoadStructureRecursiveWithLog(structure);
                 return structure;
             }
@@ -129,30 +123,27 @@ namespace UPPY.DIE.Import.Siemens
                 catch (ArgumentException ex)
                 {
                     AppendMessageToLog(
-                        string.Format("Невозможно загрузить файл чертежа {0}, загрузка прервана. Структура: {1}",
-                            position.ARTARTPartID, GetFullStrucutrePath(structure)));
+                        $"Невозможно загрузить файл чертежа {position.ARTARTPartID}, загрузка прервана. Структура: {GetFullStrucutrePath(structure)}");
                 }
                 catch (FileNotSearizableException ex)
                 {
                     AppendMessageToLog(
-                        string.Format("Невозможно загрузить файл чертежа {0}, загрузка прервана. Структура: {1}",
-                            position.ARTARTPartID, GetFullStrucutrePath(structure)));
+                        $"Невозможно загрузить файл чертежа {position.ARTARTPartID}, загрузка прервана. Структура: {GetFullStrucutrePath(structure)}");
                 }
                 catch (FileNotFoundException ex)
                 {
-                    AppendMessageToLog(string.Format("Не найден файл чертежа {0}, загрузка прервана. Структура: {1}",
-                        position.ARTARTPartID, GetFullStrucutrePath(structure)));
+                    AppendMessageToLog(
+                        $"Не найден файл чертежа {position.ARTARTPartID}, загрузка прервана. Структура: {GetFullStrucutrePath(structure)}");
                 }
                 catch (Exception ex)
                 {
-                    AppendMessageToLog(string.Format(
-                        "{0}\n{1}\n\n\n. Ошибка при обработке чертежа {2}. Структура: {3}", ex.Message, ex.StackTrace,
-                        position.ARTARTPartID, GetFullStrucutrePath(structure)));
+                    AppendMessageToLog(
+                        $"{ex.Message}\n{ex.StackTrace}\n\n\n. Ошибка при обработке чертежа {position.ARTARTPartID}. Структура: {GetFullStrucutrePath(structure)}");
                 }
             }
         }
 
-        private string GetFullStrucutrePath(SiemensProject structure)
+        private static string GetFullStrucutrePath(SiemensProject structure)
         {
             if (structure.Parent != null)
                 return " Входит в: " + structure.Article.Head.ARTPartID + GetFullStrucutrePath(structure.Parent);

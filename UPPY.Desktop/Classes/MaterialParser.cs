@@ -10,7 +10,7 @@ namespace UPPY.Desktop.Classes
         private static readonly string DecimalSeparator =
             CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator;
 
-        public int GetWidth(Position position)
+        public int? GetWidth(Position position)
         {
             var varDim = position.ARTARTVarDim;
 
@@ -20,19 +20,19 @@ namespace UPPY.Desktop.Classes
             }
 
             var itemWidth = GetStringItemFromPosition(position, ItemsChoiceType.ARTARTRM2);
-            if (itemWidth != null)
+            if (!string.IsNullOrWhiteSpace(itemWidth))
                 return GetInt(itemWidth);
 
-            return 0;
+            return null;
         }
 
-        public int GetLength(Position position)
+        public int? GetLength(Position position)
         {
             var itemLength = GetStringItemFromPosition(position, ItemsChoiceType.ARTARTRM1);
-            if (itemLength != null)
+            if (!string.IsNullOrWhiteSpace(itemLength))
                 return GetInt(itemLength);
 
-            return 0;
+            return null;
         }
 
         public string GetMarkSteal(Position position)
@@ -123,23 +123,11 @@ namespace UPPY.Desktop.Classes
                     secondPos = splitted[1];
                 }
 
-                return string.Format("{0}={1}", firstPos, secondPos).Trim();
+                return $"{firstPos}={secondPos}".Trim();
             }
 
 
             return string.Empty;
-        }
-
-        private static decimal GetDecimal(string decimalStr)
-        {
-            try
-            {
-                return Convert.ToDecimal(decimalStr.Replace(".", DecimalSeparator).Replace(",", DecimalSeparator));
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
         }
 
         private static int GetInt(string str)
@@ -148,7 +136,7 @@ namespace UPPY.Desktop.Classes
             {
                 return Convert.ToInt32(Convert.ToDecimal(str.Replace(".", DecimalSeparator).Replace(",", DecimalSeparator)));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return 0;
             }

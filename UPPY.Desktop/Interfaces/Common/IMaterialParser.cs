@@ -9,13 +9,13 @@ namespace UPPY.Desktop.Interfaces.Common
         ///     Получить шиирну
         /// </summary>
         /// <returns></returns>
-        int GetWidth(Position position);
+        int? GetWidth(Position position);
 
         /// <summary>
         ///     Поулчить длину
         /// </summary>
         /// <returns></returns>
-        int GetLength(Position position);
+        int? GetLength(Position position);
 
         /// <summary>
         ///     Получить марку стали
