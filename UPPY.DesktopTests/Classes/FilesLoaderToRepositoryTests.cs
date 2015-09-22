@@ -43,7 +43,7 @@ namespace UPPY.Desktop.Classes.Tests
             drawing.Files.Add(new UppyFileInfo() { FileName = @"D:\Siemens\Y53_00_146-01_B_Бак\Doc\Y53_00_186_IZ_Z;_Sh.01_(A).pdf" });
             drawing.Files.Add(new UppyFileInfo() { FileName = @"D:\Siemens\Y53_00_146-01_B_Бак\Doc\Y53_00_186_IZ_Z;_Sh.02_(A).pdf" });
 
-            var fileName = loader.GetFileName(drawing, true, @"D:\Siemens\Y53_00_146-01_B_Бак\Doc\Y53_00_186_IZ_Z;_Sh.02_(A).pdf");
+            var fileName = loader.GetFileName(drawing, true, true, @"D:\Siemens\Y53_00_146-01_B_Бак\Doc\Y53_00_186_IZ_Z;_Sh.02_(A).pdf");
             Debug.WriteLine(fileName);
 
         }
@@ -54,7 +54,7 @@ namespace UPPY.Desktop.Classes.Tests
             Mock<IFilesRepository> repoMock = new Mock<IFilesRepository>();
             repoMock.Setup(x => x.PutFile(It.IsAny<string>())).Returns(new UppyFileInfo() { FileName = "AAA" });
             FilesLoaderToRepository loader = new FilesLoaderToRepository(repoMock.Object);
-            var fileName = loader.GetFileName(new Drawing() { Designation = "Y53 00 189-01" }, true,
+            var fileName = loader.GetFileName(new Drawing() { Designation = "Y53 00 189-01" }, true, false,
                 @"D:\Siemens\Y53_00_146-01_B_Бак\BOM\Y53_00_189_01_B.pdf");
 
         }

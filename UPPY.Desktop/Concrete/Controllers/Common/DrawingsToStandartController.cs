@@ -3,6 +3,7 @@ using Core.DomainModel;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.DataManagers;
 using UPPY.Desktop.Views.Standarts;
+using Utils.Common;
 
 namespace UPPY.Desktop.Concrete.Controllers.Common
 {
@@ -34,9 +35,15 @@ namespace UPPY.Desktop.Concrete.Controllers.Common
 
         public Standart CreateStandartByDrawing()
         {
+            return CreateStandartByDrawing(null);
+        }
+
+        public Standart CreateStandartByDrawing(ILogging log)
+        {
             var helper = new DrawingsToStandartHelper();
             var hierDataManager = _dataManagersFactory.GetDrawingsHierClassDataManager();
             var gmGost = _dataManagersFactory.GetDataManager<Gost>();
+            helper.Log = log;
             var standart = helper.CreateStandartByDrawing(_drawing, hierDataManager, gmGost.GetListCollection());
             return standart;
         }
