@@ -1,15 +1,20 @@
-﻿using Core.DomainModel;
+﻿using System.Windows.Forms;
+using Core.DomainModel;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.Controllers.Gosts;
+using UPPY.Desktop.Views.Gosts;
 
 namespace UPPY.Desktop.Concrete.Controllers.Gosts
 {
     public class GostDocumentController : IGostDocumentController, IDocumentController<Gost>
     {
-        public Gost Document { get; set; }
         public bool ShowViewDialog()
         {
-            throw new System.NotImplementedException();
+            var form = new GostForm(this);
+            form.Document = Document;
+            return form.ShowDialog() == DialogResult.OK;
         }
+
+        public Gost Document { get; set; }
     }
 }
