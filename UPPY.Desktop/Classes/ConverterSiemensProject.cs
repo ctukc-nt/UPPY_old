@@ -86,7 +86,7 @@ namespace UPPY.Desktop.Classes
                 }
                 catch (Exception ex)
                 {
-                    AppendMessageToLog(ex.Message);
+                    AppendMessageToLog(new LogMessage("Ошибка парсиинга длина и/или ширины.", drawing, TypeMessage.Error));
                 }
 
                 drawing.GostOnSort = Normalizer.SetEmptySpacesGost(MaterialParser.GetGOSTS(position));
@@ -132,7 +132,7 @@ namespace UPPY.Desktop.Classes
                         }
                         catch (Exception ex)
                         {
-                            AppendMessageToLog(ex.Message);
+                            AppendMessageToLog(new LogMessage("Ошибка парсиинга длина и/или ширины.", drawing, TypeMessage.Error));
                         }
 
                         subProject.GostOnSort = Normalizer.SetEmptySpacesGost(MaterialParser.GetGOSTS(position));
@@ -172,6 +172,9 @@ namespace UPPY.Desktop.Classes
                             subProject.GostOnSort = string.Empty;
                             subProject.MarkSteal = string.Empty;
                             subProject.StandartSize = string.Empty;
+                            drawStorage.Add(subProject);
+
+                            AppendMessageToLog(new LogMessage("Ошибка поиска следующего файла.", subProject, TypeMessage.Warning));
 
                             childrenProject.Add(subProject);
                         }
@@ -194,10 +197,7 @@ namespace UPPY.Desktop.Classes
         {
             try
             {
-                if (Log != null)
-                {
-                    Log.AppendMessage(message);
-                }
+                Log?.AppendMessage(message);
             }
             catch (Exception)
             {
@@ -205,6 +205,21 @@ namespace UPPY.Desktop.Classes
                 // ignored
             }
         }
+
+        private void AppendMessageToLog(LogMessage message)
+        {
+            try
+            {
+                Log?.AppendMessage(message);
+            }
+            catch (Exception)
+            {
+                // не зависеть от лога
+                // ignored
+            }
+        }
+
+       
     }
 
     public class TempDrawingsStorage

@@ -34,6 +34,11 @@ namespace Utils.Common
             _messages.Add(new LogMessage(message, obj, typeMessage));
         }
 
+        public void AppendMessage(LogMessage message)
+        {
+            _messages.Add(message);
+        }
+
         public void Clear()
         {
             _messages.Clear();

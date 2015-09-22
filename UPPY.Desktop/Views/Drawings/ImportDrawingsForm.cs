@@ -1,8 +1,11 @@
 ﻿using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Core.DomainModel;
 using DevExpress.Skins;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraTreeList.Nodes;
 using DevExpress.XtraWizard;
 using UPPY.Desktop.Classes;
 using UPPY.Desktop.Interfaces.Controllers.Common;
@@ -88,10 +91,7 @@ namespace UPPY.Desktop.Views.Drawings
                     tlDarwings.DataSource = _storage.Drawings;
                 }
 
-                foreach (var mess in logger.Messages)
-                {
-                    rtbConvertLog.AppendText($"{mess}\n\r");
-                }
+                lbMessages.DataSource = logger.Messages.Select(mess => new MessageListBox() { Tag = mess.Tag, Message = mess.Message }).ToList();
 
                 waitPanelConversion.Visible = false;
                 wpConvertedDataView.AllowNext = true;
@@ -117,7 +117,7 @@ namespace UPPY.Desktop.Views.Drawings
             }
         }
 
-        
+
 
         private async void wizardControl1_FinishClick(object sender, CancelEventArgs e)
         {
@@ -135,6 +135,45 @@ namespace UPPY.Desktop.Views.Drawings
             DialogResult = DialogResult.OK;
             Close();
 
+        }
+
+        private void lbMessages_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var index = lbMessages.IndexFromPoint(e.Location);
+            if (index != ListBox.NoMatches)
+            {
+                var itemByIndex = (MessageListBox)lbMessages.Items[index];
+                var node = tlDarwings.FindNode(x => ((Drawing)tlDarwings.GetDataRecordByNode(x)).Id == ((Drawing)itemByIndex.Tag).Id);
+
+                tlDarwings.Selection.Clear();
+                if (node != null)
+                {
+                    tlDarwings.Selection.Add(node);
+                    tlDarwings.FocusedNode = node;
+                    ExpandToParentNode(node);
+                }
+            }
+        }
+
+        private static void ExpandToParentNode(TreeListNode node)
+        {
+            if (node.ParentNode != null)
+            {
+                node.ParentNode.Expanded = true;
+                ExpandToParentNode(node.ParentNode);
+            }
+        }
+
+        private class MessageListBox
+        {
+            public string Message { get; set; }
+
+            public object Tag { get; set; }
+
+            public override string ToString()
+            {
+                return Message;
+            }
         }
     }
 }

@@ -42,6 +42,8 @@ namespace Utils.Common
         /// <param name="typeMessage"></param>
         void AppendMessage(string message, object obj, TypeMessage typeMessage);
 
+        void AppendMessage(LogMessage message);
+
         void Clear();
     }
 }

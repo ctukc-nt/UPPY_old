@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportDrawingsForm));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.wcSiemensDataImport = new DevExpress.XtraWizard.WizardControl();
             this.welcomeWizardPage = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -59,8 +59,8 @@
             this.tlcWeightAll = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcCountFiles = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repoTechRoutes = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.rtbConvertLog = new System.Windows.Forms.RichTextBox();
             this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            this.lbMessages = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.wcSiemensDataImport)).BeginInit();
             this.wcSiemensDataImport.SuspendLayout();
             this.welcomeWizardPage.SuspendLayout();
@@ -228,7 +228,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.rtbConvertLog);
+            this.splitContainer1.Panel2.Controls.Add(this.lbMessages);
             this.splitContainer1.Size = new System.Drawing.Size(933, 405);
             this.splitContainer1.SplitterDistance = 312;
             this.splitContainer1.TabIndex = 3;
@@ -412,19 +412,20 @@
             this.repoTechRoutes.AutoHeight = false;
             this.repoTechRoutes.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", "showlist", null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", "showlist", null, true)});
             this.repoTechRoutes.DisplayMember = "Name";
             this.repoTechRoutes.Name = "repoTechRoutes";
             this.repoTechRoutes.ValueMember = "Id";
             // 
-            // rtbConvertLog
+            // lbMessages
             // 
-            this.rtbConvertLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbConvertLog.Location = new System.Drawing.Point(0, 0);
-            this.rtbConvertLog.Name = "rtbConvertLog";
-            this.rtbConvertLog.Size = new System.Drawing.Size(933, 89);
-            this.rtbConvertLog.TabIndex = 0;
-            this.rtbConvertLog.Text = "";
+            this.lbMessages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbMessages.FormattingEnabled = true;
+            this.lbMessages.Location = new System.Drawing.Point(0, 0);
+            this.lbMessages.Name = "lbMessages";
+            this.lbMessages.Size = new System.Drawing.Size(933, 89);
+            this.lbMessages.TabIndex = 0;
+            this.lbMessages.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbMessages_MouseDoubleClick);
             // 
             // ImportDrawingsForm
             // 
@@ -466,7 +467,6 @@
         private DevExpress.XtraWaitForm.ProgressPanel waitPanel;
         private DevExpress.XtraWaitForm.ProgressPanel waitPanelConversion;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.RichTextBox rtbConvertLog;
         private DevExpress.XtraTreeList.TreeList tlDarwings;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcName;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcDesignation;
@@ -485,5 +485,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repoTechRoutes;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tlcCountFiles;
         private DevExpress.XtraWaitForm.ProgressPanel ppFinishLoad;
+        private System.Windows.Forms.ListBox lbMessages;
     }
 }
