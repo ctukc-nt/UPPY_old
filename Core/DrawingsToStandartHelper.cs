@@ -61,19 +61,24 @@ namespace Core
                 if (string.IsNullOrWhiteSpace(position.Profile))
                     position.Profile = detail.Name;
 
-                var dimensions = position.StandartSize.ToUpper().Split(SplittersStandartSize.ToArray());
-
                 var gost =
                     gosts.FirstOrDefault(
                         x =>
                             string.Equals(x.Name.Replace(" ", ""), position.GostOnSort.Replace(" ", ""),
                                 StringComparison.CurrentCultureIgnoreCase));
 
+                if (string.IsNullOrWhiteSpace(position.GostOnSort))
+                {
+                    Log?.AppendMessage("Поле ГОСТ на сортамент не заполнено." + position.GostOnSort, position, TypeMessage.Error);
+                    standart.Positions.Add(position);
+                    continue;
+                }
+
                 if (gost == null)
                 {
                     if (ThrowExceptions)
                     {
-                        var argEx = new ArgumentException("Справочник гостов не полный");
+                        var argEx = new ArgumentException($"Справочник гостов не полный. Отсутствует ГОСТ {position.GostOnSort}.");
                         argEx.Data.Add("detail", detail);
                         throw argEx;
                     }
@@ -90,7 +95,7 @@ namespace Core
                 {
                     case WeightMethodCalculate.LengthAndWidth:
 
-                        if (detail.Length.HasValue && detail.Width.HasValue)
+                        if (detail.Length.HasValue && detail.Width.HasValue && !string.IsNullOrEmpty(position.StandartSize))
                         {
                             position.AdditionalMeasurement = (double)(((double)detail.Length * detail.Width) / 1000 / 1000 *
                                                                        detail.CountAll);
@@ -100,12 +105,13 @@ namespace Core
                         }
                         else
                         {
-                            Log?.AppendMessage("Поля Длина или Ширина не соответствуют выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                            Log?.AppendMessage("Поля Длина и/или Ширина и/или Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
                         }
                         break;
                     case WeightMethodCalculate.Length:
-                        if (detail.Length.HasValue && detail.Width.HasValue)
+                        if (detail.Length.HasValue && detail.Width.HasValue && !string.IsNullOrEmpty(position.StandartSize))
                         {
+                            var dimensions = position.StandartSize.ToUpper().Split(SplittersStandartSize.ToArray());
                             position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
                             position.AdditionalMeasurement = ((double)detail.Length) / 1000 * detail.CountAll;
                             position.Weight = Math.PI * Math.Pow(ConvertStandartSizeByDelim(dimensions[0]), 2) / 4000 *
@@ -113,11 +119,11 @@ namespace Core
                         }
                         else
                         {
-                            Log?.AppendMessage("Поля не соответствуют выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                            Log?.AppendMessage("Поля не Длина и/или Ширина и/или Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
                         }
                         break;
                     case WeightMethodCalculate.ByTable:
-                        if (detail.Length.HasValue)
+                        if (detail.Length.HasValue && !string.IsNullOrEmpty(position.StandartSize))
                         {
                             position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
                             position.AdditionalMeasurement = ((double)detail.Length.Value) / 1000 * detail.CountAll;
@@ -132,36 +138,48 @@ namespace Core
                         }
                         else
                         {
-                            Log?.AppendMessage("Поле Длина не соответствует выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                            Log?.AppendMessage("Поле Длина и/или Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
                         }
                         break;
                     case WeightMethodCalculate.LengthAndThikness:
-                        var outerSize = dimensions[0];
-                        var widthWall = dimensions[1];
 
-                        if (detail.Length.HasValue)
+
+                        if (!string.IsNullOrEmpty(position.StandartSize))
                         {
-                            if (!string.IsNullOrEmpty(outerSize) && !string.IsNullOrEmpty(widthWall))
+                            var splStSize = position.StandartSize.ToUpper().Split(SplittersStandartSize.ToArray());
+                            var outerSize = splStSize[0];
+                            var widthWall = splStSize[1];
+
+                            if (detail.Length.HasValue)
                             {
-                                position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
-                                position.AdditionalMeasurement = ((double) detail.Length)/1000*detail.CountAll;
-                                position.Weight = (Convert.ToDouble(outerSize) - Convert.ToDouble(widthWall))*
-                                                  Convert.ToDouble(widthWall)/40.55*
-                                                  position.AdditionalMeasurement;
+                                if (!string.IsNullOrEmpty(outerSize) && !string.IsNullOrEmpty(widthWall))
+                                {
+                                    position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
+                                    position.AdditionalMeasurement = ((double) detail.Length)/1000*detail.CountAll;
+                                    position.Weight = (Convert.ToDouble(outerSize) - Convert.ToDouble(widthWall))*
+                                                      Convert.ToDouble(widthWall)/40.55*
+                                                      position.AdditionalMeasurement;
+                                }
+                                else
+                                {
+                                    Log?.AppendMessage("Поле Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                                }
                             }
                             else
                             {
-                                Log?.AppendMessage("Поле Типоразмер не соответствует выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                                Log?.AppendMessage("Поле Длина не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
                             }
                         }
                         else
                         {
-                            Log?.AppendMessage("Поле Длина не соответствует выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                            Log?.AppendMessage("Поле Типоразмер не заполнено");
                         }
+
+                
                         break;
                     case WeightMethodCalculate.LengthAndDoubleThikness:
 
-                        if (detail.Length.HasValue)
+                        if (detail.Length.HasValue && !string.IsNullOrEmpty(position.StandartSize))
                         {
                             position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
                             position.AdditionalMeasurement = ((double) detail.Length)/1000*detail.CountAll;
@@ -170,7 +188,7 @@ namespace Core
                         }
                         else
                         {
-                            Log?.AppendMessage("Поле Длина не соответствует выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                            Log?.AppendMessage("Поле Длина и/или Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
                         }
                         break;
                 }

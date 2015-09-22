@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.Skins;
@@ -38,7 +36,7 @@ namespace UPPY.Desktop.Views.Drawings
             {
                 wpPreviewPackSiemens.Enabled = false;
                 rtbPreviewLoad.Text = string.Empty;
-                var logger = new LoggerLoad();
+                var logger = new Logger();
                 SiemensProject project = null;
 
                 var task = new Task(() => { project = Controller.LoadStructureSiemens(btnPath.Text, logger); });
@@ -57,7 +55,7 @@ namespace UPPY.Desktop.Views.Drawings
 
                 wpPreviewPackSiemens.Enabled = true;
 
-                foreach (var mess in logger)
+                foreach (var mess in logger.Messages)
                 {
                     rtbPreviewLoad.AppendText(string.Format("{0}\n\r", mess));
                 }
@@ -78,7 +76,7 @@ namespace UPPY.Desktop.Views.Drawings
                 wpConvertedDataView.AllowCancel = false;
                 waitPanelConversion.Visible = true;
 
-                LoggerLoad logger = new LoggerLoad();
+                var logger = new Logger();
                 var task = new Task(() => { _storage = Controller.ConvertSiemensToDrawings(_project, logger); });
 
                 task.Start();
@@ -90,9 +88,9 @@ namespace UPPY.Desktop.Views.Drawings
                     tlDarwings.DataSource = _storage.Drawings;
                 }
 
-                foreach (var mess in logger)
+                foreach (var mess in logger.Messages)
                 {
-                    rtbConvertLog.AppendText(string.Format("{0}\n\r", mess));
+                    rtbConvertLog.AppendText($"{mess}\n\r");
                 }
 
                 waitPanelConversion.Visible = false;
@@ -119,38 +117,7 @@ namespace UPPY.Desktop.Views.Drawings
             }
         }
 
-        private class LoggerLoad : List<LogMessage>, ILogging
-        {
-            public bool ErrorHappens {
-                get { return this.Any(x => x.Type == TypeMessage.Error); }
-            }
-            public IEnumerable<LogMessage> Messages { get { return this.AsEnumerable(); } }
-
-            public void AppendMessage(string message)
-            {
-                Add(new LogMessage(message));
-            }
-
-            public void AppendMessage(string message, TypeMessage typeMessage)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public void AppendMessage(string message, object obj)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public void AppendMessage(string message, object obj, TypeMessage typeMessage)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public new void Clear()
-            {
-                base.Clear();
-            }
-        }
+        
 
         private async void wizardControl1_FinishClick(object sender, CancelEventArgs e)
         {

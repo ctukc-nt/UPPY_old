@@ -99,6 +99,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
         {
             tlDarwings.BeginUpdate();
             var state = SaveNodeStates(tlDarwings.Nodes).ToList();
+            var slctCol = tlDarwings.FocusedColumn;
             var slctdNode = tlDarwings.Selection[0];
             Drawing data = null;
             if (slctdNode != null)
@@ -119,6 +120,8 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                     tlDarwings.FocusedNode = newNode;
                     ExpandToParentNode(newNode);
                 }
+
+                tlDarwings.FocusedColumn = slctCol;
             }
 
             tlDarwings.Focus();

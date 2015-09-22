@@ -32,6 +32,7 @@
             this.welcomeWizardPage = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.completionWizardPage = new DevExpress.XtraWizard.CompletionWizardPage();
             this.wpUngrouppedPositions = new DevExpress.XtraWizard.WizardPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gcUngPositions = new DevExpress.XtraGrid.GridControl();
             this.gvPositions = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colProfile = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -45,6 +46,7 @@
             this.colAdditionalMeasurementWithWaste = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTypeAdditionalMeasurement = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNote = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lbMessages = new System.Windows.Forms.ListBox();
             this.wpGrouppedPositions = new DevExpress.XtraWizard.WizardPage();
             this.gcGrpPositions = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -59,20 +61,18 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.wcStandarts)).BeginInit();
             this.wcStandarts.SuspendLayout();
             this.wpUngrouppedPositions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcUngPositions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPositions)).BeginInit();
             this.wpGrouppedPositions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcGrpPositions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // wcStandarts
@@ -122,6 +122,24 @@
             this.wpUngrouppedPositions.Name = "wpUngrouppedPositions";
             this.wpUngrouppedPositions.Size = new System.Drawing.Size(725, 407);
             this.wpUngrouppedPositions.Text = "Предварительный анализ";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.gcUngPositions);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.lbMessages);
+            this.splitContainer1.Size = new System.Drawing.Size(725, 407);
+            this.splitContainer1.SplitterDistance = 277;
+            this.splitContainer1.TabIndex = 3;
             // 
             // gcUngPositions
             // 
@@ -238,6 +256,16 @@
             this.colNote.Name = "colNote";
             this.colNote.Visible = true;
             this.colNote.VisibleIndex = 10;
+            // 
+            // lbMessages
+            // 
+            this.lbMessages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbMessages.FormattingEnabled = true;
+            this.lbMessages.Location = new System.Drawing.Point(0, 0);
+            this.lbMessages.Name = "lbMessages";
+            this.lbMessages.Size = new System.Drawing.Size(725, 126);
+            this.lbMessages.TabIndex = 0;
+            this.lbMessages.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbMessages_MouseDoubleClick);
             // 
             // wpGrouppedPositions
             // 
@@ -363,33 +391,6 @@
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 10;
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.gcUngPositions);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.listBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(725, 407);
-            this.splitContainer1.SplitterDistance = 277;
-            this.splitContainer1.TabIndex = 3;
-            // 
-            // listBox1
-            // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(0, 0);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(725, 126);
-            this.listBox1.TabIndex = 0;
-            // 
             // DrawingToStandartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -401,15 +402,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.wcStandarts)).EndInit();
             this.wcStandarts.ResumeLayout(false);
             this.wpUngrouppedPositions.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcUngPositions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPositions)).EndInit();
             this.wpGrouppedPositions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcGrpPositions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -448,6 +449,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lbMessages;
     }
 }
