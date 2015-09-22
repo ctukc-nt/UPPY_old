@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using UPPY.DIE.Import.Siemens.Interfaces;
 
 namespace UPPY.DIE.Import.Siemens
@@ -72,7 +73,7 @@ namespace UPPY.DIE.Import.Siemens
             return files;
         }
 
-        private string GetFileNameToFind(Article article)
+        private string GetFileNameToFindDoc(Article article)
         {
             var designation = article.Head.ARTZNr;
             if (string.IsNullOrWhiteSpace(designation))
@@ -84,12 +85,56 @@ namespace UPPY.DIE.Import.Siemens
                 designation = designation.Substring(0, strt);
             }
 
+            designation = designation.Replace(" ", "_");
+
+
+            return designation;
+        }
+
+        private string GetFileNameToFindBom(Article article)
+        {
+            var designation = article.Head.ARTPartID;
+            if (string.IsNullOrWhiteSpace(designation))
+                designation = article.Head.ARTZNr.Trim();
+
+            designation = designation.Replace(" ", "_");
+            designation = designation.Replace("-", "_");
+
             return designation;
         }
 
         public List<string> GetFilesByArticle(Article article)
         {
-            return GetFilesByNameDrawing(GetFileNameToFind(article));
+            var findNameBom = GetFileNameToFindBom(article);
+            var findNameDoc = GetFileNameToFindDoc(article);
+
+            var pathDataBom = Path.Combine(LocationDirectory, "BOM");
+            var pathDataDoc = Path.Combine(LocationDirectory, "Doc");
+
+
+            var dataFilesPatchBom = new List<string>();
+            var taskBom = new Task(() =>
+            {
+                dataFilesPatchBom.AddRange(Directory.GetFiles(pathDataBom, "*.pdf", SearchOption.AllDirectories));
+                dataFilesPatchBom.AddRange(Directory.GetFiles(pathDataBom, "*.tif*", SearchOption.AllDirectories));
+            });
+           
+            taskBom.Start();
+
+            var dataFilesPatchDoc = new List<string>();
+            var taskDoc = new Task(() =>
+            {
+                dataFilesPatchDoc.AddRange(Directory.GetFiles(pathDataDoc, "*.pdf", SearchOption.AllDirectories));
+                dataFilesPatchDoc.AddRange(Directory.GetFiles(pathDataDoc, "*.tif*", SearchOption.AllDirectories));
+            });
+
+            taskDoc.Start();
+
+            Task.WaitAll(taskDoc, taskBom);
+
+            var files = dataFilesPatchBom.Where(x => x.Replace(pathDataBom, string.Empty).Contains(findNameBom)).Union(dataFilesPatchDoc.Where(y => y.Replace(pathDataDoc, string.Empty).Contains(findNameDoc))).ToList();
+
+            return files;
         }
     }
 }

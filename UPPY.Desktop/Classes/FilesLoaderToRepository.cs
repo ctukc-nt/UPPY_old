@@ -20,15 +20,16 @@ namespace UPPY.Desktop.Classes
 
         public void LoadFilesFromDrawingsAndConvertPath(Drawing drawing, bool drawingIsParent)
         {
+            var multiSheets = drawing.Files.Count(x => x.FileName.ToLowerInvariant().Contains("sh.")) > 1;
+
             foreach (var uppyFileInfo in drawing.Files)
             {
                 if (File.Exists(uppyFileInfo.FileName))
                 {
                     // rename file name
 
-                    // var name = GetFileName(drawing, uppyFileInfo.FileName);
-
-                    var fileInfo = _filesRepository.PutFile(uppyFileInfo.FileName);
+                    var name = GetFileName(drawing, drawingIsParent, multiSheets, uppyFileInfo.FileName);
+                    var fileInfo = _filesRepository.PutFile(uppyFileInfo.FileName, name);
                     uppyFileInfo.FileName = fileInfo.FileName;
                 }
             }
@@ -44,94 +45,24 @@ namespace UPPY.Desktop.Classes
             }
         }
 
-        private string GetName(string name)
+        public string GetFileName(Drawing drawing, bool drawingIsParent, bool multiSheet, string filePath)
         {
-            if (name.Length > 0)
-            {
-                return name.Substring(0, 1).ToUpper() + name.Substring(1, name.Length - 1).ToLower();
-            }
-
-            return name;
-        }
-
-        public string GetFileName(Drawing drawing, bool drawingIsParent, string filePath)
-        {
-            //string formatFileName = tifFiles.Count > 1 ? "{0}\\Doc\\{1}{2}{3} {4} л. {5}" : "{0}\\Doc\\{1}{2}{3} {4}";
             var name = drawing.Name;
             var designation = drawing.Designation;
             var docsName = GetFileNameToFind(designation);
-            var fileNameFind = docsName.Replace(" ", "_");
-            if (filePath.Contains("Sh."))
+
+            if (filePath.ToLowerInvariant().Contains("sh."))
             {
                 // это файл сименсовского чертежа
+                string formatFileName = multiSheet ? "{0}{1}{2} {3} л. {4}" : "{0}{1}{2} {3}";
+                return RenameDoc(designation, docsName, name, filePath, formatFileName, drawingIsParent ? " СБ" : string.Empty);
             }
-
-
-            return string.Empty;
+            else
+            {
+                // это файл спецификации
+                return RenameBOM(designation, docsName, name, " СП");
+            }
         }
-
-        //private void LoadFromArticle(Article article, List<string> dataPathFiles, List<string> pdfPathFiles, List<string> tifPathFiles, string directorySave)
-        //{
-
-        //    var name = string.Format("{0} {1}", GetName(article.Head.ARTName), article.Head.ARTNameRem).Trim();
-        //    var designation = article.Head.ARTPartID.Trim();
-
-        //    var docsName = GetFileNameToFind(article);
-        //    var fileNameFind = docsName.Replace(" ", "_");
-        //    var pdfFiles = pdfPathFiles.Where(x => Path.GetFileName(x).Contains(fileNameFind)).ToList();
-        //    var tifFiles = tifPathFiles.Where(x => Path.GetFileName(x).Contains(fileNameFind)).ToList();
-        //    string formatFileName = tifFiles.Count > 1 ? "{0}\\Doc\\{1}{2}{3} {4} л. {5}" : "{0}\\Doc\\{1}{2}{3} {4}";
-
-        //    if (article.BOM.Length == 1 && article.BOM[0].ARTARTPartID.Contains("#"))
-        //    {
-        //        //для проектов состоящих из одного подпроекта, являющегося терминальным - загоняем всю инфу в проект
-        //        rtbLog.Text += "\nСпецификация не сборочная.";
-        //        foreach (var pdfFile in pdfFiles)
-        //        {
-        //            RenamePdf(directorySave, designation, docsName, name, pdfFile, "");
-        //        }
-
-        //        foreach (var tifFile in tifFiles)
-        //        {
-        //            RenameTiff(directorySave, designation, docsName, name, tifFile, formatFileName, "");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        rtbLog.Text += "\nСпецификация сборочная.";
-        //        foreach (var pdfFile in pdfFiles)
-        //        {
-        //            RenamePdf(directorySave, designation, docsName, name, pdfFile, " СП");
-        //        }
-
-        //        foreach (var tifFile in tifFiles)
-        //        {
-        //            RenameTiff(directorySave, designation, docsName, name, tifFile, formatFileName, " СБ");
-        //        }
-
-        //        foreach (Position position in article.BOM)
-        //        {
-        //            if (position.ARTARTPartID.Contains("#"))
-        //            {
-
-        //            }
-        //            else
-        //            {
-        //                //ищем следующий файл
-        //                if (!string.IsNullOrWhiteSpace(position.ARTARTPartID))
-        //                {
-        //                    var file = dataPathFiles.FirstOrDefault(x => x.Contains(position.ARTARTPartID));
-
-        //                    var subArticle = LoadArticleFromFile(file);
-        //                    LoadFromArticle(subArticle, dataPathFiles, pdfPathFiles, tifPathFiles, directorySave);
-        //                }
-
-        //            }
-        //        }
-        //    }
-
-
-        //}
 
         private string GetFileNameToFind(string des)
         {
@@ -139,7 +70,7 @@ namespace UPPY.Desktop.Classes
 
             if (designation.Contains("-"))
             {
-                var strt = designation.LastIndexOf("-");
+                var strt = designation.LastIndexOf("-", StringComparison.Ordinal);
                 designation = designation.Substring(0, strt);
             }
 
@@ -163,8 +94,7 @@ namespace UPPY.Desktop.Classes
                 ? Convert.ToInt32(tifFile.Substring(start + 4, end - start - 4)).ToString(CultureInfo.InvariantCulture)
                 : string.Empty;
 
-            return string.Format(formatFileName, docsName, ispol, sb, normName, sheet) +
-                   Path.GetExtension(tifFile);
+            return string.Format(formatFileName, docsName, ispol, sb, normName, sheet);
         }
 
         private static string RenameBOM(string designation, string docsName, string name, string sp)
@@ -176,7 +106,7 @@ namespace UPPY.Desktop.Classes
             }
 
             var notmName = name.Replace("\\", "-").Replace("/", "-");
-            return string.Format("{0}{1}{2} {3}.pdf", docsName, ispol, sp, notmName);
+            return $"{docsName}{ispol}{sp} {notmName}";
         }
     }
 }

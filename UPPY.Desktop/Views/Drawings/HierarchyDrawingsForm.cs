@@ -6,13 +6,10 @@ namespace UPPY.Desktop.Views.Drawings
 {
     public partial class HierarchyDrawingsForm : Form
     {
-        private readonly IHierarchyNumberDrawingController _controller;
-
         public HierarchyDrawingsForm(IHierarchyNumberDrawingController controller)
         {
-            _controller = controller;
             InitializeComponent();
-            hierarListDrawingsControl.Controller = _controller;
+            hierarListDrawingsControl.Controller = controller;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
