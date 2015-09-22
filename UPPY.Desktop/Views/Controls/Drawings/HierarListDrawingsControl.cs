@@ -4,8 +4,11 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Core.DomainModel;
+using DevExpress.Data;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Columns;
-using UPPY.Desktop.Classes;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
 
 namespace UPPY.Desktop.Views.Controls.Drawings
@@ -47,13 +50,13 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                         Caption = techOperation.ShortName,
                         Visible = true,
                         VisibleIndex = indexColumn,
-                        UnboundType = DevExpress.Data.UnboundColumnType.Boolean,
+                        UnboundType = UnboundColumnType.Boolean,
                         Width = 10
                     };
 
                     column.OptionsColumn.AllowSize = false;
                     column.FieldName = column.Name;
-                    
+
                     gvDrawings.Columns.Add(column);
                 }
             }
@@ -103,7 +106,7 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             LoadTechOpersColumns();
         }
 
-        private void gvDrawings_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
+        private void gvDrawings_CustomUnboundColumnData(object sender, CustomColumnDataEventArgs e)
         {
             var hierDraw = (HierarchyNumberDrawing)e.Row;
 
@@ -126,11 +129,12 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             }
             if (e.IsSetData)
             {
-                //if (!_loadTechOpersFlag)
-                //{
-                //    _rowsChangedHandlers.Add(gvDrawings.GetRowHandle(e.ListSourceRowIndex));
-                //    gvDrawings.RefreshRow(e.ListSourceRowIndex);
-                //}
+                if (!_loadTechOpersFlag)
+                {
+                    if (!_rowsChangedHandlers.Contains(gvDrawings.GetRowHandle(e.ListSourceRowIndex)))
+                        _rowsChangedHandlers.Add(gvDrawings.GetRowHandle(e.ListSourceRowIndex));
+                        //gvDrawings.RefreshRow(gvDrawings.GetRowHandle(e.ListSourceRowIndex));
+                }
 
                 if (hierDraw != null)
                 {
@@ -150,10 +154,9 @@ namespace UPPY.Desktop.Views.Controls.Drawings
             }
         }
 
-        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
             var rowHandle = gvDrawings.FocusedRowHandle;
-
             if (rowHandle >= 0)
             {
                 var row = (HierarchyNumberDrawing)gvDrawings.GetRow(rowHandle);
@@ -164,13 +167,13 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                 Controller.Save(row);
 
                 _rowsChangedHandlers.Remove(rowHandle);
-                gvDrawings.InvalidateRows();
                 gvDrawings.RefreshRow(rowHandle);
             }
         }
 
         public void SaveAllTechRoutes()
         {
+            var removedRows = new List<int>();
             foreach (var rowsChangedHandler in _rowsChangedHandlers)
             {
                 var row = (HierarchyNumberDrawing)gvDrawings.GetRow(rowsChangedHandler);
@@ -180,16 +183,16 @@ namespace UPPY.Desktop.Views.Controls.Drawings
                 row.TechRouteId = Controller.CreateTechToute(dcskjhf);
                 Controller.Save(row);
 
-                _rowsChangedHandlers.Remove(rowsChangedHandler);
-                gvDrawings.InvalidateRows();
-                gvDrawings.RefreshRow(rowsChangedHandler);
+                removedRows.Add(rowsChangedHandler);
             }
+
+            _rowsChangedHandlers.RemoveAll(x => removedRows.Contains(x));
         }
 
-        private void gvDrawings_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        private void gvDrawings_RowCellStyle(object sender, RowCellStyleEventArgs e)
         {
             if (_rowsChangedHandlers.Contains(e.RowHandle))
-                e.Appearance.BackColor = Color.BurlyWood;
+                e.Appearance.BackColor = Color.LemonChiffon;
         }
     }
 }

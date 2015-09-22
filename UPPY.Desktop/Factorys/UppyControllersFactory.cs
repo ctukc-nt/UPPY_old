@@ -119,7 +119,7 @@ namespace UPPY.Desktop.Factorys
 
         public IUppyDataImport GetSiemensLoaderController(int? parentId)
         {
-            return new SiemensDataAndFilesImportController(_dataManagersFactory.GetDataManager<Drawing>(), new SimpleFilesLoaderToRepository(new FilesRepository()) ,parentId);
+            return new SiemensDataAndFilesImportController(_dataManagersFactory.GetDataManager<Drawing>(), new FilesLoaderToRepository(new FilesRepository()) ,parentId);
         }
 
         public IPrintDrawingsController GetPrinDrawingsController()

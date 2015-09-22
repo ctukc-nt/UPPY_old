@@ -38,14 +38,14 @@ namespace UPPY.Desktop.Concrete.Controllers.Common
                 DrawingsDataManager.Insert(drawing);
 
                 storage.Drawings.Where(x => x.ParentId == oldId).Map(x => x.ParentId = drawing.Id);
-                taskList.Add(_factory.StartNew(() =>
-                {
-                    LoadFiles(drawing, drawingsList);
-                    DrawingsDataManager.Update(drawing);
-                }));
+                //taskList.Add(_factory.StartNew(() =>
+                //{
+                LoadFiles(drawing, drawingsList);
+                DrawingsDataManager.Update(drawing);
+                //}));
             }
 
-            Task.WaitAll(taskList.ToArray());
+            //Task.WaitAll(taskList.ToArray());
         }
 
         private void LoadFiles(Drawing drawing, List<Drawing> drawings)
