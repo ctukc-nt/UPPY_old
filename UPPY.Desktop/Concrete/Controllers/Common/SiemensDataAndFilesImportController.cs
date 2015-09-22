@@ -12,14 +12,13 @@ namespace UPPY.Desktop.Concrete.Controllers.Common
     public class SiemensDataAndFilesImportController : SiemensDataImportController
     {
         private readonly IFilesLoaderToRepository _loaderToRepository;
-        private TaskFactory _factory = new TaskFactory();
 
-        public SiemensDataAndFilesImportController(IClassDataManager<Drawing> drawingsDataManager, IFilesLoaderToRepository loaderToRepository) : base(drawingsDataManager)
+        public SiemensDataAndFilesImportController(IClassDataManager<Drawing> drawingsDataManager, IDataImportToolsFactory toolsFactory, IFilesLoaderToRepository loaderToRepository) : base(drawingsDataManager, toolsFactory)
         {
             _loaderToRepository = loaderToRepository;
         }
 
-        public SiemensDataAndFilesImportController(IClassDataManager<Drawing> drawingsDataManager, IFilesLoaderToRepository loaderToRepository, int? parentId) : base(drawingsDataManager, parentId)
+        public SiemensDataAndFilesImportController(IClassDataManager<Drawing> drawingsDataManager, IDataImportToolsFactory toolsFactory, IFilesLoaderToRepository loaderToRepository, int? parentId) : base(drawingsDataManager, toolsFactory, parentId)
         {
             _loaderToRepository = loaderToRepository;
         }
@@ -50,12 +49,7 @@ namespace UPPY.Desktop.Concrete.Controllers.Common
 
         private void LoadFiles(Drawing drawing, List<Drawing> drawings)
         {
-            if (_loaderToRepository != null)
-            {
-                _loaderToRepository.LoadFilesFromDrawingsAndConvertPath(drawing, drawings.Any(x => x.ParentId == drawing.Id));
-            }
+            _loaderToRepository?.LoadFilesFromDrawingsAndConvertPath(drawing, drawings.Any(x => x.ParentId == drawing.Id));
         }
-
-
     }
 }

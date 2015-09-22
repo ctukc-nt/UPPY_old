@@ -4,11 +4,16 @@ using Core.Interfaces;
 
 namespace Core.DomainModel
 {
+    /// <summary>
+    /// ГОСТ
+    /// </summary>
     public class Gost : IEntity
     {
         public Gost()
         {
             StandartWeights = new List<StandartWeight>();
+            TypeExtraDimension = ExtraDimensions.SquareMeter;
+            WeightMethodCalculate = WeightMethodCalculate.LengthAndWidth;
         }
 
         /// <summary>
@@ -16,8 +21,19 @@ namespace Core.DomainModel
         /// </summary>
         public ExtraDimensions TypeExtraDimension { get; set; }
 
+        /// <summary>
+        /// Метод расчета веса
+        /// </summary>
         public WeightMethodCalculate WeightMethodCalculate { get; set; }
+
+        /// <summary>
+        /// Наименование
+        /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Примечание
+        /// </summary>
         public string Note { get; set; }
 
         /// <summary>
@@ -25,7 +41,14 @@ namespace Core.DomainModel
         /// </summary>
         public List<StandartWeight> StandartWeights { get; set; }
 
+        /// <summary>
+        /// Профиль
+        /// </summary>
         public string Profile { get; set; }
+
+        /// <summary>
+        /// Уникальный идентификатор
+        /// </summary>
         public int? Id { get; set; }
 
         /// <summary>
@@ -43,6 +66,10 @@ namespace Core.DomainModel
         }
     }
 
+
+    /// <summary>
+    /// Вес одного метра типоразмера по таблицам справочников
+    /// </summary>
     public class StandartWeight
     {
         public string StandartSize { get; set; }

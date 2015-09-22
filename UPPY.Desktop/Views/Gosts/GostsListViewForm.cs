@@ -18,7 +18,7 @@ namespace UPPY.Desktop.Views.Gosts
 
         private void _controller_DataRefreshed(object sender, EventArgs e)
         {
-            LoadData();
+            RefreshData();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -29,6 +29,7 @@ namespace UPPY.Desktop.Views.Gosts
         private void cmCommands_ButtonAddClick(object sender, EventArgs e)
         {
             _controller.Save(_controller.CreateDocument());
+            RefreshData();
         }
 
         private void cmCommands_ButtonDeleteClick(object sender, EventArgs e)
@@ -45,10 +46,10 @@ namespace UPPY.Desktop.Views.Gosts
 
         private void cmCommands_ButtonRefreshClick(object sender, EventArgs e)
         {
-            LoadData();
+            RefreshData();
         }
 
-        private void LoadData()
+        private void RefreshData()
         {
             gcGosts.DataSource = _controller.GetGostsList();
             gcGosts.RefreshDataSource();
@@ -56,7 +57,7 @@ namespace UPPY.Desktop.Views.Gosts
 
         private void GostsListViewForm_Load(object sender, EventArgs e)
         {
-            LoadData();
+            RefreshData();
         }
     }
 }

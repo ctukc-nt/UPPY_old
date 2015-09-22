@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Concrete\Controllers\Common\SiemensDataImportController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\PrintDrawingsController.cs" />
+    <Compile Include="Factorys\ToolsFactoryFactory.cs" />
     <Compile Include="Fake\FilteredDrawingListClassFakeDataManager.cs" />
     <Compile Include="Interfaces\Common\IFilesLoaderToRepository.cs" />
     <Compile Include="Classes\SimpleFilesLoaderToRepository.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Interfaces\Common\IMaterialParser.cs" />
     <Compile Include="Interfaces\Common\INameMaterialSearch.cs" />
     <Compile Include="Interfaces\Common\IProjectExcluder.cs" />
+    <Compile Include="Interfaces\Common\IDataImportToolsFactory.cs" />
     <Compile Include="Interfaces\Controllers\Common\IDrawingsToStandartController.cs" />
     <Compile Include="Interfaces\Controllers\Common\IDrawingsToStandartShower.cs" />
     <Compile Include="Interfaces\Common\IUPPYDataImport.cs" />

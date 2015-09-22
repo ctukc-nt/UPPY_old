@@ -21,10 +21,12 @@ namespace UPPY.Desktop.Factorys
     internal class UppyControllersFactory : IUppyControllersFactory
     {
         private readonly IUppyDataManagersFactory _dataManagersFactory;
+        private readonly IDataImportToolsFactory _toolsFactory;
 
-        public UppyControllersFactory(IUppyDataManagersFactory dataManagersFactory)
+        public UppyControllersFactory(IUppyDataManagersFactory dataManagersFactory, IDataImportToolsFactory toolsFactory)
         {
             _dataManagersFactory = dataManagersFactory;
+            _toolsFactory = toolsFactory;
         }
 
         public IListViewController GetListController<T>()
@@ -122,7 +124,7 @@ namespace UPPY.Desktop.Factorys
 
         public IUppyDataImport GetSiemensLoaderController(int? parentId)
         {
-            return new SiemensDataAndFilesImportController(_dataManagersFactory.GetDataManager<Drawing>(), new FilesLoaderToRepository(new FilesRepository()), parentId);
+            return new SiemensDataAndFilesImportController(_dataManagersFactory.GetDataManager<Drawing>(), _toolsFactory, new FilesLoaderToRepository(new FilesRepository()), parentId);
         }
 
         public IPrintDrawingsController GetPrinDrawingsController()

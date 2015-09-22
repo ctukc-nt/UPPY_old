@@ -17,7 +17,7 @@ namespace UPPY.Desktop.Classes
         public string GetNameMaterialByGost(string gost)
         {
             var material =
-                _gostDataManager.GetListCollection(x=>x.Name.ToLower().Trim() == gost.ToLower().Trim()).FirstOrDefault();
+                _gostDataManager.GetListCollection(x => x.Name.ToLower().Trim() == gost.ToLower().Trim()).FirstOrDefault();
 
             return material != null ? material.Profile : string.Empty;
         }

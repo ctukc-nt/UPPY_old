@@ -15,16 +15,19 @@ namespace UPPY.Desktop.Concrete.Controllers.Common
     public class SiemensDataImportController : ISiemensDataImportController, IUppyDataImport
     {
         protected readonly IClassDataManager<Drawing> DrawingsDataManager;
+        private readonly IDataImportToolsFactory _dataImportToolsFactory;
         protected readonly int? ParentId;
 
-        public SiemensDataImportController(IClassDataManager<Drawing> drawingsDataManager)
+        public SiemensDataImportController(IClassDataManager<Drawing> drawingsDataManager, IDataImportToolsFactory dataImportToolsFactory)
         {
             DrawingsDataManager = drawingsDataManager;
+            _dataImportToolsFactory = dataImportToolsFactory;
         }
 
-        public SiemensDataImportController(IClassDataManager<Drawing> drawingsDataManager, int? parentId)
+        public SiemensDataImportController(IClassDataManager<Drawing> drawingsDataManager, IDataImportToolsFactory dataImportToolsFactory,  int? parentId)
         {
             DrawingsDataManager = drawingsDataManager;
+            _dataImportToolsFactory = dataImportToolsFactory;
             ParentId = parentId;
         }
 
@@ -56,10 +59,10 @@ namespace UPPY.Desktop.Concrete.Controllers.Common
         public TempDrawingsStorage ConvertSiemensToDrawings(SiemensProject project, ILogging logger)
         {
             var converter = new ConverterSiemensProject(logger);
-            MaterialParser parser = new MaterialParser();
-            ProjectExcluder excluder = new ProjectExcluder();
-            NameMatSearcherStubber searcher = new NameMatSearcherStubber();
-            FieldsNormalizer normalizer = new FieldsNormalizer();
+            var parser = _dataImportToolsFactory.GetMaterialParser();
+            var excluder = _dataImportToolsFactory.GetProjectExcluder();
+            var searcher = _dataImportToolsFactory.GetNameMaterialSearch();
+            var normalizer = _dataImportToolsFactory.GetFieldsNormalizer();
             converter.ExcluderProject = excluder;
             converter.Log = logger;
             converter.MaterialParser = parser;
@@ -69,14 +72,6 @@ namespace UPPY.Desktop.Concrete.Controllers.Common
             return converter.ConvertSiemensProjectToDomainModel(project);
         }
 
-
-        private class NameMatSearcherStubber : INameMaterialSearch
-        {
-            public string GetNameMaterialByGost(string gost)
-            {
-                return string.Empty;
-            }
-        }
 
         public bool ShowDialog()
         {
