@@ -136,6 +136,8 @@
             // colWeight
             // 
             this.colWeight.Caption = "Вес";
+            this.colWeight.DisplayFormat.FormatString = "n3";
+            this.colWeight.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colWeight.FieldName = "Weight";
             this.colWeight.Name = "colWeight";
             this.colWeight.Visible = true;
@@ -144,6 +146,8 @@
             // colWeightWithWaste
             // 
             this.colWeightWithWaste.Caption = "Вес с отходом";
+            this.colWeightWithWaste.DisplayFormat.FormatString = "n3";
+            this.colWeightWithWaste.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colWeightWithWaste.FieldName = "WeightWithWaste";
             this.colWeightWithWaste.Name = "colWeightWithWaste";
             this.colWeightWithWaste.Visible = true;
@@ -152,6 +156,8 @@
             // colAdditionalMeasurement
             // 
             this.colAdditionalMeasurement.Caption = "Доп. ед. изм.";
+            this.colAdditionalMeasurement.DisplayFormat.FormatString = "n3";
+            this.colAdditionalMeasurement.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colAdditionalMeasurement.FieldName = "AdditionalMeasurement";
             this.colAdditionalMeasurement.Name = "colAdditionalMeasurement";
             this.colAdditionalMeasurement.Visible = true;
@@ -160,6 +166,8 @@
             // colAdditionalMeasurementWithWaste
             // 
             this.colAdditionalMeasurementWithWaste.Caption = "Доп. ед. изм. с отх.";
+            this.colAdditionalMeasurementWithWaste.DisplayFormat.FormatString = "n3";
+            this.colAdditionalMeasurementWithWaste.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colAdditionalMeasurementWithWaste.FieldName = "AdditionalMeasurementWithWaste";
             this.colAdditionalMeasurementWithWaste.Name = "colAdditionalMeasurementWithWaste";
             this.colAdditionalMeasurementWithWaste.Visible = true;
@@ -272,6 +280,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "StandartForm";
             this.Text = "StandartForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StandartForm_FormClosing);
             this.Load += new System.EventHandler(this.StandartForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcPositions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.positionStandartBindingSource)).EndInit();

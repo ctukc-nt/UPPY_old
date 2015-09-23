@@ -11,6 +11,6 @@ namespace UPPY.Desktop.Interfaces.Controllers.Gosts
         void Save(Gost document);
         void Delete(Gost document);
         event EventHandler<EventArgs> DataRefreshed;
-        void ShowGostInAnotherView(Gost gost);
+        void EditDocumentInAnotherView(Gost gost);
     }
 }

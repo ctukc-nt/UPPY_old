@@ -12,7 +12,13 @@ namespace UPPY.Desktop.Concrete.Controllers.Gosts
         {
             var form = new GostForm(this);
             form.Document = Document;
-            return form.ShowDialog() == DialogResult.OK;
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                Document = form.Document;
+                return true;
+            }
+
+            return false;
         }
 
         public Gost Document { get; set; }

@@ -12,7 +12,13 @@ namespace UPPY.Desktop.Views.Standarts
         public StandartsListForm(IStandartsListController controller)
         {
             _controller = controller;
+            _controller.DataRefreshed += _controller_DataRefreshed;
             InitializeComponent();
+        }
+
+        private void _controller_DataRefreshed(object sender, EventArgs e)
+        {
+            LoadData();
         }
 
         private void StandartsListForm_Load(object sender, EventArgs e)
@@ -23,6 +29,7 @@ namespace UPPY.Desktop.Views.Standarts
         private void LoadData()
         {
             gcStandarts.DataSource = _controller.GetStandartsList();
+            gcStandarts.RefreshDataSource();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

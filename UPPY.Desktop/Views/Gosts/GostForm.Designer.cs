@@ -138,6 +138,7 @@
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Отмена";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // groupControl1
             // 

@@ -69,6 +69,7 @@ namespace UPPY.Desktop.Concrete.Controllers.Orders
         {
             var orderForm = new OrderForm(this, _controllersFactory.GetPrinDrawingsController()) {Document = Document};
             orderForm.ShowDialog();
+            Document = orderForm.Document;
             return true;
         }
     }

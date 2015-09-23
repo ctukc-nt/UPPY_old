@@ -15,6 +15,8 @@ namespace UPPY.Desktop.Concrete.Controllers.Orders
         private readonly IClassDataManager<Drawing> _drawingDataManager;
         private readonly IUppyControllersFactory _factory;
 
+        public event EventHandler<EventArgs> DataRefreshed;
+
         public OrderListController(IUppyControllersFactory factory, IClassDataManager<Order> orderDataManager,  IClassDataManager<Drawing> drawingDataManager)
         {
             _orderDataManager = orderDataManager;
@@ -33,7 +35,11 @@ namespace UPPY.Desktop.Concrete.Controllers.Orders
             {
                 var docOrderController = _factory.GetDocumentController<Order>();
                 docOrderController.Document = order;
-                docOrderController.ShowViewDialog();
+                if (docOrderController.ShowViewDialog())
+                {
+                    Save(docOrderController.Document);
+                    DataRefreshed?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 

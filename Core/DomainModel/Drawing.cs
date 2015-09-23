@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using Core.Interfaces;
 
@@ -9,6 +10,15 @@ namespace Core.DomainModel
         public Drawing()
         {
             Files = new List<UppyFileInfo>();
+            Name = string.Empty;
+            Designation = string.Empty;
+            NumberOnSpec = string.Empty;
+            Profile = string.Empty;
+            StandartSize = string.Empty;
+            GostOnSort = string.Empty;
+            GostOnMaterial = string.Empty;
+            MarkSteal = string.Empty;
+            MarkSteal = string.Empty;
         }
 
         /// <summary>

@@ -99,5 +99,11 @@ namespace UPPY.Desktop.Views.Orders
         {
             _printDrawings.PrintPassportWithoutTechOeprs(Document.DrawingId);
         }
+
+        private void OrderForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveToDocument();
+            DialogResult = DialogResult.OK;
+        }
     }
 }

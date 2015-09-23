@@ -212,6 +212,8 @@
             // colWeight
             // 
             this.colWeight.Caption = "Вес";
+            this.colWeight.DisplayFormat.FormatString = "n3";
+            this.colWeight.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colWeight.FieldName = "Weight";
             this.colWeight.Name = "colWeight";
             this.colWeight.Visible = true;
@@ -220,6 +222,8 @@
             // colWeightWithWaste
             // 
             this.colWeightWithWaste.Caption = "Вес с отходом";
+            this.colWeightWithWaste.DisplayFormat.FormatString = "n3";
+            this.colWeightWithWaste.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colWeightWithWaste.FieldName = "WeightWithWaste";
             this.colWeightWithWaste.Name = "colWeightWithWaste";
             this.colWeightWithWaste.Visible = true;
@@ -228,6 +232,8 @@
             // colAdditionalMeasurement
             // 
             this.colAdditionalMeasurement.Caption = "Доп. ед. изм.";
+            this.colAdditionalMeasurement.DisplayFormat.FormatString = "n3";
+            this.colAdditionalMeasurement.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colAdditionalMeasurement.FieldName = "AdditionalMeasurement";
             this.colAdditionalMeasurement.Name = "colAdditionalMeasurement";
             this.colAdditionalMeasurement.Visible = true;
@@ -236,6 +242,8 @@
             // colAdditionalMeasurementWithWaste
             // 
             this.colAdditionalMeasurementWithWaste.Caption = "Доп. ед. изм. с отх.";
+            this.colAdditionalMeasurementWithWaste.DisplayFormat.FormatString = "n3";
+            this.colAdditionalMeasurementWithWaste.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colAdditionalMeasurementWithWaste.FieldName = "AdditionalMeasurementWithWaste";
             this.colAdditionalMeasurementWithWaste.Name = "colAdditionalMeasurementWithWaste";
             this.colAdditionalMeasurementWithWaste.Visible = true;
@@ -346,6 +354,8 @@
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Вес";
+            this.gridColumn6.DisplayFormat.FormatString = "n3";
+            this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn6.FieldName = "Weight";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
@@ -354,6 +364,8 @@
             // gridColumn7
             // 
             this.gridColumn7.Caption = "Вес с отходом";
+            this.gridColumn7.DisplayFormat.FormatString = "n3";
+            this.gridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn7.FieldName = "WeightWithWaste";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
@@ -362,6 +374,8 @@
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Доп. ед. изм.";
+            this.gridColumn8.DisplayFormat.FormatString = "n3";
+            this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn8.FieldName = "AdditionalMeasurement";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
@@ -370,6 +384,8 @@
             // gridColumn9
             // 
             this.gridColumn9.Caption = "Доп. ед. изм. с отх.";
+            this.gridColumn9.DisplayFormat.FormatString = "n3";
+            this.gridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn9.FieldName = "AdditionalMeasurementWithWaste";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;

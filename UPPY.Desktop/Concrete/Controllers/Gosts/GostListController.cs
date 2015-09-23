@@ -41,13 +41,16 @@ namespace UPPY.Desktop.Concrete.Controllers.Gosts
 
         public event EventHandler<EventArgs> DataRefreshed;
 
-        public void ShowGostInAnotherView(Gost gost)
+        public void EditDocumentInAnotherView(Gost gost)
         {
             var docController = _factory.GetDocumentController<Gost>();
-            docController.Document = gost;
+            var copyDoc = _gostDataManager.GetDocument(gost.Id);
+            docController.Document = copyDoc;
             if (docController.ShowViewDialog())
             {
-                Save(gost);
+                copyDoc = docController.Document;
+                Save(copyDoc);
+                DataRefreshed?.Invoke(this, EventArgs.Empty);
             }
         }
 

@@ -97,11 +97,19 @@ namespace UPPY.Desktop.Views.Gosts
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveDataFields();
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void GostForm_Load(object sender, EventArgs e)
         {
             LoadDataFields();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

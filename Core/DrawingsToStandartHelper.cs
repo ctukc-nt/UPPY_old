@@ -91,111 +91,130 @@ namespace Core
                     }
                 }
 
-                switch (gost.WeightMethodCalculate)
+                switch (gost.TypeExtraDimension)
                 {
-                    case WeightMethodCalculate.LengthAndWidth:
+                        case ExtraDimensions.Meters:
+                        case ExtraDimensions.SquareMeter:
 
-                        if (detail.Length.HasValue && detail.Width.HasValue && !string.IsNullOrEmpty(position.StandartSize))
+                        switch (gost.WeightMethodCalculate)
                         {
-                            position.AdditionalMeasurement = (double)(((double)detail.Length * detail.Width) / 1000 / 1000 *
-                                                                       detail.CountAll);
-                            position.Weight = position.AdditionalMeasurement * ConvertStandartSize(position.StandartSize) *
-                                              Density;
-                            position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
-                        }
-                        else
-                        {
-                            Log?.AppendMessage("Поля Длина и/или Ширина и/или Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
-                        }
-                        break;
-                    case WeightMethodCalculate.Length:
-                        if (detail.Length.HasValue && detail.Width.HasValue && !string.IsNullOrEmpty(position.StandartSize))
-                        {
-                            var dimensions = position.StandartSize.ToUpper().Split(SplittersStandartSize.ToArray());
-                            position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
-                            position.AdditionalMeasurement = ((double)detail.Length) / 1000 * detail.CountAll;
-                            position.Weight = Math.PI * Math.Pow(ConvertStandartSizeByDelim(dimensions[0]), 2) / 4000 *
-                                              position.AdditionalMeasurement * Density;
-                        }
-                        else
-                        {
-                            Log?.AppendMessage("Поля не Длина и/или Ширина и/или Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
-                        }
-                        break;
-                    case WeightMethodCalculate.ByTable:
-                        if (detail.Length.HasValue && !string.IsNullOrEmpty(position.StandartSize))
-                        {
-                            position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
-                            position.AdditionalMeasurement = ((double)detail.Length.Value) / 1000 * detail.CountAll;
-                            var weigthByTable = gost.GetStandartWeight(position.StandartSize);
-                            if (weigthByTable != null)
-                                position.Weight = weigthByTable.Weight * position.AdditionalMeasurement;
-                            else
-                            {
-                                Log?.AppendMessage(
-                                    $"Не заполнен табличный типоразмер для ГОСТа {gost.Name} и типоразмера {position.StandartSize}");
-                            }
-                        }
-                        else
-                        {
-                            Log?.AppendMessage("Поле Длина и/или Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
-                        }
-                        break;
-                    case WeightMethodCalculate.LengthAndThikness:
+                            case WeightMethodCalculate.LengthAndWidth:
 
-
-                        if (!string.IsNullOrEmpty(position.StandartSize))
-                        {
-                            var splStSize = position.StandartSize.ToUpper().Split(SplittersStandartSize.ToArray());
-                            var outerSize = splStSize[0];
-                            var widthWall = splStSize[1];
-
-                            if (detail.Length.HasValue)
-                            {
-                                if (!string.IsNullOrEmpty(outerSize) && !string.IsNullOrEmpty(widthWall))
+                                if (detail.Length.HasValue && detail.Width.HasValue && !string.IsNullOrEmpty(position.StandartSize))
                                 {
+                                    position.AdditionalMeasurement = (double)(((double)detail.Length * detail.Width) / 1000 / 1000 *
+                                                                               detail.CountAll);
+                                    position.Weight = position.AdditionalMeasurement * ConvertStandartSize(position.StandartSize) *
+                                                      Density;
                                     position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
-                                    position.AdditionalMeasurement = ((double) detail.Length)/1000*detail.CountAll;
-                                    position.Weight = (Convert.ToDouble(outerSize) - Convert.ToDouble(widthWall))*
-                                                      Convert.ToDouble(widthWall)/40.55*
-                                                      position.AdditionalMeasurement;
+                                    position.Note = $"{(double)detail.Length} x {(double)detail.Width} x {detail.CountAll}";
                                 }
                                 else
                                 {
-                                    Log?.AppendMessage("Поле Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                                    Log?.AppendMessage("Поля Длина и/или Ширина и/или Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
                                 }
-                            }
-                            else
-                            {
-                                Log?.AppendMessage("Поле Длина не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
-                            }
-                        }
-                        else
-                        {
-                            Log?.AppendMessage("Поле Типоразмер не заполнено");
+                                break;
+                            case WeightMethodCalculate.Length:
+                                if (detail.Length.HasValue && !string.IsNullOrEmpty(position.StandartSize))
+                                {
+                                    var dimensions = position.StandartSize.ToUpper().Split(SplittersStandartSize.ToArray());
+                                    position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
+                                    position.AdditionalMeasurement = ((double)detail.Length) / 1000 * detail.CountAll;
+                                    position.Weight = Math.PI * Math.Pow(ConvertStandartSizeByDelim(dimensions[0]), 2) / 4000 *
+                                                      position.AdditionalMeasurement * Density;
+                                }
+                                else
+                                {
+                                    Log?.AppendMessage("Поля не Длина и/или Ширина и/или Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                                }
+                                break;
+                            case WeightMethodCalculate.ByTable:
+                                if (detail.Length.HasValue && !string.IsNullOrEmpty(position.StandartSize))
+                                {
+                                    position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
+                                    position.AdditionalMeasurement = ((double)detail.Length.Value) / 1000 * detail.CountAll;
+                                    var weigthByTable = gost.GetStandartWeight(position.StandartSize);
+                                    if (weigthByTable != null)
+                                        position.Weight = weigthByTable.Weight * position.AdditionalMeasurement;
+                                    else
+                                    {
+                                        Log?.AppendMessage(
+                                            $"Не заполнен табличный типоразмер для ГОСТа {gost.Name} и типоразмера {position.StandartSize}");
+                                    }
+                                }
+                                else
+                                {
+                                    Log?.AppendMessage("Поле Длина и/или Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                                }
+                                break;
+                            case WeightMethodCalculate.LengthAndThikness:
+
+
+                                if (!string.IsNullOrEmpty(position.StandartSize))
+                                {
+                                    var splStSize = position.StandartSize.ToUpper().Split(SplittersStandartSize.ToArray());
+                                    var outerSize = splStSize[0];
+                                    var widthWall = splStSize[1];
+
+                                    if (detail.Length.HasValue)
+                                    {
+                                        if (!string.IsNullOrEmpty(outerSize) && !string.IsNullOrEmpty(widthWall))
+                                        {
+                                            position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
+                                            position.AdditionalMeasurement = ((double)detail.Length) / 1000 * detail.CountAll;
+                                            position.Weight = (Convert.ToDouble(outerSize) - Convert.ToDouble(widthWall)) *
+                                                              Convert.ToDouble(widthWall) / 40.55 *
+                                                              position.AdditionalMeasurement;
+                                        }
+                                        else
+                                        {
+                                            Log?.AppendMessage("Поле Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Log?.AppendMessage("Поле Длина не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                                    }
+                                }
+                                else
+                                {
+                                    Log?.AppendMessage("Поле Типоразмер не заполнено");
+                                }
+
+
+                                break;
+                            case WeightMethodCalculate.LengthAndDoubleThikness:
+
+                                if (detail.Length.HasValue && !string.IsNullOrEmpty(position.StandartSize))
+                                {
+                                    position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
+                                    position.AdditionalMeasurement = ((double)detail.Length) / 1000 * detail.CountAll;
+                                    position.Weight = position.AdditionalMeasurement * ConvertStandartSize(position.StandartSize) *
+                                                      ConvertStandartSize(position.StandartSize) * Density / 1000;
+                                }
+                                else
+                                {
+                                    Log?.AppendMessage("Поле Длина и/или Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
+                                }
+                                break;
                         }
 
-                
+                        position.WeightWithWaste = position.Weight / position.UtilizationRatio;
+                        position.AdditionalMeasurementWithWaste = position.AdditionalMeasurement /
+                                                                  position.UtilizationRatio;
+
                         break;
-                    case WeightMethodCalculate.LengthAndDoubleThikness:
 
-                        if (detail.Length.HasValue && !string.IsNullOrEmpty(position.StandartSize))
-                        {
-                            position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
-                            position.AdditionalMeasurement = ((double) detail.Length)/1000*detail.CountAll;
-                            position.Weight = position.AdditionalMeasurement*ConvertStandartSize(position.StandartSize)*
-                                              ConvertStandartSize(position.StandartSize)*Density/1000;
-                        }
-                        else
-                        {
-                            Log?.AppendMessage("Поле Длина и/или Типоразмер не заполнено в соответствии выбранному методу вычисления по типу ГОСТа " + gost.Name);
-                        }
+                        case ExtraDimensions.Piece:
+                        position.Weight = 0;
+                        position.WeightWithWaste = 0;
+                        position.UtilizationRatio = 1;
+
+                        position.TypeAdditionalMeasurement = gost.TypeExtraDimension;
+                        position.AdditionalMeasurement = detail.CountAll;
+                        position.AdditionalMeasurementWithWaste = detail.CountAll;
                         break;
                 }
-
-                position.WeightWithWaste = position.Weight / position.UtilizationRatio;
-                position.AdditionalMeasurementWithWaste = position.AdditionalMeasurementWithWaste /
-                                                          position.UtilizationRatio;
 
                 standart.Positions.Add(position);
             }
@@ -237,10 +256,9 @@ namespace Core
                                                       MarkSteal = grPosition.Key.MarkSteal,
                                                       TypeAdditionalMeasurement = grPosition.Key.TypeAdditionalMeasurement,
                                                       AdditionalMeasurement = grPosition.Sum(x => x.AdditionalMeasurement),
-                                                      AdditionalMeasurementWithWaste =
-                                                          grPosition.Sum(x => x.AdditionalMeasurement) / DefaultUtilizationRatio,
+                                                      AdditionalMeasurementWithWaste = grPosition.Sum(x => x.AdditionalMeasurementWithWaste) ,
                                                       Weight = grPosition.Sum(x => x.Weight),
-                                                      WeightWithWaste = grPosition.Sum(x => x.Weight) / DefaultUtilizationRatio,
+                                                      WeightWithWaste = grPosition.Sum(x => x.WeightWithWaste),
                                                       UtilizationRatio = DefaultUtilizationRatio,
                                                       Note = string.Empty
                                                   }).ToList();
@@ -255,8 +273,8 @@ namespace Core
 
         private double ConvertStandartSizeByDelim(string standartSize)
         {
-            var chars = standartSize.TakeWhile(char.IsDigit);
-            return Convert.ToDouble(chars);
+            var chars = standartSize.TakeWhile(char.IsDigit).ToArray();
+            return Convert.ToDouble(new string(chars));
         }
     }
 }

@@ -30,7 +30,7 @@ namespace UPPY.Desktop.Views.Standarts
             {
                 teName.Text = Standart.Name;
                 teDrawing.Text = Standart.Drawing != null
-                    ? string.Format("({0}) {1}", Standart.Drawing.Designation, Standart.Drawing.Name)
+                    ? $"({Standart.Drawing.Designation}) {Standart.Drawing.Name}"
                     : string.Empty;
                 teUtilRation.Text = Standart.UtilizationRatio.ToString(CultureInfo.InvariantCulture);
                 gcPositions.DataSource = Standart.Positions;
@@ -44,6 +44,11 @@ namespace UPPY.Desktop.Views.Standarts
                 Standart.Name = teName.Text;
                 teUtilRation.Text = Standart.UtilizationRatio.ToString(CultureInfo.InvariantCulture);
             }
+        }
+
+        private void StandartForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveDataField();
         }
     }
 }

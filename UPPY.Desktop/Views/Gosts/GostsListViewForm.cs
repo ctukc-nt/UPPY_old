@@ -41,7 +41,7 @@ namespace UPPY.Desktop.Views.Gosts
         private void cmCommands_ButtonEditClick(object sender, EventArgs e)
         {
             var doc = (Gost) gvGosts.GetFocusedRow();
-            _controller.ShowGostInAnotherView(doc);
+            _controller.EditDocumentInAnotherView(doc);
         }
 
         private void cmCommands_ButtonRefreshClick(object sender, EventArgs e)

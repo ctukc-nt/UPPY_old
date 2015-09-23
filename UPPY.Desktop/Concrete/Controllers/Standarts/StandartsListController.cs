@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Core.DomainModel;
 using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers.Common;
@@ -24,6 +25,8 @@ namespace UPPY.Desktop.Concrete.Controllers.Standarts
             form.ShowDialog();
         }
 
+        public event EventHandler<EventArgs> DataRefreshed;
+
         public List<Standart> GetStandartsList()
         {
             return _standartDataManager.GetListCollection();
@@ -43,12 +46,17 @@ namespace UPPY.Desktop.Concrete.Controllers.Standarts
         {
             var docController = _factory.GetDocumentController<Standart>();
             docController.Document = doc;
-            docController.ShowViewDialog();
+            if (docController.ShowViewDialog())
+            {
+                Save(docController.Document);
+                DataRefreshed?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         public void Delete(Standart doc)
         {
             _standartDataManager.Delete(doc);
+            DataRefreshed?.Invoke(this, EventArgs.Empty);
         }
     }
 }

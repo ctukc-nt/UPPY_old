@@ -1,5 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using Core.DomainModel;
+using DevExpress.XtraGrid.Views.Base;
 using UPPY.Desktop.Interfaces.Controllers.Orders;
 
 namespace UPPY.Desktop.Views.Orders
@@ -11,29 +13,35 @@ namespace UPPY.Desktop.Views.Orders
         public OrdersListForm(IOrderListController сontroller)
         {
             _сontroller = сontroller;
+            _сontroller.DataRefreshed += _сontroller_DataRefreshed;
             InitializeComponent();
         }
 
-        private void OrdersListForm_Load(object sender, System.EventArgs e)
+        private void _сontroller_DataRefreshed(object sender, EventArgs e)
         {
-            gcOrders.DataSource = _сontroller.GetOrdersList();
+            RefreshSource();
         }
 
-        private void btnOpen_Click(object sender, System.EventArgs e)
+        private void OrdersListForm_Load(object sender, EventArgs e)
+        {
+            RefreshSource();
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
         {
             var order = gvOrders.GetFocusedRow() as Order;
             if (order != null)
                 _сontroller.EditDocument(order);
         }
 
-        private void btnAdd_Click(object sender, System.EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             _сontroller.Save(_сontroller.CreateDocument());
             gvOrders.Focus();
             RefreshSource();
         }
 
-        private void btnDel_Click(object sender, System.EventArgs e)
+        private void btnDel_Click(object sender, EventArgs e)
         {
             var order = gvOrders.GetFocusedRow() as Order;
             if (order != null)
@@ -42,7 +50,7 @@ namespace UPPY.Desktop.Views.Orders
             RefreshSource();
         }
 
-        private void btnRefreshSource_Click(object sender, System.EventArgs e)
+        private void btnRefreshSource_Click(object sender, EventArgs e)
         {
             RefreshSource();
         }
@@ -53,10 +61,10 @@ namespace UPPY.Desktop.Views.Orders
             gvOrders.RefreshData();
         }
 
-        private void gvOrders_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        private void gvOrders_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             var data = gvOrders.GetRow(e.RowHandle);
-            _сontroller.Save((Order)data);
+            _сontroller.Save((Order) data);
         }
     }
 }

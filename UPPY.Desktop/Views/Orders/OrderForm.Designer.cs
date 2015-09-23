@@ -348,7 +348,7 @@
             this.onlyChildrenToolStripMenuItem,
             this.childrensWithParentToolStripMenuItem});
             this.visibleToolStripMenuItem.Name = "visibleToolStripMenuItem";
-            this.visibleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.visibleToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.visibleToolStripMenuItem.Text = "Видимые";
             // 
             // onlyChildrenToolStripMenuItem
@@ -369,7 +369,7 @@
             this.passportWithoutTechOpersToolStripMenuItem,
             this.withTechPassportToolStripMenuItem});
             this.asPassportToolStripMenuItem.Name = "asPassportToolStripMenuItem";
-            this.asPassportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.asPassportToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.asPassportToolStripMenuItem.Text = "Паспорт";
             // 
             // passportWithoutTechOpersToolStripMenuItem
@@ -389,7 +389,7 @@
             // clearWeigthsToolStripMenuItem
             // 
             this.clearWeigthsToolStripMenuItem.Name = "clearWeigthsToolStripMenuItem";
-            this.clearWeigthsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clearWeigthsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.clearWeigthsToolStripMenuItem.Text = "Чистые веса";
             // 
             // viewToolStripMenuItem
@@ -442,6 +442,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "OrderForm";
             this.Text = "OrderForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrderForm_FormClosing);
             this.Load += new System.EventHandler(this.OrderForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
