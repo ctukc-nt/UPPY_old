@@ -4,7 +4,6 @@ using System.Linq;
 using Core.DomainModel;
 using UPPY.Desktop.Interfaces.Common;
 using UPPY.DIE.Import.Siemens;
-using UPPY.DIE.Import.Siemens.Interfaces;
 using Utils.Common;
 
 namespace UPPY.Desktop.Classes
@@ -58,7 +57,7 @@ namespace UPPY.Desktop.Classes
         {
             var childrenProject = new List<Drawing>();
 
-            drawing.Name = string.Format("{0} {1}", siemensProject.Article.Head.ARTName, siemensProject.Article.Head.ARTNameRem).Trim();
+            drawing.Name = $"{siemensProject.Article.Head.ARTName} {siemensProject.Article.Head.ARTNameRem}".Trim();
             drawing.Designation = siemensProject.Article.Head.ARTPartID.Trim();
             //drawing.Dimension = string.Empty;
             drawing.GostOnMaterial = string.Empty;
@@ -104,15 +103,16 @@ namespace UPPY.Desktop.Classes
 
                 foreach (var position in siemensProject.Article.BOM.Where(x => (ExcluderProject != null && !ExcluderProject.IsNeedExclude(x)) || ExcluderProject == null))
                 {
-                    var subProject = new Drawing();
+                    var subProject = new Drawing
+                    {
+                        ParentId = drawing.Id,
+                        Count = Convert.ToInt32(position.ARTARTQuant),
+                        Note = string.Empty,
+                        NumberOnSpec = Normalizer.NormalizePositionNumber(position.ARTARTPosNo),
+                        Profile = string.Empty
+                    };
 
-                    subProject.ParentId = drawing.Id;
-
-                    subProject.Count = Convert.ToInt32(position.ARTARTQuant);
                     subProject.CountAll = subProject.Count * drawing.CountAll;
-                    subProject.Note = string.Empty;
-                    subProject.NumberOnSpec = Normalizer.NormalizePositionNumber(position.ARTARTPosNo);
-                    subProject.Profile = string.Empty;
 
                     if (position.ARTARTPartID.Contains("#"))
                     {
@@ -122,7 +122,7 @@ namespace UPPY.Desktop.Classes
 
                         if (subProject.Designation == string.Empty)
                         {
-                            subProject.Designation = string.Format("{0} поз. {1}", drawing.Designation, subProject.NumberOnSpec).Trim();
+                            subProject.Designation = $"{drawing.Designation} поз. {subProject.NumberOnSpec}".Trim();
                         }
 
                         try
@@ -190,7 +190,6 @@ namespace UPPY.Desktop.Classes
             }
 
             drawing.Weight = drawing.WeightAll / drawing.CountAll;
-            //drawing.SubProjects = childrenProject;
         }
 
         private void AppendMessageToLog(string message)
@@ -218,17 +217,15 @@ namespace UPPY.Desktop.Classes
                 // ignored
             }
         }
-
-       
     }
 
     public class TempDrawingsStorage
     {
         private int _count = 1;
 
-        private List<Drawing> _drawings = new List<Drawing>();
+        private readonly List<Drawing> _drawings = new List<Drawing>();
 
-        public IEnumerable<Drawing> Drawings { get { return _drawings; } }
+        public IEnumerable<Drawing> Drawings => _drawings;
 
         public void Add(Drawing drawing)
         {
