@@ -5,15 +5,14 @@ using System.Windows.Forms;
 using Core.DomainModel;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList.Nodes;
-using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
 
 namespace UPPY.Desktop.Views.Drawings
 {
     public partial class DrawingsSelectionForm : Form
     {
-        private List<Drawing> _selectedDocuments;
         private readonly IDrawingsSelectionController _controller;
+        private List<Drawing> _selectedDocuments;
 
         public DrawingsSelectionForm(IDrawingsSelectionController controller)
         {
@@ -28,7 +27,6 @@ namespace UPPY.Desktop.Views.Drawings
         public DrawingsSelectionForm(IDrawingsSelectionController controller, bool multipleSelect)
             : this(controller)
         {
-
             tlDarwings.OptionsSelection.MultiSelect = multipleSelect;
         }
 
@@ -42,10 +40,9 @@ namespace UPPY.Desktop.Views.Drawings
                 {
                     value.ForEach(y =>
                     {
-                        var node = tlDarwings.FindNode(x => ((Drawing)tlDarwings.GetDataRecordByNode(x)).Id == y.Id);
+                        var node = tlDarwings.FindNode(x => ((Drawing) tlDarwings.GetDataRecordByNode(x)).Id == y.Id);
                         ExpandToParentNode(node);
                     });
-
                 }
             }
         }
@@ -58,14 +55,14 @@ namespace UPPY.Desktop.Views.Drawings
             Drawing data = null;
             if (slctdNode != null)
             {
-                data = (Drawing)tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
+                data = (Drawing) tlDarwings.GetDataRecordByNode(tlDarwings.Selection[0]);
             }
 
             tlDarwings.DataSource = _controller.GetDrawingsList();
             tlDarwings.RefreshDataSource();
             if (data != null)
             {
-                var newNode = tlDarwings.FindNode(x => ((Drawing)tlDarwings.GetDataRecordByNode(x)).Id == data.Id);
+                var newNode = tlDarwings.FindNode(x => ((Drawing) tlDarwings.GetDataRecordByNode(x)).Id == data.Id);
 
                 tlDarwings.Selection.Clear();
                 if (newNode != null)
@@ -117,7 +114,7 @@ namespace UPPY.Desktop.Views.Drawings
             foreach (var id in listId.AsParallel())
             {
                 var id1 = id;
-                var node = tlDarwings.FindNode(x => ((Drawing)tlDarwings.GetDataRecordByNode(x)).Id == id1);
+                var node = tlDarwings.FindNode(x => ((Drawing) tlDarwings.GetDataRecordByNode(x)).Id == id1);
                 if (node != null)
                     node.Expanded = true;
             }
@@ -129,7 +126,7 @@ namespace UPPY.Desktop.Views.Drawings
             {
                 if (treeListNode.Expanded)
                 {
-                    var data = (Drawing)tlDarwings.GetDataRecordByNode(treeListNode);
+                    var data = (Drawing) tlDarwings.GetDataRecordByNode(treeListNode);
                     yield return data.Id;
 
                     foreach (var id in SaveNodeStates(treeListNode.Nodes))
