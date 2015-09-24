@@ -3,11 +3,10 @@ using System.Windows.Forms;
 using Core.DomainModel;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
 using UPPY.Desktop.Interfaces.Controllers.Orders;
-using UPPY.Desktop.Interfaces.Views;
 
 namespace UPPY.Desktop.Views.Orders
 {
-    public partial class OrderForm : Form, IDocumentView<Order>
+    public partial class OrderForm : Form
     {
         private readonly IOrderDocumentController _controller;
         private readonly IPrintDrawingsController _printDrawings;

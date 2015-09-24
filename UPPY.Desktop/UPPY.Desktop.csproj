@@ -67,7 +67,8 @@
   <ItemGroup>
     <Compile Include="Concrete\Controllers\Common\SiemensDataImportController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\PrintDrawingsController.cs" />
-    <Compile Include="Factorys\ToolsFactoryFactory.cs" />
+    <Compile Include="Factorys\ToolsFactory.cs" />
+    <Compile Include="Factorys\ViewFactory.cs" />
     <Compile Include="Interfaces\Common\IFilesLoaderToRepository.cs" />
     <Compile Include="Classes\SimpleFilesLoaderToRepository.cs" />
     <Compile Include="Classes\FilesLoaderToRepository.cs" />
@@ -122,9 +123,6 @@
     <Compile Include="Interfaces\Controllers\TechOpers\ITechOpersListController.cs" />
     <Compile Include="Interfaces\Controllers\TechRoutes\ITechRouteDocumentController.cs" />
     <Compile Include="Interfaces\Controllers\TechRoutes\ITechRouteListController.cs" />
-    <Compile Include="Interfaces\Views\IDocumentView.cs" />
-    <Compile Include="Interfaces\Views\IListView.cs" />
-    <Compile Include="Interfaces\Views\IView.cs" />
     <Compile Include="MonoFlat Theme.cs" />
     <Compile Include="Ninject\ApplicationModule.cs" />
     <Compile Include="Ninject\CompositionRoot.cs" />
@@ -337,6 +335,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\DataManagers\" />
+    <Folder Include="Interfaces\Views\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">

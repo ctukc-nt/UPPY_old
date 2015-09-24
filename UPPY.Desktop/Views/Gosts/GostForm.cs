@@ -2,11 +2,10 @@
 using System.Windows.Forms;
 using Core.DomainModel;
 using UPPY.Desktop.Interfaces.Controllers.Gosts;
-using UPPY.Desktop.Interfaces.Views;
 
 namespace UPPY.Desktop.Views.Gosts
 {
-    public partial class GostForm : Form, IView<Gost>
+    public partial class GostForm : Form
     {
         private IGostDocumentController _controller;
 

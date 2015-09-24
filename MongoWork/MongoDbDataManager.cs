@@ -62,25 +62,7 @@ namespace MongoWork
             collection.InsertOneAsync(doc).Wait();
         }
 
-        /// <summary>
-        ///     Вставить документ асинхронно
-        /// </summary>
-        public async void InsertAsync(T doc)
-        {
-            var collection = GetCollection();
-            if (doc.Id == null)
-            {
-                doc.Id = GetIdDocument();
-            }
-            else
-            {
-                SetIdDocument((int) doc.Id);
-            }
-
-            await collection.InsertOneAsync(doc);
-        }
-
-        /// <summary>
+       /// <summary>
         ///     Вставить документ
         /// </summary>
         public void Update(T doc)
@@ -88,15 +70,7 @@ namespace MongoWork
             var collection = GetCollection();
             collection.ReplaceOneAsync(x => x.Id == doc.Id, doc).Wait();
         }
-        /// <summary>
-        ///     Обновить документ асинхронно
-        /// </summary>
-        public async void UpdateAsync(T doc)
-        {
-            var collection = GetCollection();
-            await collection.ReplaceOneAsync(x => x.Id == doc.Id, doc);
-        }
-
+       
         /// <summary>
         ///     Удалить документ
         /// </summary>
@@ -104,15 +78,6 @@ namespace MongoWork
         {
             var collection = GetCollection();
             collection.DeleteOneAsync(x => x.Id == doc.Id).Wait();
-        }
-
-        /// <summary>
-        ///     Удалить документ асинхронно
-        /// </summary>
-        public async void DeleteAsync(T doc)
-        {
-            var collection = GetCollection();
-            await collection.DeleteOneAsync(x => x.Id == doc.Id);
         }
 
         /// <summary>
@@ -214,19 +179,37 @@ namespace MongoWork
             return collection.FindOneAndUpdateAsync(id => id.DocName == typeof (T).Name, setDocIdUpdate).Result.DocId;
         }
 
-        Task IClassDataManager<T>.InsertAsync(T doc)
+        public Task InsertAsync(T doc)
         {
-            throw new NotImplementedException();
+            var collection = GetCollection();
+            if (doc.Id == null)
+            {
+                doc.Id = GetIdDocument();
+            }
+            else
+            {
+                SetIdDocument((int)doc.Id);
+            }
+
+            return collection.InsertOneAsync(doc);
         }
 
-        Task IClassDataManager<T>.UpdateAsync(T doc)
+        /// <summary>
+        ///     Обновить документ асинхронно
+        /// </summary>
+        public Task UpdateAsync(T doc)
         {
-            throw new NotImplementedException();
+            var collection = GetCollection();
+            return collection.ReplaceOneAsync(x => x.Id == doc.Id, doc);
         }
 
-        Task IClassDataManager<T>.DeleteAsync(T doc)
+        /// <summary>
+        ///     Удалить документ асинхронно
+        /// </summary>
+        public Task DeleteAsync(T doc)
         {
-            throw new NotImplementedException();
+            var collection = GetCollection();
+            return collection.DeleteOneAsync(x => x.Id == doc.Id);
         }
     }
 }
