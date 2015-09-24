@@ -5,11 +5,11 @@ using UPPY.Desktop.Interfaces.Common;
 
 namespace UPPY.Desktop.Factorys
 {
-    public class ToolsFactoryFactory:IDataImportToolsFactory
+    public class ToolsFactory:IDataImportToolsFactory
     {
         private readonly IDataManagersFactory _dataManagersFactory;
 
-        public ToolsFactoryFactory(IDataManagersFactory dataManagersFactory)
+        public ToolsFactory(IDataManagersFactory dataManagersFactory)
         {
             _dataManagersFactory = dataManagersFactory;
         }
