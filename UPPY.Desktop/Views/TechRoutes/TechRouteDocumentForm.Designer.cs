@@ -208,7 +208,7 @@
             this.Controls.Add(this.teNote);
             this.Controls.Add(this.teName);
             this.Name = "TechRouteDocumentForm";
-            this.Text = "TechRouteDocumentForm";
+            this.Text = "Тех. маршрут";
             this.Load += new System.EventHandler(this.TechRouteForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teNote.Properties)).EndInit();

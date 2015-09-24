@@ -65,14 +65,15 @@
             // 
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 289);
+            this.panel1.Location = new System.Drawing.Point(0, 377);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(707, 45);
+            this.panel1.Size = new System.Drawing.Size(706, 45);
             this.panel1.TabIndex = 1;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(614, 10);
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Location = new System.Drawing.Point(615, 10);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(81, 23);
             this.btnClose.TabIndex = 0;
@@ -81,11 +82,14 @@
             // 
             // gcGosts
             // 
+            this.gcGosts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gcGosts.DataSource = this.gostBindingSource;
             this.gcGosts.Location = new System.Drawing.Point(12, 45);
             this.gcGosts.MainView = this.gvGosts;
             this.gcGosts.Name = "gcGosts";
-            this.gcGosts.Size = new System.Drawing.Size(683, 238);
+            this.gcGosts.Size = new System.Drawing.Size(684, 323);
             this.gcGosts.TabIndex = 2;
             this.gcGosts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvGosts});
@@ -106,6 +110,7 @@
             this.gvGosts.GridControl = this.gcGosts;
             this.gvGosts.Name = "gvGosts";
             this.gvGosts.OptionsDetail.EnableMasterViewMode = false;
+            this.gvGosts.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvGosts_CellValueChanged);
             // 
             // colTypeExtraDimension
             // 
@@ -157,12 +162,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 334);
+            this.ClientSize = new System.Drawing.Size(706, 422);
             this.Controls.Add(this.gcGosts);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cmCommands);
             this.Name = "GostsListViewForm";
-            this.Text = "GostsListViewForm";
+            this.Text = "Список ГОСТов";
             this.Load += new System.EventHandler(this.GostsListViewForm_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcGosts)).EndInit();

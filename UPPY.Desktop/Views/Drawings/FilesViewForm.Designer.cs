@@ -98,7 +98,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FilesViewForm";
-            this.Text = "FilesViewForm";
+            this.Text = "Просмотр списка файлов";
             this.Load += new System.EventHandler(this.FilesViewForm_Load);
             this.ResumeLayout(false);
 

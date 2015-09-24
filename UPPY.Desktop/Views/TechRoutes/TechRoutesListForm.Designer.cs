@@ -87,6 +87,7 @@
             // 
             // colId
             // 
+            this.colId.Caption = "УИД";
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
             this.colId.Visible = true;
@@ -94,6 +95,7 @@
             // 
             // colName
             // 
+            this.colName.Caption = "Наименование";
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
             this.colName.Visible = true;
@@ -101,6 +103,7 @@
             // 
             // colNote
             // 
+            this.colNote.Caption = "Примечание";
             this.colNote.FieldName = "Note";
             this.colNote.Name = "colNote";
             this.colNote.Visible = true;
@@ -128,7 +131,7 @@
             this.Controls.Add(this.commandButtons1);
             this.Controls.Add(this.gcTechRoutes);
             this.Name = "TechRoutesListForm";
-            this.Text = "TechRoutesListForm";
+            this.Text = "Список тех. маршрутов";
             this.Load += new System.EventHandler(this.TechRoutesListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.techRouteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.techOperationsBindingSource)).EndInit();

@@ -3,6 +3,7 @@ using Core.DomainModel;
 using Core.Interfaces;
 using MongoDB.Driver;
 using MongoWork;
+using UPPY.Desktop.Concrete.DataManager.Drawings;
 
 namespace UPPY.Desktop.Factorys
 {
@@ -15,12 +16,12 @@ namespace UPPY.Desktop.Factorys
 
         public IClassDataManager<Drawing> GetFilteredDrawingsByParent(int? parentId)
         {
-            throw new NotImplementedException();
+            return new DrawingsFilteredDataManager(Database, parentId);
         }
 
         public IHierClassDataManager<Drawing> GetDrawingsHierClassDataManager()
         {
-            throw new NotImplementedException();
+            return new HierarchyDrawingsDataManager(Database);
         }
     }
 }

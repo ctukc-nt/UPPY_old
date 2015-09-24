@@ -59,5 +59,14 @@ namespace UPPY.Desktop.Views.Gosts
         {
             RefreshData();
         }
+
+        private void gvGosts_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var data = (Gost)gvGosts.GetRow(e.RowHandle);
+            if (data != null)
+            {
+                _controller.Save(data);
+            }
+        }
     }
 }

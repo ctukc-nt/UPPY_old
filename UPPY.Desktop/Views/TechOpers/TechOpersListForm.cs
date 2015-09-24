@@ -58,5 +58,11 @@ namespace UPPY.Desktop.Views.TechOpers
             var data = gvTechOpers.GetRow(e.RowHandle);
             _controller.Save((TechOperation) data);
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Close();
+        }
     }
 }

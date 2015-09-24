@@ -414,7 +414,7 @@
             this.ClientSize = new System.Drawing.Size(757, 552);
             this.Controls.Add(this.wcStandarts);
             this.Name = "DrawingToStandartForm";
-            this.Text = "DrawingToStandartForm";
+            this.Text = "Мастер создания норм на основании сборочной единицы";
             ((System.ComponentModel.ISupportInitialize)(this.wcStandarts)).EndInit();
             this.wcStandarts.ResumeLayout(false);
             this.wpUngrouppedPositions.ResumeLayout(false);

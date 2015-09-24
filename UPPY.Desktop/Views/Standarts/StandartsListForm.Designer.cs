@@ -123,7 +123,7 @@
             this.Controls.Add(this.commandButtons1);
             this.Controls.Add(this.gcStandarts);
             this.Name = "StandartsListForm";
-            this.Text = "StandartsListForm";
+            this.Text = "Список норм на сборку";
             this.Load += new System.EventHandler(this.StandartsListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcStandarts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.standartBindingSource)).EndInit();

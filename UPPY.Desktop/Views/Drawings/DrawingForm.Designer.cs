@@ -136,6 +136,7 @@
             this.tlDrawings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlDrawings.Location = new System.Drawing.Point(0, 0);
             this.tlDrawings.Name = "tlDrawings";
+            this.tlDrawings.ParentId = null;
             this.tlDrawings.Size = new System.Drawing.Size(753, 302);
             this.tlDrawings.TabIndex = 0;
             // 
@@ -593,7 +594,7 @@
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.ecpDocumentsField);
             this.Name = "DrawingForm";
-            this.Text = "DrawingForm";
+            this.Text = "Сб. единица";
             this.Load += new System.EventHandler(this.DrawingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);

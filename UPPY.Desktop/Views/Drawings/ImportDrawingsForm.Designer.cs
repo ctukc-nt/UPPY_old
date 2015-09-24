@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportDrawingsForm));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.wcSiemensDataImport = new DevExpress.XtraWizard.WizardControl();
             this.welcomeWizardPage = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -59,8 +59,8 @@
             this.tlcWeightAll = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlcCountFiles = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repoTechRoutes = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.lbMessages = new System.Windows.Forms.ListBox();
+            this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.wcSiemensDataImport)).BeginInit();
             this.wcSiemensDataImport.SuspendLayout();
             this.welcomeWizardPage.SuspendLayout();
@@ -412,7 +412,7 @@
             this.repoTechRoutes.AutoHeight = false;
             this.repoTechRoutes.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", "showlist", null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", "showlist", null, true)});
             this.repoTechRoutes.DisplayMember = "Name";
             this.repoTechRoutes.Name = "repoTechRoutes";
             this.repoTechRoutes.ValueMember = "Id";
@@ -434,7 +434,7 @@
             this.ClientSize = new System.Drawing.Size(965, 550);
             this.Controls.Add(this.wcSiemensDataImport);
             this.Name = "ImportDrawingsForm";
-            this.Text = "ImportDrawingsForm";
+            this.Text = "Импорт данных от компании Siemens";
             ((System.ComponentModel.ISupportInitialize)(this.wcSiemensDataImport)).EndInit();
             this.wcSiemensDataImport.ResumeLayout(false);
             this.welcomeWizardPage.ResumeLayout(false);

@@ -441,7 +441,7 @@
             this.Controls.Add(this.splitContainer1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "OrderForm";
-            this.Text = "OrderForm";
+            this.Text = "Заказ клиента";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrderForm_FormClosing);
             this.Load += new System.EventHandler(this.OrderForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);

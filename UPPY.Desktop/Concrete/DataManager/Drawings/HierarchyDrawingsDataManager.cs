@@ -11,6 +11,7 @@ namespace UPPY.Desktop.Concrete.DataManager.Drawings
     {
         public HierarchyDrawingsDataManager(IMongoDatabase db) : base(db)
         {
+
         }
 
         public List<Drawing> GetListDocsInHierarchy(int? id)

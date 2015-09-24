@@ -337,7 +337,7 @@
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.panel1);
             this.Name = "GostForm";
-            this.Text = "GostForm";
+            this.Text = "ГОСТ";
             this.Load += new System.EventHandler(this.GostForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcStandartWeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.standartWeightBindingSource)).EndInit();

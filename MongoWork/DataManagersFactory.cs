@@ -6,11 +6,11 @@ namespace MongoWork
 {
     public class DataManagersFactory : IDataManagersFactory
     {
-        private readonly IMongoDatabase _database;
+        protected readonly IMongoDatabase Database;
 
         public DataManagersFactory(IMongoDatabase database)
         {
-            _database = database;
+            Database = database;
         }
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace MongoWork
         /// <returns>Управленец данными</returns>
         public virtual IClassDataManager<T> GetDataManager<T>() where T : IEntity
         {
-            return new MongoDbDataManager<T>(_database);
+            return new MongoDbDataManager<T>(Database);
         }
     }
 }

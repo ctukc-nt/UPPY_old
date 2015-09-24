@@ -165,7 +165,7 @@
             this.Controls.Add(this.commandButtons1);
             this.Controls.Add(this.gcOrders);
             this.Name = "OrdersListForm";
-            this.Text = "OrdersListForm";
+            this.Text = "Список заказов клиентов";
             this.Load += new System.EventHandler(this.OrdersListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();

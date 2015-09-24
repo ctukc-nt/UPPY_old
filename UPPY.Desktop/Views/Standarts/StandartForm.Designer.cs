@@ -279,7 +279,7 @@
             this.Controls.Add(this.expandCollapsePanel1);
             this.Controls.Add(this.panel1);
             this.Name = "StandartForm";
-            this.Text = "StandartForm";
+            this.Text = "Нормы на сборку";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StandartForm_FormClosing);
             this.Load += new System.EventHandler(this.StandartForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcPositions)).EndInit();
