@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Core.DomainModel;
 using Core.Interfaces;
 
-namespace UPPY.Desktop.Fake
+namespace UPPY.FakeDb.FakeDataManagers
 {
     public class DrawingListClassFakeDataManager : IHierClassDataManager<Drawing>
     {
@@ -160,6 +160,21 @@ namespace UPPY.Desktop.Fake
         private List<Drawing> GetChildrenDrawings(int? parentId, List<Drawing> data)
         {
             return data.Where(x => x.ParentId == parentId).ToList();
+        }
+
+        Task IClassDataManager<Drawing>.InsertAsync(Drawing doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IClassDataManager<Drawing>.UpdateAsync(Drawing doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IClassDataManager<Drawing>.DeleteAsync(Drawing doc)
+        {
+            throw new NotImplementedException();
         }
     }
 }

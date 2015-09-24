@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Core.DomainModel;
 using Core.Interfaces;
-using UPPY.Desktop.Interfaces;
-using UPPY.Desktop.Interfaces.DataManagers;
+using UPPY.FakeDb.FakeDataManagers;
 
-namespace UPPY.Desktop.Fake
+namespace UPPY.FakeDb
 {
     public class UppyFakeDataManagersFactory : IUppyDataManagersFactory
     {

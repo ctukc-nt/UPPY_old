@@ -1,15 +1,9 @@
-﻿using System;
-using Core.Interfaces;
+﻿using Core.Interfaces;
 using Ninject.Modules;
-using UPPY.Desktop.Concrete.Controllers.Orders;
 using UPPY.Desktop.Factorys;
-using UPPY.Desktop.Fake;
-using UPPY.Desktop.Interfaces;
 using UPPY.Desktop.Interfaces.Common;
-using UPPY.Desktop.Interfaces.Controllers;
 using UPPY.Desktop.Interfaces.Controllers.Common;
-using UPPY.Desktop.Interfaces.Controllers.Orders;
-using UPPY.Desktop.Interfaces.DataManagers;
+using UPPY.FakeDb;
 
 namespace UPPY.Desktop.Ninject
 {

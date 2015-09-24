@@ -1,7 +1,6 @@
 ﻿using Core.DomainModel;
-using Core.Interfaces;
 
-namespace UPPY.Desktop.Interfaces.DataManagers
+namespace Core.Interfaces
 {
     /// <summary>
     ///     Интерфейс базы данных УППИ

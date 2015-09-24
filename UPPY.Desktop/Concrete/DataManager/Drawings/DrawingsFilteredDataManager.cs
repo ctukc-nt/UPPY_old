@@ -40,7 +40,7 @@ namespace UPPY.Desktop.Concrete.DataManager.Drawings
             return result;
         }
 
-        public new async Task<List<Drawing>> GetListCollectionAsync()
+        public override async Task<List<Drawing>> GetListCollectionAsync()
         {
             var collection = GetCollection();
             return await collection.Find(x => true).ToListAsync();
@@ -49,7 +49,7 @@ namespace UPPY.Desktop.Concrete.DataManager.Drawings
         /// <summary>
         ///     Получить список документов
         /// </summary>
-        public new List<Drawing> GetListCollection()
+        public override List<Drawing> GetListCollection()
         {
             return GetAllChildrens(_parentId);
         }

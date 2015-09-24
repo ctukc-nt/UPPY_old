@@ -68,7 +68,6 @@
     <Compile Include="Concrete\Controllers\Common\SiemensDataImportController.cs" />
     <Compile Include="Concrete\Controllers\Drawings\PrintDrawingsController.cs" />
     <Compile Include="Factorys\ToolsFactoryFactory.cs" />
-    <Compile Include="Fake\FilteredDrawingListClassFakeDataManager.cs" />
     <Compile Include="Interfaces\Common\IFilesLoaderToRepository.cs" />
     <Compile Include="Classes\SimpleFilesLoaderToRepository.cs" />
     <Compile Include="Classes\FilesLoaderToRepository.cs" />
@@ -93,8 +92,6 @@
     <Compile Include="Concrete\Controllers\TechOpers\TechOpersListController.cs" />
     <Compile Include="Concrete\DataManager\Drawings\DrawingsFilteredDataManager.cs" />
     <Compile Include="Concrete\DataManager\Drawings\HierarchyDrawingsDataManager.cs" />
-    <Compile Include="Fake\GostClassFakeDataManager.cs" />
-    <Compile Include="Fake\OrderClassFakeDataManager.cs" />
     <Compile Include="Interfaces\Common\IFieldsNormalizer.cs" />
     <Compile Include="Interfaces\Common\IMaterialParser.cs" />
     <Compile Include="Interfaces\Common\INameMaterialSearch.cs" />
@@ -109,12 +106,11 @@
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingListController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IDrawingsSelectionController.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IHierarchyNumberDrawingController.cs" />
-    <Compile Include="Factorys\DataMangersFactory.cs" />
+    <Compile Include="Factorys\UppyDataMangersFactory.cs" />
     <Compile Include="Concrete\Controllers\Drawings\DrawingsSelectionController.cs" />
     <Compile Include="Concrete\Controllers\TechRoutes\TechRouteDocumentController.cs" />
     <Compile Include="Concrete\Controllers\TechRoutes\TechRouteListController.cs" />
     <Compile Include="Factorys\UppyControllersFactory.cs" />
-    <Compile Include="Fake\UppyFakeDataManagersFactory.cs" />
     <Compile Include="Interfaces\Controllers\Common\IControllersFactory.cs" />
     <Compile Include="Interfaces\Controllers\Common\IUppyControllersFactory.cs" />
     <Compile Include="Interfaces\Controllers\Drawings\IPrintDrawingsController.cs" />
@@ -128,17 +124,12 @@
     <Compile Include="Interfaces\Controllers\TechRoutes\ITechRouteListController.cs" />
     <Compile Include="Interfaces\Views\IDocumentView.cs" />
     <Compile Include="Interfaces\Views\IListView.cs" />
-    <Compile Include="Interfaces\DataManagers\IUppyDataManagersFactory.cs" />
     <Compile Include="Interfaces\Views\IView.cs" />
     <Compile Include="MonoFlat Theme.cs" />
     <Compile Include="Ninject\ApplicationModule.cs" />
     <Compile Include="Ninject\CompositionRoot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Fake\DrawingListClassFakeDataManager.cs" />
-    <Compile Include="Fake\StandartClassFakeDataManager.cs" />
-    <Compile Include="Fake\TechOperationClassFakeDataManager.cs" />
-    <Compile Include="Fake\TechRoutesClassFakeDataManager.cs" />
     <Compile Include="Views\Controls\CommandButtons.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -340,9 +331,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interfaces\DataManagers\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{876F668F-5017-4CEE-8AE4-91E9B0E9E6B6}</Project>
@@ -359,6 +354,10 @@
     <ProjectReference Include="..\UPPY.DIE\UPPY.DIE.csproj">
       <Project>{04B0D4BE-D7A1-4F6A-8A97-BBE47746BB44}</Project>
       <Name>UPPY.DIE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UPPY.FakeDb\UPPY.FakeDb.csproj">
+      <Project>{524f5436-b0a8-4200-b6dc-a42b44b5c101}</Project>
+      <Name>UPPY.FakeDb</Name>
     </ProjectReference>
     <ProjectReference Include="..\UPPY.Files\UPPY.Files.csproj">
       <Project>{34211894-fe42-41cc-9aca-1501e1bed3b2}</Project>

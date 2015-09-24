@@ -1,6 +1,6 @@
 ﻿using Core;
 using Core.DomainModel;
-using UPPY.Desktop.Interfaces.DataManagers;
+using Core.Interfaces;
 
 namespace UPPY.Desktop.Classes
 {

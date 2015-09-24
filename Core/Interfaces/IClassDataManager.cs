@@ -28,7 +28,7 @@ namespace Core.Interfaces
         /// <summary>
         ///     Вставить документ асинхронно
         /// </summary>
-        void InsertAsync(T doc);
+        Task InsertAsync(T doc);
 
         /// <summary>
         ///     Вставить документ
@@ -38,7 +38,7 @@ namespace Core.Interfaces
         /// <summary>
         ///     Обновить документ асинхронно
         /// </summary>
-        void UpdateAsync(T doc);
+        Task UpdateAsync(T doc);
 
         /// <summary>
         ///     Удалить документ
@@ -48,7 +48,7 @@ namespace Core.Interfaces
         /// <summary>
         ///     Удалить документ асинхронно
         /// </summary>
-        void DeleteAsync(T doc);
+        Task DeleteAsync(T doc);
 
         /// <summary>
         ///     Вставить или обновить документ

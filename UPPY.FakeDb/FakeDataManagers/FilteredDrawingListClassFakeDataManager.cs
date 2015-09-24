@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Core.DomainModel;
-using Core.Interfaces;
 
-namespace UPPY.Desktop.Fake
+namespace UPPY.FakeDb.FakeDataManagers
 {
     public class FilteredDrawingListClassFakeDataManager : DrawingListClassFakeDataManager
     {

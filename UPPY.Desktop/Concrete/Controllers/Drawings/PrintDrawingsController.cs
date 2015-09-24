@@ -7,7 +7,6 @@ using Core.DomainModel;
 using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers.Common;
 using UPPY.Desktop.Interfaces.Controllers.Drawings;
-using UPPY.Desktop.Interfaces.DataManagers;
 using UPPY.DIE.Export;
 
 namespace UPPY.Desktop.Concrete.Controllers.Drawings

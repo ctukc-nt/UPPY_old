@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Core.DomainModel;
 using Core.Interfaces;
 
-namespace UPPY.Desktop.Fake
+namespace UPPY.FakeDb.FakeDataManagers
 {
     public class TechOperationClassFakeDataManager : List<TechOperation>, IClassDataManager<TechOperation>
     {
@@ -90,6 +90,19 @@ namespace UPPY.Desktop.Fake
             throw new NotImplementedException();
         }
 
-       
+        Task IClassDataManager<TechOperation>.InsertAsync(TechOperation doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IClassDataManager<TechOperation>.UpdateAsync(TechOperation doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IClassDataManager<TechOperation>.DeleteAsync(TechOperation doc)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

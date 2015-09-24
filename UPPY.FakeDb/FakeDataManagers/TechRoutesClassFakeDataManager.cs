@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Core.DomainModel;
 using Core.Interfaces;
 
-namespace UPPY.Desktop.Fake
+namespace UPPY.FakeDb.FakeDataManagers
 {
     public class TechRoutesClassFakeDataManager : List<TechRoute>, IClassDataManager<TechRoute>
     {
@@ -129,6 +129,19 @@ namespace UPPY.Desktop.Fake
             throw new NotImplementedException();
         }
 
-       
+        Task IClassDataManager<TechRoute>.InsertAsync(TechRoute doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IClassDataManager<TechRoute>.UpdateAsync(TechRoute doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IClassDataManager<TechRoute>.DeleteAsync(TechRoute doc)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

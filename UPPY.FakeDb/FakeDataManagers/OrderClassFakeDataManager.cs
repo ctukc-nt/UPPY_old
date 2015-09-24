@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Core.DomainModel;
 using Core.Interfaces;
 
-namespace UPPY.Desktop.Fake
+namespace UPPY.FakeDb.FakeDataManagers
 {
     public class OrderClassFakeDataManager : List<Order>, IClassDataManager<Order>
     {
@@ -81,6 +81,21 @@ namespace UPPY.Desktop.Fake
         }
 
         public List<Order> FindInDbDirectlyById(int? id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IClassDataManager<Order>.InsertAsync(Order doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IClassDataManager<Order>.UpdateAsync(Order doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IClassDataManager<Order>.DeleteAsync(Order doc)
         {
             throw new NotImplementedException();
         }

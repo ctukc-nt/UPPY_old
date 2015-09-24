@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPPY.DIETests1", "UPPY.DIET
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils.Common", "Utils.Common\Utils.Common.csproj", "{49232DD5-96D7-45CD-A063-09FA9C148849}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPPY.FakeDb", "UPPY.FakeDb\UPPY.FakeDb.csproj", "{524F5436-B0A8-4200-B6DC-A42B44B5C101}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{49232DD5-96D7-45CD-A063-09FA9C148849}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49232DD5-96D7-45CD-A063-09FA9C148849}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49232DD5-96D7-45CD-A063-09FA9C148849}.Release|Any CPU.Build.0 = Release|Any CPU
+		{524F5436-B0A8-4200-B6DC-A42B44B5C101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{524F5436-B0A8-4200-B6DC-A42B44B5C101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{524F5436-B0A8-4200-B6DC-A42B44B5C101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{524F5436-B0A8-4200-B6DC-A42B44B5C101}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

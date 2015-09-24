@@ -23,7 +23,7 @@ namespace MongoWork
         /// <summary>
         ///     Получить список документов асинхронно
         /// </summary> <returns></returns>
-        public async Task<List<T>> GetListCollectionAsync()
+        public virtual async Task<List<T>> GetListCollectionAsync()
         {
             var collection = GetCollection();
             return await collection.Find(x => true).ToListAsync();
@@ -32,13 +32,13 @@ namespace MongoWork
         /// <summary>
         ///     Получить список документов
         /// </summary>
-        public List<T> GetListCollection()
+        public virtual List<T> GetListCollection()
         {
             var collection = GetCollection();
             return collection.Find(x => true).ToListAsync().Result;
         }
 
-        public List<T> GetListCollection(Func<T, bool> filter)
+        public virtual List<T> GetListCollection(Func<T, bool> filter)
         {
             var collection = GetCollection();
             return collection.Find(x => filter(x)).ToListAsync().Result;
@@ -212,6 +212,21 @@ namespace MongoWork
             }
 
             return collection.FindOneAndUpdateAsync(id => id.DocName == typeof (T).Name, setDocIdUpdate).Result.DocId;
+        }
+
+        Task IClassDataManager<T>.InsertAsync(T doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IClassDataManager<T>.UpdateAsync(T doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IClassDataManager<T>.DeleteAsync(T doc)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Core.DomainModel;
 using Core.Interfaces;
 
-namespace UPPY.Desktop.Fake
+namespace UPPY.FakeDb.FakeDataManagers
 {
     public class GostClassFakeDataManager : List<Gost>, IClassDataManager<Gost>
     {
@@ -101,5 +101,19 @@ namespace UPPY.Desktop.Fake
             return new Task<Gost>(() => GetDocument(id));
         }
 
+        Task IClassDataManager<Gost>.InsertAsync(Gost doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IClassDataManager<Gost>.UpdateAsync(Gost doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IClassDataManager<Gost>.DeleteAsync(Gost doc)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Core;
 using Core.DomainModel;
+using Core.Interfaces;
 using UPPY.Desktop.Interfaces.Controllers.Common;
-using UPPY.Desktop.Interfaces.DataManagers;
 using UPPY.Desktop.Views.Standarts;
 using Utils.Common;
 
